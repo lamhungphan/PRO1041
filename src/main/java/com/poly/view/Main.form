@@ -434,7 +434,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="tabMain" min="-2" pref="562" max="-2" attributes="0"/>
+              <Component id="tabMain" min="-2" pref="592" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jSeparator7" min="-2" pref="24" max="-2" attributes="0"/>
@@ -504,6 +504,9 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="lblTrangThai">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/com/poly/image/Friends.png"/>
             </Property>
@@ -512,6 +515,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblDongHo">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/com/poly/image/Alarm.png"/>
             </Property>
@@ -708,47 +714,42 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Component id="txtChiTieu" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtSoTien" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtChiTra" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtSoDu" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtChiTieu" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txtSoTien" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txtChiTra" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txtSoDu" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="lblChiTra" alignment="0" min="-2" pref="61" max="-2" attributes="0"/>
-                                                  <Component id="lblSoDu" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
-                                                  <Component id="lblChiTieu" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
-                                                  <Component id="lblMoTaNganSach" alignment="0" min="-2" pref="58" max="-2" attributes="0"/>
-                                                  <Component id="lblSoTien" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
-                                                  <Component id="lblTGianNganSach" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          <Component id="lblChiTra" alignment="0" min="-2" pref="61" max="-2" attributes="0"/>
+                                          <Component id="lblSoDu" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                                          <Component id="lblChiTieu" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
+                                          <Component id="lblMoTaNganSach" alignment="0" min="-2" pref="58" max="-2" attributes="0"/>
+                                          <Component id="lblSoTien" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                                          <Component id="lblTGianNganSach" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="btnAddNganSach" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="btnUpdateNganSach" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="btnDeleteNganSach" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="btnClearNganSach" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                              <Component id="btnFirstNganSach" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="btnPrevNganSach" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="btnNextNganSach" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="btnLastNganSach" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="btnAddNganSach" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnUpdateNganSach" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnDeleteNganSach" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnClearNganSach" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                      <Component id="btnFirstNganSach" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="29" max="32767" attributes="0"/>
-                                      <Component id="btnPrevNganSach" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                      <Component id="btnNextNganSach" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                                      <Component id="btnLastNganSach" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1182,7 +1183,7 @@
                                   <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtSoDT" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jScrollPane3" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="lblEmail" alignment="0" min="-2" pref="61" max="-2" attributes="0"/>
                                           <Component id="lblSoDT" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
@@ -1203,25 +1204,25 @@
                                                   </Group>
                                               </Group>
                                           </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="btnAddTVien" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="btnUpdateTVien" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="btnDeleteTVien" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="btnClearTVien" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                              <Component id="btnFirstTVien" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="btnPrevTVien" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="btnNextTVien" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="btnLastTVien" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="158" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="btnAddTVien" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnUpdateTVien" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnDeleteTVien" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnClearTVien" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                      <Component id="btnFirstTVien" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="btnPrevTVien" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                                      <Component id="btnNextTVien" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                                      <Component id="btnLastTVien" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="82" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -1262,7 +1263,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="btnPrevTVien" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnNextTVien" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnLastTVien" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnLastTVien" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="btnAddTVien" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                                       <Component id="btnUpdateTVien" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
@@ -1672,7 +1673,7 @@
                                   <Component id="txtNguoiDung" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtEmailNguoiDung" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtSoDtNguoiDung" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="lblEmailNguoiDung" alignment="0" min="-2" pref="61" max="-2" attributes="0"/>
                                           <Component id="lblSoDtNguoiDung" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
@@ -1694,25 +1695,25 @@
                                                   </Group>
                                               </Group>
                                           </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="btnAddNguoiDung" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="btnUpdateNguoiDung" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="btnDeleteNguoiDung" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="btnClearNguoiDung" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                              <Component id="btnFirstNguoiDung" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="btnPrevNguoiDung" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="btnNextNguoiDung" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="btnLastNguoiDung" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="158" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="btnAddNguoiDung" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnUpdateNguoiDung" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnDeleteNguoiDung" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnClearNguoiDung" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                      <Component id="btnFirstNguoiDung" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="btnPrevNguoiDung" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                                      <Component id="btnNextNguoiDung" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                                      <Component id="btnLastNguoiDung" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="82" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -1753,7 +1754,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="btnPrevNguoiDung" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnNextNguoiDung" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnLastNguoiDung" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnLastNguoiDung" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="btnAddNguoiDung" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                                       <Component id="btnUpdateNguoiDung" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
@@ -2400,32 +2401,32 @@
                                   <Component id="txtTGianKetThuc" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtDiaDiem" alignment="0" pref="663" max="32767" attributes="0"/>
                                   <Component id="jScrollPane8" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="lblSuKien" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="lblMoTaSuKien" alignment="0" min="-2" pref="58" max="-2" attributes="0"/>
                                           <Component id="lblDiaDiem" alignment="0" min="-2" pref="183" max="-2" attributes="0"/>
                                           <Component id="lblTGianThamGia" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="lblTGianKetThuc" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="btnAddSuKien" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="btnUpdateSuKien" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="btnDeleteSuKien" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="btnClearSuKien" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                              <Component id="btnFirstSuKien" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="btnPrevSuKien" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="btnNextSuKien" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="btnLastSuKien" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="480" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="btnAddSuKien" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnUpdateSuKien" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnDeleteSuKien" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnClearSuKien" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                      <Component id="btnFirstSuKien" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="btnPrevSuKien" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                                      <Component id="btnNextSuKien" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                                      <Component id="btnLastSuKien" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -2459,7 +2460,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="btnPrevSuKien" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnNextSuKien" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnLastSuKien" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnLastSuKien" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="btnAddSuKien" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                                       <Component id="btnUpdateSuKien" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
@@ -2675,7 +2676,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
                       <Component id="jPanel5" min="-2" pref="305" max="-2" attributes="0"/>
-                      <EmptySpace pref="165" max="32767" attributes="0"/>
+                      <EmptySpace pref="195" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2905,7 +2906,7 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -2938,7 +2939,7 @@
                                           <Component id="jPanel2" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jPanel3" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="0" pref="94" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="86" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -2961,7 +2962,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -2988,8 +2989,8 @@
                           <Component id="jSeparator31" min="-2" pref="130" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel3" min="-2" pref="235" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
+                      <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                       <Component id="btnSend" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>

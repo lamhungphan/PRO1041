@@ -451,9 +451,11 @@ public class Main extends javax.swing.JFrame {
         pnlTrangThai.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         pnlTrangThai.setForeground(new java.awt.Color(204, 204, 204));
 
+        lblTrangThai.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblTrangThai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/poly/image/Friends.png"))); // NOI18N
         lblTrangThai.setText("Quản Lý Câu Lạc Bộ");
 
+        lblDongHo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblDongHo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/poly/image/Alarm.png"))); // NOI18N
         lblDongHo.setText("12:00 PM");
 
@@ -671,41 +673,38 @@ public class Main extends javax.swing.JFrame {
             .addGroup(pnlEdit1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlEdit1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtChiTieu)
+                    .addComponent(txtSoTien)
+                    .addComponent(txtChiTra)
+                    .addComponent(txtSoDu)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane2)
                     .addGroup(pnlEdit1Layout.createSequentialGroup()
                         .addGroup(pnlEdit1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtChiTieu)
-                            .addComponent(txtSoTien)
-                            .addComponent(txtChiTra)
-                            .addComponent(txtSoDu)
-                            .addComponent(jScrollPane1)
-                            .addComponent(jScrollPane2)
+                            .addComponent(lblChiTra, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblSoDu, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblChiTieu, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblMoTaNganSach, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblSoTien, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblTGianNganSach)
                             .addGroup(pnlEdit1Layout.createSequentialGroup()
-                                .addGroup(pnlEdit1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblChiTra, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblSoDu, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblChiTieu, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblMoTaNganSach, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblSoTien, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblTGianNganSach))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(pnlEdit1Layout.createSequentialGroup()
-                        .addComponent(btnAddNganSach)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnUpdateNganSach)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnDeleteNganSach)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnClearNganSach)
-                        .addGap(34, 34, 34)
-                        .addComponent(btnFirstNganSach)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                        .addComponent(btnPrevNganSach)
-                        .addGap(28, 28, 28)
-                        .addComponent(btnNextNganSach)
-                        .addGap(37, 37, 37)
-                        .addComponent(btnLastNganSach)
-                        .addGap(48, 48, 48))))
+                                .addComponent(btnAddNganSach)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnUpdateNganSach)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnDeleteNganSach)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnClearNganSach)
+                                .addGap(34, 34, 34)
+                                .addComponent(btnFirstNganSach)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnPrevNganSach)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnNextNganSach)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnLastNganSach)))
+                        .addGap(0, 100, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         pnlEdit1Layout.setVerticalGroup(
             pnlEdit1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -992,24 +991,24 @@ public class Main extends javax.swing.JFrame {
                                     .addGroup(pnlEdit2Layout.createSequentialGroup()
                                         .addComponent(rdoTVienNam, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(rdoTVienNu, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 158, Short.MAX_VALUE))
-                    .addGroup(pnlEdit2Layout.createSequentialGroup()
-                        .addComponent(btnAddTVien)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnUpdateTVien)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnDeleteTVien)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnClearTVien)
-                        .addGap(34, 34, 34)
-                        .addComponent(btnFirstTVien)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnPrevTVien)
-                        .addGap(40, 40, 40)
-                        .addComponent(btnNextTVien)
-                        .addGap(37, 37, 37)
-                        .addComponent(btnLastTVien)))
+                                        .addComponent(rdoTVienNu, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(pnlEdit2Layout.createSequentialGroup()
+                                .addComponent(btnAddTVien)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnUpdateTVien)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnDeleteTVien)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnClearTVien)
+                                .addGap(34, 34, 34)
+                                .addComponent(btnFirstTVien)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnPrevTVien)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnNextTVien)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnLastTVien)))
+                        .addGap(0, 82, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlEdit2Layout.setVerticalGroup(
@@ -1044,7 +1043,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(pnlEdit2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnPrevTVien)
                     .addComponent(btnNextTVien)
-                    .addComponent(btnLastTVien, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnLastTVien)
                     .addGroup(pnlEdit2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnAddTVien, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnUpdateTVien, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1307,24 +1306,24 @@ public class Main extends javax.swing.JFrame {
                                     .addGroup(pnlLayout.createSequentialGroup()
                                         .addComponent(rdoNguoiDungNam, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(rdoNguoiDungNu, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 158, Short.MAX_VALUE))
-                    .addGroup(pnlLayout.createSequentialGroup()
-                        .addComponent(btnAddNguoiDung)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnUpdateNguoiDung)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnDeleteNguoiDung)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnClearNguoiDung)
-                        .addGap(34, 34, 34)
-                        .addComponent(btnFirstNguoiDung)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnPrevNguoiDung)
-                        .addGap(40, 40, 40)
-                        .addComponent(btnNextNguoiDung)
-                        .addGap(37, 37, 37)
-                        .addComponent(btnLastNguoiDung)))
+                                        .addComponent(rdoNguoiDungNu, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(pnlLayout.createSequentialGroup()
+                                .addComponent(btnAddNguoiDung)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnUpdateNguoiDung)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnDeleteNguoiDung)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnClearNguoiDung)
+                                .addGap(34, 34, 34)
+                                .addComponent(btnFirstNguoiDung)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnPrevNguoiDung)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnNextNguoiDung)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnLastNguoiDung)))
+                        .addGap(0, 82, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlLayout.setVerticalGroup(
@@ -1359,7 +1358,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnPrevNguoiDung)
                     .addComponent(btnNextNguoiDung)
-                    .addComponent(btnLastNguoiDung, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnLastNguoiDung)
                     .addGroup(pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnAddNguoiDung, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnUpdateNguoiDung, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1720,24 +1719,24 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(lblMoTaSuKien, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblDiaDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblTGianThamGia)
-                            .addComponent(lblTGianKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 480, Short.MAX_VALUE))
-                    .addGroup(pnlSKLayout.createSequentialGroup()
-                        .addComponent(btnAddSuKien)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnUpdateSuKien)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnDeleteSuKien)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnClearSuKien)
-                        .addGap(34, 34, 34)
-                        .addComponent(btnFirstSuKien)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnPrevSuKien)
-                        .addGap(40, 40, 40)
-                        .addComponent(btnNextSuKien)
-                        .addGap(37, 37, 37)
-                        .addComponent(btnLastSuKien)))
+                            .addComponent(lblTGianKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlSKLayout.createSequentialGroup()
+                                .addComponent(btnAddSuKien)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnUpdateSuKien)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnDeleteSuKien)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnClearSuKien)
+                                .addGap(34, 34, 34)
+                                .addComponent(btnFirstSuKien)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnPrevSuKien)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnNextSuKien)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnLastSuKien)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlSKLayout.setVerticalGroup(
@@ -1767,7 +1766,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(pnlSKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnPrevSuKien)
                     .addComponent(btnNextSuKien)
-                    .addComponent(btnLastSuKien, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnLastSuKien)
                     .addGroup(pnlSKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnAddSuKien, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnUpdateSuKien, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1942,7 +1941,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(pnlList2Layout.createSequentialGroup()
                 .addGap(92, 92, 92)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
 
         tabMain.addTab("Đăng Nhập", pnlList2);
@@ -2088,7 +2087,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
+                        .addGap(94, 94, 94)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2113,7 +2112,7 @@ public class Main extends javax.swing.JFrame {
                                         .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 94, Short.MAX_VALUE))))
+                                .addGap(0, 86, Short.MAX_VALUE))))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(148, 148, 148)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -2127,7 +2126,7 @@ public class Main extends javax.swing.JFrame {
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2149,8 +2148,8 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(txtCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jSeparator31, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72)
                 .addComponent(btnSend, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -2245,7 +2244,7 @@ public class Main extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tabMain, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tabMain, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2261,63 +2260,63 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mniDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDangNhapActionPerformed
-        openLogin();
+
     }//GEN-LAST:event_mniDangNhapActionPerformed
 
     private void mniDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDangXuatActionPerformed
-        logoff();
+
     }//GEN-LAST:event_mniDangXuatActionPerformed
 
     private void mniDoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDoiMatKhauActionPerformed
-        openDoiMatKhau();
+
     }//GEN-LAST:event_mniDoiMatKhauActionPerformed
 
     private void mniKetThucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniKetThucActionPerformed
-        exit();
+
     }//GEN-LAST:event_mniKetThucActionPerformed
 
     private void mniQLNguoiHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniQLNguoiHocActionPerformed
-        openNguoiHoc();
+
     }//GEN-LAST:event_mniQLNguoiHocActionPerformed
 
     private void mniQLChuyenDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniQLChuyenDeActionPerformed
-        openChuyenDe();
+
     }//GEN-LAST:event_mniQLChuyenDeActionPerformed
 
     private void mniQLKhoaHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniQLKhoaHocActionPerformed
-        openKhoaHoc();
+
     }//GEN-LAST:event_mniQLKhoaHocActionPerformed
 
     private void mniQLNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniQLNhanVienActionPerformed
-        openNhanVien();
+
     }//GEN-LAST:event_mniQLNhanVienActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        openHocVien();
+
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void mniTKNguoiHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniTKNguoiHocActionPerformed
-        openThongKe(0);
+ 
     }//GEN-LAST:event_mniTKNguoiHocActionPerformed
 
     private void mniTKBangDemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniTKBangDemActionPerformed
-        openThongKe(1);
+
     }//GEN-LAST:event_mniTKBangDemActionPerformed
 
     private void mniTKKhoaHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniTKKhoaHocActionPerformed
-        openThongKe(2);
+
     }//GEN-LAST:event_mniTKKhoaHocActionPerformed
 
     private void mniTKDoanhThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniTKDoanhThuActionPerformed
-        openThongKe(3);
+
     }//GEN-LAST:event_mniTKDoanhThuActionPerformed
 
     private void mniHuongDanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniHuongDanActionPerformed
-        openAbout();
+
     }//GEN-LAST:event_mniHuongDanActionPerformed
 
     private void mniGioiThieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniGioiThieuActionPerformed
-        openWebsite();
+
     }//GEN-LAST:event_mniGioiThieuActionPerformed
 
     private void mniDKyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDKyActionPerformed
@@ -2329,123 +2328,87 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_mniGThieuActionPerformed
 
     private void lblQuenMKMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQuenMKMousePressed
-        QuenMatKhau quen = new QuenMatKhau();
-        quen.setVisible(true);
-        this.dispose();
+       
     }//GEN-LAST:event_lblQuenMKMousePressed
 
     private void btnKetThucDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKetThucDangNhapActionPerformed
-        exit();
+  
     }//GEN-LAST:event_btnKetThucDangNhapActionPerformed
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
-        login();
+
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     private void txtTimChiTieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimChiTieuActionPerformed
-        this.load();
+
     }//GEN-LAST:event_txtTimChiTieuActionPerformed
 
     private void txtTimChiTieuKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimChiTieuKeyReleased
-        this.load();
+
     }//GEN-LAST:event_txtTimChiTieuKeyReleased
 
     private void btnTimChiTieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimChiTieuActionPerformed
-        this.load();
-        this.clear();
+     
     }//GEN-LAST:event_btnTimChiTieuActionPerformed
 
     private void tblTimChiTieuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTimChiTieuMouseClicked
-        if(evt.getClickCount() == 2){
-            //this.index = tblGridView.rowAtPoint(evt.getPoint());
-            this.index = tblGridView.getSelectedRow();
-            if (this.index >= 0) {
-                this.edit();
-                tabs.setSelectedIndex(0);
-            }
-        }
+       
     }//GEN-LAST:event_tblTimChiTieuMouseClicked
 
     private void tblTimChiTieuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTimChiTieuMousePressed
-        if(evt.getClickCount() == 2){
-            //this.index = tblGridView.rowAtPoint(evt.getPoint());
-            this.index = tblGridView.getSelectedRow();
-            if (this.index >= 0) {
-                this.edit();
-                tabs.setSelectedIndex(0);
-            }
-        }
+      
     }//GEN-LAST:event_tblTimChiTieuMousePressed
 
     private void btnAddNganSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddNganSachActionPerformed
-        insert();
+       
     }//GEN-LAST:event_btnAddNganSachActionPerformed
 
     private void btnUpdateNganSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateNganSachActionPerformed
-        update();
+  
     }//GEN-LAST:event_btnUpdateNganSachActionPerformed
 
     private void btnDeleteNganSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteNganSachActionPerformed
-        delete();
+       
     }//GEN-LAST:event_btnDeleteNganSachActionPerformed
 
     private void btnClearNganSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearNganSachActionPerformed
-        clear();
+       
     }//GEN-LAST:event_btnClearNganSachActionPerformed
 
     private void btnFirstNganSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstNganSachActionPerformed
-        this.index = 0;
-        this.edit();
+      
     }//GEN-LAST:event_btnFirstNganSachActionPerformed
 
     private void btnPrevNganSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevNganSachActionPerformed
-        this.index--;
-        this.edit();
+     
     }//GEN-LAST:event_btnPrevNganSachActionPerformed
 
     private void btnNextNganSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextNganSachActionPerformed
-        this.index++;
-        this.edit();
+      
     }//GEN-LAST:event_btnNextNganSachActionPerformed
 
     private void btnLastNganSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastNganSachActionPerformed
-        this.index = tblGridView.getRowCount() - 1;
-        this.edit();
+      
     }//GEN-LAST:event_btnLastNganSachActionPerformed
 
     private void txtTimThanhVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimThanhVienActionPerformed
-        this.load();
+     
     }//GEN-LAST:event_txtTimThanhVienActionPerformed
 
     private void txtTimThanhVienKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimThanhVienKeyReleased
-        this.load();
+     
     }//GEN-LAST:event_txtTimThanhVienKeyReleased
 
     private void btnTimThanhVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimThanhVienActionPerformed
-        this.load();
-        this.clear();
+        
     }//GEN-LAST:event_btnTimThanhVienActionPerformed
 
     private void tblTimThanhVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTimThanhVienMouseClicked
-        if(evt.getClickCount() == 2){
-            //this.index = tblGridView.rowAtPoint(evt.getPoint());
-            this.index = tblGridView.getSelectedRow();
-            if (this.index >= 0) {
-                this.edit();
-                tabs.setSelectedIndex(0);
-            }
-        }
+        
     }//GEN-LAST:event_tblTimThanhVienMouseClicked
 
     private void tblTimThanhVienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTimThanhVienMousePressed
-        if(evt.getClickCount() == 2){
-            //this.index = tblGridView.rowAtPoint(evt.getPoint());
-            this.index = tblGridView.getSelectedRow();
-            if (this.index >= 0) {
-                this.edit();
-                tabs.setSelectedIndex(0);
-            }
-        }
+       
     }//GEN-LAST:event_tblTimThanhVienMousePressed
 
     private void rdoTVienNuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoTVienNuActionPerformed
@@ -2457,38 +2420,23 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_rdoTVienNamActionPerformed
 
     private void txtTimKiem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiem5ActionPerformed
-        this.load();
+      
     }//GEN-LAST:event_txtTimKiem5ActionPerformed
 
     private void txtTimKiem5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiem5KeyReleased
-        this.load();
+       
     }//GEN-LAST:event_txtTimKiem5KeyReleased
 
     private void btnTimKiem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiem5ActionPerformed
-        this.load();
-        this.clear();
+       
     }//GEN-LAST:event_btnTimKiem5ActionPerformed
 
     private void tblNguoiDungMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNguoiDungMouseClicked
-        if(evt.getClickCount() == 2){
-            //this.index = tblGridView.rowAtPoint(evt.getPoint());
-            this.index = tblGridView.getSelectedRow();
-            if (this.index >= 0) {
-                this.edit();
-                tabs.setSelectedIndex(0);
-            }
-        }
+       
     }//GEN-LAST:event_tblNguoiDungMouseClicked
 
     private void tblNguoiDungMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNguoiDungMousePressed
-        if(evt.getClickCount() == 2){
-            //this.index = tblGridView.rowAtPoint(evt.getPoint());
-            this.index = tblGridView.getSelectedRow();
-            if (this.index >= 0) {
-                this.edit();
-                tabs.setSelectedIndex(0);
-            }
-        }
+      
     }//GEN-LAST:event_tblNguoiDungMousePressed
 
     private void rdoNguoiDungNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoNguoiDungNamActionPerformed
@@ -2500,11 +2448,11 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_rdoNguoiDungNuActionPerformed
 
     private void btnDangKyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangKyActionPerformed
-        login();
+      
     }//GEN-LAST:event_btnDangKyActionPerformed
 
     private void btnKetThucDangKyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKetThucDangKyActionPerformed
-        exit();
+       
     }//GEN-LAST:event_btnKetThucDangKyActionPerformed
 
     private void cmbVaiTroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbVaiTroActionPerformed
@@ -2512,38 +2460,23 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbVaiTroActionPerformed
 
     private void txtTimSuKienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimSuKienActionPerformed
-        this.load();
+       
     }//GEN-LAST:event_txtTimSuKienActionPerformed
 
     private void txtTimSuKienKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimSuKienKeyReleased
-        this.load();
+      
     }//GEN-LAST:event_txtTimSuKienKeyReleased
 
     private void btnTimSuKienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimSuKienActionPerformed
-        this.load();
-        this.clear();
+       
     }//GEN-LAST:event_btnTimSuKienActionPerformed
 
     private void tblTimSuKienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTimSuKienMouseClicked
-        if(evt.getClickCount() == 2){
-            //this.index = tblGridView.rowAtPoint(evt.getPoint());
-            this.index = tblGridView.getSelectedRow();
-            if (this.index >= 0) {
-                this.edit();
-                tabs.setSelectedIndex(0);
-            }
-        }
+       
     }//GEN-LAST:event_tblTimSuKienMouseClicked
 
     private void tblTimSuKienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTimSuKienMousePressed
-        if(evt.getClickCount() == 2){
-            //this.index = tblGridView.rowAtPoint(evt.getPoint());
-            this.index = tblGridView.getSelectedRow();
-            if (this.index >= 0) {
-                this.edit();
-                tabs.setSelectedIndex(0);
-            }
-        }
+       
     }//GEN-LAST:event_tblTimSuKienMousePressed
 
     private void txtChiTieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtChiTieuActionPerformed
@@ -2551,101 +2484,11 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_txtChiTieuActionPerformed
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
-        // TODO add your handling code here:
-        String userName = txtEmail_S.getText();
-        String password = new String(txtPass.getPassword());
-
-        Properties prop = new Properties();
-        prop.put("mail.smtp.host", "smtp.gmail.com");
-        prop.put("mail.smtp.port", "587");
-        prop.put("mail.smtp.auth", "true");
-        prop.put("mail.smtp.starttls.enable", "true"); //TLS
-        prop.put("mail.smtp.socketFactory.port", "587");
-        prop.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-        prop.put("mail.stmp.ssl.protocols","TLSv1.2");
-
-        Session session = Session.getInstance(prop,
-            new javax.mail.Authenticator() {
-                protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication(userName, password);
-                    //email: huukhanhnguyen12@gmail.com
-                    //pass: gwer lyxt vuhr viih
-                }
-            });
-
-            try {
-
-                Message message = new MimeMessage(session);
-                message.setFrom(new InternetAddress(txtEmail_S.getText()));
-                message.setRecipients(
-                    Message.RecipientType.TO,
-                    InternetAddress.parse(txtEmail_R.getText())
-                );
-                message.setSubject(txtSub.getText());
-                message.setText(txtMess.getText());
-
-                Transport.send(message);
-                JOptionPane.showMessageDialog(this, "email sent");
-
-            } catch (MessagingException e) {
-                e.printStackTrace();
-            }
+      
     }//GEN-LAST:event_btnSendActionPerformed
 
     private void BtnSenddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSenddActionPerformed
-        // TODO add your handling code here:
-        final String username = txtEmailSend.getText();
-        final String password = new String(txtPasswordSend.getPassword());
-
-        Properties prop = new Properties();
-        //Thêm thông số cấu hình của gmail
-        prop.put("mail.smtp.host", "smtp.gmail.com");
-        prop.put("mail.smtp.port", "587");
-        prop.put("mail.smtp.auth", "true");
-        prop.put("mail.smtp.starttls.enable", "true"); //TLS
-
-        Session session = Session.getInstance(prop, new javax.mail.Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("giahuy172005@gmail.com", "dslk lwni xgpx eyfp");
-            }
-        });
-
-        try {
-            Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(txtEmailSend.getText()));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(txtBCC.getText()));
-            message.setSubject(txtSubject.getText());
-
-            // Kiểm tra xem attachmentPath có giá trị không trống
-            if (attachmentPath != null && !attachmentPath.isEmpty()) {
-                // Tạo phần đính kèm file
-                MimeBodyPart attachPart = new MimeBodyPart();
-                attachPart.attachFile(new File(attachmentPath));
-
-                // Tạo nội dung của email
-                MimeBodyPart messageBodyPart = new MimeBodyPart();
-                messageBodyPart.setText(txtMessage.getText());
-
-                // Tạo đối tượng multipart để chứa nội dung email và file đính kèm
-                Multipart multipart = new MimeMultipart();
-                multipart.addBodyPart(messageBodyPart);
-                multipart.addBodyPart(attachPart);
-
-                // Đặt nội dung của email là multipart
-                message.setContent(multipart);
-            } else {
-                // Nếu không có file đính kèm, chỉ gửi email với nội dung text
-                message.setText(txtMessage.getText());
-            }
-
-            // Gửi email
-            Transport.send(message);
-            JOptionPane.showMessageDialog(this, "Email sent successfully.");
-
-        } catch (MessagingException | IOException e) {
-            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-            e.printStackTrace();
-        }
+       
     }//GEN-LAST:event_BtnSenddActionPerformed
 
     private void btnDeleteTVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteTVienActionPerformed
