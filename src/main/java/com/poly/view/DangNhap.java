@@ -224,25 +224,23 @@ public class DangNhap extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
-        login();
+
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     private void btnKetThucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKetThucActionPerformed
-        exit();
+
     }//GEN-LAST:event_btnKetThucActionPerformed
 
     private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
-        QuenMatKhau quen = new QuenMatKhau();
-        quen.setVisible(true);
-        this.dispose();
+
     }//GEN-LAST:event_jLabel1MousePressed
 
     private void btnKetThuc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKetThuc1ActionPerformed
-        exit();
+
     }//GEN-LAST:event_btnKetThuc1ActionPerformed
 
     private void btnDangNhap1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhap1ActionPerformed
-        login();
+
     }//GEN-LAST:event_btnDangNhap1ActionPerformed
 
     /**
