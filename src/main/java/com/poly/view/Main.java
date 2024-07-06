@@ -4,6 +4,12 @@
  */
 package com.poly.view;
 
+import com.poly.entity.Event;
+import com.poly.service.EventService;
+import com.poly.utils.MsgBox;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ASUS
@@ -15,6 +21,7 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        this.fillTableEvent();
     }
 
     /**
@@ -758,7 +765,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(lblTitle2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlNganSachLayout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(tabNganSach, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -1573,13 +1580,13 @@ public class Main extends javax.swing.JFrame {
 
         tblTimSuKien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "UserID", "Title", "Content", "StartDate", "EndDate", "Address"
             }
         ));
         tblTimSuKien.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1790,7 +1797,7 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(pnlSuKienLayout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(tabSuKien, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlSuKienLayout.setVerticalGroup(
             pnlSuKienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2877,4 +2884,31 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField txtTo;
     private javax.swing.JTextField txtXacNhanMatKhau;
     // End of variables declaration//GEN-END:variables
+    
+    EventService eventService = new EventService();
+    
+    MsgBox msgBox = new MsgBox();
+    
+    private void fillTableEvent() {
+        DefaultTableModel model = (DefaultTableModel) tblTimSuKien.getModel();
+        model.setRowCount(0);
+        try {
+            List<Event> list = eventService.getAllEvents();
+            for (Event event : list) {
+                Object[] row = {
+                    event.getId(),
+                    event.getAttendees(), 
+                    event.getTitle(),
+                    event.getContent(),
+                    event.getStartedDate(),
+                    event.getEndedDate(),
+                    event.getAddress()
+                };
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            msgBox.alert(this, "Lỗi truy vấn dữ liệu!");
+        }
+    }
 }
