@@ -283,17 +283,11 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="mniDNhap">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/poly/image/Key.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng Nh&#x1ead;p"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mniDKy">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/poly/image/Login.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng K&#xfd;"/>
               </Properties>
               <Events>
@@ -302,17 +296,11 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mniDXuat">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/poly/image/Exit.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng Xu&#x1ea5;t"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mniKThuc">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/poly/image/Stop.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="K&#x1ebf;t Th&#xfa;c"/>
               </Properties>
             </MenuItem>
@@ -325,33 +313,21 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="mniNSach">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/poly/image/Piggy bank.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Ng&#xe2;n S&#xe1;ch"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mniTVien">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/poly/image/Boy.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Th&#xe0;nh Vi&#xea;n"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mniNDung">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/poly/image/Clien list.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Ng&#x1b0;&#x1edd;i D&#xf9;ng"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mniSKien">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/poly/image/Application form.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="S&#x1ef1; Ki&#x1ec7;n"/>
               </Properties>
             </MenuItem>
@@ -364,9 +340,6 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="mniMail">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/poly/image/Mail.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Mail"/>
               </Properties>
             </MenuItem>
@@ -504,17 +477,11 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="lblTrangThai">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/poly/image/Friends.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; C&#xe2;u L&#x1ea1;c B&#x1ed9;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblDongHo">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/poly/image/Alarm.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="12:00 PM"/>
           </Properties>
         </Component>
@@ -549,7 +516,7 @@
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="10" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="tabNganSach" min="-2" pref="693" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -655,11 +622,6 @@
                           </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnTimChiTieu">
-                          <Properties>
-                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/com/poly/image/Search.png"/>
-                            </Property>
-                          </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTimChiTieuActionPerformed"/>
                           </Events>
@@ -740,7 +702,7 @@
                                       <Component id="btnClearNganSach" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                                       <Component id="btnFirstNganSach" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="29" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                       <Component id="btnPrevNganSach" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                       <Component id="btnNextNganSach" min="-2" max="-2" attributes="0"/>
@@ -780,15 +742,17 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jScrollPane2" min="-2" pref="42" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnAddNganSach" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                                  <Component id="btnUpdateNganSach" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                                  <Component id="btnDeleteNganSach" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                                  <Component id="btnClearNganSach" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                                  <Component id="btnFirstNganSach" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="btnPrevNganSach" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnNextNganSach" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnLastNganSach" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="btnAddNganSach" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                                      <Component id="btnUpdateNganSach" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                                      <Component id="btnDeleteNganSach" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                                      <Component id="btnClearNganSach" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                                      <Component id="btnFirstNganSach" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace pref="70" max="32767" attributes="0"/>
                           </Group>
@@ -847,9 +811,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/Add.png"/>
-                        </Property>
                         <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
                       </Properties>
                       <Events>
@@ -860,9 +821,6 @@
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/Edit.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
                       </Properties>
@@ -875,9 +833,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/Delete.png"/>
-                        </Property>
                         <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
                       </Properties>
                       <Events>
@@ -888,9 +843,6 @@
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/Refresh.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="M&#x1edb;i"/>
                       </Properties>
@@ -903,9 +855,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/first.png"/>
-                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFirstNganSachActionPerformed"/>
@@ -916,9 +865,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/pri.png"/>
-                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPrevNganSachActionPerformed"/>
@@ -928,9 +874,6 @@
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/next.png"/>
                         </Property>
                       </Properties>
                       <Events>
@@ -984,9 +927,6 @@
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/last.png"/>
                         </Property>
                       </Properties>
                       <Events>
@@ -1123,11 +1063,6 @@
                           </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnTimThanhVien">
-                          <Properties>
-                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/com/poly/image/Search.png"/>
-                            </Property>
-                          </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTimThanhVienActionPerformed"/>
                           </Events>
@@ -1202,7 +1137,7 @@
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="158" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="btnAddTVien" min="-2" max="-2" attributes="0"/>
@@ -1257,15 +1192,17 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jScrollPane3" min="-2" pref="42" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnAddTVien" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                                  <Component id="btnUpdateTVien" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                                  <Component id="btnDeleteTVien" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                                  <Component id="btnClearTVien" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                                  <Component id="btnFirstTVien" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="btnPrevTVien" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnNextTVien" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnLastTVien" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="btnAddTVien" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                                      <Component id="btnUpdateTVien" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                                      <Component id="btnDeleteTVien" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                                      <Component id="btnClearTVien" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                                      <Component id="btnFirstTVien" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace pref="111" max="32767" attributes="0"/>
                           </Group>
@@ -1371,9 +1308,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/Delete.png"/>
-                        </Property>
                         <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
                       </Properties>
                       <Events>
@@ -1384,9 +1318,6 @@
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/Edit.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
                       </Properties>
@@ -1399,9 +1330,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/Add.png"/>
-                        </Property>
                         <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
                       </Properties>
                       <Events>
@@ -1413,9 +1341,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/last.png"/>
-                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLastTVienActionPerformed"/>
@@ -1425,9 +1350,6 @@
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/next.png"/>
                         </Property>
                       </Properties>
                       <Events>
@@ -1439,9 +1361,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/pri.png"/>
-                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPrevTVienActionPerformed"/>
@@ -1452,9 +1371,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/first.png"/>
-                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFirstTVienActionPerformed"/>
@@ -1464,9 +1380,6 @@
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/Refresh.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="M&#x1edb;i"/>
                       </Properties>
@@ -1612,11 +1525,6 @@
                           </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnTimKiem5">
-                          <Properties>
-                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/com/poly/image/Search.png"/>
-                            </Property>
-                          </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTimKiem5ActionPerformed"/>
                           </Events>
@@ -1691,7 +1599,7 @@
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="158" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="btnAddNguoiDung" min="-2" max="-2" attributes="0"/>
@@ -1746,15 +1654,17 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="cmbVaiTro" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnAddNguoiDung" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                                  <Component id="btnUpdateNguoiDung" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                                  <Component id="btnDeleteNguoiDung" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                                  <Component id="btnClearNguoiDung" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                                  <Component id="btnFirstNguoiDung" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="btnPrevNguoiDung" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnNextNguoiDung" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnLastNguoiDung" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="btnAddNguoiDung" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                                      <Component id="btnUpdateNguoiDung" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                                      <Component id="btnDeleteNguoiDung" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                                      <Component id="btnClearNguoiDung" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                                      <Component id="btnFirstNguoiDung" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace pref="125" max="32767" attributes="0"/>
                           </Group>
@@ -1866,9 +1776,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/Refresh.png"/>
-                        </Property>
                         <Property name="text" type="java.lang.String" value="M&#x1edb;i"/>
                       </Properties>
                       <Events>
@@ -1880,9 +1787,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/first.png"/>
-                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFirstNguoiDungActionPerformed"/>
@@ -1892,9 +1796,6 @@
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/pri.png"/>
                         </Property>
                       </Properties>
                       <Events>
@@ -1906,9 +1807,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/next.png"/>
-                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNextNguoiDungActionPerformed"/>
@@ -1919,9 +1817,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/last.png"/>
-                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLastNguoiDungActionPerformed"/>
@@ -1931,9 +1826,6 @@
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/Add.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
                       </Properties>
@@ -1946,9 +1838,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/Edit.png"/>
-                        </Property>
                         <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
                       </Properties>
                       <Events>
@@ -1959,9 +1848,6 @@
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/Delete.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
                       </Properties>
@@ -2222,7 +2108,7 @@
                               <Component id="tabSuKien" min="-2" pref="675" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="19" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2307,16 +2193,16 @@
                                   <Component id="txtTimSuKien" min="-2" pref="569" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="btnTimSuKien" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="42" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="txtTimSuKien" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="btnTimSuKien" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtTimSuKien" min="-2" pref="31" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                               </Group>
@@ -2331,11 +2217,6 @@
                           </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnTimSuKien">
-                          <Properties>
-                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/com/poly/image/Search.png"/>
-                            </Property>
-                          </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTimSuKienActionPerformed"/>
                           </Events>
@@ -2387,7 +2268,7 @@
                                   <Component id="txtSuKien" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtNgayGioSuKien" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtDiaDiem" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtTVienThamGia" alignment="0" pref="663" max="32767" attributes="0"/>
+                                  <Component id="txtTVienThamGia" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jScrollPane8" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -2397,7 +2278,7 @@
                                           <Component id="lblDiaDiem" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
                                           <Component id="lblTVienThamGia" alignment="0" min="-2" pref="183" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="0" pref="480" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="btnAddSuKien" min="-2" max="-2" attributes="0"/>
@@ -2445,15 +2326,17 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jScrollPane8" min="-2" pref="42" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnAddSuKien" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                                  <Component id="btnUpdateSuKien" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                                  <Component id="btnDeleteSuKien" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                                  <Component id="btnClearSuKien" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                                  <Component id="btnFirstSuKien" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="btnPrevSuKien" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnNextSuKien" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnLastSuKien" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="btnAddSuKien" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                                      <Component id="btnUpdateSuKien" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                                      <Component id="btnDeleteSuKien" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                                      <Component id="btnClearSuKien" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                                      <Component id="btnFirstSuKien" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace pref="126" max="32767" attributes="0"/>
                           </Group>
@@ -2529,9 +2412,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/first.png"/>
-                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFirstSuKienActionPerformed"/>
@@ -2541,9 +2421,6 @@
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/Refresh.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="M&#x1edb;i"/>
                       </Properties>
@@ -2556,9 +2433,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/Delete.png"/>
-                        </Property>
                         <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
                       </Properties>
                       <Events>
@@ -2569,9 +2443,6 @@
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/Edit.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
                       </Properties>
@@ -2584,9 +2455,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/Add.png"/>
-                        </Property>
                         <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
                       </Properties>
                       <Events>
@@ -2598,9 +2466,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/last.png"/>
-                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLastSuKienActionPerformed"/>
@@ -2611,9 +2476,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/next.png"/>
-                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNextSuKienActionPerformed"/>
@@ -2623,9 +2485,6 @@
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/poly/image/pri.png"/>
                         </Property>
                       </Properties>
                       <Events>
