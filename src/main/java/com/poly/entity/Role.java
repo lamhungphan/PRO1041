@@ -4,49 +4,75 @@
  */
 package com.poly.entity;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.sql.Date;
 
 /**
  *
  * @author Computer
  */
-public class Role implements Serializable{
+@Entity
+@Table(name = "roles")
+public class Role implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String description;
-    private Boolean isActived;
+
+    @Column(name = "roleName")
+    private String roleName;
+    @Column(name = "createdDate")
+    private Date createdDate;
+
+    @Column(name = "updatedDate")
+    private Date updatedDate;
 
     public Role() {
     }
 
-    public Role(Integer id, String description, Boolean isActived) {
+    public Role(Integer id, String roleName, Date createdDate, Date updatedDate) {
         this.id = id;
-        this.description = description;
-        this.isActived = isActived;
+        this.roleName = roleName;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public Boolean getIsActived() {
-        return isActived;
-    }
-
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public String getRoleName() {
+        return roleName;
     }
 
-    public void setIsActived(Boolean isActived) {
-        this.isActived = isActived;
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
-    
-    
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Date getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
+    }
+
 }
