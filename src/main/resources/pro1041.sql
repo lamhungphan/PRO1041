@@ -1,6 +1,6 @@
+
 drop database if exists PRO1041;
 create database PRO1041;
-use PRO1041;
 
 drop table if exists roles;
 create table roles 
