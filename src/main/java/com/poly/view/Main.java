@@ -161,13 +161,6 @@ public class Main extends javax.swing.JFrame {
         mniLogin = new javax.swing.JMenuItem();
         mniLogout = new javax.swing.JMenuItem();
         mniEnd = new javax.swing.JMenuItem();
-        mnuManage = new javax.swing.JMenu();
-        mniBudget = new javax.swing.JMenuItem();
-        mniMember = new javax.swing.JMenuItem();
-        mniUser = new javax.swing.JMenuItem();
-        mniEvent = new javax.swing.JMenuItem();
-        mnuNotice = new javax.swing.JMenu();
-        mniMail = new javax.swing.JMenuItem();
         mnuHelp = new javax.swing.JMenu();
         mniManual = new javax.swing.JMenuItem();
         mniIntroduce = new javax.swing.JMenuItem();
@@ -1549,59 +1542,6 @@ public class Main extends javax.swing.JFrame {
 
         mnuTop.add(mnuSystem);
 
-        mnuManage.setText("Quản Lý");
-
-        mniBudget.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Piggy bank.png"))); // NOI18N
-        mniBudget.setText("Ngân Sách");
-        mniBudget.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniBudgetActionPerformed(evt);
-            }
-        });
-        mnuManage.add(mniBudget);
-
-        mniMember.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/User.png"))); // NOI18N
-        mniMember.setText("Thành Viên");
-        mniMember.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniMemberActionPerformed(evt);
-            }
-        });
-        mnuManage.add(mniMember);
-
-        mniUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Users.png"))); // NOI18N
-        mniUser.setText("Người Dùng");
-        mniUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniUserActionPerformed(evt);
-            }
-        });
-        mnuManage.add(mniUser);
-
-        mniEvent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Application form.png"))); // NOI18N
-        mniEvent.setText("Sự Kiện");
-        mniEvent.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniEventActionPerformed(evt);
-            }
-        });
-        mnuManage.add(mniEvent);
-
-        mnuTop.add(mnuManage);
-
-        mnuNotice.setText("Thông Báo");
-
-        mniMail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Mail.png"))); // NOI18N
-        mniMail.setText("Mail");
-        mniMail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniMailActionPerformed(evt);
-            }
-        });
-        mnuNotice.add(mniMail);
-
-        mnuTop.add(mnuNotice);
-
         mnuHelp.setText("Trợ Giúp");
 
         mniManual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Properties.png"))); // NOI18N
@@ -1654,26 +1594,6 @@ public class Main extends javax.swing.JFrame {
     private void mniEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniEndActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mniEndActionPerformed
-
-    private void mniBudgetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniBudgetActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mniBudgetActionPerformed
-
-    private void mniMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniMemberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mniMemberActionPerformed
-
-    private void mniUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniUserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mniUserActionPerformed
-
-    private void mniEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniEventActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mniEventActionPerformed
-
-    private void mniMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniMailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mniMailActionPerformed
 
     private void mniManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniManualActionPerformed
         // TODO add your handling code here:
@@ -2083,19 +2003,12 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel lblThanhVien;
     private javax.swing.JLabel lblThanhVien1;
     private javax.swing.JLabel lblThanhVien3;
-    private javax.swing.JMenuItem mniBudget;
     private javax.swing.JMenuItem mniEnd;
-    private javax.swing.JMenuItem mniEvent;
     private javax.swing.JMenuItem mniIntroduce;
     private javax.swing.JMenuItem mniLogin;
     private javax.swing.JMenuItem mniLogout;
-    private javax.swing.JMenuItem mniMail;
     private javax.swing.JMenuItem mniManual;
-    private javax.swing.JMenuItem mniMember;
-    private javax.swing.JMenuItem mniUser;
     private javax.swing.JMenu mnuHelp;
-    private javax.swing.JMenu mnuManage;
-    private javax.swing.JMenu mnuNotice;
     private javax.swing.JMenu mnuSystem;
     private javax.swing.JMenuBar mnuTop;
     private javax.swing.JPanel pnlEvent;
