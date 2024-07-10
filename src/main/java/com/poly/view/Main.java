@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.m2mgroup.view;
+package com.poly.view;
 
 import javax.swing.JFrame;
 
@@ -32,40 +32,6 @@ public class Main extends javax.swing.JFrame {
 
         btngroudSex = new javax.swing.ButtonGroup();
         tabMenu = new javax.swing.JTabbedPane();
-        pnlNotification = new javax.swing.JPanel();
-        lblMember1 = new javax.swing.JLabel();
-        tabMember2 = new javax.swing.JTabbedPane();
-        pnlListMember3 = new javax.swing.JPanel();
-        pnlTimChiTieu3 = new javax.swing.JPanel();
-        txtFindMember1 = new javax.swing.JTextField();
-        btnSearchMember1 = new javax.swing.JButton();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        tblListMember1 = new javax.swing.JTable();
-        pnlSettingMember3 = new javax.swing.JPanel();
-        lblThanhVien3 = new javax.swing.JLabel();
-        txtNameMember1 = new javax.swing.JTextField();
-        lblGioiTinhThanhVien1 = new javax.swing.JLabel();
-        lblEmail3 = new javax.swing.JLabel();
-        txtEmailMemBer1 = new javax.swing.JTextField();
-        lblSoDT6 = new javax.swing.JLabel();
-        txtPhoneMember1 = new javax.swing.JTextField();
-        lblGhiChu5 = new javax.swing.JLabel();
-        rdoFemaleMember1 = new javax.swing.JRadioButton();
-        rdoMaleMember1 = new javax.swing.JRadioButton();
-        lblNgaySinh6 = new javax.swing.JLabel();
-        txtAddressMember1 = new javax.swing.JTextField();
-        btnDeleteMember1 = new javax.swing.JButton();
-        btnUpdateMember1 = new javax.swing.JButton();
-        btnAddMember1 = new javax.swing.JButton();
-        btnFirstMember1 = new javax.swing.JButton();
-        btnClearMember1 = new javax.swing.JButton();
-        lblNgaySinh7 = new javax.swing.JLabel();
-        cboRateMember1 = new javax.swing.JComboBox<>();
-        btnLastMember1 = new javax.swing.JButton();
-        btnPreviousMember1 = new javax.swing.JButton();
-        btnForwardMember1 = new javax.swing.JButton();
-        txtBirthdayMember1 = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
         pnlMember = new javax.swing.JPanel();
         lblMember = new javax.swing.JLabel();
         tabMember = new javax.swing.JTabbedPane();
@@ -132,6 +98,7 @@ public class Main extends javax.swing.JFrame {
         lblNgaySinh5 = new javax.swing.JLabel();
         txtAddressEvent = new javax.swing.JTextField();
         lblSoDT2 = new javax.swing.JLabel();
+        pnlAcademic = new javax.swing.JPanel();
         pnlUser = new javax.swing.JPanel();
         lblMember2 = new javax.swing.JLabel();
         tabMember1 = new javax.swing.JTabbedPane();
@@ -142,6 +109,14 @@ public class Main extends javax.swing.JFrame {
         jScrollPane6 = new javax.swing.JScrollPane();
         tblListUser = new javax.swing.JTable();
         pnlSettingMember2 = new javax.swing.JPanel();
+        lblThanhVien2 = new javax.swing.JLabel();
+        txtNameUser = new javax.swing.JTextField();
+        lblEmail2 = new javax.swing.JLabel();
+        txtEmailUser = new javax.swing.JTextField();
+        lblSoDT3 = new javax.swing.JLabel();
+        txtPhoneUser = new javax.swing.JTextField();
+        lblGhiChu4 = new javax.swing.JLabel();
+        txtAddressUser = new javax.swing.JTextField();
         btnDeleteUser = new javax.swing.JButton();
         btnUpdateUser = new javax.swing.JButton();
         btnAddUser = new javax.swing.JButton();
@@ -156,11 +131,20 @@ public class Main extends javax.swing.JFrame {
         lblSoDT5 = new javax.swing.JLabel();
         lblNgaySinh3 = new javax.swing.JLabel();
         cboRoleUser = new javax.swing.JComboBox<>();
+        pnlAdmin = new javax.swing.JPanel();
+        pnlFinancial = new javax.swing.JPanel();
         mnuTop = new javax.swing.JMenuBar();
         mnuSystem = new javax.swing.JMenu();
         mniLogin = new javax.swing.JMenuItem();
         mniLogout = new javax.swing.JMenuItem();
         mniEnd = new javax.swing.JMenuItem();
+        mnuManage = new javax.swing.JMenu();
+        mniBudget = new javax.swing.JMenuItem();
+        mniMember = new javax.swing.JMenuItem();
+        mniUser = new javax.swing.JMenuItem();
+        mniEvent = new javax.swing.JMenuItem();
+        mnuNotice = new javax.swing.JMenu();
+        mniMail = new javax.swing.JMenuItem();
         mnuHelp = new javax.swing.JMenu();
         mniManual = new javax.swing.JMenuItem();
         mniIntroduce = new javax.swing.JMenuItem();
@@ -173,373 +157,6 @@ public class Main extends javax.swing.JFrame {
                 tabMenuMouseClicked(evt);
             }
         });
-
-        lblMember1.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
-        lblMember1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMember1.setText("Quản Lý Thông Báo");
-
-        pnlTimChiTieu3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TÌM LOẠI CHI TIÊU", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
-
-        txtFindMember1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFindMember1ActionPerformed(evt);
-            }
-        });
-
-        btnSearchMember1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Search.png"))); // NOI18N
-        btnSearchMember1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchMember1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnlTimChiTieu3Layout = new javax.swing.GroupLayout(pnlTimChiTieu3);
-        pnlTimChiTieu3.setLayout(pnlTimChiTieu3Layout);
-        pnlTimChiTieu3Layout.setHorizontalGroup(
-            pnlTimChiTieu3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlTimChiTieu3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtFindMember1, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnSearchMember1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pnlTimChiTieu3Layout.setVerticalGroup(
-            pnlTimChiTieu3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlTimChiTieu3Layout.createSequentialGroup()
-                .addGroup(pnlTimChiTieu3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFindMember1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearchMember1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 10, Short.MAX_VALUE))
-        );
-
-        tblListMember1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        tblListMember1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblListMember1MouseClicked(evt);
-            }
-        });
-        jScrollPane7.setViewportView(tblListMember1);
-
-        javax.swing.GroupLayout pnlListMember3Layout = new javax.swing.GroupLayout(pnlListMember3);
-        pnlListMember3.setLayout(pnlListMember3Layout);
-        pnlListMember3Layout.setHorizontalGroup(
-            pnlListMember3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlListMember3Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(pnlTimChiTieu3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(30, 30, 30))
-            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 881, Short.MAX_VALUE)
-        );
-        pnlListMember3Layout.setVerticalGroup(
-            pnlListMember3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlListMember3Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(pnlTimChiTieu3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        tabMember2.addTab("User Task", pnlListMember3);
-
-        lblThanhVien3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblThanhVien3.setText("Tên Thành Viên:");
-
-        txtNameMember1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNameMember1ActionPerformed(evt);
-            }
-        });
-
-        lblGioiTinhThanhVien1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblGioiTinhThanhVien1.setText("Giới Tính :");
-
-        lblEmail3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblEmail3.setText("Email :");
-
-        txtEmailMemBer1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailMemBer1ActionPerformed(evt);
-            }
-        });
-
-        lblSoDT6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblSoDT6.setText("Số Điện Thoại :");
-
-        txtPhoneMember1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPhoneMember1ActionPerformed(evt);
-            }
-        });
-
-        lblGhiChu5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblGhiChu5.setText("Địa Chỉ:");
-
-        btngroudSex.add(rdoFemaleMember1);
-        rdoFemaleMember1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        rdoFemaleMember1.setText("Nữ");
-        rdoFemaleMember1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdoFemaleMember1ActionPerformed(evt);
-            }
-        });
-
-        btngroudSex.add(rdoMaleMember1);
-        rdoMaleMember1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        rdoMaleMember1.setText("Nam ");
-        rdoMaleMember1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdoMaleMember1ActionPerformed(evt);
-            }
-        });
-
-        lblNgaySinh6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblNgaySinh6.setText("Ngày Sinh :");
-
-        txtAddressMember1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAddressMember1ActionPerformed(evt);
-            }
-        });
-
-        btnDeleteMember1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnDeleteMember1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Delete.png"))); // NOI18N
-        btnDeleteMember1.setText("Xóa");
-        btnDeleteMember1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteMember1ActionPerformed(evt);
-            }
-        });
-
-        btnUpdateMember1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnUpdateMember1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Edit.png"))); // NOI18N
-        btnUpdateMember1.setText("Sửa");
-        btnUpdateMember1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateMember1ActionPerformed(evt);
-            }
-        });
-
-        btnAddMember1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnAddMember1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Add.png"))); // NOI18N
-        btnAddMember1.setText("Thêm");
-        btnAddMember1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddMember1ActionPerformed(evt);
-            }
-        });
-
-        btnFirstMember1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnFirstMember1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/first.png"))); // NOI18N
-        btnFirstMember1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFirstMember1ActionPerformed(evt);
-            }
-        });
-
-        btnClearMember1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnClearMember1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Refresh.png"))); // NOI18N
-        btnClearMember1.setText("Mới");
-        btnClearMember1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClearMember1ActionPerformed(evt);
-            }
-        });
-
-        lblNgaySinh7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblNgaySinh7.setText("Điểm đánh giá:");
-
-        cboRateMember1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4" }));
-        cboRateMember1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboRateMember1ActionPerformed(evt);
-            }
-        });
-
-        btnLastMember1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnLastMember1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/pri.png"))); // NOI18N
-        btnLastMember1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLastMember1ActionPerformed(evt);
-            }
-        });
-
-        btnPreviousMember1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnPreviousMember1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/next.png"))); // NOI18N
-        btnPreviousMember1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPreviousMember1ActionPerformed(evt);
-            }
-        });
-
-        btnForwardMember1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnForwardMember1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/last.png"))); // NOI18N
-        btnForwardMember1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnForwardMember1ActionPerformed(evt);
-            }
-        });
-
-        txtBirthdayMember1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBirthdayMember1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnlSettingMember3Layout = new javax.swing.GroupLayout(pnlSettingMember3);
-        pnlSettingMember3.setLayout(pnlSettingMember3Layout);
-        pnlSettingMember3Layout.setHorizontalGroup(
-            pnlSettingMember3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlSettingMember3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlSettingMember3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlSettingMember3Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(btnAddMember1)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnUpdateMember1)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnDeleteMember1)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnClearMember1)
-                        .addGap(85, 85, 85)
-                        .addComponent(btnFirstMember1)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLastMember1)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnPreviousMember1)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnForwardMember1)
-                        .addGap(0, 150, Short.MAX_VALUE))
-                    .addGroup(pnlSettingMember3Layout.createSequentialGroup()
-                        .addGroup(pnlSettingMember3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNameMember1)
-                            .addComponent(txtEmailMemBer1)
-                            .addComponent(txtPhoneMember1)
-                            .addGroup(pnlSettingMember3Layout.createSequentialGroup()
-                                .addGroup(pnlSettingMember3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblEmail3, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblSoDT6, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblThanhVien3, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(pnlSettingMember3Layout.createSequentialGroup()
-                                        .addGroup(pnlSettingMember3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblNgaySinh6)
-                                            .addComponent(txtBirthdayMember1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(140, 140, 140)
-                                        .addGroup(pnlSettingMember3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblGioiTinhThanhVien1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(pnlSettingMember3Layout.createSequentialGroup()
-                                                .addComponent(rdoMaleMember1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(rdoFemaleMember1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addComponent(lblNgaySinh7)
-                                    .addComponent(lblGhiChu5, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cboRateMember1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(txtAddressMember1))
-                        .addContainerGap())))
-        );
-        pnlSettingMember3Layout.setVerticalGroup(
-            pnlSettingMember3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlSettingMember3Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(lblThanhVien3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNameMember1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblEmail3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtEmailMemBer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblSoDT6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPhoneMember1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlSettingMember3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblGioiTinhThanhVien1)
-                    .addComponent(lblNgaySinh6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlSettingMember3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlSettingMember3Layout.createSequentialGroup()
-                        .addGroup(pnlSettingMember3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rdoMaleMember1)
-                            .addComponent(rdoFemaleMember1))
-                        .addGap(22, 22, 22))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSettingMember3Layout.createSequentialGroup()
-                        .addComponent(txtBirthdayMember1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addComponent(lblNgaySinh7)
-                .addGap(18, 18, 18)
-                .addComponent(cboRateMember1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblGhiChu5)
-                .addGap(18, 18, 18)
-                .addComponent(txtAddressMember1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
-                .addGroup(pnlSettingMember3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlSettingMember3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnFirstMember1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnLastMember1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnPreviousMember1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnForwardMember1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(pnlSettingMember3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnAddMember1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnUpdateMember1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnDeleteMember1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnClearMember1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        tabMember2.addTab("Admin Task", pnlSettingMember3);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 881, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 569, Short.MAX_VALUE)
-        );
-
-        tabMember2.addTab("Danh Sách", jPanel1);
-
-        javax.swing.GroupLayout pnlNotificationLayout = new javax.swing.GroupLayout(pnlNotification);
-        pnlNotification.setLayout(pnlNotificationLayout);
-        pnlNotificationLayout.setHorizontalGroup(
-            pnlNotificationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlNotificationLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tabMember2)
-                .addContainerGap())
-            .addGroup(pnlNotificationLayout.createSequentialGroup()
-                .addGap(228, 228, 228)
-                .addComponent(lblMember1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pnlNotificationLayout.setVerticalGroup(
-            pnlNotificationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlNotificationLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(lblMember1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabMember2, javax.swing.GroupLayout.PREFERRED_SIZE, 604, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        tabMenu.addTab("Thông Báo", pnlNotification);
 
         lblMember.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         lblMember.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -606,7 +223,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addComponent(pnlTimChiTieu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(30, 30, 30))
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 881, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 840, Short.MAX_VALUE)
         );
         pnlListMemberLayout.setVerticalGroup(
             pnlListMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -788,7 +405,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(btnPreviousMember)
                         .addGap(18, 18, 18)
                         .addComponent(btnForwardMember)
-                        .addGap(0, 150, Short.MAX_VALUE))
+                        .addGap(0, 122, Short.MAX_VALUE))
                     .addGroup(pnlSettingMemberLayout.createSequentialGroup()
                         .addGroup(pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNameMember)
@@ -966,7 +583,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addComponent(pnlTimChiTieu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(30, 30, 30))
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 881, Short.MAX_VALUE)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 840, Short.MAX_VALUE)
         );
         pnlListMember1Layout.setVerticalGroup(
             pnlListMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1164,7 +781,7 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(pnlSettingMember1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblNgaySinh4)))
-                .addGap(0, 172, Short.MAX_VALUE))
+                .addGap(0, 144, Short.MAX_VALUE))
         );
         pnlSettingMember1Layout.setVerticalGroup(
             pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1239,6 +856,19 @@ public class Main extends javax.swing.JFrame {
 
         tabMenu.addTab("Sự Kiện", pnlEvent);
 
+        javax.swing.GroupLayout pnlAcademicLayout = new javax.swing.GroupLayout(pnlAcademic);
+        pnlAcademic.setLayout(pnlAcademicLayout);
+        pnlAcademicLayout.setHorizontalGroup(
+            pnlAcademicLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 852, Short.MAX_VALUE)
+        );
+        pnlAcademicLayout.setVerticalGroup(
+            pnlAcademicLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 772, Short.MAX_VALUE)
+        );
+
+        tabMenu.addTab("Học Thuật", pnlAcademic);
+
         pnlUser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlUserMouseClicked(evt);
@@ -1286,13 +916,13 @@ public class Main extends javax.swing.JFrame {
 
         tblListUser.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Id", "Role Id", "CreatedDate", "UpdateDate", "Fullname", "Username", "Password"
+                "Id", "Role Id", "Fullname", "Email", "Address", "Phone", "CreatedDate", "EndedDate"
             }
         ));
         tblListUser.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1310,7 +940,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addComponent(pnlTimChiTieu2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(30, 30, 30))
-            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 881, Short.MAX_VALUE)
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 840, Short.MAX_VALUE)
         );
         pnlListMember2Layout.setVerticalGroup(
             pnlListMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1323,6 +953,42 @@ public class Main extends javax.swing.JFrame {
         );
 
         tabMember1.addTab("Danh Sách", pnlListMember2);
+
+        lblThanhVien2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblThanhVien2.setText("Tên Thành Viên :");
+
+        txtNameUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameUserActionPerformed(evt);
+            }
+        });
+
+        lblEmail2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblEmail2.setText("Email :");
+
+        txtEmailUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailUserActionPerformed(evt);
+            }
+        });
+
+        lblSoDT3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblSoDT3.setText("Số Điện Thoại :");
+
+        txtPhoneUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPhoneUserActionPerformed(evt);
+            }
+        });
+
+        lblGhiChu4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblGhiChu4.setText("Địa Chỉ:");
+
+        txtAddressUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAddressUserActionPerformed(evt);
+            }
+        });
 
         btnDeleteUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnDeleteUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Delete.png"))); // NOI18N
@@ -1424,40 +1090,75 @@ public class Main extends javax.swing.JFrame {
         pnlSettingMember2.setLayout(pnlSettingMember2Layout);
         pnlSettingMember2Layout.setHorizontalGroup(
             pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtUsernameUser)
-            .addComponent(txtPasswordUser)
             .addGroup(pnlSettingMember2Layout.createSequentialGroup()
                 .addGroup(pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblSoDT4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSoDT5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboRoleUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(pnlSettingMember2Layout.createSequentialGroup()
-                .addGroup(pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNgaySinh3)
                     .addGroup(pnlSettingMember2Layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(btnAddUser)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnUpdateUser)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnDeleteUser)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnClearUser)
-                        .addGap(63, 63, 63)
-                        .addComponent(btnFirstUser)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLastUser)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnPreviousUser)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnForwardUser)))
-                .addContainerGap(145, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addGroup(pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNameUser)
+                            .addComponent(txtEmailUser)
+                            .addComponent(txtPhoneUser)
+                            .addComponent(txtAddressUser)
+                            .addComponent(txtUsernameUser)
+                            .addComponent(txtPasswordUser)
+                            .addGroup(pnlSettingMember2Layout.createSequentialGroup()
+                                .addGroup(pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblEmail2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblSoDT3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblThanhVien2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblGhiChu4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblSoDT4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblSoDT5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(pnlSettingMember2Layout.createSequentialGroup()
+                        .addGroup(pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlSettingMember2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(cboRoleUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlSettingMember2Layout.createSequentialGroup()
+                                .addGap(99, 99, 99)
+                                .addComponent(btnAddUser)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnUpdateUser)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnDeleteUser)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnClearUser)
+                                .addGap(63, 63, 63)
+                                .addComponent(btnFirstUser)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnLastUser)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnPreviousUser)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnForwardUser)))
+                        .addGap(0, 77, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(pnlSettingMember2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblNgaySinh3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlSettingMember2Layout.setVerticalGroup(
             pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSettingMember2Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(24, 24, 24)
+                .addComponent(lblThanhVien2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNameUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblEmail2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtEmailUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(lblSoDT3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtPhoneUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblGhiChu4)
+                .addGap(18, 18, 18)
+                .addComponent(txtAddressUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(lblSoDT4)
                 .addGap(18, 18, 18)
                 .addComponent(txtUsernameUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1469,7 +1170,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(lblNgaySinh3)
                 .addGap(18, 18, 18)
                 .addComponent(cboRoleUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addGroup(pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(btnFirstUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1481,10 +1182,10 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(btnUpdateUser, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnDeleteUser, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnClearUser, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(283, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        tabMember1.addTab("Quản Lý", pnlSettingMember2);
+        tabMember1.addTab("Thành Viên", pnlSettingMember2);
 
         javax.swing.GroupLayout pnlUserLayout = new javax.swing.GroupLayout(pnlUser);
         pnlUser.setLayout(pnlUserLayout);
@@ -1509,7 +1210,33 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        tabMenu.addTab("Admin", pnlUser);
+        tabMenu.addTab("Ban Chủ Nhiệm", pnlUser);
+
+        javax.swing.GroupLayout pnlAdminLayout = new javax.swing.GroupLayout(pnlAdmin);
+        pnlAdmin.setLayout(pnlAdminLayout);
+        pnlAdminLayout.setHorizontalGroup(
+            pnlAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 852, Short.MAX_VALUE)
+        );
+        pnlAdminLayout.setVerticalGroup(
+            pnlAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 772, Short.MAX_VALUE)
+        );
+
+        tabMenu.addTab("Admin", pnlAdmin);
+
+        javax.swing.GroupLayout pnlFinancialLayout = new javax.swing.GroupLayout(pnlFinancial);
+        pnlFinancial.setLayout(pnlFinancialLayout);
+        pnlFinancialLayout.setHorizontalGroup(
+            pnlFinancialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 858, Short.MAX_VALUE)
+        );
+        pnlFinancialLayout.setVerticalGroup(
+            pnlFinancialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 772, Short.MAX_VALUE)
+        );
+
+        tabMenu.addTab("Tài Chính", pnlFinancial);
 
         mnuSystem.setText("Hệ Thống");
 
@@ -1541,6 +1268,59 @@ public class Main extends javax.swing.JFrame {
         mnuSystem.add(mniEnd);
 
         mnuTop.add(mnuSystem);
+
+        mnuManage.setText("Quản Lý");
+
+        mniBudget.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Piggy bank.png"))); // NOI18N
+        mniBudget.setText("Ngân Sách");
+        mniBudget.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniBudgetActionPerformed(evt);
+            }
+        });
+        mnuManage.add(mniBudget);
+
+        mniMember.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/User.png"))); // NOI18N
+        mniMember.setText("Thành Viên");
+        mniMember.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniMemberActionPerformed(evt);
+            }
+        });
+        mnuManage.add(mniMember);
+
+        mniUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Users.png"))); // NOI18N
+        mniUser.setText("Người Dùng");
+        mniUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniUserActionPerformed(evt);
+            }
+        });
+        mnuManage.add(mniUser);
+
+        mniEvent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Application form.png"))); // NOI18N
+        mniEvent.setText("Sự Kiện");
+        mniEvent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniEventActionPerformed(evt);
+            }
+        });
+        mnuManage.add(mniEvent);
+
+        mnuTop.add(mnuManage);
+
+        mnuNotice.setText("Thông Báo");
+
+        mniMail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Mail.png"))); // NOI18N
+        mniMail.setText("Mail");
+        mniMail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniMailActionPerformed(evt);
+            }
+        });
+        mnuNotice.add(mniMail);
+
+        mnuTop.add(mnuNotice);
 
         mnuHelp.setText("Trợ Giúp");
 
@@ -1595,6 +1375,26 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_mniEndActionPerformed
 
+    private void mniBudgetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniBudgetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mniBudgetActionPerformed
+
+    private void mniMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniMemberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mniMemberActionPerformed
+
+    private void mniUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mniUserActionPerformed
+
+    private void mniEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniEventActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mniEventActionPerformed
+
+    private void mniMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniMailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mniMailActionPerformed
+
     private void mniManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniManualActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mniManualActionPerformed
@@ -1607,165 +1407,49 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tabMenuMouseClicked
 
-    private void pnlUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlUserMouseClicked
+    private void txtFindMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFindMemberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_pnlUserMouseClicked
+    }//GEN-LAST:event_txtFindMemberActionPerformed
 
-    private void cboRoleUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboRoleUserActionPerformed
+    private void btnSearchMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchMemberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cboRoleUserActionPerformed
+    }//GEN-LAST:event_btnSearchMemberActionPerformed
 
-    private void txtPasswordUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordUserActionPerformed
+    private void tblListMemberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListMemberMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPasswordUserActionPerformed
+    }//GEN-LAST:event_tblListMemberMouseClicked
 
-    private void txtUsernameUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameUserActionPerformed
+    private void txtNameMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameMemberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtUsernameUserActionPerformed
+    }//GEN-LAST:event_txtNameMemberActionPerformed
 
-    private void btnForwardUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForwardUserActionPerformed
+    private void txtEmailMemBerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailMemBerActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnForwardUserActionPerformed
+    }//GEN-LAST:event_txtEmailMemBerActionPerformed
 
-    private void btnPreviousUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousUserActionPerformed
+    private void txtPhoneMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneMemberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnPreviousUserActionPerformed
+    }//GEN-LAST:event_txtPhoneMemberActionPerformed
 
-    private void btnLastUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastUserActionPerformed
+    private void rdoMaleMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoMaleMemberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnLastUserActionPerformed
+    }//GEN-LAST:event_rdoMaleMemberActionPerformed
 
-    private void btnClearUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearUserActionPerformed
+    private void rdoFemaleMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoFemaleMemberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnClearUserActionPerformed
-
-    private void btnFirstUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstUserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnFirstUserActionPerformed
-
-    private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAddUserActionPerformed
-
-    private void btnUpdateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateUserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUpdateUserActionPerformed
-
-    private void btnDeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteUserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDeleteUserActionPerformed
-
-    private void tblListUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListUserMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tblListUserMouseClicked
-
-    private void btnSearchUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchUserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSearchUserActionPerformed
-
-    private void txtFindUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFindUserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFindUserActionPerformed
-
-    private void pnlEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlEventMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pnlEventMouseClicked
-
-    private void txtAddressEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressEventActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAddressEventActionPerformed
-
-    private void txtnEdedDateEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnEdedDateEventActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtnEdedDateEventActionPerformed
-
-    private void btnForwardEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForwardEventActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnForwardEventActionPerformed
-
-    private void btnPreviousEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousEventActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPreviousEventActionPerformed
-
-    private void btnLastEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastEventActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnLastEventActionPerformed
-
-    private void btnClearEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearEventActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnClearEventActionPerformed
-
-    private void btnFirstEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstEventActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnFirstEventActionPerformed
-
-    private void btnAddEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEventActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAddEventActionPerformed
-
-    private void btnUpdateEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateEventActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUpdateEventActionPerformed
-
-    private void btnDeleteEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteEventActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDeleteEventActionPerformed
-
-    private void txtStartedDateEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStartedDateEventActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtStartedDateEventActionPerformed
-
-    private void txtTitleEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTitleEventActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTitleEventActionPerformed
-
-    private void txtUserIdEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserIdEventActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUserIdEventActionPerformed
-
-    private void txtNameEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameEventActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameEventActionPerformed
-
-    private void lblListEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblListEventMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lblListEventMouseClicked
-
-    private void btnSearchEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchEventActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSearchEventActionPerformed
-
-    private void txtFindEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFindEventActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFindEventActionPerformed
+    }//GEN-LAST:event_rdoFemaleMemberActionPerformed
 
     private void txtBirthdayMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBirthdayMemberActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBirthdayMemberActionPerformed
 
-    private void btnForwardMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForwardMemberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnForwardMemberActionPerformed
-
-    private void btnPreviousMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousMemberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPreviousMemberActionPerformed
-
-    private void btnLastMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastMemberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnLastMemberActionPerformed
-
     private void cboRateMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboRateMemberActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cboRateMemberActionPerformed
 
-    private void btnClearMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearMemberActionPerformed
+    private void txtAddressMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressMemberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnClearMemberActionPerformed
-
-    private void btnFirstMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstMemberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnFirstMemberActionPerformed
+    }//GEN-LAST:event_txtAddressMemberActionPerformed
 
     private void btnAddMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMemberActionPerformed
         // TODO add your handling code here:
@@ -1779,117 +1463,173 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDeleteMemberActionPerformed
 
-    private void txtAddressMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressMemberActionPerformed
+    private void btnClearMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearMemberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtAddressMemberActionPerformed
+    }//GEN-LAST:event_btnClearMemberActionPerformed
 
-    private void rdoMaleMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoMaleMemberActionPerformed
+    private void btnFirstMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstMemberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rdoMaleMemberActionPerformed
+    }//GEN-LAST:event_btnFirstMemberActionPerformed
 
-    private void rdoFemaleMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoFemaleMemberActionPerformed
+    private void btnLastMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastMemberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rdoFemaleMemberActionPerformed
+    }//GEN-LAST:event_btnLastMemberActionPerformed
 
-    private void txtPhoneMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneMemberActionPerformed
+    private void btnPreviousMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousMemberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPhoneMemberActionPerformed
+    }//GEN-LAST:event_btnPreviousMemberActionPerformed
 
-    private void txtEmailMemBerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailMemBerActionPerformed
+    private void btnForwardMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForwardMemberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailMemBerActionPerformed
+    }//GEN-LAST:event_btnForwardMemberActionPerformed
 
-    private void txtNameMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameMemberActionPerformed
+    private void pnlEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlEventMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameMemberActionPerformed
+    }//GEN-LAST:event_pnlEventMouseClicked
 
-    private void tblListMemberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListMemberMouseClicked
+    private void txtFindEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFindEventActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblListMemberMouseClicked
+    }//GEN-LAST:event_txtFindEventActionPerformed
 
-    private void btnSearchMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchMemberActionPerformed
+    private void btnSearchEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchEventActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSearchMemberActionPerformed
+    }//GEN-LAST:event_btnSearchEventActionPerformed
 
-    private void txtFindMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFindMemberActionPerformed
+    private void lblListEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblListEventMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtFindMemberActionPerformed
+    }//GEN-LAST:event_lblListEventMouseClicked
 
-    private void txtFindMember1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFindMember1ActionPerformed
+    private void txtNameEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameEventActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtFindMember1ActionPerformed
+    }//GEN-LAST:event_txtNameEventActionPerformed
 
-    private void btnSearchMember1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchMember1ActionPerformed
+    private void txtUserIdEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserIdEventActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSearchMember1ActionPerformed
+    }//GEN-LAST:event_txtUserIdEventActionPerformed
 
-    private void tblListMember1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListMember1MouseClicked
+    private void txtTitleEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTitleEventActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblListMember1MouseClicked
+    }//GEN-LAST:event_txtTitleEventActionPerformed
 
-    private void txtNameMember1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameMember1ActionPerformed
+    private void txtStartedDateEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStartedDateEventActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameMember1ActionPerformed
+    }//GEN-LAST:event_txtStartedDateEventActionPerformed
 
-    private void txtEmailMemBer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailMemBer1ActionPerformed
+    private void txtnEdedDateEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnEdedDateEventActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailMemBer1ActionPerformed
+    }//GEN-LAST:event_txtnEdedDateEventActionPerformed
 
-    private void txtPhoneMember1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneMember1ActionPerformed
+    private void txtAddressEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressEventActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPhoneMember1ActionPerformed
+    }//GEN-LAST:event_txtAddressEventActionPerformed
 
-    private void rdoFemaleMember1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoFemaleMember1ActionPerformed
+    private void btnAddEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEventActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rdoFemaleMember1ActionPerformed
+    }//GEN-LAST:event_btnAddEventActionPerformed
 
-    private void rdoMaleMember1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoMaleMember1ActionPerformed
+    private void btnUpdateEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateEventActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rdoMaleMember1ActionPerformed
+    }//GEN-LAST:event_btnUpdateEventActionPerformed
 
-    private void txtAddressMember1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressMember1ActionPerformed
+    private void btnDeleteEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteEventActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtAddressMember1ActionPerformed
+    }//GEN-LAST:event_btnDeleteEventActionPerformed
 
-    private void btnDeleteMember1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteMember1ActionPerformed
+    private void btnClearEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearEventActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnDeleteMember1ActionPerformed
+    }//GEN-LAST:event_btnClearEventActionPerformed
 
-    private void btnUpdateMember1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateMember1ActionPerformed
+    private void btnFirstEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstEventActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnUpdateMember1ActionPerformed
+    }//GEN-LAST:event_btnFirstEventActionPerformed
 
-    private void btnAddMember1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMember1ActionPerformed
+    private void btnLastEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastEventActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAddMember1ActionPerformed
+    }//GEN-LAST:event_btnLastEventActionPerformed
 
-    private void btnFirstMember1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstMember1ActionPerformed
+    private void btnPreviousEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousEventActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnFirstMember1ActionPerformed
+    }//GEN-LAST:event_btnPreviousEventActionPerformed
 
-    private void btnClearMember1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearMember1ActionPerformed
+    private void btnForwardEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForwardEventActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnClearMember1ActionPerformed
+    }//GEN-LAST:event_btnForwardEventActionPerformed
 
-    private void cboRateMember1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboRateMember1ActionPerformed
+    private void cboRoleUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboRoleUserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cboRateMember1ActionPerformed
+    }//GEN-LAST:event_cboRoleUserActionPerformed
 
-    private void btnLastMember1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastMember1ActionPerformed
+    private void pnlUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlUserMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnLastMember1ActionPerformed
+    }//GEN-LAST:event_pnlUserMouseClicked
 
-    private void btnPreviousMember1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousMember1ActionPerformed
+    private void txtFindUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFindUserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnPreviousMember1ActionPerformed
+    }//GEN-LAST:event_txtFindUserActionPerformed
 
-    private void btnForwardMember1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForwardMember1ActionPerformed
+    private void btnSearchUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchUserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnForwardMember1ActionPerformed
+    }//GEN-LAST:event_btnSearchUserActionPerformed
 
-    private void txtBirthdayMember1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBirthdayMember1ActionPerformed
+    private void tblListUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListUserMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtBirthdayMember1ActionPerformed
+    }//GEN-LAST:event_tblListUserMouseClicked
+
+    private void txtNameUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameUserActionPerformed
+
+    private void txtEmailUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailUserActionPerformed
+
+    private void txtPhoneUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPhoneUserActionPerformed
+
+    private void txtAddressUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAddressUserActionPerformed
+
+    private void txtUsernameUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsernameUserActionPerformed
+
+    private void txtPasswordUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordUserActionPerformed
+
+    private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddUserActionPerformed
+
+    private void btnUpdateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateUserActionPerformed
+
+    private void btnDeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteUserActionPerformed
+
+    private void btnClearUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnClearUserActionPerformed
+
+    private void btnFirstUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFirstUserActionPerformed
+
+    private void btnLastUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLastUserActionPerformed
+
+    private void btnPreviousUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPreviousUserActionPerformed
+
+    private void btnForwardUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForwardUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnForwardUserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1929,62 +1669,48 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddEvent;
     private javax.swing.JButton btnAddMember;
-    private javax.swing.JButton btnAddMember1;
     private javax.swing.JButton btnAddUser;
     private javax.swing.JButton btnClearEvent;
     private javax.swing.JButton btnClearMember;
-    private javax.swing.JButton btnClearMember1;
     private javax.swing.JButton btnClearUser;
     private javax.swing.JButton btnDeleteEvent;
     private javax.swing.JButton btnDeleteMember;
-    private javax.swing.JButton btnDeleteMember1;
     private javax.swing.JButton btnDeleteUser;
     private javax.swing.JButton btnFirstEvent;
     private javax.swing.JButton btnFirstMember;
-    private javax.swing.JButton btnFirstMember1;
     private javax.swing.JButton btnFirstUser;
     private javax.swing.JButton btnForwardEvent;
     private javax.swing.JButton btnForwardMember;
-    private javax.swing.JButton btnForwardMember1;
     private javax.swing.JButton btnForwardUser;
     private javax.swing.JButton btnLastEvent;
     private javax.swing.JButton btnLastMember;
-    private javax.swing.JButton btnLastMember1;
     private javax.swing.JButton btnLastUser;
     private javax.swing.JButton btnPreviousEvent;
     private javax.swing.JButton btnPreviousMember;
-    private javax.swing.JButton btnPreviousMember1;
     private javax.swing.JButton btnPreviousUser;
     private javax.swing.JButton btnSearchEvent;
     private javax.swing.JButton btnSearchMember;
-    private javax.swing.JButton btnSearchMember1;
     private javax.swing.JButton btnSearchUser;
     private javax.swing.JButton btnUpdateEvent;
     private javax.swing.JButton btnUpdateMember;
-    private javax.swing.JButton btnUpdateMember1;
     private javax.swing.JButton btnUpdateUser;
     private javax.swing.ButtonGroup btngroudSex;
     private javax.swing.JComboBox<String> cboRateMember;
-    private javax.swing.JComboBox<String> cboRateMember1;
     private javax.swing.JComboBox<String> cboRoleUser;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblEmail1;
-    private javax.swing.JLabel lblEmail3;
+    private javax.swing.JLabel lblEmail2;
     private javax.swing.JLabel lblEvent;
     private javax.swing.JLabel lblGhiChu3;
-    private javax.swing.JLabel lblGhiChu5;
+    private javax.swing.JLabel lblGhiChu4;
     private javax.swing.JLabel lblGioiTinhThanhVien;
-    private javax.swing.JLabel lblGioiTinhThanhVien1;
     private javax.swing.JTable lblListEvent;
     private javax.swing.JLabel lblMember;
-    private javax.swing.JLabel lblMember1;
     private javax.swing.JLabel lblMember2;
     private javax.swing.JLabel lblNgaySinh;
     private javax.swing.JLabel lblNgaySinh1;
@@ -1992,70 +1718,68 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel lblNgaySinh3;
     private javax.swing.JLabel lblNgaySinh4;
     private javax.swing.JLabel lblNgaySinh5;
-    private javax.swing.JLabel lblNgaySinh6;
-    private javax.swing.JLabel lblNgaySinh7;
     private javax.swing.JLabel lblSoDT;
     private javax.swing.JLabel lblSoDT1;
     private javax.swing.JLabel lblSoDT2;
+    private javax.swing.JLabel lblSoDT3;
     private javax.swing.JLabel lblSoDT4;
     private javax.swing.JLabel lblSoDT5;
-    private javax.swing.JLabel lblSoDT6;
     private javax.swing.JLabel lblThanhVien;
     private javax.swing.JLabel lblThanhVien1;
-    private javax.swing.JLabel lblThanhVien3;
+    private javax.swing.JLabel lblThanhVien2;
+    private javax.swing.JMenuItem mniBudget;
     private javax.swing.JMenuItem mniEnd;
+    private javax.swing.JMenuItem mniEvent;
     private javax.swing.JMenuItem mniIntroduce;
     private javax.swing.JMenuItem mniLogin;
     private javax.swing.JMenuItem mniLogout;
+    private javax.swing.JMenuItem mniMail;
     private javax.swing.JMenuItem mniManual;
+    private javax.swing.JMenuItem mniMember;
+    private javax.swing.JMenuItem mniUser;
     private javax.swing.JMenu mnuHelp;
+    private javax.swing.JMenu mnuManage;
+    private javax.swing.JMenu mnuNotice;
     private javax.swing.JMenu mnuSystem;
     private javax.swing.JMenuBar mnuTop;
+    private javax.swing.JPanel pnlAcademic;
+    private javax.swing.JPanel pnlAdmin;
     private javax.swing.JPanel pnlEvent;
+    private javax.swing.JPanel pnlFinancial;
     private javax.swing.JPanel pnlListMember;
     private javax.swing.JPanel pnlListMember1;
     private javax.swing.JPanel pnlListMember2;
-    private javax.swing.JPanel pnlListMember3;
     private javax.swing.JPanel pnlMember;
-    private javax.swing.JPanel pnlNotification;
     private javax.swing.JPanel pnlSettingMember;
     private javax.swing.JPanel pnlSettingMember1;
     private javax.swing.JPanel pnlSettingMember2;
-    private javax.swing.JPanel pnlSettingMember3;
     private javax.swing.JPanel pnlTimChiTieu;
     private javax.swing.JPanel pnlTimChiTieu1;
     private javax.swing.JPanel pnlTimChiTieu2;
-    private javax.swing.JPanel pnlTimChiTieu3;
     private javax.swing.JPanel pnlUser;
     private javax.swing.JRadioButton rdoFemaleMember;
-    private javax.swing.JRadioButton rdoFemaleMember1;
     private javax.swing.JRadioButton rdoMaleMember;
-    private javax.swing.JRadioButton rdoMaleMember1;
     private javax.swing.JTabbedPane tabMember;
     private javax.swing.JTabbedPane tabMember1;
-    private javax.swing.JTabbedPane tabMember2;
     private javax.swing.JTabbedPane tabMenu;
     private javax.swing.JTable tblListMember;
-    private javax.swing.JTable tblListMember1;
     private javax.swing.JTable tblListUser;
     private javax.swing.JTextField txtAddressEvent;
     private javax.swing.JTextField txtAddressMember;
-    private javax.swing.JTextField txtAddressMember1;
+    private javax.swing.JTextField txtAddressUser;
     private javax.swing.JTextField txtBirthdayMember;
-    private javax.swing.JTextField txtBirthdayMember1;
     private javax.swing.JTextArea txtContentEvent;
     private javax.swing.JTextField txtEmailMemBer;
-    private javax.swing.JTextField txtEmailMemBer1;
+    private javax.swing.JTextField txtEmailUser;
     private javax.swing.JTextField txtFindEvent;
     private javax.swing.JTextField txtFindMember;
-    private javax.swing.JTextField txtFindMember1;
     private javax.swing.JTextField txtFindUser;
     private javax.swing.JTextField txtNameEvent;
     private javax.swing.JTextField txtNameMember;
-    private javax.swing.JTextField txtNameMember1;
+    private javax.swing.JTextField txtNameUser;
     private javax.swing.JTextField txtPasswordUser;
     private javax.swing.JTextField txtPhoneMember;
-    private javax.swing.JTextField txtPhoneMember1;
+    private javax.swing.JTextField txtPhoneUser;
     private javax.swing.JTextField txtStartedDateEvent;
     private javax.swing.JTextField txtTitleEvent;
     private javax.swing.JTextField txtUserIdEvent;
