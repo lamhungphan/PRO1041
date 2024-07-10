@@ -99,7 +99,6 @@ public class Main extends javax.swing.JFrame {
         txtAddressEvent = new javax.swing.JTextField();
         lblSoDT2 = new javax.swing.JLabel();
         pnlAcademic = new javax.swing.JPanel();
-        pnlFinancial = new javax.swing.JPanel();
         pnlUser = new javax.swing.JPanel();
         lblMember2 = new javax.swing.JLabel();
         tabMember1 = new javax.swing.JTabbedPane();
@@ -133,6 +132,7 @@ public class Main extends javax.swing.JFrame {
         lblNgaySinh3 = new javax.swing.JLabel();
         cboRoleUser = new javax.swing.JComboBox<>();
         pnlAdmin = new javax.swing.JPanel();
+        pnlFinancial = new javax.swing.JPanel();
         mnuTop = new javax.swing.JMenuBar();
         mnuSystem = new javax.swing.JMenu();
         mniLogin = new javax.swing.JMenuItem();
@@ -869,19 +869,6 @@ public class Main extends javax.swing.JFrame {
 
         tabMenu.addTab("Học Thuật", pnlAcademic);
 
-        javax.swing.GroupLayout pnlFinancialLayout = new javax.swing.GroupLayout(pnlFinancial);
-        pnlFinancial.setLayout(pnlFinancialLayout);
-        pnlFinancialLayout.setHorizontalGroup(
-            pnlFinancialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 852, Short.MAX_VALUE)
-        );
-        pnlFinancialLayout.setVerticalGroup(
-            pnlFinancialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 772, Short.MAX_VALUE)
-        );
-
-        tabMenu.addTab("Tài Chính", pnlFinancial);
-
         pnlUser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlUserMouseClicked(evt);
@@ -1237,6 +1224,19 @@ public class Main extends javax.swing.JFrame {
         );
 
         tabMenu.addTab("Admin", pnlAdmin);
+
+        javax.swing.GroupLayout pnlFinancialLayout = new javax.swing.GroupLayout(pnlFinancial);
+        pnlFinancial.setLayout(pnlFinancialLayout);
+        pnlFinancialLayout.setHorizontalGroup(
+            pnlFinancialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 858, Short.MAX_VALUE)
+        );
+        pnlFinancialLayout.setVerticalGroup(
+            pnlFinancialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 772, Short.MAX_VALUE)
+        );
+
+        tabMenu.addTab("Tài Chính", pnlFinancial);
 
         mnuSystem.setText("Hệ Thống");
 
