@@ -48,7 +48,7 @@ public class Login extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         disable = new javax.swing.JLabel();
         show = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        cbSavePassword = new javax.swing.JCheckBox();
         lblForgotPassword = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
 
@@ -159,10 +159,15 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel2.add(show, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 40, 40));
 
-        jCheckBox1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jCheckBox1.setForeground(new java.awt.Color(199, 226, 255));
-        jCheckBox1.setText("Nhớ mật khẩu");
-        jPanel2.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 261, -1, -1));
+        cbSavePassword.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        cbSavePassword.setForeground(new java.awt.Color(199, 226, 255));
+        cbSavePassword.setText("Nhớ mật khẩu");
+        cbSavePassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbSavePasswordMouseClicked(evt);
+            }
+        });
+        jPanel2.add(cbSavePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 261, -1, -1));
 
         lblForgotPassword.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         lblForgotPassword.setForeground(new java.awt.Color(199, 226, 255));
@@ -242,6 +247,11 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_lblForgotPasswordMouseClicked
 
+    private void cbSavePasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbSavePasswordMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_cbSavePasswordMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -280,8 +290,8 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
+    private javax.swing.JCheckBox cbSavePassword;
     private javax.swing.JLabel disable;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

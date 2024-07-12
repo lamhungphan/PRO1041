@@ -19,6 +19,7 @@ import java.sql.Date;
  *
  * @author Computer
  */
+
 @Entity
 @Table(name = "users")
 public class User implements Serializable {

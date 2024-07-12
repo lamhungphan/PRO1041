@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.poly.repository.Impl;
+package com.poly.repository.impl;
 
 import com.poly.entity.Role;
 import com.poly.repository.RoleRepository;

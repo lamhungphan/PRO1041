@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author Computer
  */
-public interface EventRepository {
+public interface EventRepository{
 
     public Event create(Event entity);
 
