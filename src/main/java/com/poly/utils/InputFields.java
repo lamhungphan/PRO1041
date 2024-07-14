@@ -1,15 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.poly.utils;
 
 import javax.swing.*;
 
-/**
- *
- * @author Computer
- */
 public class InputFields {
 
     public static void setTextFieldNumber(String numb, JTextField txt) {

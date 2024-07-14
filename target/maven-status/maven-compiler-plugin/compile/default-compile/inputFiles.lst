@@ -3,7 +3,6 @@
 /media/seastone01202/New Volume/WorkSpace/NetBeans/PRO1041/src/main/java/com/poly/entity/Account.java
 /media/seastone01202/New Volume/WorkSpace/NetBeans/PRO1041/src/main/java/com/poly/entity/Event.java
 /media/seastone01202/New Volume/WorkSpace/NetBeans/PRO1041/src/main/java/com/poly/repository/UserRepository.java
-/media/seastone01202/New Volume/WorkSpace/NetBeans/PRO1041/src/main/java/com/poly/entity/Member.java
 /media/seastone01202/New Volume/WorkSpace/NetBeans/PRO1041/src/main/java/com/poly/services/RoleService.java
 /media/seastone01202/New Volume/WorkSpace/NetBeans/PRO1041/src/main/java/com/poly/repository/impl/UserRepoImpl.java
 /media/seastone01202/New Volume/WorkSpace/NetBeans/PRO1041/src/main/java/com/poly/utils/InputFields.java
@@ -14,10 +13,10 @@
 /media/seastone01202/New Volume/WorkSpace/NetBeans/PRO1041/src/main/java/com/poly/repository/EventRepository.java
 /media/seastone01202/New Volume/WorkSpace/NetBeans/PRO1041/src/main/java/com/poly/utils/XImage.java
 /media/seastone01202/New Volume/WorkSpace/NetBeans/PRO1041/src/main/java/com/poly/repository/impl/EventRepoImpl.java
-/media/seastone01202/New Volume/WorkSpace/NetBeans/PRO1041/src/main/java/com/poly/entity/Posts.java
 /media/seastone01202/New Volume/WorkSpace/NetBeans/PRO1041/src/main/java/com/poly/view/Main.java
 /media/seastone01202/New Volume/WorkSpace/NetBeans/PRO1041/src/main/java/com/poly/entity/Fund.java
 /media/seastone01202/New Volume/WorkSpace/NetBeans/PRO1041/src/main/java/com/poly/services/impl/UserServiceImpl.java
+/media/seastone01202/New Volume/WorkSpace/NetBeans/PRO1041/src/main/java/com/poly/controller/SavePasswordLogin.java
 /media/seastone01202/New Volume/WorkSpace/NetBeans/PRO1041/src/main/java/com/poly/entity/Role.java
 /media/seastone01202/New Volume/WorkSpace/NetBeans/PRO1041/src/main/java/com/poly/view/Login.java
 /media/seastone01202/New Volume/WorkSpace/NetBeans/PRO1041/src/main/java/com/poly/repository/impl/RoleRepoImpl.java
@@ -25,4 +24,3 @@
 /media/seastone01202/New Volume/WorkSpace/NetBeans/PRO1041/src/main/java/com/poly/services/UserService.java
 /media/seastone01202/New Volume/WorkSpace/NetBeans/PRO1041/src/main/java/com/poly/entity/User.java
 /media/seastone01202/New Volume/WorkSpace/NetBeans/PRO1041/src/main/java/com/poly/services/impl/EventServiceImpl.java
-/media/seastone01202/New Volume/WorkSpace/NetBeans/PRO1041/src/main/java/com/poly/image/main.java

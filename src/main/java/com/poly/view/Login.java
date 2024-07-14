@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.poly.view;
 
 import javax.swing.JFrame;
 
-/**
- *
- * @author ME1
- */
 public class Login extends javax.swing.JFrame {
 
     /**
@@ -18,8 +9,8 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
-        txtusername.setBackground(new java.awt.Color(0,0,0,1));
-        txtpassword.setBackground(new java.awt.Color(0,0,0,1));
+        txtusername.setBackground(new java.awt.Color(0, 0, 0, 1));
+        txtpassword.setBackground(new java.awt.Color(0, 0, 0, 1));
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -48,7 +39,7 @@ public class Login extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         disable = new javax.swing.JLabel();
         show = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        cbSavePassword = new javax.swing.JCheckBox();
         lblForgotPassword = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
 
@@ -159,10 +150,20 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel2.add(show, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 40, 40));
 
-        jCheckBox1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jCheckBox1.setForeground(new java.awt.Color(199, 226, 255));
-        jCheckBox1.setText("Nhớ mật khẩu");
-        jPanel2.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 261, -1, -1));
+        cbSavePassword.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        cbSavePassword.setForeground(new java.awt.Color(199, 226, 255));
+        cbSavePassword.setText("Nhớ mật khẩu");
+        cbSavePassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbSavePasswordMouseClicked(evt);
+            }
+        });
+        cbSavePassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbSavePasswordActionPerformed(evt);
+            }
+        });
+        jPanel2.add(cbSavePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 261, -1, -1));
 
         lblForgotPassword.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         lblForgotPassword.setForeground(new java.awt.Color(199, 226, 255));
@@ -198,7 +199,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void disableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_disableMouseClicked
-        txtpassword.setEchoChar((char)0);
+        txtpassword.setEchoChar((char) 0);
         disable.setVisible(false);
         disable.setEnabled(false);
         show.setEnabled(true);
@@ -206,7 +207,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_disableMouseClicked
 
     private void showMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showMouseClicked
-        txtpassword.setEchoChar((char)8226);
+        txtpassword.setEchoChar((char) 8226);
         disable.setVisible(true);
         disable.setEnabled(true);
         show.setEnabled(false);
@@ -214,14 +215,14 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_showMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        for (double i = 0.0; i <=1.0; i = i+0.1){
-            String val = i+ "";
+        for (double i = 0.0; i <= 1.0; i = i + 0.1) {
+            String val = i + "";
             float f = Float.valueOf(val);
             this.setOpacity(f);
-            try{
+            try {
                 Thread.sleep(50);
-            }catch(Exception e){
-                
+            } catch (Exception e) {
+
             }
         }
     }//GEN-LAST:event_formWindowOpened
@@ -236,11 +237,22 @@ public class Login extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void lblForgotPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblForgotPasswordMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_lblForgotPasswordMouseClicked
+
+    private void cbSavePasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbSavePasswordMouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_cbSavePasswordMouseClicked
+
+    private void cbSavePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSavePasswordActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_cbSavePasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -280,8 +292,8 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
+    private javax.swing.JCheckBox cbSavePassword;
     private javax.swing.JLabel disable;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
