@@ -7,6 +7,7 @@ package com.poly.controller;
 import com.poly.entity.User;
 import com.poly.services.UserService;
 import com.poly.utils.MsgBox;
+import com.poly.view.Main;
 
 /**
  *
@@ -26,6 +27,7 @@ public class UserController {
             MsgBox.alert(null, "Đăng nhập không thành công");
         }else {
             MsgBox.alert(null, "Đăng nhập thành công");
+            new Main().setVisible(true);
         }
     }
 }
