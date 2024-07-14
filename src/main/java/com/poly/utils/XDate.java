@@ -1,17 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.poly.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- *
- * @author Computer
- */
 public class XDate {
 
     static SimpleDateFormat formater = new SimpleDateFormat();
@@ -20,7 +12,7 @@ public class XDate {
      * Chuyển đổi String sang Date
      *
      * @param date là String cần chuyển
-     * @param pattern là định dạng thời gian
+     * @param patten là định dạng thời gian
      * @return Date kết quả
      */
     public static Date toDate(String date, String patten) throws ParseException {
@@ -33,7 +25,7 @@ public class XDate {
      * Chuyển đổi từ Date sang String
      *
      * @param date là Date cần chuyển đổi
-     * @param pattern là định dạng thời gian
+     * @param patten là định dạng thời gian
      * @return String kết quả
      */
     public static String toString(Date date, String patten) {
