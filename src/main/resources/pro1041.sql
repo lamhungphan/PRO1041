@@ -9,7 +9,7 @@ create table roles
 	id int auto_increment primary key,
     roleName nvarchar(55) null,
     createdDate date null,
-    updatedDate date null,
+    updatedDate date null
 );
 
 drop table if exists users;
@@ -27,7 +27,6 @@ create table users
     createdDate date null,
     updatedDate date null,
     isActived bit null,
-   unique(username),
     foreign key (roleId) references roles(id) 
 );
 
@@ -52,8 +51,7 @@ create table account
 (
 	id int auto_increment primary key,
     username varchar(55) null,
-    password varchar(55) null,
-    unique(username)
+    password varchar(55) null
 );
 
 insert into roles (roleName) VALUES 

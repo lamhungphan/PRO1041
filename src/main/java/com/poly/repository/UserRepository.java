@@ -9,9 +9,9 @@ public interface UserRepository {
 
     User update(User entity);
 
-    User remove(String id);
+    public User remove(Integer id);
 
-    User findById(String id);
+    public User findById(Integer id);
 
     List<User> findAll();
 }

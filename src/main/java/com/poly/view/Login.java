@@ -1,18 +1,36 @@
 package com.poly.view;
 
+import com.poly.controller.UserController;
+import com.poly.entity.User;
+import com.poly.repository.RoleRepository;
+import com.poly.repository.UserRepository;
+import com.poly.repository.impl.RoleRepoImpl;
+import com.poly.repository.impl.UserRepoImpl;
+import com.poly.services.impl.RoleServiceImpl;
+import com.poly.services.impl.UserServiceImpl;
+import com.poly.utils.InputFields;
+import java.awt.HeadlessException;
 import javax.swing.JFrame;
 
 public class Login extends javax.swing.JFrame {
 
+    private UserController controller;
+
     /**
      * Creates new form login
+     *
+     * @param controller
      */
-    public Login() {
+    public Login(UserController controller) throws HeadlessException {
         initComponents();
-        txtusername.setBackground(new java.awt.Color(0, 0, 0, 1));
-        txtpassword.setBackground(new java.awt.Color(0, 0, 0, 1));
+
+        txtUsername.setBackground(new java.awt.Color(0, 0, 0, 1));
+        txtPassword.setBackground(new java.awt.Color(0, 0, 0, 1));
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        this.controller = controller;
+
     }
 
     /**
@@ -31,11 +49,11 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtusername = new javax.swing.JTextField();
+        txtUsername = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        txtpassword = new javax.swing.JPasswordField();
+        txtPassword = new javax.swing.JPasswordField();
         jLabel9 = new javax.swing.JLabel();
         disable = new javax.swing.JLabel();
         show = new javax.swing.JLabel();
@@ -81,26 +99,24 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setText("Đăng nhập");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 47, 420, 41));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Câu lạc bộ M2M");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 94, 420, -1));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(199, 226, 255));
         jLabel5.setText("Tên đăng nhập");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 341, -1));
 
-        txtusername.setFont(txtusername.getFont().deriveFont(txtusername.getFont().getSize()+2f));
-        txtusername.setForeground(new java.awt.Color(255, 255, 255));
-        txtusername.setBorder(null);
-        txtusername.addActionListener(new java.awt.event.ActionListener() {
+        txtUsername.setFont(txtUsername.getFont().deriveFont(txtUsername.getFont().getSize()+2f));
+        txtUsername.setForeground(new java.awt.Color(255, 255, 255));
+        txtUsername.setBorder(null);
+        txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtusernameActionPerformed(evt);
+                txtUsernameActionPerformed(evt);
             }
         });
-        jPanel2.add(txtusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 140, 280, 30));
+        jPanel2.add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 140, 280, 30));
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("_________________________________________");
@@ -110,21 +126,20 @@ public class Login extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/icons8_user_20px_1.png"))); // NOI18N
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 40, 39));
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(199, 226, 255));
         jLabel8.setText("Mật khẩu");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 192, 341, -1));
 
-        txtpassword.setFont(txtpassword.getFont().deriveFont(txtpassword.getFont().getSize()+2f));
-        txtpassword.setForeground(new java.awt.Color(255, 255, 255));
-        txtpassword.setBorder(null);
-        txtpassword.setCaretColor(new java.awt.Color(255, 255, 255));
-        txtpassword.addActionListener(new java.awt.event.ActionListener() {
+        txtPassword.setFont(txtPassword.getFont().deriveFont(txtPassword.getFont().getSize()+2f));
+        txtPassword.setForeground(new java.awt.Color(255, 255, 255));
+        txtPassword.setBorder(null);
+        txtPassword.setCaretColor(new java.awt.Color(255, 255, 255));
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtpasswordActionPerformed(evt);
+                txtPasswordActionPerformed(evt);
             }
         });
-        jPanel2.add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 280, 30));
+        jPanel2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 280, 30));
 
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("_________________________________________");
@@ -150,7 +165,6 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel2.add(show, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 40, 40));
 
-        cbSavePassword.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         cbSavePassword.setForeground(new java.awt.Color(199, 226, 255));
         cbSavePassword.setText("Nhớ mật khẩu");
         cbSavePassword.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -165,7 +179,6 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel2.add(cbSavePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 261, -1, -1));
 
-        lblForgotPassword.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         lblForgotPassword.setForeground(new java.awt.Color(199, 226, 255));
         lblForgotPassword.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblForgotPassword.setText("Quên mật khẩu ?");
@@ -199,7 +212,9 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void disableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_disableMouseClicked
-        txtpassword.setEchoChar((char) 0);
+
+        txtPassword.setEchoChar((char) 0);
+
         disable.setVisible(false);
         disable.setEnabled(false);
         show.setEnabled(true);
@@ -207,7 +222,9 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_disableMouseClicked
 
     private void showMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showMouseClicked
-        txtpassword.setEchoChar((char) 8226);
+
+        txtPassword.setEchoChar((char) 8226);
+
         disable.setVisible(true);
         disable.setEnabled(true);
         show.setEnabled(false);
@@ -227,22 +244,32 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowOpened
 
-    private void txtusernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtusernameActionPerformed
+    private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtusernameActionPerformed
+    }//GEN-LAST:event_txtUsernameActionPerformed
 
-    private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtpasswordActionPerformed
+    }//GEN-LAST:event_txtPasswordActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
+
+        controller.doLogin(getForm());
 
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void lblForgotPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblForgotPasswordMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_lblForgotPasswordMouseClicked
+
+    User getForm() {
+        User userRequest = new User();
+        userRequest.setUsername(InputFields.getTextFieldtoString(txtUsername));
+        userRequest.setPassword(InputFields.getTextFieldtoString(txtPassword));
+        return userRequest;
+    }
+
 
     private void cbSavePasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbSavePasswordMouseClicked
         // TODO add your handling code here:
@@ -254,10 +281,13 @@ public class Login extends javax.swing.JFrame {
 
     }//GEN-LAST:event_cbSavePasswordActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
+        UserRepository userRepository = new UserRepoImpl();
+        RoleRepository roleRepository = new RoleRepoImpl();
+        RoleServiceImpl roleService = new RoleServiceImpl(roleRepository);
+
+        UserServiceImpl userService = new UserServiceImpl(userRepository, roleService);
+        UserController controller = new UserController(userService);
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -285,7 +315,8 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new Login(controller).setVisible(true);
+
             }
         });
     }
@@ -307,7 +338,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblForgotPassword;
     private javax.swing.JLabel show;
-    private javax.swing.JPasswordField txtpassword;
-    private javax.swing.JTextField txtusername;
+    private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }

@@ -48,7 +48,7 @@ public class UserRepoImpl implements UserRepository {
     }
 
     @Override
-    public User remove(String id) {
+    public User remove(Integer id) {
         try {
             User entity = this.findById(id);
             em.getTransaction().begin();
@@ -62,8 +62,11 @@ public class UserRepoImpl implements UserRepository {
     }
 
     @Override
-    public User findById(String id) {
+    public User findById(Integer id) {
         User entity = em.find(User.class, id);
+        if (entity == null) {
+            return null;
+        }
         return entity;
     }
 
