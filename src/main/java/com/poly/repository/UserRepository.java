@@ -18,9 +18,9 @@ public interface UserRepository {
 
     public User update(User entity);
 
-    public User remove(String id);
+    public User remove(Integer id);
 
-    public User findById(String id);
+    public User findById(Integer id);
 
     public List<User> findAll();
 }

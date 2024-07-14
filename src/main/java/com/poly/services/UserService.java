@@ -17,11 +17,13 @@ public interface UserService {
 
     public User update(User entity);
 
-    public User delete(String id);
+    public User delete(Integer id);
 
-    public User findById(String id);
+    public User findById(Integer id);
 
-    public User findByName(String name);
+    public User findByUsername(String name);
 
     public List<User> findAll();
+    
+    public User doLogin(User userRequest);
 }

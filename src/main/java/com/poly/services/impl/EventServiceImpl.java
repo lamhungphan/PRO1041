@@ -32,7 +32,7 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public Event save(Event entity, String name) {
-        entity.setUser(userService.findByName(name));
+        entity.setUser(userService.findByUsername(name));
         return repo.create(entity);
     }
 
