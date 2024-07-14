@@ -6,11 +6,11 @@ package com.poly.services.impl;
 
 import com.poly.entity.Event;
 import com.poly.repository.EventRepository;
-import com.poly.repository.Impl.EventRepoImpl;
-import com.poly.repository.Impl.RoleRepoImpl;
-import com.poly.repository.Impl.UserRepoImpl;
+import com.poly.repository.impl.RoleRepoImpl;
 import com.poly.repository.RoleRepository;
 import com.poly.repository.UserRepository;
+import com.poly.repository.impl.EventRepoImpl;
+import com.poly.repository.impl.UserRepoImpl;
 import com.poly.services.EventService;
 import com.poly.services.RoleService;
 import com.poly.services.UserService;
@@ -55,7 +55,7 @@ public class EventServiceImpl implements EventService {
     public Event findByName(String name) {
         List<Event> list = repo.findAll();
         for (Event event : list) {
-            if(event.getTitle().equalsIgnoreCase(name)){
+            if (event.getTitle().equalsIgnoreCase(name)) {
                 return event;
             }
         }
@@ -67,6 +67,7 @@ public class EventServiceImpl implements EventService {
         return repo.findAll();
     }
 //Test
+
     public static void main(String[] args) {
         EventRepository eventRepo = new EventRepoImpl();
         UserRepository userRepository = new UserRepoImpl();
