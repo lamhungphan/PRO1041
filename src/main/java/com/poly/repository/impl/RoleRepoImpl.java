@@ -1,8 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.poly.repository.Impl;
+package com.poly.repository.impl;
 
 import com.poly.entity.Role;
 import com.poly.repository.RoleRepository;
@@ -11,10 +7,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import java.util.List;
 
-/**
- *
- * @author Computer
- */
 public class RoleRepoImpl implements RoleRepository {
 
     private EntityManager em = HibernateUtils.getEntityManage();
@@ -78,16 +70,4 @@ public class RoleRepoImpl implements RoleRepository {
         TypedQuery<Role> query = em.createQuery(jpql, Role.class);
         return query.getResultList();
     }
-//    public static void main(String[] args) {
-//        
-//        RoleRepository repo = new RoleRepoImpl();
-//        
-//        ArrayList<Role> list = new ArrayList<>();
-//        list = (ArrayList<Role>) repo.findAll();
-//        
-//        for (Role role : list) {
-//            System.out.println(role.getRoleName());
-//        }
-//    }
-
 }

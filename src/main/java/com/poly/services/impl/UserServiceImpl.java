@@ -5,14 +5,14 @@
 package com.poly.services.impl;
 
 import com.poly.entity.User;
-import com.poly.repository.Impl.RoleRepoImpl;
-import com.poly.repository.Impl.UserRepoImpl;
+import com.poly.repository.impl.RoleRepoImpl;
 import com.poly.repository.RoleRepository;
 import com.poly.repository.UserRepository;
+import com.poly.repository.impl.UserRepoImpl;
 import com.poly.services.RoleService;
 import com.poly.services.UserService;
-import java.sql.Date;
 import java.util.List;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -31,6 +31,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User save(User entity, String nameRole) {
         entity.setRole(roleService.findByNameRole(nameRole));
+        entity.setPassword(BCrypt.hashpw(entity.getPassword(), BCrypt.gensalt()));
         return repo.create(entity);
     }
 
@@ -40,12 +41,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User delete(String id) {
+    public User delete(Integer id) {
         return repo.remove(id);
     }
 
     @Override
-    public User findById(String id) {
+    public User findById(Integer id) {
         return repo.findById(id);
     }
 
@@ -55,16 +56,29 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByName(String name) {
+    public User findByUsername(String name) {
         List<User> list = this.findAll();
         for (User user : list) {
-            if (user.getFullname().equalsIgnoreCase(name)) {
+            if (user.getUsername().equalsIgnoreCase(name)) {
                 return user;
             }
         }
         return null;
     }
+
+    @Override
+    public User doLogin(User userRequest) {
+        User userResponse = findByUsername(userRequest.getUsername());
+        if (userResponse.getIsActived()== false || userResponse == null) {
+            return null;
+        }
+        if (BCrypt.checkpw(userRequest.getPassword(), userResponse.getPassword())) {
+            return userResponse;
+        }
+        return null;
+    }
 //Test
+
     public static void main(String[] args) {
         UserRepository userRepository = new UserRepoImpl();
         RoleRepository roleRepository = new RoleRepoImpl();
@@ -84,5 +98,18 @@ public class UserServiceImpl implements UserService {
 
         User savedUser = userService.save(newUser, "Chủ nhiệm");
         System.out.println("Saved User: " + savedUser);
+
+        // Thử đăng nhập với thông tin đăng nhập vừa tạo
+        User loginUser = new User();
+        loginUser.setId(savedUser.getId()); // Sử dụng ID của user vừa tạo
+        loginUser.setPassword("adminPass");
+
+        User loggedInUser = userService.doLogin(loginUser);
+        if (loggedInUser != null) {
+            System.out.println("Login Successful: " + loggedInUser);
+        } else {
+            System.out.println("Login Failed");
+        }
     }
+
 }

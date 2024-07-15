@@ -1,8 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.poly.repository.Impl;
+package com.poly.repository.impl;
 
 import com.poly.entity.User;
 import com.poly.repository.UserRepository;
@@ -11,10 +7,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import java.util.List;
 
-/**
- *
- * @author Computer
- */
 public class UserRepoImpl implements UserRepository {
 
     private EntityManager em = HibernateUtils.getEntityManage();
@@ -56,7 +48,7 @@ public class UserRepoImpl implements UserRepository {
     }
 
     @Override
-    public User remove(String id) {
+    public User remove(Integer id) {
         try {
             User entity = this.findById(id);
             em.getTransaction().begin();
@@ -70,8 +62,11 @@ public class UserRepoImpl implements UserRepository {
     }
 
     @Override
-    public User findById(String id) {
+    public User findById(Integer id) {
         User entity = em.find(User.class, id);
+        if (entity == null) {
+            return null;
+        }
         return entity;
     }
 

@@ -1,8 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.poly.repository.Impl;
+package com.poly.repository.impl;
 
 import com.poly.entity.Event;
 import com.poly.repository.EventRepository;
@@ -11,10 +7,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import java.util.List;
 
-/**
- *
- * @author Computer
- */
 public class EventRepoImpl implements EventRepository {
 
     private EntityManager em = HibernateUtils.getEntityManage();
@@ -76,5 +68,4 @@ public class EventRepoImpl implements EventRepository {
         TypedQuery<Event> query = em.createQuery(jpql, Event.class);
         return query.getResultList();
     }
-
 }
