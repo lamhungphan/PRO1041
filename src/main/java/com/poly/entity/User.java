@@ -15,6 +15,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.sql.Date;
+ import java.io.Serializable;
 
 @Entity
 @Table(name = "users")
