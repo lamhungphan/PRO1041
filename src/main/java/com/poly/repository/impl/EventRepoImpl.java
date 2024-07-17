@@ -64,7 +64,7 @@ public class EventRepoImpl implements EventRepository {
 
     @Override
     public List<Event> findAll() {
-        String jpql = "Select o from Event";
+        String jpql = "Select o from Event o";
         TypedQuery<Event> query = em.createQuery(jpql, Event.class);
         return query.getResultList();
     }
