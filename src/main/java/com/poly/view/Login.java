@@ -10,6 +10,8 @@ import com.poly.repository.impl.AccountRepoImpl;
 import com.poly.repository.impl.RoleRepoImpl;
 import com.poly.repository.impl.UserRepoImpl;
 import com.poly.services.impl.AccountServiceImpl;
+import com.poly.services.AuthorizationService;
+import com.poly.services.impl.AuthorizationServiceImpl;
 import com.poly.services.impl.RoleServiceImpl;
 import com.poly.services.impl.UserServiceImpl;
 import com.poly.utils.InputFields;
@@ -282,6 +284,7 @@ public class Login extends javax.swing.JFrame {
     private void cbSavePasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbSavePasswordMouseClicked
         // TODO add your handling code here:
         checkBoxSavePassword();
+        System.out.println("Bat nut");
     }//GEN-LAST:event_cbSavePasswordMouseClicked
 
     private void cbSavePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSavePasswordActionPerformed
@@ -293,9 +296,10 @@ public class Login extends javax.swing.JFrame {
         UserRepository userRepository = new UserRepoImpl();
         RoleRepository roleRepository = new RoleRepoImpl();
         RoleServiceImpl roleService = new RoleServiceImpl(roleRepository);
+        AuthorizationService authorizationService = new AuthorizationServiceImpl();
 
-        UserServiceImpl userService = new UserServiceImpl(userRepository, roleService);
-        UserController controller = new UserController(userService);
+        UserServiceImpl userService = new UserServiceImpl(userRepository, roleService,authorizationService);
+        UserController controller = new UserController(userService,authorizationService);
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -378,6 +382,7 @@ public class Login extends javax.swing.JFrame {
     private void checkBoxSavePassword(){
         if (!cbSavePassword.isSelected()){
             Account account = accountController.updateAccount(null, null);
+            System.out.println("KO bat nut");
         }
     }
 
