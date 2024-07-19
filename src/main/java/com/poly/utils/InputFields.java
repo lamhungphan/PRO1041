@@ -1,5 +1,9 @@
 package com.poly.utils;
 
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.*;
 
 public class InputFields {
@@ -68,5 +72,29 @@ public class InputFields {
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+
+    public static void setEnabledRecursively(Container container, boolean enabled) {
+        Component[] components = container.getComponents();
+        for (Component component : components) {
+            component.setEnabled(enabled);
+            if (component instanceof Container) {
+                setEnabledRecursively((Container) component, enabled);
+            }
+        }
+        if(enabled == false){
+            addClickListener(container);
+        }
+    }
+
+    private static void addClickListener(Container panel) {
+        panel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // Hiển thị thông báo khi nhấp vào panel
+                String message = "Không có quyền truy cập";
+                MsgBox.alert(null, message);
+            }
+        });
     }
 }
