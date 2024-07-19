@@ -13,12 +13,14 @@ import com.poly.services.impl.AccountServiceImpl;
 import com.poly.services.impl.RoleServiceImpl;
 import com.poly.services.impl.UserServiceImpl;
 import com.poly.utils.InputFields;
+
 import java.awt.HeadlessException;
 import javax.swing.*;
 
 public class Login extends javax.swing.JFrame {
 
-//    private UserController controller;
+    private UserController controller;
+
     private AccountController accountController;
 
     /**
@@ -28,7 +30,6 @@ public class Login extends javax.swing.JFrame {
      */
     public Login(UserController controller) throws HeadlessException {
         initComponents();
-
         txtUsername.setBackground(new java.awt.Color(0, 0, 0, 1));
         txtPassword.setBackground(new java.awt.Color(0, 0, 0, 1));
         setLocationRelativeTo(null);
@@ -37,8 +38,7 @@ public class Login extends javax.swing.JFrame {
         AccountServiceImpl accountService = new AccountServiceImpl(accountRepo);
         accountController = new AccountController(accountService);
         this.setLogin();
-//        this.controller = controller;
-
+        this.controller = controller;
     }
 
     /**
@@ -263,7 +263,7 @@ public class Login extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
         checkSaveLogin();
-//        controller.doLogin(getForm());
+        controller.doLogin(getForm());
 
     }//GEN-LAST:event_btnLoginActionPerformed
 
@@ -271,17 +271,17 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_lblForgotPasswordMouseClicked
 
-//    User getForm() {
-//        User userRequest = new User();
-//        userRequest.setUsername(InputFields.getTextFieldtoString(txtUsername));
-//        userRequest.setPassword(InputFields.getTextFieldtoString(txtPassword));
-//        return userRequest;
-//    }
+    User getForm() {
+        User userRequest = new User();
+        userRequest.setUsername(InputFields.getTextFieldtoString(txtUsername));
+        userRequest.setPassword(InputFields.getTextFieldtoString(txtPassword));
+        return userRequest;
+    }
 
 
     private void cbSavePasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbSavePasswordMouseClicked
         // TODO add your handling code here:
-
+        checkBoxSavePassword();
     }//GEN-LAST:event_cbSavePasswordMouseClicked
 
     private void cbSavePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSavePasswordActionPerformed
@@ -351,15 +351,14 @@ public class Login extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void checkSaveLogin() {
+        String username = txtUsername.getText();
+        String password = String.valueOf(txtPassword.getPassword());
         if (cbSavePassword.isSelected()) {
-            System.out.println("Da bat nut check");
-            Account account = accountController.saveAccount(txtUsername, txtPassword);
+            Account account = accountController.updateAccount(username, password);
             if (account != null) {
-                // Handle success, e.g., show a message to the user
                 JOptionPane.showMessageDialog(this, "Login information saved successfully.");
             } else {
                 System.out.println("Chua tick nut check");
-                // Handle failure, e.g., show an error message
                 JOptionPane.showMessageDialog(this, "Failed to save login information.");
             }
         }
@@ -367,8 +366,19 @@ public class Login extends javax.swing.JFrame {
 
     private void setLogin(){
         Account account = accountController.setAccount();
-        txtUsername.setText(account.getUsername());
-        txtPassword.setText(account.getPassword());
+        if (account.getUsername() == null){
+            this.checkSaveLogin();
+        } else {
+            cbSavePassword.setSelected(true);
+            txtUsername.setText(account.getUsername());
+            txtPassword.setText(account.getPassword());
+        }
+    }
+
+    private void checkBoxSavePassword(){
+        if (!cbSavePassword.isSelected()){
+            Account account = accountController.updateAccount(null, null);
+        }
     }
 
 }
