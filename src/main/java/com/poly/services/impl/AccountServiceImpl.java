@@ -11,8 +11,6 @@ public class AccountServiceImpl implements AccountService {
 
     private final AccountRepoImpl repo;
 
-    private final Account account;
-
     @Override
     public Account save(Account entity) {
         String hashedPassword = BCrypt.hashpw(entity.getPassword(), BCrypt.gensalt());

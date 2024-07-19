@@ -18,11 +18,11 @@ import javax.swing.*;
 public class AccountController {
 
     private final AccountServiceImpl service;
-    private final Account account;
 
     public Account saveAccount(JTextField txtUsername, JPasswordField txtPassword){
         String username = txtUsername.getText();
         String password = String.valueOf(txtPassword.getPassword());
+        Account account = new Account();
         account.setUsername(username);
         account.setPassword(password);
         return service.save(account);

@@ -2,20 +2,23 @@ package com.poly.view;
 
 import com.poly.controller.AccountController;
 import com.poly.controller.UserController;
+import com.poly.entity.Account;
 import com.poly.entity.User;
 import com.poly.repository.RoleRepository;
 import com.poly.repository.UserRepository;
+import com.poly.repository.impl.AccountRepoImpl;
 import com.poly.repository.impl.RoleRepoImpl;
 import com.poly.repository.impl.UserRepoImpl;
+import com.poly.services.impl.AccountServiceImpl;
 import com.poly.services.impl.RoleServiceImpl;
 import com.poly.services.impl.UserServiceImpl;
 import com.poly.utils.InputFields;
 import java.awt.HeadlessException;
-import javax.swing.JFrame;
+import javax.swing.*;
 
 public class Login extends javax.swing.JFrame {
 
-    private UserController controller;
+//    private UserController controller;
     private AccountController accountController;
 
     /**
@@ -30,7 +33,11 @@ public class Login extends javax.swing.JFrame {
         txtPassword.setBackground(new java.awt.Color(0, 0, 0, 1));
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.controller = controller;
+        AccountRepoImpl accountRepo = new AccountRepoImpl();
+        AccountServiceImpl accountService = new AccountServiceImpl(accountRepo);
+        accountController = new AccountController(accountService);
+
+//        this.controller = controller;
 
     }
 
@@ -255,8 +262,8 @@ public class Login extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-
-        controller.doLogin(getForm());
+        checkSaveLogin();
+//        controller.doLogin(getForm());
 
     }//GEN-LAST:event_btnLoginActionPerformed
 
@@ -264,12 +271,12 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_lblForgotPasswordMouseClicked
 
-    User getForm() {
-        User userRequest = new User();
-        userRequest.setUsername(InputFields.getTextFieldtoString(txtUsername));
-        userRequest.setPassword(InputFields.getTextFieldtoString(txtPassword));
-        return userRequest;
-    }
+//    User getForm() {
+//        User userRequest = new User();
+//        userRequest.setUsername(InputFields.getTextFieldtoString(txtUsername));
+//        userRequest.setPassword(InputFields.getTextFieldtoString(txtPassword));
+//        return userRequest;
+//    }
 
 
     private void cbSavePasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbSavePasswordMouseClicked
@@ -342,4 +349,20 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
+
+    private void checkSaveLogin() {
+        if (cbSavePassword.isSelected()) {
+            System.out.println("Da bat nut check");
+            Account account = accountController.saveAccount(txtUsername, txtPassword);
+            if (account != null) {
+                // Handle success, e.g., show a message to the user
+                JOptionPane.showMessageDialog(this, "Login information saved successfully.");
+            } else {
+                System.out.println("Chua tick nut check");
+                // Handle failure, e.g., show an error message
+                JOptionPane.showMessageDialog(this, "Failed to save login information.");
+            }
+        }
+    }
+
 }
