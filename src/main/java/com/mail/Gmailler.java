@@ -11,7 +11,6 @@ import jakarta.mail.internet.MimeMessage;
 public class Gmailler {
 
     public static void sendEmail(String to, String from, String username, String password, String host, String subject, String content) {
-        //cấu hình mailtrap
         Properties props = new Properties();
         System.out.println("test");
         props.put("mail.smtp.auth", "true");
