@@ -1,5 +1,6 @@
 package com.poly.view;
 
+import com.poly.controller.AccountController;
 import com.poly.controller.UserController;
 import com.poly.entity.User;
 import com.poly.repository.RoleRepository;
@@ -15,6 +16,7 @@ import javax.swing.JFrame;
 public class Login extends javax.swing.JFrame {
 
     private UserController controller;
+    private AccountController accountController;
 
     /**
      * Creates new form login
@@ -28,7 +30,6 @@ public class Login extends javax.swing.JFrame {
         txtPassword.setBackground(new java.awt.Color(0, 0, 0, 1));
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         this.controller = controller;
 
     }
