@@ -28,5 +28,9 @@ public class AccountController {
         return service.save(account);
     }
 
+    public Account setAccount(){
+        return service.getAccount("1");
+    }
+
 
 }

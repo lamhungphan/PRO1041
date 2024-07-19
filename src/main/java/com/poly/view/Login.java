@@ -36,7 +36,7 @@ public class Login extends javax.swing.JFrame {
         AccountRepoImpl accountRepo = new AccountRepoImpl();
         AccountServiceImpl accountService = new AccountServiceImpl(accountRepo);
         accountController = new AccountController(accountService);
-
+        this.setLogin();
 //        this.controller = controller;
 
     }
@@ -363,6 +363,12 @@ public class Login extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Failed to save login information.");
             }
         }
+    }
+
+    private void setLogin(){
+        Account account = accountController.setAccount();
+        txtUsername.setText(account.getUsername());
+        txtPassword.setText(account.getPassword());
     }
 
 }
