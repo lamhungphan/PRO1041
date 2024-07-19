@@ -17,4 +17,5 @@ public interface RoleService {
 
     Role findByNameRole(String NameRole);
 
+    
 }

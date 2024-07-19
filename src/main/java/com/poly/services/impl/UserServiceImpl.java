@@ -9,8 +9,11 @@ import com.poly.repository.impl.RoleRepoImpl;
 import com.poly.repository.RoleRepository;
 import com.poly.repository.UserRepository;
 import com.poly.repository.impl.UserRepoImpl;
+import com.poly.services.AuthorizationService;
 import com.poly.services.RoleService;
 import com.poly.services.UserService;
+import com.poly.utils.MsgBox;
+import com.poly.view.Main;
 import java.util.List;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -22,10 +25,12 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository repo;
     private final RoleService roleService;
+    private final AuthorizationService authorizationService;
 
-    public UserServiceImpl(UserRepository repo, RoleService roleService) {
+    public UserServiceImpl(UserRepository repo, RoleService roleService, AuthorizationService authorizationService) {
         this.repo = repo;
         this.roleService = roleService;
+        this.authorizationService = authorizationService;
     }
 
     @Override
@@ -69,7 +74,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User doLogin(User userRequest) {
         User userResponse = findByUsername(userRequest.getUsername());
-        if (userResponse.getIsActived()== false || userResponse == null) {
+        if (userResponse.getIsActived() == false || userResponse == null) {
             return null;
         }
         if (BCrypt.checkpw(userRequest.getPassword(), userResponse.getPassword())) {
@@ -77,39 +82,10 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
+
 //Test
-
     public static void main(String[] args) {
-        UserRepository userRepository = new UserRepoImpl();
-        RoleRepository roleRepository = new RoleRepoImpl();
-        RoleServiceImpl roleService = new RoleServiceImpl(roleRepository);
-
-        UserServiceImpl userService = new UserServiceImpl(userRepository, roleService);
-
-        // Tạo một user với role "admin"
-        User newUser = new User();
-        newUser.setUsername("adminUser");
-        newUser.setPassword("adminPass");
-        newUser.setFullname("Admin User");
-        newUser.setAddress("123 Admin Street");
-        newUser.setPhone("1234567890");
-        newUser.setEmail("admin@example.com");
-        newUser.setIsActived(true);
-
-        User savedUser = userService.save(newUser, "Chủ nhiệm");
-        System.out.println("Saved User: " + savedUser);
-
-        // Thử đăng nhập với thông tin đăng nhập vừa tạo
-        User loginUser = new User();
-        loginUser.setId(savedUser.getId()); // Sử dụng ID của user vừa tạo
-        loginUser.setPassword("adminPass");
-
-        User loggedInUser = userService.doLogin(loginUser);
-        if (loggedInUser != null) {
-            System.out.println("Login Successful: " + loggedInUser);
-        } else {
-            System.out.println("Login Failed");
-        }
+        
     }
 
 }
