@@ -10,7 +10,7 @@ com\poly\view\Main$12.class
 com\poly\view\Main$52.class
 com\poly\entity\Role.class
 com\poly\view\Main$58.class
-com\poly\Main.class
+com\poly\controller\AccountController.class
 com\poly\view\Main$60.class
 com\poly\view\Main$20.class
 com\poly\utils\MsgBox.class
@@ -25,7 +25,6 @@ com\poly\view\Main$65.class
 com\poly\view\Login$10.class
 com\poly\view\Main$37.class
 com\poly\view\Main$53.class
-com\poly\controller\SavePasswordLogin.class
 com\poly\view\Login$4.class
 com\poly\view\Main$25.class
 com\poly\view\Login.class
@@ -92,6 +91,7 @@ com\poly\repository\impl\UserRepoImpl.class
 com\poly\view\Login$9.class
 com\poly\view\Main$2.class
 com\poly\view\Main$46.class
+com\poly\controller\EventController.class
 com\poly\view\Main$16.class
 com\poly\view\Main$23.class
 com\poly\view\Login$8.class

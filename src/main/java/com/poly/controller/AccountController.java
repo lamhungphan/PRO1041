@@ -8,6 +8,6 @@ package com.poly.controller;
  *
  * @author Computer
  */
-public class AccoutantController {
+public class AccountController {
     
 }
