@@ -10,19 +10,6 @@ public class AccountRepoImpl implements AccountRepository {
     private EntityManager em = HibernateUtils.getEntityManage();
 
     @Override
-    public Account create(Account entity) {
-        try{
-            em.getTransaction().begin();
-            em.persist(entity);
-            em.getTransaction().commit();
-            return entity;
-        } catch (Exception e){
-            em.getTransaction().rollback();
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
     public Account getAccount(String id) {
         Account entity = em.find(Account.class, id);
         return entity;

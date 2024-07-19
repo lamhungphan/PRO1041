@@ -12,14 +12,9 @@ public class AccountServiceImpl implements AccountService {
     private final AccountRepoImpl repo;
 
     @Override
-    public Account save(Account entity) {
+    public Account update(Account entity) {
         String hashedPassword = BCrypt.hashpw(entity.getPassword(), BCrypt.gensalt());
         entity.setPassword(hashedPassword);
-        return repo.create(entity);
-    }
-
-    @Override
-    public Account update(Account entity) {
         return repo.update(entity);
     }
 

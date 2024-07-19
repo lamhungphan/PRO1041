@@ -7,9 +7,6 @@ package com.poly.controller;
 import com.poly.entity.Account;
 import com.poly.services.impl.AccountServiceImpl;
 import lombok.RequiredArgsConstructor;
-
-import javax.swing.*;
-
 /**
  *
  * @author Computer
@@ -19,13 +16,12 @@ public class AccountController {
 
     private final AccountServiceImpl service;
 
-    public Account saveAccount(JTextField txtUsername, JPasswordField txtPassword){
-        String username = txtUsername.getText();
-        String password = String.valueOf(txtPassword.getPassword());
+    public Account updateAccount(String username, String password){
         Account account = new Account();
+        account.setId(1);
         account.setUsername(username);
         account.setPassword(password);
-        return service.save(account);
+        return service.update(account);
     }
 
     public Account setAccount(){
