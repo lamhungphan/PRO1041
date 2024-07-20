@@ -3,7 +3,9 @@ package com.poly.view;
 import com.mail.Gmailler;
 
 import javax.swing.JFrame;
+import lombok.Getter;
 
+@Getter
 public class Main extends javax.swing.JFrame {
 
     /**
@@ -186,7 +188,6 @@ public class Main extends javax.swing.JFrame {
             }
         ));
         tblListNotification.setColumnSelectionAllowed(true);
-        tblListNotification.setRowHeight(20);
         tblListNotification.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblListNotification.setShowGrid(true);
         tblListNotification.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -889,7 +890,6 @@ public class Main extends javax.swing.JFrame {
                 "Id", "User", "Tiêu đề", "Nội dung", "Ngày bắt đầu", "Ngày kết thúc", "Địa chỉ"
             }
         ));
-        lblListEvent.setRowHeight(20);
         lblListEvent.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblListEventMouseClicked(evt);
@@ -1417,9 +1417,8 @@ public class Main extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnDeleteUser)
-                                    .addComponent(btnUpdateUser))
-                                .addGap(57, 57, 57)))
-                        .addGap(30, 30, 30))))
+                                    .addComponent(btnUpdateUser))))
+                        .addGap(87, 87, 87))))
         );
         pnlSettingMember2Layout.setVerticalGroup(
             pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
