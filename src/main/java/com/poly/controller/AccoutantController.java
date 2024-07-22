@@ -8,7 +8,6 @@ package com.poly.controller;
  *
  * @author Computer
  */
-public class EventController {
-    
+public class AccoutantController {
     
 }

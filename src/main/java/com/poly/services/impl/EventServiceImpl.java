@@ -68,20 +68,20 @@ public class EventServiceImpl implements EventService {
     }
 //Test
 
-    public static void main(String[] args) {
-        EventRepository eventRepo = new EventRepoImpl();
-        UserRepository userRepository = new UserRepoImpl();
-        RoleRepository roleRepository = new RoleRepoImpl();
-        RoleService roleService = new RoleServiceImpl(roleRepository);
-        UserService userService = new UserServiceImpl(userRepository, roleService);
-
-        EventServiceImpl eventService = new EventServiceImpl(eventRepo, userService);
-
-        // Tạo một user với role "admin"
-        Event event = new Event();
-        event.setTitle("Test");
-
-        Event savedUser = eventService.save(event, "Hà Vũ Lâm");
-        System.out.println("Saved User: " + savedUser);
-    }
+//    public static void main(String[] args) {
+//        EventRepository eventRepo = new EventRepoImpl();
+//        UserRepository userRepository = new UserRepoImpl();
+//        RoleRepository roleRepository = new RoleRepoImpl();
+//        RoleService roleService = new RoleServiceImpl(roleRepository);
+//        UserService userService = new UserServiceImpl(userRepository, roleService);
+//
+//        EventServiceImpl eventService = new EventServiceImpl(eventRepo, userService);
+//
+//        // Tạo một user với role "admin"
+//        Event event = new Event();
+//        event.setTitle("Test");
+//
+//        Event savedUser = eventService.save(event, "Hà Vũ Lâm");
+//        System.out.println("Saved User: " + savedUser);
+//    }
 }
