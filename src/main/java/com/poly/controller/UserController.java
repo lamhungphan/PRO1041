@@ -11,6 +11,7 @@ import com.poly.utils.InputFields;
 import com.poly.utils.MsgBox;
 import com.poly.view.Main;
 import java.awt.Panel;
+import java.util.List;
 import javax.swing.JPanel;
 
 /**
@@ -66,5 +67,4 @@ public class UserController {
             InputFields.setEnabledRecursively(memberPanel, false);
         }
     }
-
 }
