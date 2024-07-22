@@ -30,6 +30,10 @@ D:\M2M_Management\src\main\java\com\poly\entity\Account.java
 D:\M2M_Management\src\main\java\com\poly\repository\UserRepository.java
 D:\M2M_Management\src\main\java\com\poly\utils\XImage.java
 D:\M2M_Management\src\main\java\com\poly\utils\InputFields.java
+<<<<<<< HEAD
 D:\M2M_Management\src\main\java\com\poly\repository\impl\AccountRepoImpl.java
 D:\M2M_Management\src\main\java\com\poly\services\impl\AuthorizationServiceImpl.java
 D:\M2M_Management\src\main\java\com\poly\utils\HibernateUtils.java
+=======
+D:\M2M_Management\src\main\java\com\poly\utils\HibernateUtils.java
+>>>>>>> 03107e5d0bc99f2c22026674663e17b3290eaece
