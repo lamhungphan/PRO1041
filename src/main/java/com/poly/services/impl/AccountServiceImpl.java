@@ -1,7 +1,7 @@
 package com.poly.services.impl;
 
 import com.poly.entity.Account;
-import com.poly.repository.impl.AccountRepoImpl;
+import com.poly.repository.AccountRepository;
 import com.poly.services.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.mindrot.jbcrypt.BCrypt;
@@ -9,7 +9,7 @@ import org.mindrot.jbcrypt.BCrypt;
 @RequiredArgsConstructor
 public class AccountServiceImpl implements AccountService {
 
-    private final AccountRepoImpl repo;
+    private final AccountRepository repo;
 
     @Override
     public Account update(Account entity) {
