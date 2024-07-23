@@ -269,7 +269,6 @@ public class Main extends javax.swing.JFrame {
         btnAcceptNotificationAdmin.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnAcceptNotificationAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Add.png"))); // NOI18N
         btnAcceptNotificationAdmin.setText("Duyệt");
-
         btnAcceptNotificationAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAcceptNotificationAdminActionPerformed(evt);
@@ -1609,7 +1608,6 @@ public class Main extends javax.swing.JFrame {
 
     private void btnAcceptNotificationAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptNotificationAdminActionPerformed
         // TODO add your handling code here:
-        sendApprovalEmail();
     }//GEN-LAST:event_btnAcceptNotificationAdminActionPerformed
 
     private void btnRejectNotificationAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectNotificationAdminActionPerformed
@@ -1835,7 +1833,7 @@ public class Main extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public void main(String args[]) {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -2015,6 +2013,4 @@ public class Main extends javax.swing.JFrame {
         Gmailler.sendEmail(to, from, username, password, host, subject, content);
     }
     // End of variables declaration//GEN-END:variables
-
 }
-
