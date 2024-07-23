@@ -1,4 +1,4 @@
-package Mail;
+package mail;
 import java.util.Properties;
 import jakarta.mail.Message;
 import jakarta.mail.MessagingException;
