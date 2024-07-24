@@ -9,10 +9,10 @@ import com.poly.services.AuthorizationService;
 import com.poly.services.UserService;
 import com.poly.utils.InputFields;
 import com.poly.utils.MsgBox;
+import com.poly.view.Login;
 import com.poly.view.Main;
-import java.awt.Panel;
-import java.util.List;
-import javax.swing.JPanel;
+
+import javax.swing.*;
 
 /**
  *
@@ -22,11 +22,11 @@ public class UserController {
 
     private final UserService service;
     private final AuthorizationService authorizationService;
-    private Main mainFrame = new Main();
+    private final Main mainFrame = new Main();
 
     public UserController(UserService service, AuthorizationService authorizationService) {
         this.service = service;
-        this.authorizationService = authorizationService;;
+        this.authorizationService = authorizationService;
     }
 
     public void doLogin(User userRequest) {
@@ -38,6 +38,10 @@ public class UserController {
             showWorkspaceByRolename(loginedUser);
         }
     }
+//    public void dologout() {
+//        mainFrame.dispose();
+//        new Login(UserController.this).setVisible(true);
+//    }
 
     public void showWorkspaceByRolename(User userLogined) {
         JPanel eventPanel = mainFrame.getPnlEvent();
