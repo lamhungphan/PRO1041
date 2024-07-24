@@ -54,6 +54,8 @@ create table account
     password varchar(55) null
 );
 
+insert into account values (1, "", "");
+
 insert into roles (roleName) VALUES 
 (N'Chủ nhiệm'),
 (N'Phó chủ nhiệm'),
