@@ -50,11 +50,12 @@ drop table if exists account;
 create table account
 (
 	id int primary key,
+    active bit not null,
     username varchar(55) null,
     password varchar(55) null
 );
 
-insert into account values (1, "", "");
+insert into account values (1,1, "", "");
 
 insert into roles (roleName) VALUES 
 (N'Chủ nhiệm'),
