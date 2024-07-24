@@ -17,7 +17,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Account getAccount(String id) {
+    public Account getAccount(Integer id) {
         return repo.getAccount(id);
     }
 }

@@ -6,5 +6,5 @@ public interface AccountService {
 
     Account update(Account entity);
 
-    Account getAccount(String id);
+    Account getAccount(Integer id);
 }
