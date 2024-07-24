@@ -35,6 +35,8 @@ public class MainUI extends javax.swing.JFrame {
         lblTabSystem = new javax.swing.JLabel();
         lblTabExit = new javax.swing.JLabel();
         container = new javax.swing.JPanel();
+        Trangchu = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         QLThanhVien = new javax.swing.JPanel();
         lblMember = new javax.swing.JLabel();
         tabMember = new javax.swing.JTabbedPane();
@@ -246,6 +248,31 @@ public class MainUI extends javax.swing.JFrame {
 
         container.setLayout(new java.awt.CardLayout());
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Trang chủ");
+
+        javax.swing.GroupLayout TrangchuLayout = new javax.swing.GroupLayout(Trangchu);
+        Trangchu.setLayout(TrangchuLayout);
+        TrangchuLayout.setHorizontalGroup(
+            TrangchuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TrangchuLayout.createSequentialGroup()
+                .addGap(278, 278, 278)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(337, Short.MAX_VALUE))
+        );
+        TrangchuLayout.setVerticalGroup(
+            TrangchuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TrangchuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addContainerGap(686, Short.MAX_VALUE))
+        );
+
+        container.add(Trangchu, "card6");
+
+        QLThanhVien.setBackground(new java.awt.Color(204, 204, 204));
+
         lblMember.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         lblMember.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMember.setText("Thành Viên");
@@ -285,6 +312,7 @@ public class MainUI extends javax.swing.JFrame {
                 .addGap(0, 10, Short.MAX_VALUE))
         );
 
+        tblListMember.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblListMember.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -585,22 +613,25 @@ public class MainUI extends javax.swing.JFrame {
         QLThanhVien.setLayout(QLThanhVienLayout);
         QLThanhVienLayout.setHorizontalGroup(
             QLThanhVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, QLThanhVienLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tabMember)
-                .addContainerGap())
             .addGroup(QLThanhVienLayout.createSequentialGroup()
-                .addGap(251, 251, 251)
-                .addComponent(lblMember, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(QLThanhVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, QLThanhVienLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(tabMember))
+                    .addGroup(QLThanhVienLayout.createSequentialGroup()
+                        .addGap(232, 232, 232)
+                        .addComponent(lblMember, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         QLThanhVienLayout.setVerticalGroup(
             QLThanhVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(QLThanhVienLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(lblMember, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(51, 51, 51)
                 .addComponent(tabMember, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         container.add(QLThanhVien, "card2");
@@ -880,8 +911,8 @@ public class MainUI extends javax.swing.JFrame {
             pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSettingMember1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblThanhVien1)
+                .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblThanhVien1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblEmail1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1688,6 +1719,7 @@ public class MainUI extends javax.swing.JFrame {
 
     private void lblTabMemberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTabMemberMouseClicked
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_lblTabMemberMouseClicked
 
     private void lblTabEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTabEventMouseClicked
@@ -1779,6 +1811,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JPanel QLSuKien;
     private javax.swing.JPanel QLThanhVien;
     private javax.swing.JPanel QLThongBao;
+    private javax.swing.JPanel Trangchu;
     private javax.swing.JButton btnAcceptNotificationAdmin;
     private javax.swing.JButton btnAddEvent;
     private javax.swing.JButton btnAddMember;
@@ -1814,6 +1847,7 @@ public class MainUI extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser dcBirthdayMember;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser3;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JScrollPane jScrollPane1;

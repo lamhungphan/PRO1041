@@ -2023,5 +2023,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField txtUserNotificationAdmin;
     private javax.swing.JTextField txtUsernameUser;
     // End of variables declaration//GEN-END:variables
+}
 
 
