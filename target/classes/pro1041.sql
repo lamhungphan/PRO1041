@@ -49,7 +49,7 @@ create table events
 drop table if exists account;
 create table account
 (
-	id int auto_increment primary key,
+	id int primary key,
     username varchar(55) null,
     password varchar(55) null
 );
