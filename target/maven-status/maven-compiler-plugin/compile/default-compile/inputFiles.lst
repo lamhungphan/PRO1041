@@ -1,15 +1,19 @@
 D:\M2M_Management\src\main\java\com\poly\entity\Event.java
+D:\M2M_Management\src\main\java\com\poly\services\AccountService.java
 D:\M2M_Management\src\main\java\com\poly\services\impl\RoleServiceImpl.java
 D:\M2M_Management\src\main\java\com\poly\services\EventService.java
 D:\M2M_Management\src\main\java\com\poly\controller\EventController.java
 D:\M2M_Management\src\main\java\com\poly\services\impl\EventServiceImpl.java
+D:\M2M_Management\src\main\java\com\poly\repository\AccountRepository.java
 D:\M2M_Management\src\main\java\com\poly\view\Main.java
 D:\M2M_Management\src\main\java\com\poly\repository\impl\UserRepoImpl.java
 D:\M2M_Management\src\main\java\com\poly\repository\RoleRepository.java
 D:\M2M_Management\src\main\java\com\poly\entity\Role.java
 D:\M2M_Management\src\main\java\com\poly\services\UserService.java
+D:\M2M_Management\src\main\java\com\poly\constant\RoleConstant.java
 D:\M2M_Management\src\main\java\com\poly\view\Login.java
 D:\M2M_Management\src\main\java\com\poly\controller\AccountController.java
+D:\M2M_Management\src\main\java\com\poly\services\AuthorizationService.java
 D:\M2M_Management\src\main\java\com\poly\services\RoleService.java
 D:\M2M_Management\src\main\java\com\poly\entity\User.java
 D:\M2M_Management\src\main\java\com\poly\repository\impl\RoleRepoImpl.java
@@ -17,6 +21,8 @@ D:\M2M_Management\src\main\java\com\poly\repository\impl\EventRepoImpl.java
 D:\M2M_Management\src\main\java\com\poly\controller\UserController.java
 D:\M2M_Management\src\main\java\com\poly\entity\Notification.java
 D:\M2M_Management\src\main\java\com\poly\services\impl\UserServiceImpl.java
+D:\M2M_Management\src\main\java\com\poly\services\impl\AccountServiceImpl.java
+D:\M2M_Management\src\main\java\com\mail\Gmailler.java
 D:\M2M_Management\src\main\java\com\poly\utils\MsgBox.java
 D:\M2M_Management\src\main\java\com\poly\repository\EventRepository.java
 D:\M2M_Management\src\main\java\com\poly\utils\XDate.java
@@ -24,4 +30,6 @@ D:\M2M_Management\src\main\java\com\poly\entity\Account.java
 D:\M2M_Management\src\main\java\com\poly\repository\UserRepository.java
 D:\M2M_Management\src\main\java\com\poly\utils\XImage.java
 D:\M2M_Management\src\main\java\com\poly\utils\InputFields.java
+D:\M2M_Management\src\main\java\com\poly\repository\impl\AccountRepoImpl.java
+D:\M2M_Management\src\main\java\com\poly\services\impl\AuthorizationServiceImpl.java
 D:\M2M_Management\src\main\java\com\poly\utils\HibernateUtils.java
