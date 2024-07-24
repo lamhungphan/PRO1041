@@ -9,13 +9,13 @@ public interface UserService {
 
     User update(User entity);
 
-    public User delete(Integer id);
+    User delete(Integer id);
 
-    public User findById(Integer id);
+    User findById(Integer id);
 
-    public User findByUsername(String name);
+    User findByUsername(String name);
 
-    public List<User> findAll();
+    List<User> findAll();
 
-    public User doLogin(User userRequest);
+    User doLogin(User userRequest);
 }
