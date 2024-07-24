@@ -12,6 +12,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Account update(Account entity) {
+        System.out.println("SERVICES"+ entity.getPassword());
         return repo.update(entity);
     }
 

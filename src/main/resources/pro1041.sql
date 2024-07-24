@@ -49,10 +49,12 @@ create table events
 drop table if exists account;
 create table account
 (
-	id int auto_increment primary key,
+	id int primary key,
     username varchar(55) null,
     password varchar(55) null
 );
+
+insert into account values (1, "", "");
 
 insert into roles (roleName) VALUES 
 (N'Chủ nhiệm'),

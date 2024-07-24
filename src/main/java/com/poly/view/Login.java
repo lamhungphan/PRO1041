@@ -280,9 +280,10 @@ public class Login extends javax.swing.JFrame {
         return userRequest;
     }
 
+
     private void cbSavePasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbSavePasswordMouseClicked
         // TODO add your handling code here:
-        checkBoxSavePassword();
+//        checkBoxSavePassword();
         System.out.println("Bat nut");
     }//GEN-LAST:event_cbSavePasswordMouseClicked
 
@@ -384,4 +385,5 @@ public class Login extends javax.swing.JFrame {
             System.out.println("KO bat nut");
         }
     }
+
 }
