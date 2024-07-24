@@ -165,6 +165,7 @@ public class Main extends javax.swing.JFrame {
         tabMenu.setBackground(new java.awt.Color(0, 51, 153));
         tabMenu.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         tabMenu.setToolTipText("");
+        tabMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tabMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         tabMenu.setPreferredSize(new java.awt.Dimension(980, 600));
         tabMenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -837,6 +838,8 @@ public class Main extends javax.swing.JFrame {
 
         tabMenu.addTab("Thành Viên", pnlUser);
 
+        pnlEvent.setToolTipText("");
+        pnlEvent.setAutoscrolls(true);
         pnlEvent.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         lblEvent.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
@@ -1484,7 +1487,7 @@ public class Main extends javax.swing.JFrame {
 
         tabMenu.addTab("Admin", pnlAdmin);
 
-        mnuTop.setBackground(new java.awt.Color(0, 51, 153));
+        mnuTop.setBorderPainted(false);
 
         mnuSystem.setText("Hệ Thống");
 
@@ -1551,7 +1554,7 @@ public class Main extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tabMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 736, Short.MAX_VALUE)
+                .addComponent(tabMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
