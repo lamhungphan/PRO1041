@@ -17,6 +17,7 @@ public class AccountRepoImpl implements AccountRepository {
 
     @Override
     public Account update(Account entity) {
+        System.out.println("REPO: "+entity.getPassword());
         try{
             em.getTransaction().begin();
             em.merge(entity);
