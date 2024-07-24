@@ -1,4 +1,4 @@
-package com.mail;
+package mail;
 import java.util.Properties;
 import jakarta.mail.Message;
 import jakarta.mail.MessagingException;
@@ -7,19 +7,16 @@ import jakarta.mail.Session;
 import jakarta.mail.Transport;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
-
-public class Gmailler {
-
+public class MailSender {
     public static void sendEmail(String to, String from, String username, String password, String host, String subject, String content) {
-        //cấu hình mailtrap
+        // Cấu hình Mailtrap
         Properties props = new Properties();
-        System.out.println("test");
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", host);
-        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.port", "2525"); // Port mặc định của Mailtrap
 
-        //tạo phiên object
+        // Tạo phiên object
         Session session = Session.getInstance(props, new jakarta.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(username, password);
@@ -27,21 +24,23 @@ public class Gmailler {
         });
 
         try {
-            //create a MimeMessage object
+            // Tạo đối tượng MimeMessage
             Message message = new MimeMessage(session);
-            //set From email field
+            // Đặt trường From
             message.setFrom(new InternetAddress(from));
-            //set To email field
+            // Đặt trường To
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
-            //set email subject field
+            // Đặt tiêu đề email
             message.setSubject(subject);
-            //set content của mail
+            // Đặt nội dung email
             message.setText(content);
-            //send the email message
+            // Gửi email
             Transport.send(message);
-            System.out.println("Email Message Sent Successfully");
+            System.out.println("Email Message Sent Successfully to " + to);
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
     }
 }
+
+
