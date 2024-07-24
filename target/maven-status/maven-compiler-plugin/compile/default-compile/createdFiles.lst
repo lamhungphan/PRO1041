@@ -15,7 +15,6 @@ com\poly\controller\AccoutantController.class
 com\poly\view\Main$60.class
 com\poly\view\Main$20.class
 com\poly\utils\MsgBox.class
-com\poly\constant\demo.class
 com\poly\view\Main$66.class
 com\poly\view\Main$26.class
 com\poly\services\impl\AuthorizationServiceImpl.class
