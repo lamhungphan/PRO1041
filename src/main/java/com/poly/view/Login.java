@@ -39,7 +39,7 @@ public class Login extends javax.swing.JFrame {
         AccountRepoImpl accountRepo = new AccountRepoImpl();
         AccountServiceImpl accountService = new AccountServiceImpl(accountRepo);
         accountController = new AccountController(accountService);
-//        this.setLogin();
+        this.setLogin();
         this.controller = controller;
     }
 
@@ -280,10 +280,9 @@ public class Login extends javax.swing.JFrame {
         return userRequest;
     }
 
-
     private void cbSavePasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbSavePasswordMouseClicked
         // TODO add your handling code here:
-//        checkBoxSavePassword();
+        checkBoxSavePassword();
         System.out.println("Bat nut");
     }//GEN-LAST:event_cbSavePasswordMouseClicked
 
@@ -368,22 +367,21 @@ public class Login extends javax.swing.JFrame {
         }
     }
 
-//    private void setLogin(){
-//        Account account = accountController.setAccount();
-//        if (account.getUsername() == null){
-//            this.checkSaveLogin();
-//        } else {
-//            cbSavePassword.setSelected(true);
-//            txtUsername.setText(account.getUsername());
-//            txtPassword.setText(account.getPassword());
-//        }
-//    }
+    private void setLogin(){
+        Account account = accountController.setAccount();
+        if (account.getUsername() == null){
+            this.checkSaveLogin();
+        } else {
+            cbSavePassword.setSelected(true);
+            txtUsername.setText(account.getUsername());
+            txtPassword.setText(account.getPassword());
+        }
+    }
 
-//    private void checkBoxSavePassword(){
-//        if (!cbSavePassword.isSelected()){
-//            Account account = accountController.updateAccount(null, null);
-//            System.out.println("KO bat nut");
-//        }
-//    }
-
+    private void checkBoxSavePassword(){
+        if (!cbSavePassword.isSelected()){
+            Account account = accountController.updateAccount(null, null);
+            System.out.println("KO bat nut");
+        }
+    }
 }
