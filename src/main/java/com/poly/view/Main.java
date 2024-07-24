@@ -1,14 +1,33 @@
 package com.poly.view;
-
 import javax.swing.JFrame;
-import lombok.Getter;
 
+
+import com.poly.controller.MailController;
+import com.poly.controller.UserController;
+import com.poly.repository.RoleRepository;
+import com.poly.repository.UserRepository;
+import com.poly.repository.impl.RoleRepoImpl;
+import com.poly.repository.impl.UserRepoImpl;
+import com.poly.services.AuthorizationService;
+import com.poly.services.impl.AuthorizationServiceImpl;
+import com.poly.services.impl.RoleServiceImpl;
+import com.poly.services.impl.UserServiceImpl;
+import lombok.Getter;
 @Getter
+
 public class Main extends javax.swing.JFrame {
 
     /**
      * Creates new form Main
      */
+    UserRepository userRepository = new UserRepoImpl();
+    RoleRepository roleRepository = new RoleRepoImpl();
+    RoleServiceImpl roleService = new RoleServiceImpl(roleRepository);
+    AuthorizationService authorizationService = new AuthorizationServiceImpl();
+
+    UserServiceImpl userService = new UserServiceImpl(userRepository, roleService,authorizationService);
+//    UserController userController = new UserController(userService, authorizationService);
+    MailController mailController = new MailController(userService);
     public Main() {
         initComponents();
         setLocationRelativeTo(null);
@@ -163,6 +182,7 @@ public class Main extends javax.swing.JFrame {
         tabMenu.setBackground(new java.awt.Color(0, 51, 153));
         tabMenu.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         tabMenu.setToolTipText("");
+        tabMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tabMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         tabMenu.setPreferredSize(new java.awt.Dimension(980, 600));
         tabMenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -835,6 +855,8 @@ public class Main extends javax.swing.JFrame {
 
         tabMenu.addTab("Thành Viên", pnlUser);
 
+        pnlEvent.setToolTipText("");
+        pnlEvent.setAutoscrolls(true);
         pnlEvent.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         lblEvent.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
@@ -1396,7 +1418,7 @@ public class Main extends javax.swing.JFrame {
                             .addGroup(pnlSettingMember2Layout.createSequentialGroup()
                                 .addGap(23, 23, 23)
                                 .addComponent(txtPasswordUser, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlSettingMember2Layout.createSequentialGroup()
                                 .addComponent(btnFirstUser)
@@ -1482,7 +1504,7 @@ public class Main extends javax.swing.JFrame {
 
         tabMenu.addTab("Admin", pnlAdmin);
 
-        mnuTop.setBackground(new java.awt.Color(0, 51, 153));
+        mnuTop.setBorderPainted(false);
 
         mnuSystem.setText("Hệ Thống");
 
@@ -1549,7 +1571,7 @@ public class Main extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tabMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 736, Short.MAX_VALUE)
+                .addComponent(tabMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1562,6 +1584,7 @@ public class Main extends javax.swing.JFrame {
 
     private void mniLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLogoutActionPerformed
         // TODO add your handling code here:
+//        userController.dologout();
     }//GEN-LAST:event_mniLogoutActionPerformed
 
     private void mniEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniEndActionPerformed
@@ -1606,6 +1629,8 @@ public class Main extends javax.swing.JFrame {
 
     private void btnAcceptNotificationAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptNotificationAdminActionPerformed
         // TODO add your handling code here:
+
+//        sendMail();
     }//GEN-LAST:event_btnAcceptNotificationAdminActionPerformed
 
     private void btnRejectNotificationAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectNotificationAdminActionPerformed
@@ -1828,6 +1853,7 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnForwardUserActionPerformed
 
+
     /**
      * @param args the command line arguments
      */
@@ -1835,7 +1861,7 @@ public class Main extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -1861,6 +1887,7 @@ public class Main extends javax.swing.JFrame {
             public void run() {
                 new Main().setVisible(true);
             }
+
         });
     }
 
@@ -1997,4 +2024,5 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField txtUserNotificationAdmin;
     private javax.swing.JTextField txtUsernameUser;
     // End of variables declaration//GEN-END:variables
-}
+
+
