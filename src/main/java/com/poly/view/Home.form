@@ -39,15 +39,15 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="container" pref="813" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <Component id="pnlCards" pref="796" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jPanel10" pref="731" max="32767" attributes="0"/>
-          <Component id="container" alignment="0" max="32767" attributes="0"/>
+          <Component id="pnlCards" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -68,8 +68,8 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="18" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="lblTabWelcome" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                       <Component id="lblTabExit" min="-2" pref="134" max="-2" attributes="0"/>
@@ -78,7 +78,7 @@
                       <Component id="lblTabNotification" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
                       <Component id="lblTabSystem" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -87,9 +87,9 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                   <Component id="lblTabWelcome" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
                   <Component id="lblTabMember" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="lblTabEvent" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="lblTabNotification" min="-2" max="-2" attributes="0"/>
@@ -196,7 +196,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/com/m2mgroup/image/Exit.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value=" &#x110;&#x103;ng xu&#x1ea5;t"/>
+            <Property name="text" type="java.lang.String" value="  &#x110;&#x103;ng xu&#x1ea5;t"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblTabExitMouseClicked"/>
@@ -204,11 +204,11 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="container">
+    <Container class="javax.swing.JPanel" name="pnlCards">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="Trangchu">
+        <Container class="javax.swing.JPanel" name="pnlTrangChu">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="card6"/>
@@ -221,7 +221,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="278" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" pref="198" max="-2" attributes="0"/>
-                      <EmptySpace pref="337" max="32767" attributes="0"/>
+                      <EmptySpace pref="320" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -247,7 +247,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="QLThanhVien">
+        <Container class="javax.swing.JPanel" name="pnlThanhVien">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -358,7 +358,7 @@
                                   <Component id="txtFindMember" min="-2" pref="551" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="btnSearchMember" min="-2" pref="58" max="-2" attributes="0"/>
-                                  <EmptySpace pref="84" max="32767" attributes="0"/>
+                                  <EmptySpace pref="67" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -499,7 +499,7 @@
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="54" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="37" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -820,7 +820,7 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="QLSuKien">
+        <Container class="javax.swing.JPanel" name="pnlSuKien">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -934,7 +934,7 @@
                                   <Component id="txtFindEvent" min="-2" pref="551" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="btnSearchEvent" min="-2" pref="58" max="-2" attributes="0"/>
-                                  <EmptySpace pref="108" max="32767" attributes="0"/>
+                                  <EmptySpace pref="91" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1079,7 +1079,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="72" max="32767" attributes="0"/>
+                              <EmptySpace pref="55" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1380,7 +1380,7 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="QLThongBao">
+        <Container class="javax.swing.JPanel" name="pnlThongBao">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -1442,7 +1442,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane7" pref="772" max="32767" attributes="0"/>
+                              <Component id="jScrollPane7" pref="755" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1546,7 +1546,7 @@
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace pref="127" max="32767" attributes="0"/>
+                                      <EmptySpace pref="110" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -1712,7 +1712,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="QLHeThong">
+        <Container class="javax.swing.JPanel" name="pnlHeThong">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -1825,7 +1825,7 @@
                                   <Component id="txtFindUser" min="-2" pref="551" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="btnSearchUser" min="-2" pref="58" max="-2" attributes="0"/>
-                                  <EmptySpace pref="108" max="32767" attributes="0"/>
+                                  <EmptySpace pref="91" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1929,7 +1929,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="373" max="32767" attributes="0"/>
+                              <EmptySpace pref="356" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>

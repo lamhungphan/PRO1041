@@ -4,17 +4,24 @@
  */
 package com.poly.view;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 /**
  *
  * @author ACER
  */
-public class MainUI extends javax.swing.JFrame {
+public class Home extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainUI
-     */
-    public MainUI() {
+    CardLayout cardLayout;
+
+    private JPanel pnlCards;
+
+    public Home() {
         initComponents();
+        cardLayout = (CardLayout) (pnlCards.getLayout());
     }
 
     /**
@@ -34,10 +41,10 @@ public class MainUI extends javax.swing.JFrame {
         lblTabWelcome = new javax.swing.JLabel();
         lblTabSystem = new javax.swing.JLabel();
         lblTabExit = new javax.swing.JLabel();
-        container = new javax.swing.JPanel();
-        Trangchu = new javax.swing.JPanel();
+        pnlCards = new javax.swing.JPanel();
+        pnlTrangChu = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        QLThanhVien = new javax.swing.JPanel();
+        pnlThanhVien = new javax.swing.JPanel();
         lblMember = new javax.swing.JLabel();
         tabMember = new javax.swing.JTabbedPane();
         pnlListMember = new javax.swing.JPanel();
@@ -70,7 +77,7 @@ public class MainUI extends javax.swing.JFrame {
         btnPreviousMember = new javax.swing.JButton();
         btnForwardMember = new javax.swing.JButton();
         dcBirthdayMember = new com.toedter.calendar.JDateChooser();
-        QLSuKien = new javax.swing.JPanel();
+        pnlSuKien = new javax.swing.JPanel();
         lblEvent = new javax.swing.JLabel();
         jTabbedPane3 = new javax.swing.JTabbedPane();
         pnlListMember1 = new javax.swing.JPanel();
@@ -103,7 +110,7 @@ public class MainUI extends javax.swing.JFrame {
         lblSoDT2 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jDateChooser3 = new com.toedter.calendar.JDateChooser();
-        QLThongBao = new javax.swing.JPanel();
+        pnlThongBao = new javax.swing.JPanel();
         tabNotification = new javax.swing.JTabbedPane();
         pnlListMember3 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
@@ -122,7 +129,7 @@ public class MainUI extends javax.swing.JFrame {
         btnAcceptNotificationAdmin = new javax.swing.JButton();
         txtContentNotificationAdmin = new javax.swing.JTextField();
         lblNotification = new javax.swing.JLabel();
-        QLHeThong = new javax.swing.JPanel();
+        pnlHeThong = new javax.swing.JPanel();
         lblMember2 = new javax.swing.JLabel();
         tabMember1 = new javax.swing.JTabbedPane();
         pnlListMember2 = new javax.swing.JPanel();
@@ -206,7 +213,7 @@ public class MainUI extends javax.swing.JFrame {
         lblTabExit.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblTabExit.setForeground(new java.awt.Color(255, 255, 255));
         lblTabExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Exit.png"))); // NOI18N
-        lblTabExit.setText(" Đăng xuất");
+        lblTabExit.setText("  Đăng xuất");
         lblTabExit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblTabExitMouseClicked(evt);
@@ -217,8 +224,8 @@ public class MainUI extends javax.swing.JFrame {
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTabWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTabExit, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -226,16 +233,16 @@ public class MainUI extends javax.swing.JFrame {
                     .addComponent(lblTabEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTabNotification, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTabSystem, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(lblTabWelcome)
-                .addGap(106, 106, 106)
+                .addGap(108, 108, 108)
                 .addComponent(lblTabMember)
-                .addGap(31, 31, 31)
+                .addGap(29, 29, 29)
                 .addComponent(lblTabEvent)
                 .addGap(30, 30, 30)
                 .addComponent(lblTabNotification)
@@ -246,32 +253,32 @@ public class MainUI extends javax.swing.JFrame {
                 .addGap(134, 134, 134))
         );
 
-        container.setLayout(new java.awt.CardLayout());
+        pnlCards.setLayout(new java.awt.CardLayout());
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Trang chủ");
 
-        javax.swing.GroupLayout TrangchuLayout = new javax.swing.GroupLayout(Trangchu);
-        Trangchu.setLayout(TrangchuLayout);
-        TrangchuLayout.setHorizontalGroup(
-            TrangchuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TrangchuLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlTrangChuLayout = new javax.swing.GroupLayout(pnlTrangChu);
+        pnlTrangChu.setLayout(pnlTrangChuLayout);
+        pnlTrangChuLayout.setHorizontalGroup(
+            pnlTrangChuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTrangChuLayout.createSequentialGroup()
                 .addGap(278, 278, 278)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(337, Short.MAX_VALUE))
+                .addContainerGap(320, Short.MAX_VALUE))
         );
-        TrangchuLayout.setVerticalGroup(
-            TrangchuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TrangchuLayout.createSequentialGroup()
+        pnlTrangChuLayout.setVerticalGroup(
+            pnlTrangChuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTrangChuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addContainerGap(686, Short.MAX_VALUE))
         );
 
-        container.add(Trangchu, "card6");
+        pnlCards.add(pnlTrangChu, "card6");
 
-        QLThanhVien.setBackground(new java.awt.Color(204, 204, 204));
+        pnlThanhVien.setBackground(new java.awt.Color(204, 204, 204));
 
         lblMember.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         lblMember.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -301,7 +308,7 @@ public class MainUI extends javax.swing.JFrame {
                 .addComponent(txtFindMember, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnSearchMember, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         pnlTimChiTieuLayout.setVerticalGroup(
             pnlTimChiTieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -547,7 +554,7 @@ public class MainUI extends javax.swing.JFrame {
                                         .addComponent(btnDeleteMember, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(btnUpdateMember, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 54, Short.MAX_VALUE))
+                        .addGap(0, 37, Short.MAX_VALUE))
                     .addGroup(pnlSettingMemberLayout.createSequentialGroup()
                         .addGroup(pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -609,24 +616,24 @@ public class MainUI extends javax.swing.JFrame {
 
         tabMember.addTab("Thành Viên", pnlSettingMember);
 
-        javax.swing.GroupLayout QLThanhVienLayout = new javax.swing.GroupLayout(QLThanhVien);
-        QLThanhVien.setLayout(QLThanhVienLayout);
-        QLThanhVienLayout.setHorizontalGroup(
-            QLThanhVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(QLThanhVienLayout.createSequentialGroup()
-                .addGroup(QLThanhVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, QLThanhVienLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlThanhVienLayout = new javax.swing.GroupLayout(pnlThanhVien);
+        pnlThanhVien.setLayout(pnlThanhVienLayout);
+        pnlThanhVienLayout.setHorizontalGroup(
+            pnlThanhVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlThanhVienLayout.createSequentialGroup()
+                .addGroup(pnlThanhVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlThanhVienLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(tabMember))
-                    .addGroup(QLThanhVienLayout.createSequentialGroup()
+                    .addGroup(pnlThanhVienLayout.createSequentialGroup()
                         .addGap(232, 232, 232)
                         .addComponent(lblMember, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        QLThanhVienLayout.setVerticalGroup(
-            QLThanhVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(QLThanhVienLayout.createSequentialGroup()
+        pnlThanhVienLayout.setVerticalGroup(
+            pnlThanhVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlThanhVienLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblMember, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
@@ -634,10 +641,10 @@ public class MainUI extends javax.swing.JFrame {
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
-        container.add(QLThanhVien, "card2");
+        pnlCards.add(pnlThanhVien, "card2");
 
-        QLSuKien.setBackground(new java.awt.Color(204, 204, 204));
-        QLSuKien.setPreferredSize(new java.awt.Dimension(872, 640));
+        pnlSuKien.setBackground(new java.awt.Color(204, 204, 204));
+        pnlSuKien.setPreferredSize(new java.awt.Dimension(872, 640));
 
         lblEvent.setBackground(new java.awt.Color(204, 204, 204));
         lblEvent.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
@@ -670,7 +677,7 @@ public class MainUI extends javax.swing.JFrame {
                 .addComponent(txtFindEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnSearchEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
         pnlTimChiTieu1Layout.setVerticalGroup(
             pnlTimChiTieu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -905,7 +912,7 @@ public class MainUI extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnForwardEvent)
                                 .addGap(64, 64, 64)))))
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         pnlSettingMember1Layout.setVerticalGroup(
             pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -964,19 +971,19 @@ public class MainUI extends javax.swing.JFrame {
 
         jTabbedPane3.addTab("Sự Kiện", pnlSettingMember1);
 
-        javax.swing.GroupLayout QLSuKienLayout = new javax.swing.GroupLayout(QLSuKien);
-        QLSuKien.setLayout(QLSuKienLayout);
-        QLSuKienLayout.setHorizontalGroup(
-            QLSuKienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pnlSuKienLayout = new javax.swing.GroupLayout(pnlSuKien);
+        pnlSuKien.setLayout(pnlSuKienLayout);
+        pnlSuKienLayout.setHorizontalGroup(
+            pnlSuKienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jTabbedPane3)
-            .addGroup(QLSuKienLayout.createSequentialGroup()
+            .addGroup(pnlSuKienLayout.createSequentialGroup()
                 .addGap(228, 228, 228)
                 .addComponent(lblEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        QLSuKienLayout.setVerticalGroup(
-            QLSuKienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(QLSuKienLayout.createSequentialGroup()
+        pnlSuKienLayout.setVerticalGroup(
+            pnlSuKienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSuKienLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -984,9 +991,9 @@ public class MainUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        container.add(QLSuKien, "card3");
+        pnlCards.add(pnlSuKien, "card3");
 
-        QLThongBao.setBackground(new java.awt.Color(204, 204, 204));
+        pnlThongBao.setBackground(new java.awt.Color(204, 204, 204));
 
         tabNotification.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
@@ -1024,7 +1031,7 @@ public class MainUI extends javax.swing.JFrame {
             pnlListMember3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlListMember3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 772, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnlListMember3Layout.setVerticalGroup(
@@ -1133,7 +1140,7 @@ public class MainUI extends javax.swing.JFrame {
                                             .addComponent(lblGhiChu5, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(lblEmail3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtRequestNotification, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addContainerGap(127, Short.MAX_VALUE))))
+                        .addContainerGap(110, Short.MAX_VALUE))))
         );
         pnlSettingMember3Layout.setVerticalGroup(
             pnlSettingMember3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1179,21 +1186,21 @@ public class MainUI extends javax.swing.JFrame {
         lblNotification.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNotification.setText("Thông Báo");
 
-        javax.swing.GroupLayout QLThongBaoLayout = new javax.swing.GroupLayout(QLThongBao);
-        QLThongBao.setLayout(QLThongBaoLayout);
-        QLThongBaoLayout.setHorizontalGroup(
-            QLThongBaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(QLThongBaoLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlThongBaoLayout = new javax.swing.GroupLayout(pnlThongBao);
+        pnlThongBao.setLayout(pnlThongBaoLayout);
+        pnlThongBaoLayout.setHorizontalGroup(
+            pnlThongBaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlThongBaoLayout.createSequentialGroup()
                 .addGap(232, 232, 232)
                 .addComponent(lblNotification, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(QLThongBaoLayout.createSequentialGroup()
+            .addGroup(pnlThongBaoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(tabNotification))
         );
-        QLThongBaoLayout.setVerticalGroup(
-            QLThongBaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(QLThongBaoLayout.createSequentialGroup()
+        pnlThongBaoLayout.setVerticalGroup(
+            pnlThongBaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlThongBaoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblNotification, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1201,9 +1208,9 @@ public class MainUI extends javax.swing.JFrame {
                 .addContainerGap(64, Short.MAX_VALUE))
         );
 
-        container.add(QLThongBao, "card4");
+        pnlCards.add(pnlThongBao, "card4");
 
-        QLHeThong.setBackground(new java.awt.Color(204, 204, 204));
+        pnlHeThong.setBackground(new java.awt.Color(204, 204, 204));
 
         lblMember2.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         lblMember2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1235,7 +1242,7 @@ public class MainUI extends javax.swing.JFrame {
                 .addComponent(txtFindUser, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnSearchUser, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
         pnlTimChiTieu2Layout.setVerticalGroup(
             pnlTimChiTieu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1422,7 +1429,7 @@ public class MainUI extends javax.swing.JFrame {
                         .addGroup(pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblNgaySinh3)
                             .addComponent(cboRoleUser, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(373, Short.MAX_VALUE))
+                .addContainerGap(356, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSettingMember2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1481,19 +1488,19 @@ public class MainUI extends javax.swing.JFrame {
 
         tabMember1.addTab("Thành Viên", pnlSettingMember2);
 
-        javax.swing.GroupLayout QLHeThongLayout = new javax.swing.GroupLayout(QLHeThong);
-        QLHeThong.setLayout(QLHeThongLayout);
-        QLHeThongLayout.setHorizontalGroup(
-            QLHeThongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(QLHeThongLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlHeThongLayout = new javax.swing.GroupLayout(pnlHeThong);
+        pnlHeThong.setLayout(pnlHeThongLayout);
+        pnlHeThongLayout.setHorizontalGroup(
+            pnlHeThongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHeThongLayout.createSequentialGroup()
                 .addGap(261, 261, 261)
                 .addComponent(lblMember2, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(tabMember1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
-        QLHeThongLayout.setVerticalGroup(
-            QLHeThongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(QLHeThongLayout.createSequentialGroup()
+        pnlHeThongLayout.setVerticalGroup(
+            pnlHeThongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHeThongLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(lblMember2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1501,7 +1508,7 @@ public class MainUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        container.add(QLHeThong, "card5");
+        pnlCards.add(pnlHeThong, "card5");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1509,13 +1516,13 @@ public class MainUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(container, javax.swing.GroupLayout.DEFAULT_SIZE, 813, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addComponent(pnlCards, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, 731, Short.MAX_VALUE)
-            .addComponent(container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlCards, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -1719,7 +1726,7 @@ public class MainUI extends javax.swing.JFrame {
 
     private void lblTabMemberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTabMemberMouseClicked
         // TODO add your handling code here:
-        
+        cardLayout.show(pnlCards, "pnlThanhVien");
     }//GEN-LAST:event_lblTabMemberMouseClicked
 
     private void lblTabEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTabEventMouseClicked
@@ -1788,30 +1795,26 @@ public class MainUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainUI().setVisible(true);
+                new Home().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel QLHeThong;
-    private javax.swing.JPanel QLSuKien;
-    private javax.swing.JPanel QLThanhVien;
-    private javax.swing.JPanel QLThongBao;
-    private javax.swing.JPanel Trangchu;
     private javax.swing.JButton btnAcceptNotificationAdmin;
     private javax.swing.JButton btnAddEvent;
     private javax.swing.JButton btnAddMember;
@@ -1843,7 +1846,6 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JButton btnUpdateUser;
     private javax.swing.JComboBox<String> cboRateMember;
     private javax.swing.JComboBox<String> cboRoleUser;
-    private javax.swing.JPanel container;
     private com.toedter.calendar.JDateChooser dcBirthdayMember;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser3;
@@ -1890,6 +1892,8 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblThanhVien1;
     private javax.swing.JLabel lblThanhVien2;
     private javax.swing.JLabel lblThanhVien3;
+    private javax.swing.JPanel pnlCards;
+    private javax.swing.JPanel pnlHeThong;
     private javax.swing.JPanel pnlListMember;
     private javax.swing.JPanel pnlListMember1;
     private javax.swing.JPanel pnlListMember2;
@@ -1898,9 +1902,13 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JPanel pnlSettingMember1;
     private javax.swing.JPanel pnlSettingMember2;
     private javax.swing.JPanel pnlSettingMember3;
+    private javax.swing.JPanel pnlSuKien;
+    private javax.swing.JPanel pnlThanhVien;
+    private javax.swing.JPanel pnlThongBao;
     private javax.swing.JPanel pnlTimChiTieu;
     private javax.swing.JPanel pnlTimChiTieu1;
     private javax.swing.JPanel pnlTimChiTieu2;
+    private javax.swing.JPanel pnlTrangChu;
     private javax.swing.JRadioButton rdoFemaleMember;
     private javax.swing.JRadioButton rdoMaleMember;
     private javax.swing.JTabbedPane tabMember;
@@ -1930,4 +1938,5 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JTextField txtUserNotificationAdmin;
     private javax.swing.JTextField txtUsernameUser;
     // End of variables declaration//GEN-END:variables
+
 }
