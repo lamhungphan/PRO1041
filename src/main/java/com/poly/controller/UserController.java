@@ -40,7 +40,7 @@ public class UserController {
     }
     public void dologout() {
         mainFrame.dispose();
-        new Login(UserController.this).setVisible(true);
+//        new Login(UserController.this).setVisible(true);
     }
 
     public void showWorkspaceByRolename(User userLogined) {
