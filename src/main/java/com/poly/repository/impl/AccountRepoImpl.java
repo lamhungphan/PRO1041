@@ -10,13 +10,14 @@ public class AccountRepoImpl implements AccountRepository {
     private EntityManager em = HibernateUtils.getEntityManage();
 
     @Override
-    public Account getAccount(String id) {
+    public Account getAccount(Integer id) {
         Account entity = em.find(Account.class, id);
         return entity;
     }
 
     @Override
     public Account update(Account entity) {
+        System.out.println("REPO: "+entity.getPassword());
         try{
             em.getTransaction().begin();
             em.merge(entity);

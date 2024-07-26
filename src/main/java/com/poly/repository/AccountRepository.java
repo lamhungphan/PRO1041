@@ -4,7 +4,7 @@ import com.poly.entity.Account;
 
 public interface AccountRepository {
 
-    Account getAccount (String id);
+    Account getAccount (Integer id);
 
     Account update (Account entity);
 }

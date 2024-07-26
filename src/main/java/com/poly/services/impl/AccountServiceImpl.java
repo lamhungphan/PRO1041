@@ -4,7 +4,6 @@ import com.poly.entity.Account;
 import com.poly.repository.AccountRepository;
 import com.poly.services.AccountService;
 import lombok.RequiredArgsConstructor;
-import org.mindrot.jbcrypt.BCrypt;
 
 @RequiredArgsConstructor
 public class AccountServiceImpl implements AccountService {
@@ -13,13 +12,12 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Account update(Account entity) {
-        String hashedPassword = BCrypt.hashpw(entity.getPassword(), BCrypt.gensalt());
-        entity.setPassword(hashedPassword);
+        System.out.println("SERVICES"+ entity.getPassword());
         return repo.update(entity);
     }
 
     @Override
-    public Account getAccount(String id) {
+    public Account getAccount(Integer id) {
         return repo.getAccount(id);
     }
 }
