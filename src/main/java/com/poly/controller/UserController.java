@@ -39,10 +39,10 @@ public class UserController {
             showWorkspaceByRolename(loginedUser);
         }
     }
-//    public void dologout() {
-//        mainFrame.dispose();
-//        new Login(UserController.this).setVisible(true);
-//    }
+    public void dologout() {
+        mainFrame.dispose();
+        new Login(UserController.this).setVisible(true);
+    }
 
     public void showWorkspaceByRolename(User userLogined) {
         JPanel eventPanel = mainFrame.getPnlEvent();
