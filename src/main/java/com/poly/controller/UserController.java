@@ -12,6 +12,7 @@ import com.poly.utils.InputFields;
 import com.poly.utils.MsgBox;
 import com.poly.view.Login;
 import com.poly.view.Main;
+import java.util.List;
 
 import javax.swing.*;
 
@@ -24,8 +25,6 @@ public class UserController {
     AuthorizationService authorizationService = UserInjector.getInstance().getAuthorizationService();
     UserService userService = UserInjector.getInstance().getUserService();
     private final Main mainFrame = new Main();
-
-    
 
     public void doLogin(User userRequest) {
         User loginedUser = userService.doLogin(userRequest);
@@ -68,5 +67,43 @@ public class UserController {
             InputFields.setEnabledRecursively(notificationPanel, true);
             InputFields.setEnabledRecursively(memberPanel, false);
         }
+    }
+     // CRUD operations
+    public void createUser(User user, String roleName) {
+        User createdUser = userService.save(user, roleName);
+        if (createdUser != null) {
+            MsgBox.alert(null, "Tạo người dùng thành công!");
+        } else {
+            MsgBox.alert(null, "Không thể tạo người dùng.");
+        }
+    }
+
+    public User readUser(Integer id) {
+        return userService.findById(id);
+    }
+
+    public void updateUser(User user) {
+        User updatedUser = userService.update(user);
+        if (updatedUser != null) {
+            MsgBox.alert(null, "Cập nhật người dùng thành công!");
+        } else {
+            MsgBox.alert(null, "Không thể cập nhật người dùng.");
+        }
+    }
+
+    public void deleteUser(Integer id) {
+        User deletedUser = userService.delete(id);
+        if (deletedUser != null) {
+            MsgBox.alert(null, "Xóa người dùng thành công!");
+        } else {
+            MsgBox.alert(null, "Không thể xóa người dùng.");
+        }
+    }
+
+    public List<User> getAllUsers() {
+        return userService.findAll();
+    }
+    public static void main(String[] args) {
+        UserController controller = new UserController();
     }
 }

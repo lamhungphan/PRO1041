@@ -14,24 +14,24 @@ import com.poly.services.impl.EventServiceImpl;
  *
  * @author Computer
  */
-public class Eventjector {
+public class EventInjector {
 
-    private static Eventjector instance;
+    private static EventInjector instance;
 
     private UserInjector userInjector;
     private EventRepository eventRepository;
     private EventService eventService;
     private UserService userService;
 
-    private Eventjector() {
+    private EventInjector() {
         this.eventRepository = new EventRepoImpl();
         this.userService = userInjector.getUserService();
         this.eventService = new EventServiceImpl(eventRepository, userService);
     }
 
-    public static Eventjector getInstance() {
+    public static EventInjector getInstance() {
         if (instance == null) {
-            instance = new Eventjector();
+            instance = new EventInjector();
         }
         return instance;
     }
