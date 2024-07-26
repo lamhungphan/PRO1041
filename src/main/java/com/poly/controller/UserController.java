@@ -5,6 +5,7 @@
 package com.poly.controller;
 
 import com.poly.entity.User;
+import com.poly.injection.UserInjector;
 import com.poly.services.AuthorizationService;
 import com.poly.services.UserService;
 import com.poly.utils.InputFields;
@@ -20,17 +21,14 @@ import javax.swing.*;
  */
 public class UserController {
 
-    private final UserService service;
-    private final AuthorizationService authorizationService;
+    AuthorizationService authorizationService = UserInjector.getInstance().getAuthorizationService();
+    UserService userService = UserInjector.getInstance().getUserService();
     private final Main mainFrame = new Main();
 
-    public UserController(UserService service, AuthorizationService authorizationService) {
-        this.service = service;
-        this.authorizationService = authorizationService;
-    }
+    
 
     public void doLogin(User userRequest) {
-        User loginedUser = service.doLogin(userRequest);
+        User loginedUser = userService.doLogin(userRequest);
         if (loginedUser == null) {
             MsgBox.alert(null, "Đăng nhập không thành công");
         } else {
@@ -38,10 +36,10 @@ public class UserController {
             showWorkspaceByRolename(loginedUser);
         }
     }
-//    public void dologout() {
-//        mainFrame.dispose();
-//        new Login(UserController.this).setVisible(true);
-//    }
+    public void dologout() {
+        mainFrame.dispose();
+        new Login().setVisible(true);
+    }
 
     public void showWorkspaceByRolename(User userLogined) {
         JPanel eventPanel = mainFrame.getPnlEvent();
