@@ -7,6 +7,7 @@ package com.poly.controller;
 import com.poly.entity.User;
 import com.poly.services.AuthorizationService;
 import com.poly.services.UserService;
+import com.poly.utils.ComponentManagement;
 import com.poly.utils.InputFields;
 import com.poly.utils.MsgBox;
 import com.poly.view.Login;
@@ -52,23 +53,23 @@ public class UserController {
             new Main().setVisible(true);
         } else if (authorizationService.isEventManager(userLogined)) {
             mainFrame.setVisible(true);
-            InputFields.setEnabledRecursively(eventPanel, true);
-            InputFields.setEnabledRecursively(adminPanel, false);
-            InputFields.setEnabledRecursively(notificationPanel, false);
-            InputFields.setEnabledRecursively(memberPanel, false);
+            ComponentManagement.setEnabledRecursively(eventPanel, true);
+            ComponentManagement.setEnabledRecursively(adminPanel, false);
+            ComponentManagement.setEnabledRecursively(notificationPanel, false);
+            ComponentManagement.setEnabledRecursively(memberPanel, false);
 
         } else if (authorizationService.isMember(userLogined)) {
             mainFrame.setVisible(true);
-            InputFields.setEnabledRecursively(eventPanel, false);
-            InputFields.setEnabledRecursively(adminPanel, false);
-            InputFields.setEnabledRecursively(notificationPanel, false);
-            InputFields.setEnabledRecursively(memberPanel, true);
+            ComponentManagement.setEnabledRecursively(eventPanel, false);
+            ComponentManagement.setEnabledRecursively(adminPanel, false);
+            ComponentManagement.setEnabledRecursively(notificationPanel, false);
+            ComponentManagement.setEnabledRecursively(memberPanel, true);
         } else if (authorizationService.isAccoutant(userLogined)) {
             mainFrame.setVisible(true);
-            InputFields.setEnabledRecursively(eventPanel, false);
-            InputFields.setEnabledRecursively(adminPanel, false);
-            InputFields.setEnabledRecursively(notificationPanel, true);
-            InputFields.setEnabledRecursively(memberPanel, false);
+            ComponentManagement.setEnabledRecursively(eventPanel, false);
+            ComponentManagement.setEnabledRecursively(adminPanel, false);
+            ComponentManagement.setEnabledRecursively(notificationPanel, true);
+            ComponentManagement.setEnabledRecursively(memberPanel, false);
         }
     }
 }
