@@ -38,8 +38,8 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <Component id="jPanel10" min="-2" pref="198" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="pnlCards" pref="796" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -69,16 +69,20 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="18" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lblTabWelcome" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                      <Component id="lblTabExit" min="-2" pref="134" max="-2" attributes="0"/>
-                      <Component id="lblTabMember" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
-                      <Component id="lblTabEvent" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
-                      <Component id="lblTabNotification" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
-                      <Component id="lblTabSystem" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
-                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="lblTabWelcome" min="-2" pref="150" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="lblTabMember" alignment="0" max="32767" attributes="0"/>
+                      <Component id="lblTabEvent" alignment="0" max="32767" attributes="0"/>
+                      <Component id="lblTabSystem" alignment="0" max="32767" attributes="0"/>
+                      <Component id="lblTabNotification" alignment="0" max="32767" attributes="0"/>
+                      <Component id="lblTabExit" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="32" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

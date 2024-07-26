@@ -4,6 +4,7 @@
  */
 package com.poly.view;
 
+import com.poly.utils.ComponentManagement;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -17,11 +18,10 @@ public class Home extends javax.swing.JFrame {
 
     CardLayout cardLayout;
 
-    private JPanel pnlCards;
-
     public Home() {
         initComponents();
-        cardLayout = (CardLayout) (pnlCards.getLayout());
+        cardLayout = new CardLayout();
+        pnlCards.setLayout(cardLayout);
     }
 
     /**
@@ -225,15 +225,18 @@ public class Home extends javax.swing.JFrame {
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTabWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTabExit, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTabMember, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTabEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTabNotification, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTabSystem, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTabWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblTabMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTabEvent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTabSystem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTabNotification, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTabExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1515,8 +1518,8 @@ public class Home extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlCards, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -1726,19 +1729,23 @@ public class Home extends javax.swing.JFrame {
 
     private void lblTabMemberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTabMemberMouseClicked
         // TODO add your handling code here:
-        cardLayout.show(pnlCards, "pnlThanhVien");
+        ComponentManagement.setVisibleComponent(true, pnlThanhVien, pnlTrangChu, pnlSuKien, pnlHeThong, pnlThongBao);
+        
     }//GEN-LAST:event_lblTabMemberMouseClicked
 
     private void lblTabEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTabEventMouseClicked
         // TODO add your handling code here:
+        ComponentManagement.setVisibleComponent(true,pnlSuKien, pnlThanhVien, pnlTrangChu, pnlHeThong, pnlThongBao);
     }//GEN-LAST:event_lblTabEventMouseClicked
 
     private void lblTabNotificationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTabNotificationMouseClicked
         // TODO add your handling code here:
+        ComponentManagement.setVisibleComponent(true, pnlThongBao, pnlSuKien, pnlThanhVien, pnlTrangChu, pnlHeThong);
     }//GEN-LAST:event_lblTabNotificationMouseClicked
 
     private void lblTabSystemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTabSystemMouseClicked
         // TODO add your handling code here:
+       ComponentManagement.setVisibleComponent(true, pnlHeThong ,pnlThongBao, pnlSuKien, pnlThanhVien, pnlTrangChu); 
     }//GEN-LAST:event_lblTabSystemMouseClicked
 
     private void lblTabExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTabExitMouseClicked
