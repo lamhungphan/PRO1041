@@ -11,8 +11,8 @@ import com.poly.entity.User;
  * @author Computer
  */
 public interface AuthorizationService {
-    public Boolean isAdmin(User user);
-    public Boolean isEventManager(User user);
-    public Boolean isMember(User user);
-    public Boolean isAccoutant(User user);
+    Boolean isAdmin(User user);
+    Boolean isEventManager(User user);
+    Boolean isMember(User user);
+    Boolean isAccoutant(User user);
 }

@@ -22,7 +22,6 @@ import java.io.Serializable;
 public class Account implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "username")
@@ -30,4 +29,7 @@ public class Account implements Serializable {
 
     @Column(name = "password")
     private String password;
+
+    @Column(name="isActive")
+    private Boolean isActived;
 }
