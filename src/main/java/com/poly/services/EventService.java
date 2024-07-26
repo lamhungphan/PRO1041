@@ -9,9 +9,9 @@ public interface EventService {
 
     Event update(Event entity);
 
-    Event delete(String id);
+    Event delete(Integer id);
 
-    Event findById(String id);
+    Event findById(Integer id);
 
     Event findByName(String name);
 
