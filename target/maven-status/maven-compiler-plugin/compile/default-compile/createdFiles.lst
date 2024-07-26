@@ -74,15 +74,18 @@ com\poly\view\MainUI$21.class
 com\poly\services\MailService.class
 com\poly\view\MainUI$16.class
 com\poly\view\Main$47.class
+com\poly\repository\Impl\RoleRepoImpl.class
 com\poly\view\MainUI$13.class
 com\poly\view\Main$2.class
 com\poly\view\Main$46.class
 com\poly\view\MainUI$20.class
+com\poly\repository\Impl\EventRepoImpl.class
 com\poly\view\MainUI$14.class
 com\poly\view\Main$1.class
 com\poly\utils\XImage.class
 com\poly\view\MainUI$5.class
 com\poly\view\Main$39.class
+com\poly\repository\Impl\UserRepoImpl.class
 com\poly\view\MainUI$6.class
 com\poly\view\Main$45.class
 com\poly\view\Main$50.class
@@ -141,54 +144,28 @@ com\poly\view\MainUI$52.class
 com\poly\view\MainUI$40.class
 com\poly\view\Main$30.class
 com\poly\view\Main$21.class
-<<<<<<< HEAD
-com\poly\entity\Notification.class
 com\poly\view\Login$6.class
-=======
->>>>>>> bcdd1a107dcd1ee3a1a103976ca8370a3a398828
 com\poly\view\Main$24.class
 com\poly\view\Main$14.class
 com\poly\view\MainUI$51.class
 com\poly\utils\InputFields.class
-<<<<<<< HEAD
-com\poly\view\Main$51.class
-com\poly\view\Main$44.class
-=======
 com\poly\view\MainUI$41.class
 com\poly\view\MainUI$39.class
-com\poly\repository\impl\RoleRepoImpl.class
->>>>>>> bcdd1a107dcd1ee3a1a103976ca8370a3a398828
 com\poly\utils\HibernateUtils.class
 com\poly\view\MainUI$36.class
 com\poly\view\Main$67.class
-<<<<<<< HEAD
-com\poly\view\Main$47.class
-com\poly\repository\Impl\RoleRepoImpl.class
-com\poly\view\Login$9.class
-com\poly\view\Main$2.class
-com\poly\view\Main$46.class
-=======
 mail\MailSender.class
+com\poly\view\Login$9.class
 com\poly\services\AuthorizationService.class
->>>>>>> bcdd1a107dcd1ee3a1a103976ca8370a3a398828
 com\poly\controller\EventController.class
 com\poly\view\MainUI$37.class
 com\poly\view\Main$16.class
 com\poly\view\MainUI$43.class
 com\poly\view\Main$23.class
-<<<<<<< HEAD
-com\poly\repository\Impl\EventRepoImpl.class
 com\poly\view\Login$8.class
-com\poly\view\Main$1.class
-com\poly\utils\XImage.class
-com\poly\view\Main$39.class
-com\poly\view\Main$69.class
-com\poly\repository\Impl\UserRepoImpl.class
-=======
 com\poly\controller\MailController.class
 com\poly\view\Main$69.class
 com\poly\view\MainUI$44.class
->>>>>>> bcdd1a107dcd1ee3a1a103976ca8370a3a398828
 com\poly\view\Main$22.class
 com\poly\view\Main$17.class
 com\poly\view\Main$68.class

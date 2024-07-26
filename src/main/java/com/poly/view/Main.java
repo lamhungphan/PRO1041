@@ -27,7 +27,7 @@ public class Main extends javax.swing.JFrame {
 
     UserServiceImpl userService = new UserServiceImpl(userRepository, roleService,authorizationService);
 //    UserController userController = new UserController(userService, authorizationService);
-    MailController mailController = new MailController(userService);
+    MailController mailController = new MailController();
     public Main() {
         initComponents();
         setLocationRelativeTo(null);

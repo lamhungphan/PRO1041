@@ -1,4 +1,4 @@
-package mail;
+package com.poly.utils;
 import java.util.Properties;
 import jakarta.mail.Message;
 import jakarta.mail.MessagingException;

@@ -4,18 +4,11 @@ import com.poly.controller.AccountController;
 import com.poly.controller.UserController;
 import com.poly.entity.Account;
 import com.poly.entity.User;
+import com.poly.injection.UserInjector;
 import com.poly.repository.AccountRepository;
-import com.poly.repository.RoleRepository;
-import com.poly.repository.UserRepository;
 import com.poly.repository.impl.AccountRepoImpl;
-import com.poly.repository.impl.RoleRepoImpl;
-import com.poly.repository.impl.UserRepoImpl;
 import com.poly.services.AccountService;
 import com.poly.services.impl.AccountServiceImpl;
-import com.poly.services.AuthorizationService;
-import com.poly.services.impl.AuthorizationServiceImpl;
-import com.poly.services.impl.RoleServiceImpl;
-import com.poly.services.impl.UserServiceImpl;
 import com.poly.utils.InputFields;
 import lombok.Getter;
 
@@ -27,7 +20,6 @@ import javax.swing.*;
 public class Login extends javax.swing.JFrame {
 
     private UserController controller;
-
     private AccountController accountController;
 
     /**
@@ -35,15 +27,12 @@ public class Login extends javax.swing.JFrame {
      *
      * @param controller
      */
-    public Login(UserController controller, AccountController accountController) throws HeadlessException {
+    public Login() throws HeadlessException {
         initComponents();
         txtUsername.setBackground(new java.awt.Color(0, 0, 0, 1));
         txtPassword.setBackground(new java.awt.Color(0, 0, 0, 1));
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        this.controller = controller;
-        this.accountController = accountController;
     }
 
     /**
@@ -296,14 +285,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_cbSavePasswordActionPerformed
 
     public static void main(String args[]) {
-        UserRepository userRepository = new UserRepoImpl();
-        RoleRepository roleRepository = new RoleRepoImpl();
-        RoleServiceImpl roleService = new RoleServiceImpl(roleRepository);
-        AuthorizationService authorizationService = new AuthorizationServiceImpl();
-
-        UserServiceImpl userService = new UserServiceImpl(userRepository, roleService,authorizationService);
-        UserController controller = new UserController(userService,authorizationService);
-
+        UserInjector injector;
         AccountRepository accountRepository = new AccountRepoImpl();
         AccountService accountService = new AccountServiceImpl(accountRepository);
         AccountController accountController = new AccountController(accountService);
@@ -334,7 +316,7 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login(controller, accountController).setVisible(true);
+                new Login().setVisible(true);
             }
         });
     }
