@@ -4,17 +4,23 @@
  */
 package com.poly.view;
 
+import java.awt.CardLayout;
+
 /**
  *
  * @author ACER
  */
 public class MainUI extends javax.swing.JFrame {
-
+    private CardLayout cardLayout;
     /**
      * Creates new form MainUI
      */
     public MainUI() {
         initComponents();
+    }
+    
+    private void showCard(String cardName) {
+        cardLayout.show(container, cardName);
     }
 
     /**
@@ -226,7 +232,7 @@ public class MainUI extends javax.swing.JFrame {
                     .addComponent(lblTabEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTabNotification, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTabSystem, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1719,19 +1725,22 @@ public class MainUI extends javax.swing.JFrame {
 
     private void lblTabMemberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTabMemberMouseClicked
         // TODO add your handling code here:
-        
+        showCard("cardUser");
     }//GEN-LAST:event_lblTabMemberMouseClicked
 
     private void lblTabEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTabEventMouseClicked
         // TODO add your handling code here:
+        showCard("cardEvent");
     }//GEN-LAST:event_lblTabEventMouseClicked
 
     private void lblTabNotificationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTabNotificationMouseClicked
         // TODO add your handling code here:
+        showCard("cardNotification");
     }//GEN-LAST:event_lblTabNotificationMouseClicked
 
     private void lblTabSystemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTabSystemMouseClicked
         // TODO add your handling code here:
+        showCard("cardAdmin");
     }//GEN-LAST:event_lblTabSystemMouseClicked
 
     private void lblTabExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTabExitMouseClicked
@@ -1769,6 +1778,7 @@ public class MainUI extends javax.swing.JFrame {
 
     private void tblListNotificationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListNotificationMouseClicked
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_tblListNotificationMouseClicked
 
     /**
@@ -1797,7 +1807,23 @@ public class MainUI extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
