@@ -27,13 +27,14 @@ create table users
     createdDate date null,
     updatedDate date null,
     isActived bit null,
+    attendance int null,
     foreign key (roleId) references roles(id) 
 );
 
 drop table if exists events;
 create table events 
 (
-	id int primary key auto_increment,
+    id int primary key auto_increment,
     userId int null,
     title nvarchar(255) null,
     content nvarchar(255) null,
@@ -49,7 +50,7 @@ create table events
 drop table if exists account;
 create table account
 (
-	id int primary key,
+    id int primary key,
     active bit not null,
     username varchar(55) null,
     password varchar(55) null
