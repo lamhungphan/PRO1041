@@ -5,15 +5,11 @@
 package com.poly.services.impl;
 
 import com.poly.entity.User;
-import com.poly.repository.impl.RoleRepoImpl;
-import com.poly.repository.RoleRepository;
 import com.poly.repository.UserRepository;
 import com.poly.repository.impl.UserRepoImpl;
 import com.poly.services.AuthorizationService;
 import com.poly.services.RoleService;
 import com.poly.services.UserService;
-import com.poly.utils.MsgBox;
-import com.poly.view.Main;
 import java.util.List;
 import org.mindrot.jbcrypt.BCrypt;
 
