@@ -2,36 +2,30 @@ package com.poly.view;
 
 import javax.swing.JFrame;
 
-import com.poly.controller.MailController;
-import com.poly.controller.UserController;
-import com.poly.repository.RoleRepository;
-import com.poly.repository.UserRepository;
-import com.poly.repository.impl.RoleRepoImpl;
-import com.poly.repository.impl.UserRepoImpl;
-import com.poly.services.AuthorizationService;
-import com.poly.services.impl.AuthorizationServiceImpl;
-import com.poly.services.impl.RoleServiceImpl;
-import com.poly.services.impl.UserServiceImpl;
+import com.poly.injection.AccountInjector;
+import com.poly.injection.AuthorizationInjector;
+import com.poly.injection.MailInjector;
+import com.poly.injection.UserInjector;
 import java.awt.CardLayout;
 import lombok.Getter;
 
 @Getter
-
 public class Main extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Main
-     */
     CardLayout cardLayout;
-    UserRepository userRepository = new UserRepoImpl();
-    RoleRepository roleRepository = new RoleRepoImpl();
-    RoleServiceImpl roleService = new RoleServiceImpl(roleRepository);
-    AuthorizationService authorizationService = new AuthorizationServiceImpl();
-
-    UserServiceImpl userService = new UserServiceImpl(userRepository, roleService, authorizationService);
-//   UserController userController = new UserController(userService, authorizationService);
-    MailController mailController = new MailController();
-
+//    UserRepository userRepository = new UserRepoImpl();
+//    RoleRepository roleRepository = new RoleRepoImpl();
+//    RoleServiceImpl roleService = new RoleServiceImpl(roleRepository);
+//    AuthorizationService authorizationService = new AuthorizationServiceImpl();
+//    UserServiceImpl userService = new UserServiceImpl(userRepository, roleService, authorizationService);
+////   UserController userController = new UserController(userService, authorizationService);
+//    MailController mailController = new MailController();
+    AccountInjector accountInjector;
+    UserInjector userInjector;
+    AuthorizationInjector authorizationInjector;
+    MailInjector mailInjector;
+        
+    
     public Main() {
         initComponents();
         cardLayout = (CardLayout) (container.getLayout());
