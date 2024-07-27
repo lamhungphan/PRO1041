@@ -14,14 +14,12 @@ com\poly\controller\AccountController.class
 com\poly\view\Main$60.class
 com\poly\view\Main$20.class
 com\poly\utils\MsgBox.class
-com\poly\view\Main$66.class
 com\poly\view\Main$26.class
 com\poly\view\Main$13.class
 com\poly\view\Main$19.class
 com\poly\services\UserService.class
 com\poly\view\Login$5.class
 com\poly\view\Main$59.class
-com\poly\view\Main$65.class
 com\poly\view\Login$10.class
 com\poly\view\Main$37.class
 com\poly\view\Main$53.class
@@ -85,7 +83,6 @@ com\poly\view\Main$51.class
 com\poly\view\Main$44.class
 com\poly\repository\impl\RoleRepoImpl.class
 com\poly\utils\HibernateUtils.class
-com\poly\view\Main$67.class
 com\poly\view\Main$47.class
 com\poly\repository\impl\UserRepoImpl.class
 com\poly\view\Login$9.class
@@ -98,10 +95,8 @@ com\poly\view\Login$8.class
 com\poly\view\Main$1.class
 com\poly\utils\XImage.class
 com\poly\view\Main$39.class
-com\poly\view\Main$69.class
 com\poly\view\Main$22.class
 com\poly\view\Main$17.class
 com\poly\view\Login$7.class
-com\poly\view\Main$68.class
 com\poly\view\Main$45.class
 com\poly\view\Main$50.class
