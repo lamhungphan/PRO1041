@@ -2,8 +2,6 @@ package com.poly.controller;
 
 import com.poly.entity.Account;
 import com.poly.services.AccountService;
-import com.poly.utils.InputFields;
-import com.poly.view.Login;
 import lombok.RequiredArgsConstructor;
 
 import javax.swing.*;

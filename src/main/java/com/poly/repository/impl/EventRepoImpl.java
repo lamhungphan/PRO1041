@@ -32,7 +32,7 @@ public class EventRepoImpl implements EventRepository {
 
     @Override
     public Event update(Event entity) {
-     try {
+        try {
             em.getTransaction().begin();
             em.merge(entity);
             em.getTransaction().commit();
@@ -40,11 +40,12 @@ public class EventRepoImpl implements EventRepository {
         } catch (Exception e) {
             em.getTransaction().rollback();
             throw new RuntimeException(e);
-        } }
+        }
+    }
 
     @Override
-    public Event remove(String id) {
-          try {
+    public Event remove(Integer id) {
+        try {
             Event entity = this.findById(id);
             em.getTransaction().begin();
             em.remove(entity);
@@ -57,7 +58,7 @@ public class EventRepoImpl implements EventRepository {
     }
 
     @Override
-    public Event findById(String id) {
+    public Event findById(Integer id) {
         Event entity = em.find(Event.class, id);
         return entity;
     }
@@ -68,4 +69,5 @@ public class EventRepoImpl implements EventRepository {
         TypedQuery<Event> query = em.createQuery(jpql, Event.class);
         return query.getResultList();
     }
+
 }
