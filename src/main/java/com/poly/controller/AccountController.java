@@ -1,25 +1,26 @@
 package com.poly.controller;
 
 import com.poly.entity.Account;
+import com.poly.injection.AccountInjector;
 import com.poly.services.AccountService;
 import lombok.RequiredArgsConstructor;
 
 import javax.swing.*;
 
-@RequiredArgsConstructor // Vi co final nen su dung thay cho constructor
 public class AccountController {
+
     private static final int NORMAL_ACCOUNT_ID = 1;
 
-    private final AccountService service;
+    private AccountService service = AccountInjector.getInstance().getAccountService();
 
-    public void loadActiveAccount(JTextField txtUsername, JPasswordField txtPassword, JCheckBox cbSavePassword){
+    public void loadActiveAccount(JTextField usernameField, JPasswordField passwordField, JCheckBox checkBoxField){
         try{
-            Account accountCheckActived = getAccountInDB();
-            System.out.println(accountCheckActived.getIsActived());
-            if (accountCheckActived.getIsActived()){
-                txtUsername.setText(accountCheckActived.getUsername());
-                txtPassword.setText(accountCheckActived.getPassword());
-                cbSavePassword.setSelected(accountCheckActived.getIsActived());
+            Account accountToCheckActivation = getAccountInDB();
+            System.out.println(accountToCheckActivation.getIsActived());
+            if (accountToCheckActivation.getIsActived()){
+                usernameField.setText(accountToCheckActivation.getUsername());
+                passwordField.setText(accountToCheckActivation.getPassword());
+                checkBoxField.setSelected(accountToCheckActivation.getIsActived());
             }
         } catch (Exception e){
             e.printStackTrace();
