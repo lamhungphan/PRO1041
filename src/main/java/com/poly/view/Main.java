@@ -11,7 +11,6 @@ import com.poly.injection.UserInjector;
 import com.poly.utils.ComponentManagement;
 import java.awt.CardLayout;
 import lombok.Getter;
-
 @Getter
 public class Main extends javax.swing.JFrame {
     private int row = -1;

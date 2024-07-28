@@ -52,23 +52,23 @@ public class UserController {
             new Main().setVisible(true);
         } else if (authorizationService.isEventManager(userLogined)) {
             mainFrame.setVisible(true);
-            InputFields.setEnabledRecursively(eventPanel, true);
-            InputFields.setEnabledRecursively(adminPanel, false);
-            InputFields.setEnabledRecursively(notificationPanel, false);
-            InputFields.setEnabledRecursively(memberPanel, false);
+            ComponentManagement.setEnabledRecursively(eventPanel, true);
+            ComponentManagement.setEnabledRecursively(adminPanel, false);
+            ComponentManagement.setEnabledRecursively(notificationPanel, false);
+            ComponentManagement.setEnabledRecursively(memberPanel, false);
 
         } else if (authorizationService.isMember(userLogined)) {
             mainFrame.setVisible(true);
-            InputFields.setEnabledRecursively(eventPanel, false);
-            InputFields.setEnabledRecursively(adminPanel, false);
-            InputFields.setEnabledRecursively(notificationPanel, false);
-            InputFields.setEnabledRecursively(memberPanel, true);
+            ComponentManagement.setEnabledRecursively(eventPanel, false);
+            ComponentManagement.setEnabledRecursively(adminPanel, false);
+            ComponentManagement.setEnabledRecursively(notificationPanel, false);
+            ComponentManagement.setEnabledRecursively(memberPanel, true);
         } else if (authorizationService.isAccoutant(userLogined)) {
             mainFrame.setVisible(true);
-            InputFields.setEnabledRecursively(eventPanel, false);
-            InputFields.setEnabledRecursively(adminPanel, false);
-            InputFields.setEnabledRecursively(notificationPanel, true);
-            InputFields.setEnabledRecursively(memberPanel, false);
+            ComponentManagement.setEnabledRecursively(eventPanel, false);
+            ComponentManagement.setEnabledRecursively(adminPanel, false);
+            ComponentManagement.setEnabledRecursively(notificationPanel, true);
+            ComponentManagement.setEnabledRecursively(memberPanel, false);
         }
     }
      // CRUD operations
