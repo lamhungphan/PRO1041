@@ -36,14 +36,6 @@ public class Main extends javax.swing.JFrame {
     private void showCard(String cardName) {
         cardLayout.show(container, cardName);
     }
-    
-    public User getFormUser(){
-        User userRequest = new User();
-//        userRequest.getId(tblListMember.);
-        return null;
-    }
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -368,13 +360,13 @@ public class Main extends javax.swing.JFrame {
         tblListMember.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblListMember.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Tên", "Email", "SĐT", "Tuổi", "Điểm", "Địa chỉ"
+                "Id", "Tên", "Email", "SĐT", "Tuổi", "Điểm", "Địa chỉ"
             }
         ));
         tblListMember.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -443,6 +435,7 @@ public class Main extends javax.swing.JFrame {
         lblGhiChu3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblGhiChu3.setText("Địa Chỉ:");
 
+        btngroudSex.add(rdoFemaleMember);
         rdoFemaleMember.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         rdoFemaleMember.setText("Nữ");
         rdoFemaleMember.addActionListener(new java.awt.event.ActionListener() {
@@ -451,6 +444,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        btngroudSex.add(rdoMaleMember);
         rdoMaleMember.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         rdoMaleMember.setSelected(true);
         rdoMaleMember.setText("Nam ");
@@ -1838,9 +1832,9 @@ public class Main extends javax.swing.JFrame {
 
     private void tblListMemberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListMemberMouseClicked
         // TODO add your handling code here:
-        if(evt.getClickCount() == 2){
+        if(evt.getClickCount() == 1){
             this.row = tblListMember.getSelectedRow();
-           
+            userController.findUserIdToTableClicked(tblListMember, row, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
         }
     }//GEN-LAST:event_tblListMemberMouseClicked
 

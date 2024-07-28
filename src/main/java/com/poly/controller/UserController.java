@@ -27,7 +27,7 @@ public class UserController {
     private AuthorizationService authorizationService = UserInjector.getInstance().getAuthorizationService();
     private UserService userService = UserInjector.getInstance().getUserService();
     private final Main mainFrame = new Main();
-    static String[] methodNames = {"getFullname", "getEmail", "getPhone", "getBirthday", "getScore", "getAddress"};
+    static String[] methodNames = {"getId" ,"getFullname", "getEmail", "getPhone", "getBirthday", "getScore", "getAddress"};
 
     public void doLogin(User userRequest) {
         User loginedUser = userService.doLogin(userRequest);
@@ -115,8 +115,9 @@ public class UserController {
         return userService.findById(idUser);
     }
     
-    public void setTextToTableForForm(
-            User entityRequest, 
+    public void findUserIdToTableClicked(
+            JTable tblListUser, 
+            Integer row, 
             JTextField txtNameMember, 
             JTextField txtPhoneMember, 
             JTextField txtEmailMemBer, 
@@ -125,7 +126,33 @@ public class UserController {
             JRadioButton rdoMale, 
             JRadioButton rdoFemale, 
             JComboBox cboRateMember){
-        entityRequest = responseUserById(Integer.SIZE);
+        String idFound = String.valueOf(tblListUser.getValueAt(row, 0));
+        User userFindOut = userService.findById(Integer.valueOf(idFound));
+        setTextToTableForForm(userFindOut, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMale, rdoFemale, cboRateMember);
+    }
+    
+    public void setTextToTableForForm(
+            User entityResponse, 
+            JTextField txtNameMember, 
+            JTextField txtPhoneMember, 
+            JTextField txtEmailMemBer, 
+            JTextField txtAddressMember, 
+            JDateChooser dcBirthdayMember, 
+            JRadioButton rdoMale, 
+            JRadioButton rdoFemale, 
+            JComboBox cboRateMember){
+        txtNameMember.setText(entityResponse.getFullname());
+        txtPhoneMember.setText(entityResponse.getPhone());
+        txtEmailMemBer.setText(entityResponse.getEmail());
+        txtAddressMember.setText(entityResponse.getAddress());
+        dcBirthdayMember.setDate(entityResponse.getBirthday());
+        cboRateMember.setSelectedIndex(entityResponse.getScore());
+        if(entityResponse.getSex()){
+            rdoMale.setSelected(true);
+        }
+        else{
+            rdoFemale.setSelected(true);
+        }
     }
     
     public static void main(String[] args) {
