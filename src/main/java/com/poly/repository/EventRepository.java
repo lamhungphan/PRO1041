@@ -9,9 +9,9 @@ public interface EventRepository{
 
     Event update(Event entity);
 
-    Event remove(String id);
+    Event remove(Integer id);
 
-    Event findById(String id);
+    Event findById(Integer id);
 
     List<Event> findAll();
 }

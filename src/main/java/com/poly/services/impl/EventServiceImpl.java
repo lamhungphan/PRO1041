@@ -6,13 +6,7 @@ package com.poly.services.impl;
 
 import com.poly.entity.Event;
 import com.poly.repository.EventRepository;
-import com.poly.repository.impl.RoleRepoImpl;
-import com.poly.repository.RoleRepository;
-import com.poly.repository.UserRepository;
-import com.poly.repository.impl.EventRepoImpl;
-import com.poly.repository.impl.UserRepoImpl;
 import com.poly.services.EventService;
-import com.poly.services.RoleService;
 import com.poly.services.UserService;
 import java.util.List;
 
@@ -42,12 +36,12 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public Event delete(String id) {
+    public Event delete(Integer id) {
         return repo.remove(id);
     }
 
     @Override
-    public Event findById(String id) {
+    public Event findById(Integer id) {
         return repo.findById(id);
     }
 
@@ -65,23 +59,5 @@ public class EventServiceImpl implements EventService {
     @Override
     public List<Event> findAll() {
         return repo.findAll();
-    }
-//Test
-
-    public static void main(String[] args) {
-        EventRepository eventRepo = new EventRepoImpl();
-        UserRepository userRepository = new UserRepoImpl();
-        RoleRepository roleRepository = new RoleRepoImpl();
-        RoleService roleService = new RoleServiceImpl(roleRepository);
-        UserService userService = new UserServiceImpl(userRepository, roleService);
-
-        EventServiceImpl eventService = new EventServiceImpl(eventRepo, userService);
-
-        // Tạo một user với role "admin"
-        Event event = new Event();
-        event.setTitle("Test");
-
-        Event savedUser = eventService.save(event, "Hà Vũ Lâm");
-        System.out.println("Saved User: " + savedUser);
     }
 }

@@ -1,38 +1,42 @@
 package com.poly.view;
 
+import com.poly.controller.AccountController;
 import com.poly.controller.UserController;
+import com.poly.entity.Account;
 import com.poly.entity.User;
-import com.poly.repository.RoleRepository;
-import com.poly.repository.UserRepository;
-import com.poly.repository.impl.RoleRepoImpl;
-import com.poly.repository.impl.UserRepoImpl;
-import com.poly.services.impl.RoleServiceImpl;
-import com.poly.services.impl.UserServiceImpl;
+import com.poly.injection.AccountInjector;
+import com.poly.injection.UserInjector;
 import com.poly.utils.InputFields;
-import java.awt.HeadlessException;
-import javax.swing.JFrame;
+import lombok.Getter;
 
+
+import java.awt.HeadlessException;
+import javax.swing.*;
+
+@Getter
 public class Login extends javax.swing.JFrame {
 
-    private UserController controller;
+    private AccountInjector accountInjector;
 
-    /**
-     * Creates new form login
-     *
-     * @param controller
-     */
-    public Login(UserController controller) throws HeadlessException {
+    private UserInjector userInjector;
+
+    private UserController userController;
+
+    private AccountController accountController;
+
+    public Login() throws HeadlessException {
         initComponents();
-
+        initInject();
         txtUsername.setBackground(new java.awt.Color(0, 0, 0, 1));
         txtPassword.setBackground(new java.awt.Color(0, 0, 0, 1));
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        this.controller = controller;
-
     }
 
+    private void initInject(){
+        accountController = new AccountController();
+        userController = new UserController();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -212,9 +216,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void disableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_disableMouseClicked
-
         txtPassword.setEchoChar((char) 0);
-
         disable.setVisible(false);
         disable.setEnabled(false);
         show.setEnabled(true);
@@ -222,9 +224,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_disableMouseClicked
 
     private void showMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showMouseClicked
-
         txtPassword.setEchoChar((char) 8226);
-
         disable.setVisible(true);
         disable.setEnabled(true);
         show.setEnabled(false);
@@ -242,6 +242,7 @@ public class Login extends javax.swing.JFrame {
 
             }
         }
+        accountController.loadActiveAccount(txtUsername, txtPassword, cbSavePassword);
     }//GEN-LAST:event_formWindowOpened
 
     private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
@@ -254,9 +255,8 @@ public class Login extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-
-        controller.doLogin(getForm());
-
+        userController.doLogin(getForm());
+        accountController.doSavePassword(getFormAccount(), cbSavePassword);
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void lblForgotPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblForgotPasswordMouseClicked
@@ -270,24 +270,23 @@ public class Login extends javax.swing.JFrame {
         return userRequest;
     }
 
+    Account getFormAccount(){
+        Account accountRequest = new Account();
+        accountRequest.setId(1);
+        accountRequest.setUsername(InputFields.getTextFieldtoString(txtUsername));
+        accountRequest.setPassword(InputFields.getTextFieldtoString(txtPassword));
+        return accountRequest;
+    }
 
     private void cbSavePasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbSavePasswordMouseClicked
         // TODO add your handling code here:
-
     }//GEN-LAST:event_cbSavePasswordMouseClicked
 
     private void cbSavePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSavePasswordActionPerformed
         // TODO add your handling code here:
-
     }//GEN-LAST:event_cbSavePasswordActionPerformed
 
     public static void main(String args[]) {
-        UserRepository userRepository = new UserRepoImpl();
-        RoleRepository roleRepository = new RoleRepoImpl();
-        RoleServiceImpl roleService = new RoleServiceImpl(roleRepository);
-
-        UserServiceImpl userService = new UserServiceImpl(userRepository, roleService);
-        UserController controller = new UserController(userService);
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -315,8 +314,7 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login(controller).setVisible(true);
-
+                new Login().setVisible(true);
             }
         });
     }
