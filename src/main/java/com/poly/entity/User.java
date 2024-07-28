@@ -12,7 +12,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.io.Serializable;
 import java.sql.Date;
  import java.io.Serializable;
@@ -49,6 +48,9 @@ public class User implements Serializable {
 
     @Column(name = "birthday")
     private Date birthday;
+
+    @Column(name = "sex")
+    private Boolean sex;
 
     @Column(name = "createdDate")
     private Date createdDate;
