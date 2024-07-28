@@ -8,10 +8,12 @@ import com.poly.entity.User;
 import com.poly.injection.UserInjector;
 import com.poly.services.AuthorizationService;
 import com.poly.services.UserService;
+import com.poly.utils.ComponentManagement;
 import com.poly.utils.InputFields;
 import com.poly.utils.MsgBox;
 import com.poly.view.Login;
 import com.poly.view.Main;
+import com.toedter.calendar.JDateChooser;
 import java.util.List;
 
 import javax.swing.*;
@@ -22,9 +24,10 @@ import javax.swing.*;
  */
 public class UserController {
 
-    AuthorizationService authorizationService = UserInjector.getInstance().getAuthorizationService();
-    UserService userService = UserInjector.getInstance().getUserService();
+    private AuthorizationService authorizationService = UserInjector.getInstance().getAuthorizationService();
+    private UserService userService = UserInjector.getInstance().getUserService();
     private final Main mainFrame = new Main();
+    static String[] methodNames = {"getFullname", "getEmail", "getPhone", "getBirthday", "getScore", "getAddress"};
 
     public void doLogin(User userRequest) {
         User loginedUser = userService.doLogin(userRequest);
@@ -103,6 +106,28 @@ public class UserController {
     public List<User> getAllUsers() {
         return userService.findAll();
     }
+    
+    public void setAllDataUserInTable(JTable tblListUser){
+        ComponentManagement.fillDataTableComponent(getAllUsers(), tblListUser, methodNames);
+    }
+    
+    public User responseUserById(Integer idUser){
+        return userService.findById(idUser);
+    }
+    
+    public void setTextToTableForForm(
+            User entityRequest, 
+            JTextField txtNameMember, 
+            JTextField txtPhoneMember, 
+            JTextField txtEmailMemBer, 
+            JTextField txtAddressMember, 
+            JDateChooser dcBirthdayMember, 
+            JRadioButton rdoMale, 
+            JRadioButton rdoFemale, 
+            JComboBox cboRateMember){
+        entityRequest = responseUserById(Integer.SIZE);
+    }
+    
     public static void main(String[] args) {
         UserController controller = new UserController();
     }

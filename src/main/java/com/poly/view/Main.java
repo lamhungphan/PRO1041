@@ -1,30 +1,29 @@
 package com.poly.view;
 
+import com.poly.controller.UserController;
+import com.poly.entity.User;
 import javax.swing.JFrame;
 
 import com.poly.injection.AccountInjector;
 import com.poly.injection.AuthorizationInjector;
 import com.poly.injection.MailInjector;
 import com.poly.injection.UserInjector;
+import com.poly.utils.ComponentManagement;
 import java.awt.CardLayout;
 import lombok.Getter;
 
 @Getter
 public class Main extends javax.swing.JFrame {
+    private int row = -1;
 
     CardLayout cardLayout;
-//    UserRepository userRepository = new UserRepoImpl();
-//    RoleRepository roleRepository = new RoleRepoImpl();
-//    RoleServiceImpl roleService = new RoleServiceImpl(roleRepository);
-//    AuthorizationService authorizationService = new AuthorizationServiceImpl();
-//    UserServiceImpl userService = new UserServiceImpl(userRepository, roleService, authorizationService);
-////   UserController userController = new UserController(userService, authorizationService);
-//    MailController mailController = new MailController();
+    
     AccountInjector accountInjector;
+    MailInjector mailInjector;
     UserInjector userInjector;
     AuthorizationInjector authorizationInjector;
-    MailInjector mailInjector;
-        
+    
+    UserController userController;
     
     public Main() {
         initComponents();
@@ -37,6 +36,13 @@ public class Main extends javax.swing.JFrame {
     private void showCard(String cardName) {
         cardLayout.show(container, cardName);
     }
+    
+    public User getFormUser(){
+        User userRequest = new User();
+//        userRequest.getId(tblListMember.);
+        return null;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,8 +70,6 @@ public class Main extends javax.swing.JFrame {
         pnlListMember = new javax.swing.JPanel();
         pnlTimChiTieu = new javax.swing.JPanel();
         txtFindMember = new javax.swing.JTextField();
-        btnSearchMember = new javax.swing.JButton();
-        btnSearchEvent1 = new javax.swing.JButton();
         btnSearchUser2 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblListMember = new javax.swing.JTable();
@@ -175,7 +179,11 @@ public class Main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 51, 153));
-        setPreferredSize(new java.awt.Dimension(1000, 650));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel10.setBackground(new java.awt.Color(0, 51, 153));
         jPanel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -255,7 +263,7 @@ public class Main extends javax.swing.JFrame {
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(9, Short.MAX_VALUE)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jLabel5)
@@ -329,20 +337,6 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnSearchMember.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Search.png"))); // NOI18N
-        btnSearchMember.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchMemberActionPerformed(evt);
-            }
-        });
-
-        btnSearchEvent1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Search.png"))); // NOI18N
-        btnSearchEvent1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchEvent1ActionPerformed(evt);
-            }
-        });
-
         btnSearchUser2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Search.png"))); // NOI18N
         btnSearchUser2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -359,31 +353,16 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(txtFindMember, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
                 .addComponent(btnSearchUser2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(109, 109, 109)
-                .addComponent(btnSearchMember, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(pnlTimChiTieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlTimChiTieuLayout.createSequentialGroup()
-                    .addGap(396, 396, 396)
-                    .addComponent(btnSearchEvent1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(397, Short.MAX_VALUE)))
         );
         pnlTimChiTieuLayout.setVerticalGroup(
             pnlTimChiTieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlTimChiTieuLayout.createSequentialGroup()
-                .addComponent(btnSearchMember, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 33, Short.MAX_VALUE))
             .addGroup(pnlTimChiTieuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlTimChiTieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSearchUser2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtFindMember, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(pnlTimChiTieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlTimChiTieuLayout.createSequentialGroup()
-                    .addGap(16, 16, 16)
-                    .addComponent(btnSearchEvent1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(17, Short.MAX_VALUE)))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         tblListMember.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -413,10 +392,10 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(pnlListMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlListMemberLayout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addComponent(pnlTimChiTieu, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addComponent(pnlTimChiTieu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(pnlListMemberLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 772, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 801, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlListMemberLayout.setVerticalGroup(
@@ -701,7 +680,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(pnlUserLayout.createSequentialGroup()
                 .addGap(255, 255, 255)
                 .addComponent(lblMember, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(279, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlUserLayout.setVerticalGroup(
             pnlUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1640,10 +1619,6 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFindMemberActionPerformed
 
-    private void btnSearchMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchMemberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSearchMemberActionPerformed
-
     private void txtNameMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameMemberActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameMemberActionPerformed
@@ -1863,15 +1838,22 @@ public class Main extends javax.swing.JFrame {
 
     private void tblListMemberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListMemberMouseClicked
         // TODO add your handling code here:
+        if(evt.getClickCount() == 2){
+            this.row = tblListMember.getSelectedRow();
+           
+        }
     }//GEN-LAST:event_tblListMemberMouseClicked
-
-    private void btnSearchEvent1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchEvent1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSearchEvent1ActionPerformed
 
     private void btnSearchUser2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchUser2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSearchUser2ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        userController = new UserController();
+        
+        userController.setAllDataUserInTable(tblListMember);
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -1899,7 +1881,8 @@ public class Main extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
@@ -1935,8 +1918,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnPreviousUser;
     private javax.swing.JButton btnRejectNotificationAdmin;
     private javax.swing.JButton btnSearchEvent;
-    private javax.swing.JButton btnSearchEvent1;
-    private javax.swing.JButton btnSearchMember;
     private javax.swing.JButton btnSearchUser;
     private javax.swing.JButton btnSearchUser2;
     private javax.swing.JButton btnUpdateEvent;
