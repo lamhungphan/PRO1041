@@ -87,6 +87,8 @@ public class Main extends javax.swing.JFrame {
         btnNextMember = new javax.swing.JButton();
         btnLastMember = new javax.swing.JButton();
         dcBirthdayMember = new com.toedter.calendar.JDateChooser();
+        txtIdMember = new javax.swing.JTextField();
+        lblId = new javax.swing.JLabel();
         lblMember = new javax.swing.JLabel();
         pnlEvent = new javax.swing.JPanel();
         lblEvent = new javax.swing.JLabel();
@@ -253,7 +255,7 @@ public class Main extends javax.swing.JFrame {
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(9, Short.MAX_VALUE)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jLabel5)
@@ -309,7 +311,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(pnlMainLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(546, Short.MAX_VALUE))
+                .addContainerGap(553, Short.MAX_VALUE))
         );
 
         container.add(pnlMain, "cardMain");
@@ -318,6 +320,11 @@ public class Main extends javax.swing.JFrame {
         pnlUser.setPreferredSize(new java.awt.Dimension(813, 650));
 
         tabMember.setPreferredSize(new java.awt.Dimension(813, 580));
+        tabMember.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabMemberMouseClicked(evt);
+            }
+        });
 
         pnlTimChiTieu.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TÌM THÀNH VIÊN", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
@@ -394,7 +401,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(pnlTimChiTieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -542,47 +549,17 @@ public class Main extends javax.swing.JFrame {
 
         dcBirthdayMember.setDateFormatString("dd/MM/yyyy ");
 
+        txtIdMember.setEditable(false);
+        txtIdMember.setEnabled(false);
+
+        lblId.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblId.setText("ID:");
+        lblId.setEnabled(false);
+
         javax.swing.GroupLayout pnlSettingMemberLayout = new javax.swing.GroupLayout(pnlSettingMember);
         pnlSettingMember.setLayout(pnlSettingMemberLayout);
         pnlSettingMemberLayout.setHorizontalGroup(
             pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlSettingMemberLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSettingMemberLayout.createSequentialGroup()
-                        .addComponent(lblSoDT, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(pnlSettingMemberLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lblThanhVien, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(171, 171, 171)
-                        .addGroup(pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblGhiChu3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlSettingMemberLayout.createSequentialGroup()
-                                        .addComponent(rdoMaleMember, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(rdoFemaleMember, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cboRateMember, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(pnlSettingMemberLayout.createSequentialGroup()
-                                        .addComponent(lblGioiTinhThanhVien, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lblNgaySinh1))
-                                    .addComponent(txtAddressMember, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtEmailMemBer, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(91, 91, 91))
-                    .addGroup(pnlSettingMemberLayout.createSequentialGroup()
-                        .addGroup(pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtNameMember, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtPhoneMember, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(dcBirthdayMember, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblNgaySinh))
-                        .addContainerGap(457, Short.MAX_VALUE))))
             .addGroup(pnlSettingMemberLayout.createSequentialGroup()
                 .addGroup(pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlSettingMemberLayout.createSequentialGroup()
@@ -603,7 +580,49 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(btnNextMember)
                         .addGap(18, 18, 18)
                         .addComponent(btnLastMember)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 206, Short.MAX_VALUE))
+            .addGroup(pnlSettingMemberLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlSettingMemberLayout.createSequentialGroup()
+                        .addGroup(pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlSettingMemberLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblGhiChu3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlSettingMemberLayout.createSequentialGroup()
+                                            .addComponent(rdoMaleMember, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(rdoFemaleMember, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(cboRateMember, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(pnlSettingMemberLayout.createSequentialGroup()
+                                            .addComponent(lblGioiTinhThanhVien, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(lblNgaySinh1))
+                                        .addComponent(txtAddressMember, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSettingMemberLayout.createSequentialGroup()
+                                .addComponent(lblThanhVien, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtEmailMemBer, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(91, 91, 91))
+                    .addGroup(pnlSettingMemberLayout.createSequentialGroup()
+                        .addGroup(pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txtNameMember, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtPhoneMember, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(dcBirthdayMember, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblNgaySinh))
+                        .addContainerGap(457, Short.MAX_VALUE))
+                    .addGroup(pnlSettingMemberLayout.createSequentialGroup()
+                        .addGroup(pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtIdMember, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblSoDT, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         pnlSettingMemberLayout.setVerticalGroup(
             pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -640,7 +659,11 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(cboRateMember, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(rdoFemaleMember)
                             .addComponent(rdoMaleMember))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(lblId)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtIdMember, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnFirstMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnPreMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -680,7 +703,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblMember, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addComponent(tabMember, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
+                .addComponent(tabMember, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -999,7 +1022,7 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(lblNgaySinh2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                 .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(btnLastEvent)
@@ -1226,7 +1249,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(pnlSettingMember3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRejectNotificationAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAcceptNotificationAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
 
         tabNotification.addTab("Admin", pnlSettingMember3);
@@ -1246,7 +1269,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(pnlNotificationLayout.createSequentialGroup()
                 .addGap(254, 254, 254)
                 .addComponent(lblNotification, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(280, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlNotificationLayout.setVerticalGroup(
             pnlNotificationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1254,7 +1277,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblNotification, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabNotification, javax.swing.GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
+                .addComponent(tabNotification, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1646,6 +1669,7 @@ public class Main extends javax.swing.JFrame {
 
     private void btnAddMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMemberActionPerformed
         // TODO add your handling code here:
+        userController.createMemberToForm(txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
     }//GEN-LAST:event_btnAddMemberActionPerformed
 
     private void btnFirstMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstMemberActionPerformed
@@ -1654,6 +1678,7 @@ public class Main extends javax.swing.JFrame {
 
     private void btnClearMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearMemberActionPerformed
         // TODO add your handling code here:
+        userController.setClearForm(txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
     }//GEN-LAST:event_btnClearMemberActionPerformed
 
     private void cboRateMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboRateMemberActionPerformed
@@ -1833,7 +1858,7 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (evt.getClickCount() == 1) {
             this.row = tblListMember.getSelectedRow();
-            userController.findUserIdToTableClicked(tblListMember, row, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
+//            userController.findUserIdToTableClicked(tblListMember, row, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
         }
     }//GEN-LAST:event_tblListMemberMouseClicked
 
@@ -1846,6 +1871,11 @@ public class Main extends javax.swing.JFrame {
         userController = new UserController();
         userController.setAllDataUserToTable(tblListMember);
     }//GEN-LAST:event_formWindowOpened
+
+    private void tabMemberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabMemberMouseClicked
+        // TODO add your handling code here:
+         userController.setAllDataUserToTable(tblListMember);
+    }//GEN-LAST:event_tabMemberMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1942,6 +1972,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel lblGhiChu3;
     private javax.swing.JLabel lblGhiChu5;
     private javax.swing.JLabel lblGioiTinhThanhVien;
+    private javax.swing.JLabel lblId;
     private javax.swing.JTable lblListEvent;
     private javax.swing.JLabel lblMember;
     private javax.swing.JLabel lblMember2;
@@ -1996,6 +2027,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField txtFindEvent;
     private javax.swing.JTextField txtFindMember;
     private javax.swing.JTextField txtFindUser;
+    private javax.swing.JTextField txtIdMember;
     private javax.swing.JTextField txtIdNotificationAdmin;
     private javax.swing.JTextField txtNameEvent;
     private javax.swing.JTextField txtNameMember;

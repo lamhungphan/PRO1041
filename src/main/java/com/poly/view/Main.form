@@ -75,7 +75,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="9" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -601,8 +601,8 @@
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtIdMemBer" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                          <Component id="lblEmail2" alignment="0" min="-2" pref="61" max="-2" attributes="0"/>
+                                          <Component id="txtIdMember" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                                          <Component id="lblId" alignment="0" min="-2" pref="61" max="-2" attributes="0"/>
                                           <Component id="lblSoDT" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -652,9 +652,9 @@
                                   </Group>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="lblEmail2" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblId" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtIdMemBer" min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="txtIdMember" min="-2" pref="33" max="-2" attributes="0"/>
                               <EmptySpace pref="44" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="btnFirstMember" alignment="0" max="32767" attributes="0"/>
@@ -915,13 +915,13 @@
                         <Property name="dateFormatString" type="java.lang.String" value="dd/MM/yyyy "/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtIdMemBer">
+                    <Component class="javax.swing.JTextField" name="txtIdMember">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
                         <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblEmail2">
+                    <Component class="javax.swing.JLabel" name="lblId">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>

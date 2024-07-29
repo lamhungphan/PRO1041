@@ -176,7 +176,7 @@ public class UserController {
         }
         User currentMember = members.get(index);
         NavigationButtons.navButtonInForm(buttonDirection, sizeOfList, index);
-        setTextFromTableToForm(currentMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMale, rdoFemale, cboRateMember);
+//        setTextFromTableToForm(currentMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMale, rdoFemale, cboRateMember);
  }
     public void setClearForm(
             JTextField idField,
