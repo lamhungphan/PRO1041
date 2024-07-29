@@ -285,10 +285,6 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_cbSavePasswordActionPerformed
 
     public static void main(String args[]) {
-        UserInjector injector;
-        AccountRepository accountRepository = new AccountRepoImpl();
-        AccountService accountService = new AccountServiceImpl(accountRepository);
-        AccountController accountController = new AccountController(accountService);
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
