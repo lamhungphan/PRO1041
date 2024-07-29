@@ -255,7 +255,7 @@ public class Login extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        userController.doLogin(getForm());
+        userController.doLogin(getForm(),new Main(),this);
         accountController.doSavePassword(getFormAccount(), cbSavePassword);
     }//GEN-LAST:event_btnLoginActionPerformed
 

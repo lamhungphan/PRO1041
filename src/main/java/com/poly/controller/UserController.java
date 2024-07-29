@@ -25,30 +25,31 @@ public class UserController {
 
     private AuthorizationService authorizationService = UserInjector.getInstance().getAuthorizationService();
     private UserService userService = UserInjector.getInstance().getUserService();
-    private final Main mainFrame = new Main();
     private static final String[] GET_METHOD_NAME_USER = {"getId" ,"getFullname", "getEmail", "getPhone", "getBirthday", "getScore", "getAddress"};
 
-    public void doLogin(User userRequest) {
+
+    public void doLogin(User userRequest,Main mainFrame,Login loginFrame) {
         User loginedUser = userService.doLogin(userRequest);
         if (loginedUser == null) {
             MsgBox.alert(null, "Đăng nhập không thành công");
         } else {
             MsgBox.alert(null, "Đăng nhập thành công");
-            showWorkspaceByRolename(loginedUser);
+            loginFrame.dispose();
+            showWorkspaceByRolename(loginedUser, mainFrame);
         }
     }
-    public void dologout() {
+    public void dologout(JFrame mainFrame, Login loginFrame) {
         mainFrame.dispose();
-        new Login().setVisible(true);
+        loginFrame.setVisible(true);
     }
 
-    public void showWorkspaceByRolename(User userLogined) {
+    public void showWorkspaceByRolename(User userLogined,Main mainFrame ) {
         JPanel eventPanel = mainFrame.getPnlEvent();
         JPanel adminPanel = mainFrame.getPnlAdmin();
         JPanel notificationPanel = mainFrame.getPnlNotification();
         JPanel memberPanel = mainFrame.getPnlUser();
         if (authorizationService.isAdmin(userLogined)) {
-            new Main().setVisible(true);
+            mainFrame.setVisible(true);
         } else if (authorizationService.isEventManager(userLogined)) {
             mainFrame.setVisible(true);
             ComponentManagement.setEnabledRecursively(eventPanel, true);
