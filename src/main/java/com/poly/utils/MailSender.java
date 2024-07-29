@@ -50,7 +50,7 @@ public class MailSender {
         String username = MailConstant.USERNAME;
         String password = MailConstant.PASSWORD;
         String host = MailConstant.HOST;
-        String subject = "LAY LAI MAT KHAU";
+        String subject = "Lấy lại mật khẩu ";
         String content = "Để đặt lại mật khẩu của bạn, hãy sử dụng mã sau: " + passwordResetToken;
         sendEmail(email, from, username, password, host, subject, content);
     }

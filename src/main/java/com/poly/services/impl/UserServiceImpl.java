@@ -78,14 +78,15 @@ public class UserServiceImpl implements UserService {
         return null;
     }
     @Override
-    public boolean updatePassword(String email, String newPassword) {
-        User user =repo.findByEmail(email);
-        if (user != null) {
-            user.setPassword(newPassword);
-            repo.update(user);
-            return true;
+    public User updatePassword(String email, String newPassword) {
+        User userForgotPassword =repo.findByEmail(email);
+        if (userForgotPassword != null) {
+            newPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+            userForgotPassword.setPassword(newPassword);
+            repo.update(userForgotPassword);
+            return userForgotPassword;
         }
-        return false;
+        return null;
     }
 
     @Override

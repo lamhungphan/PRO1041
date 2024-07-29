@@ -7,6 +7,7 @@ import com.poly.services.PasswordResetTokenService;
 import com.poly.services.UserService;
 import com.poly.services.impl.PasswordResetTokenServiceImpl;
 import com.poly.utils.MailSender;
+import com.poly.utils.MsgBox;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,16 +24,30 @@ public class PasswordResetController {
     private PasswordResetTokenServiceImpl passwordResetTokenService = new PasswordResetTokenServiceImpl();
 
     public void showResetPasswordForm() {
-        JFrame frame = new JFrame("Reset Password");
+        JFrame frame = new JFrame("Quên mật khẩu");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(300, 150);
+        frame.setSize(500, 270);
+        frame.setLocationRelativeTo(null);
 
-        JPanel panel = new JPanel(new GridLayout(3, 2));
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridBagLayout());
+        panel.setBackground(new Color(173, 216, 230));  // Màu nền xanh nhạt
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10);  // Khoảng cách giữa các thành phần
 
         JLabel emailLabel = new JLabel("Email:");
-        JTextField emailField = new JTextField();
+        emailLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        JTextField emailField = new JTextField(30);
 
-        JButton resetButton = new JButton("Send Reset Link");
+        JButton resetButton = new JButton("    Gửi Mail    ");
+        resetButton.setFont(new Font("Arial", Font.PLAIN, 14));
+        resetButton.setBackground(new Color(30, 144, 255));  // Màu nền nút xanh dương
+        resetButton.setForeground(Color.WHITE);  // Màu chữ trắng
+        resetButton.setFocusPainted(false);
+
+        JLabel noteLabel = new JLabel("Nhập vào email của bạn để nhận mã xác nhận (token) dùng cập nhật mật khẩu mới.");
+        noteLabel.setFont(new Font("Arial", Font.ITALIC, 12));
 
         resetButton.addActionListener(new ActionListener() {
             @Override
@@ -42,19 +57,37 @@ public class PasswordResetController {
             }
         });
 
-        panel.add(emailLabel);
-        panel.add(emailField);
-        panel.add(new JLabel());
-        panel.add(resetButton);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.EAST;
+        panel.add(emailLabel, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.WEST;
+        panel.add(emailField, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.gridwidth = 2;
+        gbc.anchor = GridBagConstraints.CENTER;
+        panel.add(resetButton, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.gridwidth = 2;
+        gbc.anchor = GridBagConstraints.CENTER;
+        panel.add(noteLabel, gbc);
+
         frame.add(panel);
         frame.setVisible(true);
     }
 
-    public void sendResetLink(String email, JFrame frame) {
+    public void sendResetLink(String email, JFrame currentFrame) {
         // Kiểm tra xem email có tồn tại trong database không
         User user = userService.findByEmail(email);
         if (user == null) {
-            JOptionPane.showMessageDialog(frame, "Email không tồn tại trong hệ thống.");
+            JOptionPane.showMessageDialog(currentFrame, "Email không tồn tại trong hệ thống.");
             return;
         }
 
@@ -74,23 +107,37 @@ public class PasswordResetController {
         // Gửi mail cho user
         String message = "Dưới đây là mã đặt lại mật khẩu của bạn: " + token;
         MailSender.sendEmailresetpassword(email, token, message); // Giả sử MailSender đã được triển khai
-        JOptionPane.showMessageDialog(frame, "Liên kết đặt lại mật khẩu đã được gửi đến email của bạn.");
+        JOptionPane.showMessageDialog(currentFrame, "Liên kết đặt lại mật khẩu đã được gửi đến email của bạn.");
+        showVerifyTokenForm();
+        currentFrame.dispose();
     }
 
     public void showVerifyTokenForm() {
-        JFrame frame = new JFrame("Enter Token and New Password");
+        JFrame frame = new JFrame("Xác nhận token và cài đặt lại mật khẩu");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(300, 200);
+        frame.setSize(400, 250);
+        frame.setLocationRelativeTo(null);
 
-        JPanel panel = new JPanel(new GridLayout(4, 2));
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridBagLayout());
+        panel.setBackground(new Color(173, 216, 230));  // Màu nền xanh nhạt
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10);  // Khoảng cách giữa các thành phần
 
         JLabel tokenLabel = new JLabel("Token:");
-        JTextField tokenField = new JTextField();
+        tokenLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        JTextField tokenField = new JTextField(20);
 
-        JLabel newPasswordLabel = new JLabel("New Password:");
-        JPasswordField newPasswordField = new JPasswordField();
+        JLabel newPasswordLabel = new JLabel("Mật khẩu mới:");
+        newPasswordLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        JPasswordField newPasswordField = new JPasswordField(20);
 
-        JButton verifyButton = new JButton("Verify and Reset Password");
+        JButton verifyButton = new JButton("Đặt lại mật khẩu ");
+        verifyButton.setFont(new Font("Arial", Font.PLAIN, 14));
+        verifyButton.setBackground(new Color(30, 144, 255));  // Màu nền nút xanh dương
+        verifyButton.setForeground(Color.WHITE);  // Màu chữ trắng
+        verifyButton.setFocusPainted(false);
 
         verifyButton.addActionListener(new ActionListener() {
             @Override
@@ -101,35 +148,58 @@ public class PasswordResetController {
             }
         });
 
-        panel.add(tokenLabel);
-        panel.add(tokenField);
-        panel.add(newPasswordLabel);
-        panel.add(newPasswordField);
-        panel.add(new JLabel());
-        panel.add(verifyButton);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.EAST;
+        panel.add(tokenLabel, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.WEST;
+        panel.add(tokenField, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.anchor = GridBagConstraints.EAST;
+        panel.add(newPasswordLabel, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        gbc.anchor = GridBagConstraints.WEST;
+        panel.add(newPasswordField, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.gridwidth = 2;
+        gbc.anchor = GridBagConstraints.CENTER;
+        panel.add(verifyButton, gbc);
+
         frame.add(panel);
         frame.setVisible(true);
     }
 
-    public void resetPassword(String token, String newPassword) {
+    public User resetPassword(String token, String newPassword) {
         PasswordResetToken resetToken = passwordResetTokenService.findBytoken(token);
         if (resetToken != null) {
             System.out.println("Token expiration date: " + resetToken.getExpirationdate());
             System.out.println("Current date: " + LocalDateTime.now());
 
             if (resetToken.getExpirationdate().isAfter(LocalDateTime.now())) {
-                userService.updatePassword(resetToken.getEmail(), newPassword);
+                User userAfterSetPass = userService.updatePassword(resetToken.getEmail(), newPassword);
                 passwordResetTokenService.deleteByToken(resetToken.getToken());
                 JOptionPane.showMessageDialog(null, "Đặt lại mật khẩu thành công.");
+                return userAfterSetPass;
             } else {
-                JOptionPane.showMessageDialog(null, "Token không hợp lệ hoặc đã hết hạn.");
+                MsgBox.alert(null, "Token không hợp lệ hoặc đã hết hạn.");
+                return null;
             }
         }
+        return null;
     }
 
-    public static void main(String[] args) {
-        PasswordResetController controller = new PasswordResetController();
-        controller.showResetPasswordForm();
-        controller.showVerifyTokenForm();
-    }
+//    public static void main(String[] args) {
+//        PasswordResetController controller = new PasswordResetController();
+//        controller.showResetPasswordForm();
+//        controller.showVerifyTokenForm();
+//    }
 }

@@ -21,6 +21,5 @@ public interface UserService {
 
     User doLogin(User userRequest);
 
-
-    boolean updatePassword(String email, String newPassword);
+    User updatePassword(String email, String newPassword);
 }
