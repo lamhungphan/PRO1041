@@ -8,10 +8,15 @@ import com.poly.entity.User;
 import com.poly.injection.UserInjector;
 import com.poly.services.AuthorizationService;
 import com.poly.services.UserService;
-import com.poly.utils.InputFields;
+import com.poly.utils.ComponentManagement;
 import com.poly.utils.MsgBox;
+import com.poly.utils.NavigationButtons;
+import com.poly.utils.XDate;
 import com.poly.view.Login;
 import com.poly.view.Main;
+import com.toedter.calendar.JDateChooser;
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.*;
@@ -22,50 +27,53 @@ import javax.swing.*;
  */
 public class UserController {
 
-    AuthorizationService authorizationService = UserInjector.getInstance().getAuthorizationService();
-    UserService userService = UserInjector.getInstance().getUserService();
-    private final Main mainFrame = new Main();
+    private AuthorizationService authorizationService = UserInjector.getInstance().getAuthorizationService();
+    private UserService userService = UserInjector.getInstance().getUserService();
+    public static final String[] GET_METHOD_NAME_USER = {"getId", "getFullname", "getEmail", "getPhone", "getBirthday", "getScore", "getAddress"};
+    private final List<User> listAllUser = getAllUsers();
 
-    public void doLogin(User userRequest) {
+    public void doLogin(User userRequest, Main mainFrame, Login loginFrame) {
         User loginedUser = userService.doLogin(userRequest);
         if (loginedUser == null) {
             MsgBox.alert(null, "Đăng nhập không thành công");
         } else {
             MsgBox.alert(null, "Đăng nhập thành công");
-            showWorkspaceByRolename(loginedUser);
+            loginFrame.dispose();
+            showWorkspaceByRolename(loginedUser, mainFrame);
         }
     }
-    public void dologout() {
+
+    public void dologout(JFrame mainFrame, Login loginFrame) {
         mainFrame.dispose();
-        new Login().setVisible(true);
+        loginFrame.setVisible(true);
     }
 
-    public void showWorkspaceByRolename(User userLogined) {
+    public void showWorkspaceByRolename(User userLogined, Main mainFrame) {
         JPanel eventPanel = mainFrame.getPnlEvent();
         JPanel adminPanel = mainFrame.getPnlAdmin();
         JPanel notificationPanel = mainFrame.getPnlNotification();
         JPanel memberPanel = mainFrame.getPnlUser();
         if (authorizationService.isAdmin(userLogined)) {
-            new Main().setVisible(true);
+            mainFrame.setVisible(true);
         } else if (authorizationService.isEventManager(userLogined)) {
             mainFrame.setVisible(true);
-            InputFields.setEnabledRecursively(eventPanel, true);
-            InputFields.setEnabledRecursively(adminPanel, false);
-            InputFields.setEnabledRecursively(notificationPanel, false);
-            InputFields.setEnabledRecursively(memberPanel, false);
+            ComponentManagement.setEnabledRecursively(eventPanel, true);
+            ComponentManagement.setEnabledRecursively(adminPanel, false);
+            ComponentManagement.setEnabledRecursively(notificationPanel, false);
+            ComponentManagement.setEnabledRecursively(memberPanel, false);
 
         } else if (authorizationService.isMember(userLogined)) {
             mainFrame.setVisible(true);
-            InputFields.setEnabledRecursively(eventPanel, false);
-            InputFields.setEnabledRecursively(adminPanel, false);
-            InputFields.setEnabledRecursively(notificationPanel, false);
-            InputFields.setEnabledRecursively(memberPanel, true);
+            ComponentManagement.setEnabledRecursively(eventPanel, false);
+            ComponentManagement.setEnabledRecursively(adminPanel, false);
+            ComponentManagement.setEnabledRecursively(notificationPanel, false);
+            ComponentManagement.setEnabledRecursively(memberPanel, true);
         } else if (authorizationService.isAccoutant(userLogined)) {
             mainFrame.setVisible(true);
-            InputFields.setEnabledRecursively(eventPanel, false);
-            InputFields.setEnabledRecursively(adminPanel, false);
-            InputFields.setEnabledRecursively(notificationPanel, true);
-            InputFields.setEnabledRecursively(memberPanel, false);
+            ComponentManagement.setEnabledRecursively(eventPanel, false);
+            ComponentManagement.setEnabledRecursively(adminPanel, false);
+            ComponentManagement.setEnabledRecursively(notificationPanel, true);
+            ComponentManagement.setEnabledRecursively(memberPanel, false);
         }
     }
      // CRUD operations
@@ -103,7 +111,150 @@ public class UserController {
     public List<User> getAllUsers() {
         return userService.findAll();
     }
-    public static void main(String[] args) {
-        UserController controller = new UserController();
+
+    public void setAllDataUserToTable(JTable tblListUser, String role) {
+        List<User> listByRole = new ArrayList<>();
+        for (User user : listAllUser) {
+            if (role.equalsIgnoreCase(user.getRole().getRoleName())) {
+                listByRole.add(user);
+            }
+        }
+        ComponentManagement.fillDataTableComponent(getAllUsers(), tblListUser, GET_METHOD_NAME_USER);
     }
+
+    public User responseUserById(Integer idUser) {
+        return userService.findById(idUser);
+    }
+
+    public void findUserIdToTableClicked(
+            JTable tblListUser,
+            Integer row,
+            JTextField idField,
+            JTextField txtNameMember,
+            JTextField txtPhoneMember,
+            JTextField txtEmailMemBer,
+            JTextField txtAddressMember,
+            JDateChooser dcBirthdayMember,
+            JRadioButton rdoMale,
+            JRadioButton rdoFemale,
+            JComboBox cboRateMember){
+        String idFound = String.valueOf(tblListUser.getValueAt(row, 0));
+        User userFindOut = userService.findById(Integer.valueOf(idFound));
+        setTextFromTableToForm(userFindOut,idField, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMale, rdoFemale, cboRateMember);
+    }
+
+    public void setTextFromTableToForm(
+            User entityResponse,
+            JTextField idField,
+            JTextField txtNameMember,
+            JTextField txtPhoneMember,
+            JTextField txtEmailMemBer,
+            JTextField txtAddressMember,
+            JDateChooser dcBirthdayMember,
+            JRadioButton rdoMale,
+            JRadioButton rdoFemale,
+            JComboBox cboRateMember){
+        idField.setText(String.valueOf(entityResponse.getId()));
+        txtNameMember.setText(entityResponse.getFullname());
+        txtPhoneMember.setText(entityResponse.getPhone());
+        txtEmailMemBer.setText(entityResponse.getEmail());
+        txtAddressMember.setText(entityResponse.getAddress());
+        dcBirthdayMember.setDate(entityResponse.getBirthday());
+        cboRateMember.setSelectedIndex(entityResponse.getScore());
+        if (entityResponse.getSex()) {
+            rdoMale.setSelected(true);
+        } else {
+            rdoFemale.setSelected(true);
+        }
+    }
+
+    public void setFormUserPanelByButton(
+            List<User> members, 
+            int index, 
+            String buttonDirection,
+            JTextField txtIdUserField,
+            JTextField txtNameMember,
+            JTextField txtPhoneMember,
+            JTextField txtEmailMemBer,
+            JTextField txtAddressMember,
+            JDateChooser dcBirthdayMember,
+            JRadioButton rdoMale,
+            JRadioButton rdoFemale,
+            JComboBox cboRateMember) {
+        int sizeOfList = members.size();
+
+        if (members == null) {
+            MsgBox.alert(null, "không có danh sách để hiển thị");
+            return;
+        }
+        User currentMember = members.get(index);
+        NavigationButtons.navButtonInForm(buttonDirection, sizeOfList, index);
+        setTextFromTableToForm(currentMember,txtIdUserField, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMale, rdoFemale, cboRateMember);
+
+//        setTextFromTableToForm(currentMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMale, rdoFemale, cboRateMember);
+ }
+    public void setClearForm(
+            JTextField idField,
+            JTextField txtNameMember,
+            JTextField txtPhoneMember,
+            JTextField txtEmailMemBer,
+            JTextField txtAddressMember,
+            JDateChooser dcBirthdayMember,
+            JRadioButton rdoMale,
+            JRadioButton rdoFemale,
+            JComboBox cboRateMember){
+        idField.setText("");
+        txtNameMember.setText("");
+        txtPhoneMember.setText("");
+        txtEmailMemBer.setText("");
+        txtAddressMember.setText("");
+        dcBirthdayMember.setDate(null);
+        rdoMale.setSelected(false);
+        rdoFemale.setSelected(false);
+        cboRateMember.setSelectedIndex(0);
+    }
+
+    public void createMemberToForm(
+            JTextField idField,
+            JTextField txtNameMember,
+            JTextField txtPhoneMember,
+            JTextField txtEmailMemBer,
+            JTextField txtAddressMember,
+            JDateChooser dcBirthdayMember,
+            JRadioButton rdoMale,
+            JRadioButton rdoFemale,
+            JComboBox cboRateMember){
+        try {
+            String testIdNotNull = idField.getText();
+//            if(testIdNotNull.equals(null)){
+            User userRequest = new User();
+            userRequest.setFullname(txtNameMember.getText());
+            userRequest.setPhone(txtPhoneMember.getText());
+            userRequest.setEmail(txtEmailMemBer.getText());
+            userRequest.setAddress(txtAddressMember.getText());
+            Date changeDate = new Date((dcBirthdayMember.getDate().getTime()));
+            userRequest.setBirthday(changeDate);
+            try {
+                userRequest.setSex(rdoMale.isSelected());
+            } catch (Exception e) {
+                userRequest.setSex(rdoFemale.isSelected());
+            }
+            userRequest.setScore(cboRateMember.getSelectedIndex());
+            userService.save(userRequest, "Thành viên");
+                System.out.println("Luu thanh cong");
+//        }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteMemBerToForm(JTextField idField){
+        try {
+            Integer idMemberDelete = Integer.valueOf(idField.getText());
+            userService.delete(idMemberDelete);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
