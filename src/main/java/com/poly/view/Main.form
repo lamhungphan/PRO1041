@@ -359,11 +359,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-<<<<<<< HEAD
                                       <Component id="pnlTimChiTieu" pref="788" max="32767" attributes="0"/>
-=======
-                                      <Component id="pnlTimChiTieu" max="32767" attributes="0"/>
->>>>>>> 6ee8c7c50929f742cb9b3a58f46ae9c2c6b17dd0
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
