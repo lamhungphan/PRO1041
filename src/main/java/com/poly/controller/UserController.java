@@ -118,6 +118,7 @@ public class UserController {
     public void findUserIdToTableClicked(
             JTable tblListUser, 
             Integer row, 
+            JTextField idField,
             JTextField txtNameMember, 
             JTextField txtPhoneMember, 
             JTextField txtEmailMemBer, 
@@ -128,11 +129,12 @@ public class UserController {
             JComboBox cboRateMember){
         String idFound = String.valueOf(tblListUser.getValueAt(row, 0));
         User userFindOut = userService.findById(Integer.valueOf(idFound));
-        setTextFromTableToForm(userFindOut, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMale, rdoFemale, cboRateMember);
+        setTextFromTableToForm(userFindOut,idField, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMale, rdoFemale, cboRateMember);
     }
     
     public void setTextFromTableToForm(
             User entityResponse, 
+            JTextField idField,
             JTextField txtNameMember, 
             JTextField txtPhoneMember, 
             JTextField txtEmailMemBer, 
@@ -141,6 +143,7 @@ public class UserController {
             JRadioButton rdoMale, 
             JRadioButton rdoFemale, 
             JComboBox cboRateMember){
+        idField.setText(String.valueOf(entityResponse.getId()));
         txtNameMember.setText(entityResponse.getFullname());
         txtPhoneMember.setText(entityResponse.getPhone());
         txtEmailMemBer.setText(entityResponse.getEmail());
@@ -155,6 +158,34 @@ public class UserController {
         }
     }
     
+    public void setClearForm(
+            JTextField idField,
+            JTextField txtNameMember, 
+            JTextField txtPhoneMember, 
+            JTextField txtEmailMemBer, 
+            JTextField txtAddressMember, 
+            JDateChooser dcBirthdayMember, 
+            JRadioButton rdoMale, 
+            JRadioButton rdoFemale, 
+            JComboBox cboRateMember){
+        idField.setText("");
+        txtNameMember.setText("");
+        txtPhoneMember.setText("");
+        txtEmailMemBer.setText("");
+        txtAddressMember.setText("");
+        dcBirthdayMember.setDate(null);
+        rdoMale.setSelected(false);
+        rdoFemale.setSelected(false);
+        cboRateMember.setSelectedIndex(0);
+    }
+    
+    public void createMemberToForm(){
+        
+    }
+    
+    public void logic(){
+        
+    }
 //    public static void main(String[] args) {
 //        UserController controller = new UserController();
 //    }
