@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 com\poly\view\Main$38.class
 com\poly\utils\XDate.class
 com\poly\view\Main$12.class
@@ -126,3 +127,6 @@ com\poly\controller\MailController.class
 com\poly\view\Main$22.class
 com\poly\view\Main$17.class
 com\poly\view\Login$7.class
+=======
+com\poly\utils\ComponentManagement.class
+>>>>>>> 6ee8c7c50929f742cb9b3a58f46ae9c2c6b17dd0

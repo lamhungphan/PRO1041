@@ -4,11 +4,8 @@ import com.poly.controller.AccountController;
 import com.poly.controller.UserController;
 import com.poly.entity.Account;
 import com.poly.entity.User;
+import com.poly.injection.AccountInjector;
 import com.poly.injection.UserInjector;
-import com.poly.repository.AccountRepository;
-import com.poly.repository.impl.AccountRepoImpl;
-import com.poly.services.AccountService;
-import com.poly.services.impl.AccountServiceImpl;
 import com.poly.utils.InputFields;
 import lombok.Getter;
 
@@ -19,22 +16,27 @@ import javax.swing.*;
 @Getter
 public class Login extends javax.swing.JFrame {
 
-    private UserController controller;
+    private AccountInjector accountInjector;
+
+    private UserInjector userInjector;
+
+    private UserController userController;
+
     private AccountController accountController;
 
-    /**
-     * Creates new form login
-     *
-     * @param controller
-     */
     public Login() throws HeadlessException {
         initComponents();
+        initInject();
         txtUsername.setBackground(new java.awt.Color(0, 0, 0, 1));
         txtPassword.setBackground(new java.awt.Color(0, 0, 0, 1));
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    private void initInject(){
+        accountController = new AccountController();
+        userController = new UserController();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -253,7 +255,7 @@ public class Login extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        controller.doLogin(getForm());
+        userController.doLogin(getForm());
         accountController.doSavePassword(getFormAccount(), cbSavePassword);
     }//GEN-LAST:event_btnLoginActionPerformed
 

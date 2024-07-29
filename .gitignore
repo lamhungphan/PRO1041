@@ -1,4 +1,5 @@
 
 .idea
-!/src/main/resources/META-INF/persistence.xml
-!/target/
+/src/main/resources/META-INF/persistence.xml
+/target/
+target

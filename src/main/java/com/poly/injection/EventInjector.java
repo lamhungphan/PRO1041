@@ -19,9 +19,9 @@ public class EventInjector {
     private static EventInjector instance;
 
     private UserInjector userInjector;
-    private EventRepository eventRepository;
-    private EventService eventService;
-    private UserService userService;
+    private final EventRepository eventRepository;
+    private final EventService eventService;
+    private final UserService userService;
 
     private EventInjector() {
         this.eventRepository = new EventRepoImpl();
