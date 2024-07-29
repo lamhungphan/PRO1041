@@ -18,7 +18,6 @@ public class EventController {
     
      EventService eventService = EventInjector.getInstance().getEventService();
 
-
     public void createEvent(Event event,String nameUserManager) {
         Event createdEvent = eventService.save(event,nameUserManager);
         if (createdEvent != null) {

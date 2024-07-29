@@ -12,7 +12,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.io.Serializable;
 import java.sql.Date;
  import java.io.Serializable;
@@ -50,6 +49,9 @@ public class User implements Serializable {
     @Column(name = "birthday")
     private Date birthday;
 
+    @Column(name = "sex")
+    private Boolean sex;
+
     @Column(name = "createdDate")
     private Date createdDate;
 
@@ -58,6 +60,9 @@ public class User implements Serializable {
 
     @Column(name = "isActived")
     private Boolean isActived;
+    
+    @Column(name = "score")
+    private Integer score;
 
     @ManyToOne
     @JoinColumn(name = "roleId", referencedColumnName = "id")

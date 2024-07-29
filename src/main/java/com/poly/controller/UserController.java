@@ -8,10 +8,11 @@ import com.poly.entity.User;
 import com.poly.injection.UserInjector;
 import com.poly.services.AuthorizationService;
 import com.poly.services.UserService;
-import com.poly.utils.InputFields;
+import com.poly.utils.ComponentManagement;
 import com.poly.utils.MsgBox;
 import com.poly.view.Login;
 import com.poly.view.Main;
+import com.toedter.calendar.JDateChooser;
 import java.util.List;
 
 import javax.swing.*;
@@ -22,50 +23,52 @@ import javax.swing.*;
  */
 public class UserController {
 
-    AuthorizationService authorizationService = UserInjector.getInstance().getAuthorizationService();
-    UserService userService = UserInjector.getInstance().getUserService();
-    private final Main mainFrame = new Main();
+    private AuthorizationService authorizationService = UserInjector.getInstance().getAuthorizationService();
+    private UserService userService = UserInjector.getInstance().getUserService();
+    private static final String[] GET_METHOD_NAME_USER = {"getId" ,"getFullname", "getEmail", "getPhone", "getBirthday", "getScore", "getAddress"};
 
-    public void doLogin(User userRequest) {
+
+    public void doLogin(User userRequest,Main mainFrame,Login loginFrame) {
         User loginedUser = userService.doLogin(userRequest);
         if (loginedUser == null) {
             MsgBox.alert(null, "Đăng nhập không thành công");
         } else {
             MsgBox.alert(null, "Đăng nhập thành công");
-            showWorkspaceByRolename(loginedUser);
+            loginFrame.dispose();
+            showWorkspaceByRolename(loginedUser, mainFrame);
         }
     }
-    public void dologout() {
+    public void dologout(JFrame mainFrame, Login loginFrame) {
         mainFrame.dispose();
-        new Login().setVisible(true);
+        loginFrame.setVisible(true);
     }
 
-    public void showWorkspaceByRolename(User userLogined) {
+    public void showWorkspaceByRolename(User userLogined,Main mainFrame ) {
         JPanel eventPanel = mainFrame.getPnlEvent();
         JPanel adminPanel = mainFrame.getPnlAdmin();
         JPanel notificationPanel = mainFrame.getPnlNotification();
         JPanel memberPanel = mainFrame.getPnlUser();
         if (authorizationService.isAdmin(userLogined)) {
-            new Main().setVisible(true);
+            mainFrame.setVisible(true);
         } else if (authorizationService.isEventManager(userLogined)) {
             mainFrame.setVisible(true);
-            InputFields.setEnabledRecursively(eventPanel, true);
-            InputFields.setEnabledRecursively(adminPanel, false);
-            InputFields.setEnabledRecursively(notificationPanel, false);
-            InputFields.setEnabledRecursively(memberPanel, false);
+            ComponentManagement.setEnabledRecursively(eventPanel, true);
+            ComponentManagement.setEnabledRecursively(adminPanel, false);
+            ComponentManagement.setEnabledRecursively(notificationPanel, false);
+            ComponentManagement.setEnabledRecursively(memberPanel, false);
 
         } else if (authorizationService.isMember(userLogined)) {
             mainFrame.setVisible(true);
-            InputFields.setEnabledRecursively(eventPanel, false);
-            InputFields.setEnabledRecursively(adminPanel, false);
-            InputFields.setEnabledRecursively(notificationPanel, false);
-            InputFields.setEnabledRecursively(memberPanel, true);
+            ComponentManagement.setEnabledRecursively(eventPanel, false);
+            ComponentManagement.setEnabledRecursively(adminPanel, false);
+            ComponentManagement.setEnabledRecursively(notificationPanel, false);
+            ComponentManagement.setEnabledRecursively(memberPanel, true);
         } else if (authorizationService.isAccoutant(userLogined)) {
             mainFrame.setVisible(true);
-            InputFields.setEnabledRecursively(eventPanel, false);
-            InputFields.setEnabledRecursively(adminPanel, false);
-            InputFields.setEnabledRecursively(notificationPanel, true);
-            InputFields.setEnabledRecursively(memberPanel, false);
+            ComponentManagement.setEnabledRecursively(eventPanel, false);
+            ComponentManagement.setEnabledRecursively(adminPanel, false);
+            ComponentManagement.setEnabledRecursively(notificationPanel, true);
+            ComponentManagement.setEnabledRecursively(memberPanel, false);
         }
     }
      // CRUD operations
@@ -103,7 +106,56 @@ public class UserController {
     public List<User> getAllUsers() {
         return userService.findAll();
     }
-    public static void main(String[] args) {
-        UserController controller = new UserController();
+    
+    public void setAllDataUserToTable(JTable tblListUser){
+        ComponentManagement.fillDataTableComponent(getAllUsers(), tblListUser, GET_METHOD_NAME_USER);
     }
+    
+    public User responseUserById(Integer idUser){
+        return userService.findById(idUser);
+    }
+    
+    public void findUserIdToTableClicked(
+            JTable tblListUser, 
+            Integer row, 
+            JTextField txtNameMember, 
+            JTextField txtPhoneMember, 
+            JTextField txtEmailMemBer, 
+            JTextField txtAddressMember, 
+            JDateChooser dcBirthdayMember, 
+            JRadioButton rdoMale, 
+            JRadioButton rdoFemale, 
+            JComboBox cboRateMember){
+        String idFound = String.valueOf(tblListUser.getValueAt(row, 0));
+        User userFindOut = userService.findById(Integer.valueOf(idFound));
+        setTextFromTableToForm(userFindOut, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMale, rdoFemale, cboRateMember);
+    }
+    
+    public void setTextFromTableToForm(
+            User entityResponse, 
+            JTextField txtNameMember, 
+            JTextField txtPhoneMember, 
+            JTextField txtEmailMemBer, 
+            JTextField txtAddressMember, 
+            JDateChooser dcBirthdayMember, 
+            JRadioButton rdoMale, 
+            JRadioButton rdoFemale, 
+            JComboBox cboRateMember){
+        txtNameMember.setText(entityResponse.getFullname());
+        txtPhoneMember.setText(entityResponse.getPhone());
+        txtEmailMemBer.setText(entityResponse.getEmail());
+        txtAddressMember.setText(entityResponse.getAddress());
+        dcBirthdayMember.setDate(entityResponse.getBirthday());
+        cboRateMember.setSelectedIndex(entityResponse.getScore());
+        if(entityResponse.getSex()){
+            rdoMale.setSelected(true);
+        }
+        else{
+            rdoFemale.setSelected(true);
+        }
+    }
+    
+//    public static void main(String[] args) {
+//        UserController controller = new UserController();
+//    }
 }

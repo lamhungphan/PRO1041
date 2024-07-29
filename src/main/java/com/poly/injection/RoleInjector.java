@@ -17,8 +17,8 @@ public class RoleInjector {
 
     private static RoleInjector instance;
 
-    private RoleRepository roleRepository;
-    private RoleService roleService;
+    private final RoleRepository roleRepository;
+    private final RoleService roleService;
 
     private RoleInjector() {
         this.roleRepository = new RoleRepoImpl();
