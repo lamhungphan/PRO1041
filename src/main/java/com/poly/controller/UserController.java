@@ -27,7 +27,7 @@ public class UserController {
     private AuthorizationService authorizationService = UserInjector.getInstance().getAuthorizationService();
     private UserService userService = UserInjector.getInstance().getUserService();
     private final Main mainFrame = new Main();
-    static String[] methodNames = {"getId" ,"getFullname", "getEmail", "getPhone", "getBirthday", "getScore", "getAddress"};
+    private static final String[] GET_METHOD_NAME_USER = {"getId" ,"getFullname", "getEmail", "getPhone", "getBirthday", "getScore", "getAddress"};
 
     public void doLogin(User userRequest) {
         User loginedUser = userService.doLogin(userRequest);
@@ -107,8 +107,8 @@ public class UserController {
         return userService.findAll();
     }
     
-    public void setAllDataUserInTable(JTable tblListUser){
-        ComponentManagement.fillDataTableComponent(getAllUsers(), tblListUser, methodNames);
+    public void setAllDataUserToTable(JTable tblListUser){
+        ComponentManagement.fillDataTableComponent(getAllUsers(), tblListUser, GET_METHOD_NAME_USER);
     }
     
     public User responseUserById(Integer idUser){
@@ -128,10 +128,10 @@ public class UserController {
             JComboBox cboRateMember){
         String idFound = String.valueOf(tblListUser.getValueAt(row, 0));
         User userFindOut = userService.findById(Integer.valueOf(idFound));
-        setTextToTableForForm(userFindOut, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMale, rdoFemale, cboRateMember);
+        setTextFromTableToForm(userFindOut, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMale, rdoFemale, cboRateMember);
     }
     
-    public void setTextToTableForForm(
+    public void setTextFromTableToForm(
             User entityResponse, 
             JTextField txtNameMember, 
             JTextField txtPhoneMember, 
@@ -155,7 +155,7 @@ public class UserController {
         }
     }
     
-    public static void main(String[] args) {
-        UserController controller = new UserController();
-    }
+//    public static void main(String[] args) {
+//        UserController controller = new UserController();
+//    }
 }
