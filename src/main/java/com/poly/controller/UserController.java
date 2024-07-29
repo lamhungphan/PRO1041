@@ -29,7 +29,7 @@ public class UserController {
 
     private AuthorizationService authorizationService = UserInjector.getInstance().getAuthorizationService();
     private UserService userService = UserInjector.getInstance().getUserService();
-    private static final String[] GET_METHOD_NAME_USER = {"getId", "getFullname", "getEmail", "getPhone", "getBirthday", "getScore", "getAddress"};
+    public static final String[] GET_METHOD_NAME_USER = {"getId", "getFullname", "getEmail", "getPhone", "getBirthday", "getScore", "getAddress"};
     private final List<User> listAllUser = getAllUsers();
 
     public void doLogin(User userRequest, Main mainFrame, Login loginFrame) {
@@ -112,15 +112,14 @@ public class UserController {
         return userService.findAll();
     }
 
-    public List<User> setAllDataUserToTable(JTable tblListUser, String role) {
+    public void setAllDataUserToTable(JTable tblListUser, String role) {
         List<User> listByRole = new ArrayList<>();
         for (User user : listAllUser) {
             if (role.equalsIgnoreCase(user.getRole().getRoleName())) {
                 listByRole.add(user);
             }
         }
-        return listByRole;
-//        ComponentManagement.fillDataTableComponent(getAllUsers(), tblListUser, GET_METHOD_NAME_USER);
+        ComponentManagement.fillDataTableComponent(getAllUsers(), tblListUser, GET_METHOD_NAME_USER);
     }
 
     public User responseUserById(Integer idUser) {
@@ -169,14 +168,19 @@ public class UserController {
         }
     }
 
-    public void setFormUserPanelByButton(List<User> members, int index, String buttonDirection, JTextField txtNameMember,
+    public void setFormUserPanelByButton(
+            List<User> members, 
+            int index, 
+            String buttonDirection,
+            JTextField txtIdUserField,
+            JTextField txtNameMember,
             JTextField txtPhoneMember,
             JTextField txtEmailMemBer,
             JTextField txtAddressMember,
             JDateChooser dcBirthdayMember,
             JRadioButton rdoMale,
-                                         JRadioButton rdoFemale,
-                                         JComboBox cboRateMember) {
+            JRadioButton rdoFemale,
+            JComboBox cboRateMember) {
         int sizeOfList = members.size();
 
         if (members == null) {
@@ -185,7 +189,7 @@ public class UserController {
         }
         User currentMember = members.get(index);
         NavigationButtons.navButtonInForm(buttonDirection, sizeOfList, index);
-        setTextFromTableToForm(currentMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMale, rdoFemale, cboRateMember);
+        setTextFromTableToForm(currentMember,txtIdUserField, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMale, rdoFemale, cboRateMember);
 
 //        setTextFromTableToForm(currentMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMale, rdoFemale, cboRateMember);
  }
@@ -252,7 +256,5 @@ public class UserController {
             e.printStackTrace();
         }
     }
-//    public static void main(String[] args) {
-//        UserController controller = new UserController();
-//    }
+
 }
