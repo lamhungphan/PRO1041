@@ -28,9 +28,9 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
         cardLayout = (CardLayout) (container.getLayout());
-
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     private void showCard(String cardName) {
@@ -1845,8 +1845,7 @@ public class Main extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         userController = new UserController();
-        
-        userController.setAllDataUserInTable(tblListMember);
+        userController.setAllDataUserToTable(tblListMember);
     }//GEN-LAST:event_formWindowOpened
 
     /**
