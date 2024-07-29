@@ -10,6 +10,7 @@ import com.poly.services.AuthorizationService;
 import com.poly.services.UserService;
 import com.poly.utils.ComponentManagement;
 import com.poly.utils.MsgBox;
+import com.poly.utils.NavigationButtons;
 import com.poly.view.Login;
 import com.poly.view.Main;
 import com.toedter.calendar.JDateChooser;
@@ -25,10 +26,9 @@ public class UserController {
 
     private AuthorizationService authorizationService = UserInjector.getInstance().getAuthorizationService();
     private UserService userService = UserInjector.getInstance().getUserService();
-    private static final String[] GET_METHOD_NAME_USER = {"getId" ,"getFullname", "getEmail", "getPhone", "getBirthday", "getScore", "getAddress"};
+    private static final String[] GET_METHOD_NAME_USER = {"getId", "getFullname", "getEmail", "getPhone", "getBirthday", "getScore", "getAddress"};
 
-
-    public void doLogin(User userRequest,Main mainFrame,Login loginFrame) {
+    public void doLogin(User userRequest, Main mainFrame, Login loginFrame) {
         User loginedUser = userService.doLogin(userRequest);
         if (loginedUser == null) {
             MsgBox.alert(null, "Đăng nhập không thành công");
@@ -38,12 +38,13 @@ public class UserController {
             showWorkspaceByRolename(loginedUser, mainFrame);
         }
     }
+
     public void dologout(JFrame mainFrame, Login loginFrame) {
         mainFrame.dispose();
         loginFrame.setVisible(true);
     }
 
-    public void showWorkspaceByRolename(User userLogined,Main mainFrame ) {
+    public void showWorkspaceByRolename(User userLogined, Main mainFrame) {
         JPanel eventPanel = mainFrame.getPnlEvent();
         JPanel adminPanel = mainFrame.getPnlAdmin();
         JPanel notificationPanel = mainFrame.getPnlNotification();
@@ -71,7 +72,8 @@ public class UserController {
             ComponentManagement.setEnabledRecursively(memberPanel, false);
         }
     }
-     // CRUD operations
+    // CRUD operations
+
     public void createUser(User user, String roleName) {
         User createdUser = userService.save(user, roleName);
         if (createdUser != null) {
@@ -106,56 +108,71 @@ public class UserController {
     public List<User> getAllUsers() {
         return userService.findAll();
     }
-    
-    public void setAllDataUserToTable(JTable tblListUser){
+
+    public void setAllDataUserToTable(JTable tblListUser) {
         ComponentManagement.fillDataTableComponent(getAllUsers(), tblListUser, GET_METHOD_NAME_USER);
     }
-    
-    public User responseUserById(Integer idUser){
+
+    public User responseUserById(Integer idUser) {
         return userService.findById(idUser);
     }
-    
+
     public void findUserIdToTableClicked(
-            JTable tblListUser, 
-            Integer row, 
-            JTextField txtNameMember, 
-            JTextField txtPhoneMember, 
-            JTextField txtEmailMemBer, 
-            JTextField txtAddressMember, 
-            JDateChooser dcBirthdayMember, 
-            JRadioButton rdoMale, 
-            JRadioButton rdoFemale, 
-            JComboBox cboRateMember){
+            JTable tblListUser,
+            Integer row,
+            JTextField txtNameMember,
+            JTextField txtPhoneMember,
+            JTextField txtEmailMemBer,
+            JTextField txtAddressMember,
+            JDateChooser dcBirthdayMember,
+            JRadioButton rdoMale,
+            JRadioButton rdoFemale,
+            JComboBox cboRateMember) {
         String idFound = String.valueOf(tblListUser.getValueAt(row, 0));
         User userFindOut = userService.findById(Integer.valueOf(idFound));
         setTextFromTableToForm(userFindOut, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMale, rdoFemale, cboRateMember);
     }
-    
+
     public void setTextFromTableToForm(
-            User entityResponse, 
-            JTextField txtNameMember, 
-            JTextField txtPhoneMember, 
-            JTextField txtEmailMemBer, 
-            JTextField txtAddressMember, 
-            JDateChooser dcBirthdayMember, 
-            JRadioButton rdoMale, 
-            JRadioButton rdoFemale, 
-            JComboBox cboRateMember){
+            User entityResponse,
+            JTextField txtNameMember,
+            JTextField txtPhoneMember,
+            JTextField txtEmailMemBer,
+            JTextField txtAddressMember,
+            JDateChooser dcBirthdayMember,
+            JRadioButton rdoMale,
+            JRadioButton rdoFemale,
+            JComboBox cboRateMember) {
         txtNameMember.setText(entityResponse.getFullname());
         txtPhoneMember.setText(entityResponse.getPhone());
         txtEmailMemBer.setText(entityResponse.getEmail());
         txtAddressMember.setText(entityResponse.getAddress());
         dcBirthdayMember.setDate(entityResponse.getBirthday());
         cboRateMember.setSelectedIndex(entityResponse.getScore());
-        if(entityResponse.getSex()){
+        if (entityResponse.getSex()) {
             rdoMale.setSelected(true);
-        }
-        else{
+        } else {
             rdoFemale.setSelected(true);
         }
     }
+
+    public void setFormUserPanelByButton(List<User> members, int index,String buttonDirection ,JTextField txtNameMember,
+            JTextField txtPhoneMember,
+            JTextField txtEmailMemBer,
+            JTextField txtAddressMember,
+            JDateChooser dcBirthdayMember,
+            JRadioButton rdoMale,
+            JRadioButton rdoFemale,
+            JComboBox cboRateMember) {
+        int sizeOfList = members.size();
+        
+        if (members == null) {
+            MsgBox.alert(null, "không có danh sách để hiển thị");
+            return;
+        }
+        User currentMember = members.get(index);
+        NavigationButtons.navButtonInForm(buttonDirection, sizeOfList, index);
+        setTextFromTableToForm(currentMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMale, rdoFemale, cboRateMember);
     
-//    public static void main(String[] args) {
-//        UserController controller = new UserController();
-//    }
+    }
 }

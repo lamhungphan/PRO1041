@@ -3,7 +3,7 @@ package com.poly.view;
 import com.poly.controller.UserController;
 import com.poly.entity.User;
 import javax.swing.JFrame;
-
+import com.poly.utils.NavigationButtons;
 import com.poly.injection.AccountInjector;
 import com.poly.injection.AuthorizationInjector;
 import com.poly.injection.MailInjector;
@@ -11,23 +11,21 @@ import com.poly.injection.UserInjector;
 import com.poly.utils.ComponentManagement;
 import java.awt.CardLayout;
 import lombok.Getter;
+
 @Getter
 public class Main extends javax.swing.JFrame {
-    private int row = -1;
 
+    private int row = -1;
     CardLayout cardLayout;
-    
     AccountInjector accountInjector;
     MailInjector mailInjector;
     UserInjector userInjector;
     AuthorizationInjector authorizationInjector;
-    
     UserController userController;
-    
+
     public Main() {
         initComponents();
         cardLayout = (CardLayout) (container.getLayout());
-        
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -35,6 +33,7 @@ public class Main extends javax.swing.JFrame {
     private void showCard(String cardName) {
         cardLayout.show(container, cardName);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -84,9 +83,9 @@ public class Main extends javax.swing.JFrame {
         btnClearMember = new javax.swing.JButton();
         lblNgaySinh1 = new javax.swing.JLabel();
         cboRateMember = new javax.swing.JComboBox<>();
+        btnPreMember = new javax.swing.JButton();
+        btnNextMember = new javax.swing.JButton();
         btnLastMember = new javax.swing.JButton();
-        btnPreviousMember = new javax.swing.JButton();
-        btnForwardMember = new javax.swing.JButton();
         dcBirthdayMember = new com.toedter.calendar.JDateChooser();
         lblMember = new javax.swing.JLabel();
         pnlEvent = new javax.swing.JPanel();
@@ -219,7 +218,7 @@ public class Main extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Alarm.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Bell.png"))); // NOI18N
         jLabel4.setText(" Thông báo");
         jLabel4.setVerifyInputWhenFocusTarget(false);
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -517,27 +516,27 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        btnPreMember.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnPreMember.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/pri.png"))); // NOI18N
+        btnPreMember.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPreMemberActionPerformed(evt);
+            }
+        });
+
+        btnNextMember.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnNextMember.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/next.png"))); // NOI18N
+        btnNextMember.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextMemberActionPerformed(evt);
+            }
+        });
+
         btnLastMember.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnLastMember.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/pri.png"))); // NOI18N
+        btnLastMember.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/last.png"))); // NOI18N
         btnLastMember.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLastMemberActionPerformed(evt);
-            }
-        });
-
-        btnPreviousMember.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnPreviousMember.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/next.png"))); // NOI18N
-        btnPreviousMember.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPreviousMemberActionPerformed(evt);
-            }
-        });
-
-        btnForwardMember.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnForwardMember.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/last.png"))); // NOI18N
-        btnForwardMember.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnForwardMemberActionPerformed(evt);
             }
         });
 
@@ -599,11 +598,11 @@ public class Main extends javax.swing.JFrame {
                         .addGap(227, 227, 227)
                         .addComponent(btnFirstMember)
                         .addGap(18, 18, 18)
-                        .addComponent(btnLastMember)
+                        .addComponent(btnPreMember)
                         .addGap(18, 18, 18)
-                        .addComponent(btnPreviousMember)
+                        .addComponent(btnNextMember)
                         .addGap(18, 18, 18)
-                        .addComponent(btnForwardMember)))
+                        .addComponent(btnLastMember)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         pnlSettingMemberLayout.setVerticalGroup(
@@ -644,9 +643,9 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                 .addGroup(pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnFirstMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLastMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnPreviousMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnForwardMember))
+                    .addComponent(btnPreMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnNextMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLastMember))
                 .addGap(35, 35, 35)
                 .addGroup(pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAddMember, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -669,7 +668,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(pnlUserLayout.createSequentialGroup()
                 .addGap(255, 255, 255)
                 .addComponent(lblMember, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(279, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlUserLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(tabMember, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -693,7 +692,7 @@ public class Main extends javax.swing.JFrame {
         lblEvent.setBackground(new java.awt.Color(204, 204, 204));
         lblEvent.setFont(new java.awt.Font("Cantarell", 1, 36)); // NOI18N
         lblEvent.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblEvent.setText("Sự Kiện");
+        lblEvent.setText("Sự kiện");
 
         jTabbedPane3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
@@ -1234,7 +1233,7 @@ public class Main extends javax.swing.JFrame {
 
         lblNotification.setFont(new java.awt.Font("Cantarell", 1, 36)); // NOI18N
         lblNotification.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNotification.setText("Thông Báo");
+        lblNotification.setText("Thông báo");
 
         javax.swing.GroupLayout pnlNotificationLayout = new javax.swing.GroupLayout(pnlNotification);
         pnlNotification.setLayout(pnlNotificationLayout);
@@ -1605,9 +1604,9 @@ public class Main extends javax.swing.JFrame {
         showCard("cardAdmin");
     }//GEN-LAST:event_jLabel5MouseClicked
 
-    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-                userController.dologout(this,new Login());
-    }//GEN-LAST:event_jLabel
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {
+        userController.dologout(this, new Login());
+    }
 
     private void txtFindMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFindMemberActionPerformed
         // TODO add your handling code here:
@@ -1650,7 +1649,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddMemberActionPerformed
 
     private void btnFirstMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstMemberActionPerformed
-        // TODO add your handling code here:
+        row = NavigationButtons.navButton("first", tblListMember, row);
     }//GEN-LAST:event_btnFirstMemberActionPerformed
 
     private void btnClearMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearMemberActionPerformed
@@ -1661,17 +1660,17 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cboRateMemberActionPerformed
 
+    private void btnPreMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreMemberActionPerformed
+        row = NavigationButtons.navButton("previous", tblListMember, row);
+    }//GEN-LAST:event_btnPreMemberActionPerformed
+
+    private void btnNextMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextMemberActionPerformed
+        row = NavigationButtons.navButton("next", tblListMember, row);
+    }//GEN-LAST:event_btnNextMemberActionPerformed
+
     private void btnLastMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastMemberActionPerformed
-        // TODO add your handling code here:
+        row = NavigationButtons.navButton("last", tblListMember, row);
     }//GEN-LAST:event_btnLastMemberActionPerformed
-
-    private void btnPreviousMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousMemberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPreviousMemberActionPerformed
-
-    private void btnForwardMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForwardMemberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnForwardMemberActionPerformed
 
     private void txtFindEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFindEventActionPerformed
         // TODO add your handling code here:
@@ -1832,7 +1831,7 @@ public class Main extends javax.swing.JFrame {
 
     private void tblListMemberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListMemberMouseClicked
         // TODO add your handling code here:
-        if(evt.getClickCount() == 1){
+        if (evt.getClickCount() == 1) {
             this.row = tblListMember.getSelectedRow();
             userController.findUserIdToTableClicked(tblListMember, row, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
         }
@@ -1874,8 +1873,7 @@ public class Main extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
@@ -1901,13 +1899,13 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnFirstMember;
     private javax.swing.JButton btnFirstUser;
     private javax.swing.JButton btnForwardEvent;
-    private javax.swing.JButton btnForwardMember;
     private javax.swing.JButton btnForwardUser;
     private javax.swing.JButton btnLastEvent;
     private javax.swing.JButton btnLastMember;
     private javax.swing.JButton btnLastUser;
+    private javax.swing.JButton btnNextMember;
+    private javax.swing.JButton btnPreMember;
     private javax.swing.JButton btnPreviousEvent;
-    private javax.swing.JButton btnPreviousMember;
     private javax.swing.JButton btnPreviousUser;
     private javax.swing.JButton btnRejectNotificationAdmin;
     private javax.swing.JButton btnSearchEvent;
