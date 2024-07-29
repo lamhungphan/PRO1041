@@ -1699,7 +1699,10 @@ public class Main extends javax.swing.JFrame {
             if (RegExInputFields.checkPhoneMember(txtPhoneMember)) {
                 if (RegExInputFields.checkEmail(txtEmailMemBer)) {
                     if (RegExInputFields.checkAddress(txtAddressMember)) {
-                        userController.createMemberToForm(txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
+                        if (RegExInputFields.checkBirthday(dcBirthdayMember.getDate())) {
+                            userController.createMemberToForm(txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
+                        }
+                        
                     }
                 }
             }

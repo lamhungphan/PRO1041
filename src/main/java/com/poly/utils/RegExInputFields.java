@@ -4,7 +4,9 @@
  */
 package com.poly.utils;
 
+import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
+import java.util.Date;
 import javax.swing.JTextField;
 
 /**
@@ -85,5 +87,12 @@ public class RegExInputFields {
         return true;
     }
     
-    
+    public static boolean checkBirthday(Date birthDay) {
+        // Kiểm tra xem ngày sinh có rỗng hay không
+        if (birthDay == null) {
+            MsgBox.alert(null,"Birthday cannot be empty.");
+            return false; // Ngày sinh không hợp lệ
+        }
+        return true; // Ngày sinh hợp lệ
+    }
 }
