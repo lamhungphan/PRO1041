@@ -5,15 +5,11 @@
 package com.poly.services.impl;
 
 import com.poly.entity.User;
-import com.poly.repository.impl.RoleRepoImpl;
-import com.poly.repository.RoleRepository;
 import com.poly.repository.UserRepository;
 import com.poly.repository.impl.UserRepoImpl;
 import com.poly.services.AuthorizationService;
 import com.poly.services.RoleService;
 import com.poly.services.UserService;
-import com.poly.utils.MsgBox;
-import com.poly.view.Main;
 import java.util.List;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -70,6 +66,26 @@ public class UserServiceImpl implements UserService {
             }
         }
         return null;
+    }
+    @Override
+    public User findByEmail(String email) {
+        List<User> list = this.findAll();
+        for (User user : list) {
+            if (user.getEmail().equalsIgnoreCase(email)) {
+                return user;
+            }
+        }
+        return null;
+    }
+    @Override
+    public boolean updatePassword(String email, String newPassword) {
+        User user =repo.findByEmail(email);
+        if (user != null) {
+            user.setPassword(newPassword);
+            repo.update(user);
+            return true;
+        }
+        return false;
     }
 
     @Override

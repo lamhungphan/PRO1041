@@ -17,5 +17,10 @@ public interface UserService {
 
     List<User> findAll();
 
+    User findByEmail(String email);
+
     User doLogin(User userRequest);
+
+
+    boolean updatePassword(String email, String newPassword);
 }

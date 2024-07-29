@@ -31,4 +31,16 @@ public class PasswordResetTokenRepoImpl implements PasswordResetTokenRepository 
         return query.getResultList().stream().findFirst().orElse(null);
     }
 
+    @Override
+    public void deleteByToken(String token) {
+        em.getTransaction().begin();
+        TypedQuery<PasswordResetToken> query = em.createQuery("SELECT p FROM PasswordResetToken p WHERE p.token = :token", PasswordResetToken.class);
+        query.setParameter("token", token);
+        PasswordResetToken tokenEntity = query.getResultList().stream().findFirst().orElse(null);
+        if (tokenEntity != null) {
+            em.remove(tokenEntity);
+        }
+        em.getTransaction().commit();
+    }
+
 }

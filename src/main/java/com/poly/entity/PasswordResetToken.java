@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "passwordresettoken")
 @Setter
@@ -15,9 +17,9 @@ import lombok.Setter;
 public class PasswordResetToken {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
- private String email;
- private String token;
-    @ManyToOne
-    @JoinColumn(name = "id")
- private User user;
+     private Integer id;
+     private String email;
+     private String token;
+     private LocalDateTime expirationdate;
+
 }

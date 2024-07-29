@@ -1,5 +1,5 @@
 package com.poly.services.impl;
-import mail.MailSender;
+import com.poly.utils.MailSender;
 import com.poly.entity.User;
 import com.poly.services.MailService;
 import com.poly.services.UserService;

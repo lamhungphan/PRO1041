@@ -4,13 +4,16 @@
  */
 package com.poly.controller;
 
+import com.poly.entity.PasswordResetToken;
 import com.poly.entity.User;
+import com.poly.injection.UserInjector;
 import com.poly.services.AuthorizationService;
 import com.poly.services.UserService;
 import com.poly.utils.InputFields;
 import com.poly.utils.MsgBox;
 import com.poly.view.Login;
 import com.poly.view.Main;
+import java.util.List;
 
 import javax.swing.*;
 
@@ -20,17 +23,12 @@ import javax.swing.*;
  */
 public class UserController {
 
-    private final UserService service;
-    private final AuthorizationService authorizationService;
+    AuthorizationService authorizationService = UserInjector.getInstance().getAuthorizationService();
+    UserService userService = UserInjector.getInstance().getUserService();
     private final Main mainFrame = new Main();
 
-    public UserController(UserService service, AuthorizationService authorizationService) {
-        this.service = service;
-        this.authorizationService = authorizationService;
-    }
-
     public void doLogin(User userRequest) {
-        User loginedUser = service.doLogin(userRequest);
+        User loginedUser = userService.doLogin(userRequest);
         if (loginedUser == null) {
             MsgBox.alert(null, "Đăng nhập không thành công");
         } else {
@@ -38,10 +36,10 @@ public class UserController {
             showWorkspaceByRolename(loginedUser);
         }
     }
-//    public void dologout() {
-//        mainFrame.dispose();
-//        new Login(UserController.this).setVisible(true);
-//    }
+    public void dologout() {
+        mainFrame.dispose();
+        new Login().setVisible(true);
+    }
 
     public void showWorkspaceByRolename(User userLogined) {
         JPanel eventPanel = mainFrame.getPnlEvent();
@@ -71,4 +69,48 @@ public class UserController {
             InputFields.setEnabledRecursively(memberPanel, false);
         }
     }
+     // CRUD operations
+    public void createUser(User user, String roleName) {
+        User createdUser = userService.save(user, roleName);
+        if (createdUser != null) {
+            MsgBox.alert(null, "Tạo người dùng thành công!");
+        } else {
+            MsgBox.alert(null, "Không thể tạo người dùng.");
+        }
+    }
+
+    public User readUser(Integer id) {
+        return userService.findById(id);
+    }
+
+    public void updateUser(User user) {
+        User updatedUser = userService.update(user);
+        if (updatedUser != null) {
+            MsgBox.alert(null, "Cập nhật người dùng thành công!");
+        } else {
+            MsgBox.alert(null, "Không thể cập nhật người dùng.");
+        }
+    }
+
+    public void deleteUser(Integer id) {
+        User deletedUser = userService.delete(id);
+        if (deletedUser != null) {
+            MsgBox.alert(null, "Xóa người dùng thành công!");
+        } else {
+            MsgBox.alert(null, "Không thể xóa người dùng.");
+        }
+    }
+
+    public List<User> getAllUsers() {
+        return userService.findAll();
+    }
+ public boolean updatePassword (String email, String newPassword) {
+     User user = userService.findByEmail(email);
+     if(user != null){
+         user.setPassword(newPassword);
+         userService.update(user);
+         return true;
+     }
+     return false;
+ }
 }

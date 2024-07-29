@@ -14,8 +14,13 @@ public class PasswordResetTokenServiceImpl implements PasswordResetTokenService 
     }
 
     @Override
-    public void findBytoken(String token) {
-        tokenRepos.findByToken(token);
+    public PasswordResetToken findBytoken(String token) {
+     return  tokenRepos.findByToken(token);
+    }
+
+    @Override
+    public void deleteByToken(String token) {
+        tokenRepos.deleteByToken(token);
     }
 }
 

@@ -29,4 +29,7 @@ public class Account implements Serializable {
 
     @Column(name = "password")
     private String password;
+
+    @Column(name="isActive")
+    private Boolean isActived;
 }

@@ -6,4 +6,6 @@ import com.poly.repository.impl.PasswordResetTokenRepoImpl;
 public interface PasswordResetTokenRepository{
     PasswordResetToken save(PasswordResetToken entity);
     PasswordResetToken findByToken(String token);
+
+    void deleteByToken(String token);
 }
