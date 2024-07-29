@@ -9,6 +9,7 @@ import com.poly.injection.AuthorizationInjector;
 import com.poly.injection.MailInjector;
 import com.poly.injection.UserInjector;
 import com.poly.utils.ComponentManagement;
+import com.poly.utils.RegExInputFields;
 import java.awt.CardLayout;
 import java.util.List;
 import lombok.Getter;
@@ -22,7 +23,7 @@ public class Main extends javax.swing.JFrame {
     MailInjector mailInjector;
     UserInjector userInjector;
     AuthorizationInjector authorizationInjector;
-    UserController userController ;
+    UserController userController;
     List<User> members = new UserController().getAllUsers();
     String buttonDirection;
 
@@ -331,6 +332,11 @@ public class Main extends javax.swing.JFrame {
         pnlUser.setPreferredSize(new java.awt.Dimension(813, 650));
 
         tabMember.setPreferredSize(new java.awt.Dimension(813, 580));
+        tabMember.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabMemberMouseClicked(evt);
+            }
+        });
 
         pnlTimChiTieu.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TÌM THÀNH VIÊN", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
@@ -559,7 +565,9 @@ public class Main extends javax.swing.JFrame {
 
         lblEmail2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblEmail2.setText("ID:");
+        lblEmail2.setEnabled(false);
 
+        txtIdMember.setEnabled(false);
         txtIdMember.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdMemberActionPerformed(evt);
@@ -691,7 +699,6 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(btnUpdateMember, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(80, 80, 80))
                     .addGroup(pnlSettingMemberLayout.createSequentialGroup()
-                        .addGap(0, 0, 0)
                         .addComponent(lblMemberAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
@@ -1679,6 +1686,7 @@ public class Main extends javax.swing.JFrame {
 
     private void btnDeleteMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteMemberActionPerformed
         // TODO add your handling code here:
+        userController.deleteMemBerToForm(txtIdMember);
     }//GEN-LAST:event_btnDeleteMemberActionPerformed
 
     private void btnUpdateMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateMemberActionPerformed
@@ -1687,13 +1695,21 @@ public class Main extends javax.swing.JFrame {
 
     private void btnAddMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMemberActionPerformed
         // TODO add your handling code here:
-        userController.createMemberToForm(txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
+        if (RegExInputFields.checkNameMember(txtNameMember)) {
+            if (RegExInputFields.checkPhoneMember(txtPhoneMember)) {
+                if (RegExInputFields.checkEmail(txtEmailMemBer)) {
+                    if (RegExInputFields.checkAddress(txtAddressMember)) {
+                        userController.createMemberToForm(txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
+                    }
+                }
+            }
+        }
     }//GEN-LAST:event_btnAddMemberActionPerformed
 
     private void btnFirstMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstMemberActionPerformed
         buttonDirection = "first";
         row = NavigationButtons.navButton("first", tblListMember, row);
-        userController.setFormUserPanelByButton(members, row, buttonDirection,txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
+        userController.setFormUserPanelByButton(members, row, buttonDirection, txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
 
     }//GEN-LAST:event_btnFirstMemberActionPerformed
 
@@ -1715,13 +1731,13 @@ public class Main extends javax.swing.JFrame {
     private void btnNextMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextMemberActionPerformed
         buttonDirection = "next";
         row = NavigationButtons.navButton("next", tblListMember, row);
-        userController.setFormUserPanelByButton(members, row, buttonDirection,txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
+        userController.setFormUserPanelByButton(members, row, buttonDirection, txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
     }//GEN-LAST:event_btnNextMemberActionPerformed
 
     private void btnLastMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastMemberActionPerformed
         buttonDirection = "last";
         row = NavigationButtons.navButton("last", tblListMember, row);
-        userController.setFormUserPanelByButton(members, row, buttonDirection,txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
+        userController.setFormUserPanelByButton(members, row, buttonDirection, txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
 
     }//GEN-LAST:event_btnLastMemberActionPerformed
 
@@ -1886,7 +1902,7 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (evt.getClickCount() == 1) {
             this.row = tblListMember.getSelectedRow();
-//            userController.findUserIdToTableClicked(tblListMember, row, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
+            userController.findUserIdToTableClicked(tblListMember, row, txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
         }
     }//GEN-LAST:event_tblListMemberMouseClicked
 
@@ -1897,12 +1913,13 @@ public class Main extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         userController = new UserController();
-        userController.setAllDataUserToTable(tblListMember,"Member");
+        userController.setAllDataUserToTable(tblListMember, "Member");
     }//GEN-LAST:event_formWindowOpened
 
     private void tabMemberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabMemberMouseClicked
         // TODO add your handling code here:
-         userController.setAllDataUserToTable(tblListMember,"Member");
+        userController.setAllDataUserToTable(tblListMember, "Member");
+
     }//GEN-LAST:event_tabMemberMouseClicked
 
     private void txtIdMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdMemberActionPerformed
