@@ -9,11 +9,8 @@
         <properties>
             <!-- JDBC connection properties -->
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-<<<<<<< HEAD
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/PRO1041"/>
-=======
+
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/pro1041"/>
->>>>>>> 6ee8c7c50929f742cb9b3a58f46ae9c2c6b17dd0
             <property name="jakarta.persistence.jdbc.user" value="root"/>
             <property name="jakarta.persistence.jdbc.password" value="root"/>
 
