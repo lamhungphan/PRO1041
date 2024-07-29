@@ -24,7 +24,7 @@ public class Main extends javax.swing.JFrame {
     AuthorizationInjector authorizationInjector;
     
     UserController userController;
-    
+
     public Main() {
         initComponents();
         cardLayout = (CardLayout) (container.getLayout());
