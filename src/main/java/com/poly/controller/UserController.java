@@ -10,9 +10,11 @@ import com.poly.services.AuthorizationService;
 import com.poly.services.UserService;
 import com.poly.utils.ComponentManagement;
 import com.poly.utils.MsgBox;
+import com.poly.utils.XDate;
 import com.poly.view.Login;
 import com.poly.view.Main;
 import com.toedter.calendar.JDateChooser;
+import java.sql.Date;
 import java.util.List;
 
 import javax.swing.*;
@@ -179,12 +181,47 @@ public class UserController {
         cboRateMember.setSelectedIndex(0);
     }
     
-    public void createMemberToForm(){
-        
+    public void createMemberToForm(
+            JTextField idField,
+            JTextField txtNameMember, 
+            JTextField txtPhoneMember, 
+            JTextField txtEmailMemBer, 
+            JTextField txtAddressMember, 
+            JDateChooser dcBirthdayMember, 
+            JRadioButton rdoMale, 
+            JRadioButton rdoFemale, 
+            JComboBox cboRateMember){
+        try {
+            String testIdNotNull = idField.getText();
+//            if(testIdNotNull.equals(null)){
+            User userRequest = new User();
+            userRequest.setFullname(txtNameMember.getText());
+            userRequest.setPhone(txtPhoneMember.getText());
+            userRequest.setEmail(txtEmailMemBer.getText());
+            userRequest.setAddress(txtAddressMember.getText());
+            Date changeDate = new Date((dcBirthdayMember.getDate().getTime()));
+            userRequest.setBirthday(changeDate);
+            try {
+                userRequest.setSex(rdoMale.isSelected());
+            } catch (Exception e) {
+                userRequest.setSex(rdoFemale.isSelected());
+            }
+            userRequest.setScore(cboRateMember.getSelectedIndex());
+            userService.save(userRequest, "Thành viên");
+                System.out.println("Luu thanh cong");
+//        }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-    
-    public void logic(){
-        
+            
+    public void deleteMemBerToForm(JTextField idField){
+        try {
+            Integer idMemberDelete = Integer.valueOf(idField.getText());
+            userService.delete(idMemberDelete);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }   
     }
 //    public static void main(String[] args) {
 //        UserController controller = new UserController();

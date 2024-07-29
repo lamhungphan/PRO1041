@@ -270,7 +270,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel7" min="-2" pref="91" max="-2" attributes="0"/>
-                      <EmptySpace pref="546" max="32767" attributes="0"/>
+                      <EmptySpace pref="553" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -327,7 +327,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblMember" min="-2" pref="43" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Component id="tabMember" pref="569" max="32767" attributes="0"/>
+                      <Component id="tabMember" pref="583" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -340,6 +340,9 @@
                   <Dimension value="[813, 580]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tabMemberMouseClicked"/>
+              </Events>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
               <SubComponents>
@@ -376,7 +379,7 @@
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               <Component id="pnlTimChiTieu" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane4" pref="404" max="32767" attributes="0"/>
+                              <Component id="jScrollPane4" pref="430" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1265,7 +1268,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="83" max="32767" attributes="0"/>
+                              <EmptySpace pref="98" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                                       <Component id="btnLastEvent" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -1547,7 +1550,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblNotification" min="-2" pref="43" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tabNotification" pref="574" max="32767" attributes="0"/>
+                      <Component id="tabNotification" pref="589" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1733,7 +1736,7 @@
                                   <Component id="btnRejectNotificationAdmin" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                                   <Component id="btnAcceptNotificationAdmin" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="103" max="32767" attributes="0"/>
+                              <EmptySpace pref="128" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>

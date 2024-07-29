@@ -312,7 +312,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(pnlMainLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(546, Short.MAX_VALUE))
+                .addContainerGap(553, Short.MAX_VALUE))
         );
 
         container.add(pnlMain, "cardMain");
@@ -321,6 +321,11 @@ public class Main extends javax.swing.JFrame {
         pnlUser.setPreferredSize(new java.awt.Dimension(813, 650));
 
         tabMember.setPreferredSize(new java.awt.Dimension(813, 580));
+        tabMember.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabMemberMouseClicked(evt);
+            }
+        });
 
         pnlTimChiTieu.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TÌM THÀNH VIÊN", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
@@ -397,7 +402,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(pnlTimChiTieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -699,7 +704,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblMember, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addComponent(tabMember, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
+                .addComponent(tabMember, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1018,7 +1023,7 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(lblNgaySinh2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                 .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(btnLastEvent)
@@ -1245,7 +1250,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(pnlSettingMember3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRejectNotificationAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAcceptNotificationAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
 
         tabNotification.addTab("Admin", pnlSettingMember3);
@@ -1273,7 +1278,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblNotification, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabNotification, javax.swing.GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
+                .addComponent(tabNotification, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1657,7 +1662,7 @@ public class Main extends javax.swing.JFrame {
 
     private void btnDeleteMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteMemberActionPerformed
         // TODO add your handling code here:
-        
+        userController.deleteMemBerToForm(txtIdMemBer);
     }//GEN-LAST:event_btnDeleteMemberActionPerformed
 
     private void btnUpdateMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateMemberActionPerformed
@@ -1667,6 +1672,8 @@ public class Main extends javax.swing.JFrame {
 
     private void btnAddMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMemberActionPerformed
         // TODO add your handling code here:
+        System.out.println("Nhan nut");
+        userController.createMemberToForm(txtIdMemBer, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
     }//GEN-LAST:event_btnAddMemberActionPerformed
 
     private void btnFirstMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstMemberActionPerformed
@@ -1868,6 +1875,11 @@ public class Main extends javax.swing.JFrame {
         userController = new UserController();
         userController.setAllDataUserToTable(tblListMember);
     }//GEN-LAST:event_formWindowOpened
+
+    private void tabMemberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabMemberMouseClicked
+        // TODO add your handling code here:
+        userController.setAllDataUserToTable(tblListMember);
+    }//GEN-LAST:event_tabMemberMouseClicked
 
     /**
      * @param args the command line arguments
