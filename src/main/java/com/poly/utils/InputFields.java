@@ -1,9 +1,5 @@
 package com.poly.utils;
 
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import javax.swing.*;
 
 public class InputFields {
