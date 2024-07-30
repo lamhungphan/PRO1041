@@ -4,6 +4,7 @@
  */
 package com.poly.controller;
 
+import com.poly.entity.Role;
 import com.poly.entity.User;
 import com.poly.injection.UserInjector;
 import com.poly.services.AuthorizationService;
@@ -30,7 +31,7 @@ public class UserController {
 
     private AuthorizationService authorizationService = UserInjector.getInstance().getAuthorizationService();
     private UserService userService = UserInjector.getInstance().getUserService();
-    public static final String[] GET_METHOD_NAME_USER = {"getId", "getFullname", "getEmail", "getPhone", "getBirthday", "getScore", "getAddress"};
+    private static final String[] GET_METHOD_NAME_USER = {"getId", "getFullname", "getEmail", "getPhone", "getBirthday", "getScore", "getAddress"};
     private List<User> listAllUser = getAllUsers();
 
     public void doLogin(User userRequest, Main mainFrame, Login loginFrame) {
@@ -229,6 +230,9 @@ public class UserController {
             String testIdNotNull = InputFields.getTextFieldtoString(idField);
 //            if(testIdNotNull.equals(null)){
             User userRequest = new User();
+            Role roleMember = new Role();
+            roleMember.setRoleName("Thành viên");
+            userRequest.setRole(roleMember);
             userRequest.setFullname(InputFields.getTextFieldtoString(txtNameMember));
             userRequest.setPhone(InputFields.getTextFieldtoString(txtPhoneMember));
             userRequest.setEmail(InputFields.getTextFieldtoString(txtEmailMemBer));

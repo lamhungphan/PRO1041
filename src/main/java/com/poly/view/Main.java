@@ -1923,12 +1923,12 @@ public class Main extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         userController = new UserController();
-        userController.setAllDataUserToTable(tblListMember, "Member");
+        userController.setAllDataUserToTable(tblListMember, "Thành viên");
     }//GEN-LAST:event_formWindowOpened
 
     private void tabMemberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabMemberMouseClicked
         // TODO add your handling code here:
-        userController.setAllDataUserToTable(tblListMember, "Member");
+        userController.setAllDataUserToTable(tblListMember, "Thành viên");
 
     }//GEN-LAST:event_tabMemberMouseClicked
 
