@@ -12,6 +12,7 @@ import com.poly.injection.UserInjector;
 import com.poly.utils.ComponentManagement;
 import com.poly.utils.RegExInputFields;
 import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
 import java.util.List;
 import lombok.Getter;
 
@@ -265,7 +266,7 @@ public class Main extends javax.swing.JFrame {
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                .addContainerGap(9, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jLabel5)
@@ -646,7 +647,7 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(btnDeleteMember, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnUpdateMember, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         pnlSettingMemberLayout.setVerticalGroup(
             pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1656,7 +1657,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {
-        userController.dologout(this, new Login());
+        userController.doLogout(this, new Login());
     }
 
     private void txtFindMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFindMemberActionPerformed
@@ -1706,7 +1707,6 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         }
-
     }//GEN-LAST:event_btnUpdateMemberActionPerformed
 
     private void btnAddMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMemberActionPerformed
@@ -1728,7 +1728,6 @@ public class Main extends javax.swing.JFrame {
         buttonDirection = "first";
         row = NavigationButtons.navButton("first", tblListMember, row);
         userController.setFormUserPanelByButton(members, row, buttonDirection, txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
-
     }//GEN-LAST:event_btnFirstMemberActionPerformed
 
     private void btnClearMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearMemberActionPerformed
@@ -1741,8 +1740,11 @@ public class Main extends javax.swing.JFrame {
         
     }//GEN-LAST:event_cboRateMemberActionPerformed
 
-    private void btnPreMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreMemberActionPerformed
-        
+    private void btnPreMemberActionPerformed(java.awt.event.ActionEvent evt) {
+        buttonDirection = "previous";
+        row = NavigationButtons.navButton(buttonDirection, tblListMember, row);
+        userController.setFormUserPanelByButton(members, row, buttonDirection, txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
+
     }//GEN-LAST:event_btnPreMemberActionPerformed
 
     private void btnNextMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextMemberActionPerformed
@@ -2011,7 +2013,6 @@ public class Main extends javax.swing.JFrame {
             public void run() {
                 new Main().setVisible(true);
             }
-
         });
     }
 
