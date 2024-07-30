@@ -539,7 +539,7 @@ public class Main extends javax.swing.JFrame {
         btnPreviousMember.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/pri.png"))); // NOI18N
         btnPreviousMember.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                btnPreviousMemberActionPerformed(evt);
+                btnPreviousMemberActionPerformed(evt);
             }
         });
 
@@ -565,7 +565,9 @@ public class Main extends javax.swing.JFrame {
 
         lblEmail2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblEmail2.setText("ID:");
+        lblEmail2.setEnabled(false);
 
+        txtIdMember.setEnabled(false);
         txtIdMember.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdMemberActionPerformed(evt);
@@ -901,19 +903,19 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnLastEvent.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnLastEvent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/pri.png"))); // NOI18N
-        btnLastEvent.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLastEventActionPerformed(evt);
-            }
-        });
-
         btnPreviousEvent.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnPreviousEvent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/next.png"))); // NOI18N
+        btnPreviousEvent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/pri.png"))); // NOI18N
         btnPreviousEvent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPreviousEventActionPerformed(evt);
+            }
+        });
+
+        btnNextEvent.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnNextEvent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/next.png"))); // NOI18N
+        btnNextEvent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextEventActionPerformed(evt);
             }
         });
 
@@ -1375,14 +1377,6 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnLastUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnLastUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/pri.png"))); // NOI18N
-        btnLastUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLastUserActionPerformed(evt);
-            }
-        });
-
         btnPreviousUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnPreviousUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/pri.png"))); // NOI18N
         btnPreviousUser.addActionListener(new java.awt.event.ActionListener() {
@@ -1698,13 +1692,24 @@ public class Main extends javax.swing.JFrame {
 
     private void btnDeleteMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteMemberActionPerformed
         // TODO add your handling code here:
-//        userController.deleteMemberToForm(txtIdMember);
+        userController.deleteMemberToForm(txtIdMember);
         userController.setClearForm(txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
     }//GEN-LAST:event_btnDeleteMemberActionPerformed
 
     private void btnUpdateMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateMemberActionPerformed
         // TODO add your handling code here:
-//        userController.updateMemberToForm(txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
+        if (RegExInputFields.checkNameMember(txtNameMember)) {
+            if (RegExInputFields.checkPhoneMember(txtPhoneMember)) {
+                if (RegExInputFields.checkEmail(txtEmailMemBer)) {
+                    if (RegExInputFields.checkAddress(txtAddressMember)) {
+                        if (RegExInputFields.checkBirthday(dcBirthdayMember.getDate())) {
+                            userController.updateMemberToForm(txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
+                        }
+                    }
+                }
+            }
+        }
+
     }//GEN-LAST:event_btnUpdateMemberActionPerformed
 
     private void btnAddMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMemberActionPerformed
@@ -1716,7 +1721,6 @@ public class Main extends javax.swing.JFrame {
                         if (RegExInputFields.checkBirthday(dcBirthdayMember.getDate())) {
                             userController.createMemberToForm(txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
                         }
-
                     }
                 }
             }
@@ -1737,13 +1741,11 @@ public class Main extends javax.swing.JFrame {
 
     private void cboRateMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboRateMemberActionPerformed
         // TODO add your handling code here:
-
+        
     }//GEN-LAST:event_cboRateMemberActionPerformed
 
     private void btnPreMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreMemberActionPerformed
-        buttonDirection = "previous";
-        row = NavigationButtons.navButton(buttonDirection, tblListMember, row);
-        userController.setFormUserPanelByButton(members, row, buttonDirection, txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
+        
     }//GEN-LAST:event_btnPreMemberActionPerformed
 
     private void btnNextMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextMemberActionPerformed
@@ -1803,21 +1805,21 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnClearEventActionPerformed
 
+    private void btnLastEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastEventActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLastEventActionPerformed
+
     private void btnPreviousEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousEventActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPreviousEventActionPerformed
-
-    private void btnNextEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextEventActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnNextEventActionPerformed
 
     private void txtContentEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtContentEventMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContentEventMouseClicked
 
-    private void btnLastEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastEventActionPerformed
+    private void btnForwardEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForwardEventActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnLastEventActionPerformed
+    }//GEN-LAST:event_btnForwardEventActionPerformed
 
     private void txtAddressEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressEventActionPerformed
         // TODO add your handling code here:
@@ -1880,17 +1882,17 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnClearUserActionPerformed
 
+    private void btnLastUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLastUserActionPerformed
+
     private void btnPreviousUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousUserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPreviousUserActionPerformed
 
-    private void btnNextUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextUserActionPerformed
+    private void btnForwardUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForwardUserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnNextUserActionPerformed
-
-    private void btnLastUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastUserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnLastUserActionPerformed
+    }//GEN-LAST:event_btnForwardUserActionPerformed
 
     private void txtUsernameUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameUserActionPerformed
         // TODO add your handling code here:
@@ -1943,6 +1945,21 @@ public class Main extends javax.swing.JFrame {
     private void txtIdMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdMemberActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdMemberActionPerformed
+
+    private void btnNextUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNextUserActionPerformed
+
+    private void btnNextEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextEventActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNextEventActionPerformed
+
+    private void btnPreviousMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousMemberActionPerformed
+        // TODO add your handling code here:
+        buttonDirection = "previous";
+        row = NavigationButtons.navButton(buttonDirection, tblListMember, row);
+        userController.setFormUserPanelByButton(members, row, buttonDirection, txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
+    }//GEN-LAST:event_btnPreviousMemberActionPerformed
 
     /**
      * @param args the command line arguments
