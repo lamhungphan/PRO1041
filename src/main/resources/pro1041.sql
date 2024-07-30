@@ -24,13 +24,21 @@ create table users
     email varchar (55) null,
     address nvarchar(255) null,
     phone varchar(11) null,
+    sex bit null,
+    score int null,
     createdDate date null,
     updatedDate date null,
     isActived bit null,
     attendance int null,
     foreign key (roleId) references roles(id) 
 );
-
+drop table if exists passwordresettoken;
+create table passwordresettoken(
+    id int primary key auto_increment,
+    email varchar(55) not null,
+    token varchar(255) not null,
+    expirationdate datetime not null
+);
 drop table if exists events;
 create table events 
 (
@@ -65,10 +73,10 @@ insert into roles (roleName) VALUES
 (N'Thành viên');
 
 insert into users (roleId, username, password, fullName, birthDay, email, address, phone, createdDate, updatedDate, isActived) VALUES 
-(1, 'phanlamhung', '1234', N'Nguyễn Phan Lâm Hùng', '1999-01-01', 'hung@example.com', N'123 Đường A, Hà Nội', '0909123456', '2023-01-01', '2023-01-01', 1),
-(2, 'giangnd', '123', N'Nguyễn Đằng Giang', '1999-02-01', 'giang@example.com', N'456 Đường B, TP.HCM', '0909876543', '2023-01-02', '2023-01-02', 1),
-(3, 'haithach', '456', N'Nguyễn Dung Hải Thạch', '2002-03-01', 'thach@example.com', N'789 Đường C, Đà Nẵng', '0909345678', '2023-01-03', '2023-01-03', 1),
-(4, 'vulam', '789', N'Hà Vũ Lâm', '1998-04-01', 'lam@example.com', N'101 Đường D, Cần Thơ', '0909789123', '2023-01-04', '2023-01-04', 1);
+(1, 'phanlamhung', '1234', N'Nguyễn Phan Lâm Hùng', '1999-01-01', 'hung@example.com', N'123 Đường A, Hà Nội', '0909123456', 1, 0, '2023-01-01', '2023-01-01', 1, 10),
+(2, 'giangnd', '123', N'Nguyễn Đằng Giang', '1999-02-01', 'giang@example.com', N'456 Đường B, TP.HCM', '0909876543', 1, 0, '2023-01-02', '2023-01-02', 1, 8),
+(3, 'haithach', '456', N'Nguyễn Dung Hải Thạch', '2002-03-01', 'thach@example.com', N'789 Đường C, Đà Nẵng', '0909345678', 1, 1, '2023-01-03', '2023-01-03', 1, 7),
+(4, 'vulam', '789', N'Hà Vũ Lâm', '1998-04-01', 'lam@example.com', N'101 Đường D, Cần Thơ', '0909789123', 1, 2, '2023-01-04', '2023-01-04', 1, 9);
 
 insert into events (userId, title, content, location, status, startedDate, endedDate, createdDate, updatedDate) values
 (1, 'Hội thảo Java Cơ Bản', 'Tìm hiểu các kiến thức cơ bản về lập trình Java.', 'Phòng 101', 'sắp diễn ra', '2024-08-01', '2024-08-01', '2024-07-10', '2024-07-10'),

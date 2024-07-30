@@ -67,6 +67,27 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
+    @Override
+    public User findByEmail(String email) {
+        List<User> list = this.findAll();
+        for (User user : list) {
+            if (user.getEmail().equalsIgnoreCase(email)) {
+                return user;
+            }
+        }
+        return null;
+    }
+    @Override
+    public User updatePassword(String email, String newPassword) {
+        User userForgotPassword =repo.findByEmail(email);
+        if (userForgotPassword != null) {
+            newPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+            userForgotPassword.setPassword(newPassword);
+            repo.update(userForgotPassword);
+            return userForgotPassword;
+        }
+        return null;
+    }
 
     @Override
     public User doLogin(User userRequest) {

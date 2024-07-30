@@ -1,11 +1,10 @@
 package com.poly.view;
 
 import com.poly.controller.AccountController;
+import com.poly.controller.PasswordResetController;
 import com.poly.controller.UserController;
 import com.poly.entity.Account;
 import com.poly.entity.User;
-import com.poly.injection.AccountInjector;
-import com.poly.injection.UserInjector;
 import com.poly.utils.InputFields;
 import lombok.Getter;
 
@@ -15,14 +14,11 @@ import javax.swing.*;
 
 @Getter
 public class Login extends javax.swing.JFrame {
-
-    private AccountInjector accountInjector;
-
-    private UserInjector userInjector;
-
     private UserController userController;
 
     private AccountController accountController;
+
+    private PasswordResetController  resetPasswordController;
 
     public Login() throws HeadlessException {
         initComponents();
@@ -36,6 +32,7 @@ public class Login extends javax.swing.JFrame {
     private void initInject(){
         accountController = new AccountController();
         userController = new UserController();
+        resetPasswordController = new PasswordResetController();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -261,6 +258,10 @@ public class Login extends javax.swing.JFrame {
 
     private void lblForgotPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblForgotPasswordMouseClicked
         // TODO add your handling code here:
+        if (resetPasswordController == null) {
+            resetPasswordController = new PasswordResetController();
+        }
+        resetPasswordController.showResetPasswordForm();
     }//GEN-LAST:event_lblForgotPasswordMouseClicked
 
     User getForm() {

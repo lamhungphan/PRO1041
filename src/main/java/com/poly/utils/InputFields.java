@@ -1,5 +1,6 @@
 package com.poly.utils;
 
+import java.sql.Date;
 import javax.swing.*;
 
 public class InputFields {
@@ -48,26 +49,38 @@ public class InputFields {
         }
     }
 
-    public static String getSelectedRadiobutton(JRadioButton rdo_1, JRadioButton rdo_2) {
+    public static boolean getSelectedRadiobutton(JRadioButton rdo_1, JRadioButton rdo_2) {
         if (rdo_1.isSelected()) {
-            return rdo_1.getText();
+            rdo_1.setSelected(true);
+            return true;
         } else if (rdo_2.isSelected()) {
-            return rdo_2.getText();
+            rdo_2.setSelected(true);
+            return true;
+        } else{
+            return false;
         }
-        return null;
     }
 
     public static String getComboBoxString(JComboBox<String> cbx) {
         return (String) cbx.getSelectedItem();
     }
 
-    private static Boolean isNumber(String numb) {
+    public static Integer getComboBoxInteger(JComboBox<Integer> cbx) {
+        return  cbx.getSelectedIndex();
+    }
+    
+    public static Boolean isNumber(String numb) {
         try {
             Double.valueOf(numb);
             return true;
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+    
+    public static Date getDateSQL(java.util.Date getDateUtil){
+        Date newDate = new Date(getDateUtil.getTime());
+        return newDate;
     }
 
 }
