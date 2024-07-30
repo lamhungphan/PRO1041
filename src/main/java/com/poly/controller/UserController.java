@@ -9,6 +9,7 @@ import com.poly.injection.UserInjector;
 import com.poly.services.AuthorizationService;
 import com.poly.services.UserService;
 import com.poly.utils.ComponentManagement;
+import com.poly.utils.InputFields;
 import com.poly.utils.MsgBox;
 import com.poly.utils.NavigationButtons;
 import com.poly.utils.XDate;
@@ -225,21 +226,16 @@ public class UserController {
             JRadioButton rdoFemale,
             JComboBox cboRateMember) {
         try {
-            String testIdNotNull = idField.getText();
+            String testIdNotNull = InputFields.getTextFieldtoString(idField);
 //            if(testIdNotNull.equals(null)){
             User userRequest = new User();
-            userRequest.setFullname(txtNameMember.getText());
-            userRequest.setPhone(txtPhoneMember.getText());
-            userRequest.setEmail(txtEmailMemBer.getText());
-            userRequest.setAddress(txtAddressMember.getText());
-            Date changeDate = new Date((dcBirthdayMember.getDate().getTime()));
-            userRequest.setBirthday(changeDate);
-            try {
-                userRequest.setSex(rdoMale.isSelected());
-            } catch (Exception e) {
-                userRequest.setSex(rdoFemale.isSelected());
-            }
-            userRequest.setScore(cboRateMember.getSelectedIndex());
+            userRequest.setFullname(InputFields.getTextFieldtoString(txtNameMember));
+            userRequest.setPhone(InputFields.getTextFieldtoString(txtPhoneMember));
+            userRequest.setEmail(InputFields.getTextFieldtoString(txtEmailMemBer));
+            userRequest.setAddress(InputFields.getTextFieldtoString(txtAddressMember));
+            userRequest.setBirthday(InputFields.getDateSQL(dcBirthdayMember.getDate()));
+            userRequest.setSex(InputFields.getSelectedRadiobutton(rdoMale, rdoMale));
+            userRequest.setScore(InputFields.getComboBoxInteger(cboRateMember));
             userService.save(userRequest, "Thành viên");
             MsgBox.alert(null, "Tạo Mới Thành Công!");
 //        }
@@ -250,8 +246,7 @@ public class UserController {
 
     public void deleteMemberToForm(JTextField idField) {
         try {
-            Integer idMemberDelete = Integer.valueOf(idField.getText());
-            userService.delete(idMemberDelete);
+            userService.delete(InputFields.getTextFieldtoInteger(idField));
             MsgBox.alert(null, "Xoá Thành Công!");
         } catch (Exception e) {
             e.printStackTrace();
@@ -269,19 +264,14 @@ public class UserController {
             JComboBox cboRateMember) {
         try {
             User userRequest = new User();
-            userRequest.setId(Integer.valueOf(idField.getText()));
-            userRequest.setFullname(txtNameMember.getText());
-            userRequest.setPhone(txtPhoneMember.getText());
-            userRequest.setEmail(txtEmailMemBer.getText());
-            userRequest.setAddress(txtAddressMember.getText());
-            Date changeDate = new Date((dcBirthdayMember.getDate().getTime()));
-            userRequest.setBirthday(changeDate);
-            try {
-                userRequest.setSex(rdoMale.isSelected());
-            } catch (Exception e) {
-                userRequest.setSex(rdoFemale.isSelected());
-            }
-            userRequest.setScore(cboRateMember.getSelectedIndex());
+            userRequest.setId(InputFields.getTextFieldtoInteger(idField));
+            userRequest.setFullname(InputFields.getTextFieldtoString(txtNameMember));
+            userRequest.setPhone(InputFields.getTextFieldtoString(txtPhoneMember));
+            userRequest.setEmail(InputFields.getTextFieldtoString(txtEmailMemBer));
+            userRequest.setAddress(InputFields.getTextFieldtoString(txtAddressMember));
+            userRequest.setBirthday(InputFields.getDateSQL(dcBirthdayMember.getDate()));          
+            userRequest.setSex(InputFields.getSelectedRadiobutton(rdoMale, rdoMale));
+            userRequest.setScore(InputFields.getComboBoxInteger(cboRateMember));
             userService.update(userRequest);
             MsgBox.alert(null, "Cập nhật Thành Công!");
         } catch (Exception e) {
