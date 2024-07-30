@@ -75,15 +75,18 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="9" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="lblTabWelcome" min="-2" pref="150" max="-2" attributes="0"/>
+                      <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="lblUserLoginedAvatar" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -92,9 +95,11 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblTabWelcome" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="lblUserLoginedAvatar" min="-2" pref="151" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
@@ -104,9 +109,9 @@
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="195" max="32767" attributes="0"/>
+                  <EmptySpace pref="142" max="32767" attributes="0"/>
                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -188,7 +193,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/m2mgroup/image/Alarm.png"/>
+              <Image iconType="3" name="/com/m2mgroup/image/Bell.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value=" Th&#xf4;ng b&#xe1;o"/>
             <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
@@ -232,6 +237,15 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel6MouseClicked"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JLabel" name="lblUserLoginedAvatar">
+          <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                <EtchetBorder/>
+              </Border>
+            </Property>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="container">
@@ -258,7 +272,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
                       <Component id="jLabel7" min="-2" pref="550" max="-2" attributes="0"/>
                       <EmptySpace pref="153" max="32767" attributes="0"/>
@@ -267,7 +281,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel7" min="-2" pref="91" max="-2" attributes="0"/>
                       <EmptySpace pref="546" max="32767" attributes="0"/>
@@ -312,12 +326,12 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="255" max="-2" attributes="0"/>
                       <Component id="lblMember" min="-2" pref="291" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="279" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="tabMember" pref="0" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -326,9 +340,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblMember" min="-2" pref="43" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Component id="tabMember" pref="569" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="tabMember" pref="569" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -340,6 +354,9 @@
                   <Dimension value="[813, 580]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tabMemberMouseClicked"/>
+              </Events>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
               <SubComponents>
@@ -359,15 +376,11 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-<<<<<<< HEAD
-                                      <Component id="pnlTimChiTieu" pref="788" max="32767" attributes="0"/>
-=======
                                       <Component id="pnlTimChiTieu" max="32767" attributes="0"/>
->>>>>>> 6ee8c7c50929f742cb9b3a58f46ae9c2c6b17dd0
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jScrollPane4" pref="772" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane4" pref="748" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -527,138 +540,177 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="lblSoDT" min="-2" pref="158" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      <Component id="lblThanhVien" min="-2" pref="129" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                              <Component id="lblGhiChu3" alignment="0" min="-2" pref="58" max="-2" attributes="0"/>
-                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="rdoMaleMember" min="-2" pref="73" max="-2" attributes="0"/>
-                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                      <Component id="rdoFemaleMember" min="-2" pref="86" max="-2" attributes="0"/>
-                                                      <EmptySpace max="32767" attributes="0"/>
-                                                      <Component id="cboRateMember" min="-2" pref="96" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="1" attributes="0">
-                                                      <Component id="lblGioiTinhThanhVien" min="-2" pref="73" max="-2" attributes="0"/>
-                                                      <EmptySpace max="32767" attributes="0"/>
-                                                      <Component id="lblNgaySinh1" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Component id="txtAddressMember" alignment="1" min="-2" pref="300" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                              <Component id="txtEmailMemBer" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                              <Component id="lblEmail" alignment="0" min="-2" pref="61" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                              <Component id="txtNameMember" alignment="1" min="-2" pref="300" max="-2" attributes="0"/>
-                                              <Component id="txtPhoneMember" alignment="1" min="-2" pref="300" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="dcBirthdayMember" alignment="0" min="-2" pref="169" max="-2" attributes="0"/>
-                                          <Component id="lblNgaySinh" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace pref="457" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
-                                      <Component id="btnAddMember" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnClearMember" min="-2" pref="95" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnDeleteMember" min="-2" pref="95" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnUpdateMember" min="-2" pref="95" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="360" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="lblThanhVien" min="-2" pref="129" max="-2" attributes="0"/>
+                                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <Component id="dcBirthdayMember" min="-2" pref="169" max="-2" attributes="0"/>
+                                                          <EmptySpace max="32767" attributes="0"/>
+                                                          <Component id="cboRateMember" min="-2" pref="96" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <Group type="102" attributes="0">
+                                                          <Component id="lblNgaySinh" min="-2" max="-2" attributes="0"/>
+                                                          <EmptySpace max="32767" attributes="0"/>
+                                                          <Component id="lblNgaySinh1" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <Component id="txtNameMember" min="-2" pref="300" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="lblMemberAvatar" min="-2" pref="120" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <Component id="rdoMaleMember" min="-2" pref="73" max="-2" attributes="0"/>
+                                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                          <Component id="rdoFemaleMember" min="-2" pref="86" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <Group type="102" alignment="1" attributes="0">
+                                                          <Component id="lblGioiTinhThanhVien" min="-2" pref="73" max="-2" attributes="0"/>
+                                                          <EmptySpace min="90" pref="90" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                                  <Component id="txtIdMember" min="-2" pref="163" max="-2" attributes="0"/>
+                                                  <Component id="lblEmail2" min="-2" pref="61" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="lblSoDT" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                                                  <Component id="txtPhoneMember" min="-2" pref="300" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="lblGhiChu3" min="-2" pref="58" max="-2" attributes="0"/>
+                                                  <Component id="txtAddressMember" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Component id="lblEmail" min="-2" pref="61" max="-2" attributes="0"/>
+                                          <Component id="txtEmailMemBer" min="-2" pref="300" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="227" max="-2" attributes="0"/>
-                                      <Component id="btnFirstMember" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnLastMember" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnPreviousMember" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnForwardMember" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="btnAddMember" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="btnClearMember" min="-2" pref="95" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                                              <Component id="btnFirstMember" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="btnPreviousMember" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="btnNextMember" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="btnLastMember" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="btnDeleteMember" min="-2" pref="95" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="btnUpdateMember" min="-2" pref="95" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace pref="100" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                      <Component id="lblThanhVien" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtNameMember" min="-2" pref="33" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="lblSoDT" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="txtPhoneMember" min="-2" pref="33" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                                      <Component id="lblNgaySinh" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="dcBirthdayMember" min="-2" pref="33" max="-2" attributes="0"/>
-                                  </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="lblEmail" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtEmailMemBer" min="-2" pref="33" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="lblGhiChu3" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="txtAddressMember" min="-2" pref="33" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="lblMemberAvatar" min="-2" pref="151" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lblNgaySinh1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblGioiTinhThanhVien" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblThanhVien" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblEmail2" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="cboRateMember" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                                          <Component id="rdoFemaleMember" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="rdoMaleMember" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtNameMember" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                                          <Component id="txtIdMember" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="lblGioiTinhThanhVien" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="rdoFemaleMember" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="rdoMaleMember" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="lblNgaySinh" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                                      <Component id="lblNgaySinh1" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="cboRateMember" min="-2" pref="33" max="-2" attributes="0"/>
+                                                  <Component id="dcBirthdayMember" min="-2" pref="33" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="94" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                              <Component id="lblEmail" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtEmailMemBer" min="-2" pref="33" max="-2" attributes="0"/>
+                              <EmptySpace pref="17" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="lblSoDT" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                                      <Component id="txtPhoneMember" min="-2" pref="33" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="lblGhiChu3" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtAddressMember" min="-2" pref="33" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="btnFirstMember" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="btnLastMember" alignment="0" max="32767" attributes="0"/>
                                   <Component id="btnPreviousMember" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="btnForwardMember" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnNextMember" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnLastMember" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="btnAddMember" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                                   <Component id="btnClearMember" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                                   <Component id="btnDeleteMember" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                                   <Component id="btnUpdateMember" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -860,7 +912,7 @@
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btnLastMember">
+                    <Component class="javax.swing.JButton" name="btnPreviousMember">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -870,10 +922,10 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLastMemberActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPreviousMemberActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btnPreviousMember">
+                    <Component class="javax.swing.JButton" name="btnNextMember">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -883,10 +935,10 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPreviousMemberActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNextMemberActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btnForwardMember">
+                    <Component class="javax.swing.JButton" name="btnLastMember">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -896,13 +948,39 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnForwardMemberActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLastMemberActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="com.toedter.calendar.JDateChooser" name="dcBirthdayMember">
                       <Properties>
                         <Property name="dateFormatString" type="java.lang.String" value="dd/MM/yyyy "/>
                       </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblMemberAvatar">
+                      <Properties>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                            <BevelBorder/>
+                          </Border>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblEmail2">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Segoe UI" size="14" style="0"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="ID:"/>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtIdMember">
+                      <Properties>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIdMemberActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -971,7 +1049,7 @@
                   <Font name="Cantarell" size="36" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="S&#x1ef1; Ki&#x1ec7;n"/>
+                <Property name="text" type="java.lang.String" value="S&#x1ef1; ki&#x1ec7;n"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JTabbedPane" name="jTabbedPane3">
@@ -1177,11 +1255,11 @@
                                           <Group type="102" alignment="1" attributes="0">
                                               <Component id="btnFirstEvent" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="btnLastEvent" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="btnPreviousEvent" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="btnForwardEvent" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btnNextEvent" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="btnLastEvent" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -1245,11 +1323,11 @@
                               <EmptySpace pref="83" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                      <Component id="btnLastEvent" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnFirstEvent" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnPreviousEvent" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnFirstEvent" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnNextEvent" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="btnForwardEvent" alignment="1" min="-2" pref="39" max="-2" attributes="0"/>
+                                  <Component id="btnLastEvent" alignment="1" min="-2" pref="39" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -1380,7 +1458,7 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClearEventActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btnLastEvent">
+                    <Component class="javax.swing.JButton" name="btnPreviousEvent">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -1390,10 +1468,10 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLastEventActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPreviousEventActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btnPreviousEvent">
+                    <Component class="javax.swing.JButton" name="btnNextEvent">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -1403,7 +1481,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPreviousEventActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNextEventActionPerformed"/>
                       </Events>
                     </Component>
                     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -1424,7 +1502,7 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JButton" name="btnForwardEvent">
+                    <Component class="javax.swing.JButton" name="btnLastEvent">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -1434,7 +1512,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnForwardEventActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLastEventActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblNgaySinh4">
@@ -1514,7 +1592,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="254" max="-2" attributes="0"/>
                       <Component id="lblNotification" min="-2" pref="291" max="-2" attributes="0"/>
-                      <EmptySpace pref="280" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1819,7 +1897,7 @@
                   <Font name="Cantarell" size="36" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Th&#xf4;ng B&#xe1;o"/>
+                <Property name="text" type="java.lang.String" value="Th&#xf4;ng b&#xe1;o"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -1923,11 +2001,11 @@
                                       <EmptySpace min="53" pref="53" max="-2" attributes="0"/>
                                       <Component id="btnFirstUser" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnLastUser" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="btnPreviousUser" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnForwardUser" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnNextUser" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="btnLastUser" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="btnAddUser" min="-2" max="-2" attributes="0"/>
@@ -1970,9 +2048,9 @@
                               <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="btnFirstUser" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="btnLastUser" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="btnPreviousUser" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnForwardUser" alignment="0" min="-2" pref="39" max="-2" attributes="0"/>
+                                  <Component id="btnPreviousUser" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnNextUser" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnLastUser" alignment="0" min="-2" pref="39" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -2074,7 +2152,7 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClearUserActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btnLastUser">
+                    <Component class="javax.swing.JButton" name="btnPreviousUser">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -2084,10 +2162,10 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLastUserActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPreviousUserActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btnPreviousUser">
+                    <Component class="javax.swing.JButton" name="btnNextUser">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -2097,10 +2175,10 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPreviousUserActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNextUserActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btnForwardUser">
+                    <Component class="javax.swing.JButton" name="btnLastUser">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -2110,7 +2188,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnForwardUserActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLastUserActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtUsernameUser">

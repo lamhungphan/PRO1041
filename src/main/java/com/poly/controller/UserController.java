@@ -4,15 +4,21 @@
  */
 package com.poly.controller;
 
+import com.poly.entity.Role;
 import com.poly.entity.User;
 import com.poly.injection.UserInjector;
 import com.poly.services.AuthorizationService;
 import com.poly.services.UserService;
 import com.poly.utils.ComponentManagement;
+import com.poly.utils.InputFields;
 import com.poly.utils.MsgBox;
+import com.poly.utils.NavigationButtons;
+import com.poly.utils.XDate;
 import com.poly.view.Login;
 import com.poly.view.Main;
 import com.toedter.calendar.JDateChooser;
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.*;
@@ -25,10 +31,10 @@ public class UserController {
 
     private AuthorizationService authorizationService = UserInjector.getInstance().getAuthorizationService();
     private UserService userService = UserInjector.getInstance().getUserService();
-    private static final String[] GET_METHOD_NAME_USER = {"getId" ,"getFullname", "getEmail", "getPhone", "getBirthday", "getScore", "getAddress"};
+    private static final String[] GET_METHOD_NAME_USER = {"getId", "getFullname", "getEmail", "getPhone", "getBirthday", "getScore", "getAddress"};
+    private List<User> listAllUser = getAllUsers();
 
-
-    public void doLogin(User userRequest,Main mainFrame,Login loginFrame) {
+    public void doLogin(User userRequest, Main mainFrame, Login loginFrame) {
         User loginedUser = userService.doLogin(userRequest);
         if (loginedUser == null) {
             MsgBox.alert(null, "Đăng nhập không thành công");
@@ -38,12 +44,13 @@ public class UserController {
             showWorkspaceByRolename(loginedUser, mainFrame);
         }
     }
-    public void dologout(JFrame mainFrame, Login loginFrame) {
+
+    public void doLogout(JFrame mainFrame, Login loginFrame) {
         mainFrame.dispose();
         loginFrame.setVisible(true);
     }
 
-    public void showWorkspaceByRolename(User userLogined,Main mainFrame ) {
+    public void showWorkspaceByRolename(User userLogined, Main mainFrame) {
         JPanel eventPanel = mainFrame.getPnlEvent();
         JPanel adminPanel = mainFrame.getPnlAdmin();
         JPanel notificationPanel = mainFrame.getPnlNotification();
@@ -71,7 +78,8 @@ public class UserController {
             ComponentManagement.setEnabledRecursively(memberPanel, false);
         }
     }
-     // CRUD operations
+    // CRUD operations
+
     public void createUser(User user, String roleName) {
         User createdUser = userService.save(user, roleName);
         if (createdUser != null) {
@@ -106,56 +114,173 @@ public class UserController {
     public List<User> getAllUsers() {
         return userService.findAll();
     }
-    
-    public void setAllDataUserToTable(JTable tblListUser){
+
+    public void setAllDataUserToTable(JTable tblListUser, String role) {
+        List<User> listByRole = new ArrayList<>();
+        for (User user : listAllUser) {
+//            if (role.equalsIgnoreCase(user.getRole().getRoleName())) {
+            listByRole.add(user);
+//            }
+        }
         ComponentManagement.fillDataTableComponent(getAllUsers(), tblListUser, GET_METHOD_NAME_USER);
     }
-    
-    public User responseUserById(Integer idUser){
+
+    public User responseUserById(Integer idUser) {
         return userService.findById(idUser);
     }
-    
+
     public void findUserIdToTableClicked(
-            JTable tblListUser, 
-            Integer row, 
-            JTextField txtNameMember, 
-            JTextField txtPhoneMember, 
-            JTextField txtEmailMemBer, 
-            JTextField txtAddressMember, 
-            JDateChooser dcBirthdayMember, 
-            JRadioButton rdoMale, 
-            JRadioButton rdoFemale, 
-            JComboBox cboRateMember){
+            JTable tblListUser,
+            Integer row,
+            JTextField idField,
+            JTextField txtNameMember,
+            JTextField txtPhoneMember,
+            JTextField txtEmailMemBer,
+            JTextField txtAddressMember,
+            JDateChooser dcBirthdayMember,
+            JRadioButton rdoMale,
+            JRadioButton rdoFemale,
+            JComboBox cboRateMember) {
         String idFound = String.valueOf(tblListUser.getValueAt(row, 0));
         User userFindOut = userService.findById(Integer.valueOf(idFound));
-        setTextFromTableToForm(userFindOut, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMale, rdoFemale, cboRateMember);
+        setTextFromTableToForm(userFindOut, idField, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMale, rdoFemale, cboRateMember);
     }
-    
+
     public void setTextFromTableToForm(
-            User entityResponse, 
-            JTextField txtNameMember, 
-            JTextField txtPhoneMember, 
-            JTextField txtEmailMemBer, 
-            JTextField txtAddressMember, 
-            JDateChooser dcBirthdayMember, 
-            JRadioButton rdoMale, 
-            JRadioButton rdoFemale, 
-            JComboBox cboRateMember){
+            User entityResponse,
+            JTextField idField,
+            JTextField txtNameMember,
+            JTextField txtPhoneMember,
+            JTextField txtEmailMemBer,
+            JTextField txtAddressMember,
+            JDateChooser dcBirthdayMember,
+            JRadioButton rdoMale,
+            JRadioButton rdoFemale,
+            JComboBox cboRateMember) {
+        idField.setText(String.valueOf(entityResponse.getId()));
         txtNameMember.setText(entityResponse.getFullname());
         txtPhoneMember.setText(entityResponse.getPhone());
         txtEmailMemBer.setText(entityResponse.getEmail());
         txtAddressMember.setText(entityResponse.getAddress());
         dcBirthdayMember.setDate(entityResponse.getBirthday());
         cboRateMember.setSelectedIndex(entityResponse.getScore());
-        if(entityResponse.getSex()){
+        if (entityResponse.getSex()) {
             rdoMale.setSelected(true);
-        }
-        else{
+        } else {
             rdoFemale.setSelected(true);
         }
     }
-    
-//    public static void main(String[] args) {
-//        UserController controller = new UserController();
-//    }
+
+    public void setFormUserPanelByButton(
+            List<User> members,
+            int index,
+            String buttonDirection,
+            JTextField txtIdUserField,
+            JTextField txtNameMember,
+            JTextField txtPhoneMember,
+            JTextField txtEmailMemBer,
+            JTextField txtAddressMember,
+            JDateChooser dcBirthdayMember,
+            JRadioButton rdoMale,
+            JRadioButton rdoFemale,
+            JComboBox cboRateMember) {
+        int sizeOfList = members.size();
+        if (members == null) {
+            MsgBox.alert(null, "không có danh sách để hiển thị");
+            return;
+        }
+        User currentMember = members.get(index);
+        NavigationButtons.navButtonInForm(buttonDirection, sizeOfList, index);
+        setTextFromTableToForm(currentMember, txtIdUserField, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMale, rdoFemale, cboRateMember);
+//        setTextFromTableToForm(currentMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMale, rdoFemale, cboRateMember);
+    }
+
+    public void setClearForm(
+            JTextField idField,
+            JTextField txtNameMember,
+            JTextField txtPhoneMember,
+            JTextField txtEmailMemBer,
+            JTextField txtAddressMember,
+            JDateChooser dcBirthdayMember,
+            JRadioButton rdoMale,
+            JRadioButton rdoFemale,
+            JComboBox cboRateMember) {
+        idField.setText("");
+        txtNameMember.setText("");
+        txtPhoneMember.setText("");
+        txtEmailMemBer.setText("");
+        txtAddressMember.setText("");
+        dcBirthdayMember.setDate(null);
+        rdoMale.setSelected(false);
+        rdoFemale.setSelected(false);
+        cboRateMember.setSelectedIndex(0);
+    }
+
+    public void createMemberToForm(
+            JTextField idField,
+            JTextField txtNameMember,
+            JTextField txtPhoneMember,
+            JTextField txtEmailMemBer,
+            JTextField txtAddressMember,
+            JDateChooser dcBirthdayMember,
+            JRadioButton rdoMale,
+            JRadioButton rdoFemale,
+            JComboBox cboRateMember) {
+        try {
+            String testIdNotNull = InputFields.getTextFieldtoString(idField);
+//            if(testIdNotNull.equals(null)){
+            User userRequest = new User();
+            Role roleMember = new Role();
+            roleMember.setRoleName("Thành viên");
+            userRequest.setRole(roleMember);
+            userRequest.setFullname(InputFields.getTextFieldtoString(txtNameMember));
+            userRequest.setPhone(InputFields.getTextFieldtoString(txtPhoneMember));
+            userRequest.setEmail(InputFields.getTextFieldtoString(txtEmailMemBer));
+            userRequest.setAddress(InputFields.getTextFieldtoString(txtAddressMember));
+            userRequest.setBirthday(InputFields.getDateSQL(dcBirthdayMember.getDate()));
+            userRequest.setSex(InputFields.getSelectedRadiobutton(rdoMale, rdoMale));
+            userRequest.setScore(InputFields.getComboBoxInteger(cboRateMember));
+            userService.save(userRequest, "Thành viên");
+            MsgBox.alert(null, "Tạo Mới Thành Công!");
+//        }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteMemberToForm(JTextField idField) {
+        try {
+            userService.delete(InputFields.getTextFieldtoInteger(idField));
+            MsgBox.alert(null, "Xoá Thành Công!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateMemberToForm(JTextField idField,
+            JTextField txtNameMember,
+            JTextField txtPhoneMember,
+            JTextField txtEmailMemBer,
+            JTextField txtAddressMember,
+            JDateChooser dcBirthdayMember,
+            JRadioButton rdoMale,
+            JRadioButton rdoFemale,
+            JComboBox cboRateMember) {
+        try {
+            User userRequest = new User();
+            userRequest.setId(InputFields.getTextFieldtoInteger(idField));
+            userRequest.setFullname(InputFields.getTextFieldtoString(txtNameMember));
+            userRequest.setPhone(InputFields.getTextFieldtoString(txtPhoneMember));
+            userRequest.setEmail(InputFields.getTextFieldtoString(txtEmailMemBer));
+            userRequest.setAddress(InputFields.getTextFieldtoString(txtAddressMember));
+            userRequest.setBirthday(InputFields.getDateSQL(dcBirthdayMember.getDate()));          
+            userRequest.setSex(InputFields.getSelectedRadiobutton(rdoMale, rdoMale));
+            userRequest.setScore(InputFields.getComboBoxInteger(cboRateMember));
+            userService.update(userRequest);
+            MsgBox.alert(null, "Cập nhật Thành Công!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
