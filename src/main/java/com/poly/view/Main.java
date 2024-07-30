@@ -91,7 +91,7 @@ public class Main extends javax.swing.JFrame {
         btnClearMember = new javax.swing.JButton();
         lblNgaySinh1 = new javax.swing.JLabel();
         cboRateMember = new javax.swing.JComboBox<>();
-        btnPreviousMember = new javax.swing.JButton();
+        btnPreMember = new javax.swing.JButton();
         btnNextMember = new javax.swing.JButton();
         btnLastMember = new javax.swing.JButton();
         dcBirthdayMember = new com.toedter.calendar.JDateChooser();
@@ -383,6 +383,32 @@ public class Main extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null}
             },
             new String [] {
@@ -413,10 +439,10 @@ public class Main extends javax.swing.JFrame {
         pnlListMemberLayout.setVerticalGroup(
             pnlListMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlListMemberLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
                 .addComponent(pnlTimChiTieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -538,11 +564,11 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnPreviousMember.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnPreviousMember.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/pri.png"))); // NOI18N
-        btnPreviousMember.addActionListener(new java.awt.event.ActionListener() {
+        btnPreMember.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnPreMember.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/pri.png"))); // NOI18N
+        btnPreMember.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPreviousMemberActionPerformed(evt);
+                btnPreMemberActionPerformed(evt);
             }
         });
 
@@ -636,7 +662,7 @@ public class Main extends javax.swing.JFrame {
                                 .addGap(56, 56, 56)
                                 .addComponent(btnFirstMember)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnPreviousMember)
+                                .addComponent(btnPreMember)
                                 .addGap(22, 22, 22)))
                         .addGroup(pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlSettingMemberLayout.createSequentialGroup()
@@ -700,7 +726,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(43, 43, 43)
                 .addGroup(pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnFirstMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnPreviousMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPreMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnNextMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnLastMember))
                 .addGap(28, 28, 28)
@@ -795,6 +821,27 @@ public class Main extends javax.swing.JFrame {
 
         lblListEvent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -1047,7 +1094,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(lblNgaySinh2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dcStartedDateEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblNgaySinh4)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1103,6 +1150,26 @@ public class Main extends javax.swing.JFrame {
         tblListNotification.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblListNotification.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -1549,6 +1616,8 @@ public class Main extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null}
             },
             new String [] {
@@ -1970,13 +2039,6 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNextEventActionPerformed
 
-    private void btnPreviousMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousMemberActionPerformed
-        // TODO add your handling code here:
-        buttonDirection = "previous";
-        row = NavigationButtons.navButton(buttonDirection, tblListMember, row);
-        userController.setFormUserPanelByButton(members, row, buttonDirection, txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
-    }//GEN-LAST:event_btnPreviousMemberActionPerformed
-
     private void jTabbedPane3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane3MouseClicked
         // TODO add your handling code here:
         eventController.setAllDataUserToTable(lblListEvent);
@@ -2038,8 +2100,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnNextEvent;
     private javax.swing.JButton btnNextMember;
     private javax.swing.JButton btnNextUser;
+    private javax.swing.JButton btnPreMember;
     private javax.swing.JButton btnPreviousEvent;
-    private javax.swing.JButton btnPreviousMember;
     private javax.swing.JButton btnPreviousUser;
     private javax.swing.JButton btnRejectNotificationAdmin;
     private javax.swing.JButton btnSearchEvent;
