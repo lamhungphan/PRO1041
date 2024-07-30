@@ -243,6 +243,7 @@ public class UserController {
             userService.save(userRequest, "Thành viên");
             MsgBox.alert(null, "Tạo Mới Thành Công!");
 //        }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
