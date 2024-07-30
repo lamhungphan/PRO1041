@@ -32,7 +32,13 @@ create table users
     attendance int null,
     foreign key (roleId) references roles(id) 
 );
-
+drop table if exists passwordresettoken;
+create table passwordresettoken(
+    id int primary key auto_increment,
+    email varchar(55) not null,
+    token varchar(255) not null,
+    expirationdate datetime not null
+);
 drop table if exists events;
 create table events 
 (
