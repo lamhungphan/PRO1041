@@ -45,7 +45,7 @@ public class UserController {
         }
     }
 
-    public void dologout(JFrame mainFrame, Login loginFrame) {
+    public void doLogout(JFrame mainFrame, Login loginFrame) {
         mainFrame.dispose();
         loginFrame.setVisible(true);
     }
