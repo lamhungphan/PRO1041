@@ -1,5 +1,6 @@
 package com.poly.view;
 
+import com.poly.controller.EventController;
 import com.poly.controller.UserController;
 import com.poly.entity.User;
 import javax.swing.JFrame;
@@ -25,6 +26,7 @@ public class Main extends javax.swing.JFrame {
     UserInjector userInjector;
     AuthorizationInjector authorizationInjector;
     UserController userController;
+    EventController eventController;
     List<User> members = new UserController().getAllUsers();
     String buttonDirection;
 
@@ -108,7 +110,7 @@ public class Main extends javax.swing.JFrame {
         lblListEvent = new javax.swing.JTable();
         pnlSettingMember1 = new javax.swing.JPanel();
         lblThanhVien1 = new javax.swing.JLabel();
-        txtNameEvent = new javax.swing.JTextField();
+        txtIdEvent = new javax.swing.JTextField();
         lblEmail1 = new javax.swing.JLabel();
         txtUserIdEvent = new javax.swing.JTextField();
         lblSoDT1 = new javax.swing.JLabel();
@@ -121,15 +123,15 @@ public class Main extends javax.swing.JFrame {
         btnClearEvent = new javax.swing.JButton();
         btnPreviousEvent = new javax.swing.JButton();
         btnNextEvent = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtContentEvent = new javax.swing.JTextArea();
         btnLastEvent = new javax.swing.JButton();
         lblNgaySinh4 = new javax.swing.JLabel();
         lblNgaySinh5 = new javax.swing.JLabel();
         txtAddressEvent = new javax.swing.JTextField();
         lblSoDT2 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser3 = new com.toedter.calendar.JDateChooser();
+        dcStartedDateEvent = new com.toedter.calendar.JDateChooser();
+        dcEndedDateEvent = new com.toedter.calendar.JDateChooser();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtContentEvent = new javax.swing.JTextArea();
         pnlNotification = new javax.swing.JPanel();
         tabNotification = new javax.swing.JTabbedPane();
         pnlListMember3 = new javax.swing.JPanel();
@@ -324,7 +326,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(pnlMainLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(546, Short.MAX_VALUE))
+                .addContainerGap(553, Short.MAX_VALUE))
         );
 
         container.add(pnlMain, "cardMain");
@@ -414,7 +416,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(pnlTimChiTieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -685,7 +687,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(lblEmail)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtEmailMemBer, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlSettingMemberLayout.createSequentialGroup()
                         .addComponent(lblSoDT)
@@ -735,7 +737,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblMember, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabMember, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
+                .addComponent(tabMember, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
                 .addGap(18, 18, 18))
         );
 
@@ -750,6 +752,11 @@ public class Main extends javax.swing.JFrame {
         lblEvent.setText("Sự kiện");
 
         jTabbedPane3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTabbedPane3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane3MouseClicked(evt);
+            }
+        });
 
         pnlTimChiTieu1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TÌM SỰ KIỆN", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
@@ -831,11 +838,12 @@ public class Main extends javax.swing.JFrame {
         jTabbedPane3.addTab("Danh Sách", pnlListMember1);
 
         lblThanhVien1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblThanhVien1.setText("Tên Sự Kiện:");
+        lblThanhVien1.setText("Id Sự Kiện:");
 
-        txtNameEvent.addActionListener(new java.awt.event.ActionListener() {
+        txtIdEvent.setEnabled(false);
+        txtIdEvent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNameEventActionPerformed(evt);
+                txtIdEventActionPerformed(evt);
             }
         });
 
@@ -920,15 +928,6 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        txtContentEvent.setColumns(20);
-        txtContentEvent.setRows(5);
-        txtContentEvent.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtContentEventMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(txtContentEvent);
-
         btnLastEvent.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnLastEvent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/last.png"))); // NOI18N
         btnLastEvent.addActionListener(new java.awt.event.ActionListener() {
@@ -952,11 +951,15 @@ public class Main extends javax.swing.JFrame {
         lblSoDT2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblSoDT2.setText("Địa chỉ:");
 
-        jDateChooser1.setDateFormatString("dd/MM/yyyy ");
-        jDateChooser1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        dcStartedDateEvent.setDateFormatString("dd/MM/yyyy ");
+        dcStartedDateEvent.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        jDateChooser3.setDateFormatString("dd/MM/yyyy ");
-        jDateChooser3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        dcEndedDateEvent.setDateFormatString("dd/MM/yyyy ");
+        dcEndedDateEvent.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        txtContentEvent.setColumns(20);
+        txtContentEvent.setRows(5);
+        jScrollPane2.setViewportView(txtContentEvent);
 
         javax.swing.GroupLayout pnlSettingMember1Layout = new javax.swing.GroupLayout(pnlSettingMember1);
         pnlSettingMember1.setLayout(pnlSettingMember1Layout);
@@ -968,31 +971,28 @@ public class Main extends javax.swing.JFrame {
                         .addGap(36, 36, 36)
                         .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlSettingMember1Layout.createSequentialGroup()
-                                .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblSoDT1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblNgaySinh4)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                                    .addComponent(txtTitleEvent))
-                                .addGap(55, 55, 55)
-                                .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnlSettingMember1Layout.createSequentialGroup()
-                                        .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblNgaySinh2)
-                                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblNgaySinh5)
-                                            .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(txtAddressEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblSoDT2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(pnlSettingMember1Layout.createSequentialGroup()
                                 .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblThanhVien1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNameEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtIdEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(55, 55, 55)
                                 .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblEmail1)
-                                    .addComponent(txtUserIdEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(txtUserIdEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblNgaySinh4)
+                            .addGroup(pnlSettingMember1Layout.createSequentialGroup()
+                                .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblSoDT1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtTitleEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblNgaySinh2)
+                                    .addComponent(dcStartedDateEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(55, 55, 55)
+                                .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblNgaySinh5)
+                                    .addComponent(dcEndedDateEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtAddressEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblSoDT2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(43, 43, 43))
                     .addGroup(pnlSettingMember1Layout.createSequentialGroup()
                         .addGap(153, 153, 153)
                         .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1013,7 +1013,7 @@ public class Main extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnLastEvent)
                                 .addGap(64, 64, 64)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         pnlSettingMember1Layout.setVerticalGroup(
             pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1022,39 +1022,36 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblThanhVien1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblEmail1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtNameEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtUserIdEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlSettingMember1Layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(lblSoDT1))
-                    .addGroup(pnlSettingMember1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtUserIdEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(lblSoDT2)))
+                        .addComponent(lblSoDT2))
+                    .addGroup(pnlSettingMember1Layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(txtIdEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblSoDT1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTitleEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAddressEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(29, 29, 29)
+                .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlSettingMember1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(lblNgaySinh4)
+                        .addComponent(lblNgaySinh5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(dcEndedDateEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlSettingMember1Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(pnlSettingMember1Layout.createSequentialGroup()
-                                .addComponent(lblNgaySinh5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlSettingMember1Layout.createSequentialGroup()
-                                .addComponent(lblNgaySinh2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                        .addComponent(lblNgaySinh2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dcStartedDateEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(lblNgaySinh4)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(btnPreviousEvent)
@@ -1281,7 +1278,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(pnlSettingMember3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRejectNotificationAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAcceptNotificationAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
 
         tabNotification.addTab("Admin", pnlSettingMember3);
@@ -1309,7 +1306,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblNotification, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabNotification, javax.swing.GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
+                .addComponent(tabNotification, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1748,7 +1745,7 @@ public class Main extends javax.swing.JFrame {
         row = NavigationButtons.navButton(buttonDirection, tblListMember, row);
         userController.setFormUserPanelByButton(members, row, buttonDirection, txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
 
-    }//GEN-LAST:event_btnPreMemberActionPerformed
+    }                                            
 
     private void btnNextMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextMemberActionPerformed
         buttonDirection = "next";
@@ -1773,11 +1770,15 @@ public class Main extends javax.swing.JFrame {
 
     private void lblListEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblListEventMouseClicked
         // TODO add your handling code here:
+        if (evt.getClickCount() == 1) {
+            this.row = lblListEvent.getSelectedRow();
+            eventController.findEventToTableClicked(lblListEvent, row, txtIdEvent, txtUserIdEvent, txtTitleEvent, txtAddressEvent, dcStartedDateEvent, dcEndedDateEvent, txtContentEvent);
+        }
     }//GEN-LAST:event_lblListEventMouseClicked
 
-    private void txtNameEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameEventActionPerformed
+    private void txtIdEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdEventActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameEventActionPerformed
+    }//GEN-LAST:event_txtIdEventActionPerformed
 
     private void txtUserIdEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserIdEventActionPerformed
         // TODO add your handling code here:
@@ -1789,14 +1790,28 @@ public class Main extends javax.swing.JFrame {
 
     private void btnDeleteEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteEventActionPerformed
         // TODO add your handling code here:
+        eventController.deleteEventToForm(txtIdEvent);
+        eventController.setClearForm(txtIdEvent, txtUserIdEvent, txtTitleEvent, txtAddressEvent, dcStartedDateEvent, dcEndedDateEvent, txtContentEvent);
     }//GEN-LAST:event_btnDeleteEventActionPerformed
 
     private void btnUpdateEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateEventActionPerformed
         // TODO add your handling code here:
+        eventController.updateEventToForm(txtIdEvent, txtUserIdEvent, txtTitleEvent, txtAddressEvent, dcStartedDateEvent, dcEndedDateEvent, txtContentEvent);
     }//GEN-LAST:event_btnUpdateEventActionPerformed
 
     private void btnAddEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEventActionPerformed
         // TODO add your handling code here:
+        if(RegExInputFields.checkEventTitle(txtTitleEvent)){
+            if (RegExInputFields.checkEventUserId(txtUserIdEvent)) {
+                if (RegExInputFields.checkAddress(txtAddressEvent)){
+                    if(RegExInputFields.checkDayStartedAndEndedCompare(dcStartedDateEvent.getDate(), dcEndedDateEvent.getDate())){
+                        if (RegExInputFields.checkEventContent(txtContentEvent)){
+                            eventController.createEventToForm(txtIdEvent, txtUserIdEvent, txtTitleEvent, txtAddressEvent, dcStartedDateEvent, dcEndedDateEvent, txtContentEvent);
+                        }
+                    }
+                }
+            }
+        }
     }//GEN-LAST:event_btnAddEventActionPerformed
 
     private void btnFirstEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstEventActionPerformed
@@ -1805,6 +1820,7 @@ public class Main extends javax.swing.JFrame {
 
     private void btnClearEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearEventActionPerformed
         // TODO add your handling code here:
+        eventController.setClearForm(txtIdEvent, txtUserIdEvent, txtTitleEvent, txtAddressEvent, dcStartedDateEvent, dcEndedDateEvent, txtContentEvent);
     }//GEN-LAST:event_btnClearEventActionPerformed
 
     private void btnLastEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastEventActionPerformed
@@ -1814,10 +1830,6 @@ public class Main extends javax.swing.JFrame {
     private void btnPreviousEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousEventActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPreviousEventActionPerformed
-
-    private void txtContentEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtContentEventMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtContentEventMouseClicked
 
     private void btnForwardEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForwardEventActionPerformed
         // TODO add your handling code here:
@@ -1936,12 +1948,14 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         userController = new UserController();
         userController.setAllDataUserToTable(tblListMember, "Thành viên");
+        
+        eventController = new EventController();
+        eventController.setAllDataUserToTable(lblListEvent);
     }//GEN-LAST:event_formWindowOpened
 
     private void tabMemberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabMemberMouseClicked
         // TODO add your handling code here:
         userController.setAllDataUserToTable(tblListMember, "Thành viên");
-
     }//GEN-LAST:event_tabMemberMouseClicked
 
     private void txtIdMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdMemberActionPerformed
@@ -1962,6 +1976,11 @@ public class Main extends javax.swing.JFrame {
         row = NavigationButtons.navButton(buttonDirection, tblListMember, row);
         userController.setFormUserPanelByButton(members, row, buttonDirection, txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
     }//GEN-LAST:event_btnPreviousMemberActionPerformed
+
+    private void jTabbedPane3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane3MouseClicked
+        // TODO add your handling code here:
+        eventController.setAllDataUserToTable(lblListEvent);
+    }//GEN-LAST:event_jTabbedPane3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -2034,8 +2053,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cboRoleUser;
     private javax.swing.JPanel container;
     private com.toedter.calendar.JDateChooser dcBirthdayMember;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser3;
+    private com.toedter.calendar.JDateChooser dcEndedDateEvent;
+    private com.toedter.calendar.JDateChooser dcStartedDateEvent;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -2044,7 +2063,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
@@ -2114,9 +2133,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField txtFindEvent;
     private javax.swing.JTextField txtFindMember;
     private javax.swing.JTextField txtFindUser;
+    private javax.swing.JTextField txtIdEvent;
     private javax.swing.JTextField txtIdMember;
     private javax.swing.JTextField txtIdNotificationAdmin;
-    private javax.swing.JTextField txtNameEvent;
     private javax.swing.JTextField txtNameMember;
     private javax.swing.JTextField txtNameUser;
     private javax.swing.JTextField txtPasswordUser;

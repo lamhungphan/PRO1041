@@ -31,7 +31,7 @@ public class UserController {
 
     private AuthorizationService authorizationService = UserInjector.getInstance().getAuthorizationService();
     private UserService userService = UserInjector.getInstance().getUserService();
-    private static final String[] GET_METHOD_NAME_USER = {"getId", "getFullname", "getEmail", "getPhone", "getBirthday", "getScore", "getAddress"};
+    private final String[] GET_METHOD_NAME_USER = {"getId", "getFullname", "getEmail", "getPhone", "getBirthday", "getScore", "getAddress"};
     private List<User> listAllUser = getAllUsers();
 
     public void doLogin(User userRequest, Main mainFrame, Login loginFrame) {
@@ -240,10 +240,11 @@ public class UserController {
             userRequest.setBirthday(InputFields.getDateSQL(dcBirthdayMember.getDate()));
             userRequest.setSex(InputFields.getSelectedRadiobutton(rdoMale, rdoMale));
             userRequest.setScore(InputFields.getComboBoxInteger(cboRateMember));
+            
             userService.save(userRequest, "Thành viên");
+            System.out.println("Vào tới controller rồi.");
             MsgBox.alert(null, "Tạo Mới Thành Công!");
 //        }
-
         } catch (Exception e) {
             e.printStackTrace();
         }

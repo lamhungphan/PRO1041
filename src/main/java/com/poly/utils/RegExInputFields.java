@@ -7,6 +7,7 @@ package com.poly.utils;
 import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
 import java.util.Date;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -20,13 +21,13 @@ public class RegExInputFields {
         String fullname = txtFullname.getText().trim();
         // Kiểm tra tên không được để trống
         if (fullname.isEmpty()) {
-            MsgBox.alert(null, "Name cannot be empty.");
+            MsgBox.alert(null, "Tên không được trống.");
             txtFullname.setBackground(Color.PINK); // Đổi màu nền để cảnh báo
             return false;
         }
         // Kiểm tra tên không có số
         if (!fullname.matches("[\\p{L}\\s]+")) {
-            MsgBox.alert(null, "Name cannot contain numbers.");
+            MsgBox.alert(null, "Tên có số bên trong.");
             txtFullname.setBackground(Color.PINK); // Đổi màu nền để cảnh báo
             return false;
         }
@@ -42,11 +43,11 @@ public class RegExInputFields {
         String regex = "^(0[3|5|7|8|9])+([0-9]{8})$";
         // Kiểm tra số điện thoại không được để trống và phải hợp lệ
         if (phoneNumber.isEmpty()) {
-            MsgBox.alert(null, "Phone number cannot be empty.");
+            MsgBox.alert(null, "Số điện thoại trống.");
             phoneMemberField.setBackground(Color.PINK); // Đổi màu nền để cảnh báo
             return false;
         } else if (!phoneNumber.matches(regex)) {
-            MsgBox.alert(null, "Invalid phone number. Please enter a valid 10 number.");
+            MsgBox.alert(null, "Số điện thoại phải đủ 10 số.");
             phoneMemberField.setBackground(Color.PINK); // Đổi màu nền để cảnh báo
             return false;
         }
@@ -63,11 +64,11 @@ public class RegExInputFields {
 
         // Kiểm tra email không được để trống và phải hợp lệ
         if (email.isEmpty()) {
-            MsgBox.alert(null, "Email cannot be empty.");
+            MsgBox.alert(null, "Email đang trống.");
             emailField.setBackground(Color.PINK); // Đổi màu nền để cảnh báo
             return false;
         } else if (!email.matches(regex)) {
-            MsgBox.alert(null, "Invalid email address. Please enter a valid email.");
+            MsgBox.alert(null, "Lỗi cấu trúc Email.");
             emailField.setBackground(Color.PINK); // Đổi màu nền để cảnh báo
             return false;
         }
@@ -80,7 +81,7 @@ public class RegExInputFields {
     public static boolean checkAddress(JTextField addressField){
         String address = addressField.getText().trim();
         if (address.isEmpty()) {
-            MsgBox.alert(null, "Address cannot be empty.");
+            MsgBox.alert(null, "Địa chỉ đang trống.");
             addressField.setBackground(Color.PINK); // Đổi màu nền để cảnh báo
             return false;
         }
@@ -91,9 +92,63 @@ public class RegExInputFields {
     public static boolean checkBirthday(Date birthDay) {
         // Kiểm tra xem ngày sinh có rỗng hay không
         if (birthDay == null) {
-            MsgBox.alert(null,"Birthday cannot be empty.");
+            MsgBox.alert(null,"Ngày sinh đang trống.");
             return false; // Ngày sinh không hợp lệ
         }
         return true; // Ngày sinh hợp lệ
+    }
+    
+    public static boolean checkEventUserId(JTextField txtUserIdEvent) {
+    String userId = txtUserIdEvent.getText();
+    if (userId.isEmpty()) {
+        MsgBox.alert(null, "Id người tạo trống.");
+        txtUserIdEvent.setBackground(Color.PINK); // Đổi màu nền để cảnh báo
+        return false;
+    } else if (!userId.matches("\\d+")) {
+        MsgBox.alert(null, "Id chỉ được chứa ký tự số.");
+        txtUserIdEvent.setBackground(Color.PINK); // Đổi màu nền để cảnh báo
+        return false;
+    }
+    txtUserIdEvent.setBackground(Color.WHITE);
+    return true;
+}
+
+    
+    public static boolean checkEventTitle(JTextField txtEventTitle){
+        String eventTitle = txtEventTitle.getText().trim();
+        if(eventTitle.isEmpty()){
+            MsgBox.alert(null, "Tên sự kiện trống.");
+            txtEventTitle.setBackground(Color.PINK); // Đổi màu nền để cảnh báo
+            return false;
+        }
+        txtEventTitle.setBackground(Color.WHITE);
+        return true;
+    }
+    
+        
+    public static boolean checkEventContent(JTextArea txtEventContent){
+        String eventContent = txtEventContent.getText().trim();
+        if(eventContent.isEmpty()){
+            MsgBox.alert(null, "Nội dung sự kiện trống.");
+            txtEventContent.setBackground(Color.PINK); // Đổi màu nền để cảnh báo
+            return false;
+        }
+        txtEventContent.setBackground(Color.WHITE);
+        return true;
+    }
+    
+    public static boolean checkDayStartedAndEndedCompare(Date startedDate, Date endedDate) {
+        // Kiểm tra xem ngày sinh có rỗng hay không
+        if (startedDate == null) {
+            MsgBox.alert(null,"Ngày bắt đầu trống.");
+            return false; 
+        } else if(endedDate == null){
+            MsgBox.alert(null,"Ngày kết thúc trống.");
+            return false; 
+        } else if(startedDate.after(endedDate)){
+            MsgBox.alert(null,"Ngày bắt đầu lớn hơn kết thúc.");
+            return false; 
+        }
+        return true; 
     }
 }
