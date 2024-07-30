@@ -14,18 +14,18 @@ import javax.swing.JTextField;
  * @author seastone01202
  */
 public class RegExInputFields {
-    
-    
+
+
     public static boolean checkNameMember(JTextField txtFullname) {
         String fullname = txtFullname.getText().trim();
         // Kiểm tra tên không được để trống
         if (fullname.isEmpty()) {
-            MsgBox.alert( null, "Name cannot be empty.");
+            MsgBox.alert(null, "Name cannot be empty.");
             txtFullname.setBackground(Color.PINK); // Đổi màu nền để cảnh báo
             return false;
         }
         // Kiểm tra tên không có số
-        if (!fullname.matches("[a-zA-Z\\s]+")) {
+        if (!fullname.matches("[\\p{L}\\s]+")) {
             MsgBox.alert(null, "Name cannot contain numbers.");
             txtFullname.setBackground(Color.PINK); // Đổi màu nền để cảnh báo
             return false;
@@ -34,7 +34,8 @@ public class RegExInputFields {
         txtFullname.setBackground(Color.WHITE);
         return true;
     }
-    
+
+
     public static boolean checkPhoneMember(JTextField phoneMemberField) {
         String phoneNumber = phoneMemberField.getText().trim();
         // Biểu thức chính quy cho số điện thoại Việt Nam
