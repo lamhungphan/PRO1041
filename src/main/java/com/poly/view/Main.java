@@ -1745,7 +1745,7 @@ public class Main extends javax.swing.JFrame {
         row = NavigationButtons.navButton(buttonDirection, tblListMember, row);
         userController.setFormUserPanelByButton(members, row, buttonDirection, txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
 
-    }//GEN-LAST:event_btnPreMemberActionPerformed
+    }                                            
 
     private void btnNextMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextMemberActionPerformed
         buttonDirection = "next";
@@ -1791,10 +1791,12 @@ public class Main extends javax.swing.JFrame {
     private void btnDeleteEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteEventActionPerformed
         // TODO add your handling code here:
         eventController.deleteEventToForm(txtIdEvent);
+        eventController.setClearForm(txtIdEvent, txtUserIdEvent, txtTitleEvent, txtAddressEvent, dcStartedDateEvent, dcEndedDateEvent, txtContentEvent);
     }//GEN-LAST:event_btnDeleteEventActionPerformed
 
     private void btnUpdateEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateEventActionPerformed
         // TODO add your handling code here:
+        eventController.updateEventToForm(txtIdEvent, txtUserIdEvent, txtTitleEvent, txtAddressEvent, dcStartedDateEvent, dcEndedDateEvent, txtContentEvent);
     }//GEN-LAST:event_btnUpdateEventActionPerformed
 
     private void btnAddEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEventActionPerformed

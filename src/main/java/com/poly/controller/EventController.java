@@ -85,6 +85,7 @@ public class EventController {
                     entity.getId(),
                     entity.getUser().getFullname(),
                     entity.getTitle(),
+                    entity.getContent(),
                     entity.getStartedDate(),
                     entity.getEndedDate(),
                     entity.getLocation()
@@ -177,6 +178,32 @@ public class EventController {
         try {
             eventService.delete(InputFields.getTextFieldtoInteger(txtIdEvent));
             MsgBox.alert(null, "Xoá Thành Công!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void updateEventToForm(
+            JTextField txtIdEvent,
+            JTextField txtUserIdEvent,
+            JTextField txtTitleEvent,
+            JTextField txtAddressEvent,
+            JDateChooser dcStartedDateEvent,
+            JDateChooser dcEndedDateEvent,
+            JTextArea txtContentEvent){
+        try {
+            User userRequest = new User();
+            userRequest.setId(InputFields.getTextFieldtoInteger(txtUserIdEvent));
+            Event eventRequest = new Event();
+            eventRequest.setId(InputFields.getTextFieldtoInteger(txtIdEvent));
+            eventRequest.setUser(userRequest);
+            eventRequest.setTitle(InputFields.getTextFieldtoString(txtTitleEvent));
+            eventRequest.setContent(InputFields.getTextAreatoString(txtContentEvent));
+            eventRequest.setStartedDate(InputFields.getDateSQL(dcStartedDateEvent.getDate()));
+            eventRequest.setEndedDate(InputFields.getDateSQL(dcEndedDateEvent.getDate()));
+            eventRequest.setLocation(InputFields.getTextFieldtoString(txtAddressEvent));
+            eventService.update(eventRequest);
+            MsgBox.alert(null, "Cập nhật Thành Công!");
         } catch (Exception e) {
             e.printStackTrace();
         }
