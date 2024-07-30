@@ -46,7 +46,7 @@ public class RegExInputFields {
             phoneMemberField.setBackground(Color.PINK); // Đổi màu nền để cảnh báo
             return false;
         } else if (!phoneNumber.matches(regex)) {
-            MsgBox.alert(null, "Invalid phone number. Please enter a valid Vietnam phone number.");
+            MsgBox.alert(null, "Invalid phone number. Please enter a valid 10 number.");
             phoneMemberField.setBackground(Color.PINK); // Đổi màu nền để cảnh báo
             return false;
         }

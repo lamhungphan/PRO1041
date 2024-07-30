@@ -1698,7 +1698,18 @@ public class Main extends javax.swing.JFrame {
 
     private void btnUpdateMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateMemberActionPerformed
         // TODO add your handling code here:
-        userController.updateMemberToForm(txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
+        if (RegExInputFields.checkNameMember(txtNameMember)) {
+            if (RegExInputFields.checkPhoneMember(txtPhoneMember)) {
+                if (RegExInputFields.checkEmail(txtEmailMemBer)) {
+                    if (RegExInputFields.checkAddress(txtAddressMember)) {
+                        if (RegExInputFields.checkBirthday(dcBirthdayMember.getDate())) {
+                            userController.updateMemberToForm(txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
+                        }
+                    }
+                }
+            }
+        }
+
     }//GEN-LAST:event_btnUpdateMemberActionPerformed
 
     private void btnAddMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMemberActionPerformed
@@ -1710,7 +1721,6 @@ public class Main extends javax.swing.JFrame {
                         if (RegExInputFields.checkBirthday(dcBirthdayMember.getDate())) {
                             userController.createMemberToForm(txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
                         }
-                        
                     }
                 }
             }
