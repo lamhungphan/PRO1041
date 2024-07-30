@@ -3,12 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.poly.controller;
-
-<<<<<<< HEAD
-import com.poly.entity.PasswordResetToken;
-=======
 import com.poly.entity.Role;
->>>>>>> 472f6e34b1cfe68108d989a524619abb71b83b4d
 import com.poly.entity.User;
 import com.poly.injection.UserInjector;
 import com.poly.services.AuthorizationService;

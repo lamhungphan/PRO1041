@@ -27,10 +27,8 @@ import javax.swing.table.DefaultTableModel;
  * @author Computer
  */
 public class EventController {
-<<<<<<< HEAD
-     EventService eventService = EventInjector.getInstance().getEventService();
-=======
->>>>>>> 472f6e34b1cfe68108d989a524619abb71b83b4d
+
+
 
     EventService eventService = EventInjector.getInstance().getEventService();
     UserService userService = UserInjector.getInstance().getUserService();
