@@ -32,6 +32,7 @@ create table users
     attendance int null,
     foreign key (roleId) references roles(id) 
 );
+
 drop table if exists passwordresettoken;
 create table passwordresettoken(
     id int primary key auto_increment,
@@ -39,6 +40,7 @@ create table passwordresettoken(
     token varchar(255) not null,
     expirationdate datetime not null
 );
+
 drop table if exists events;
 create table events 
 (
@@ -48,6 +50,7 @@ create table events
     content nvarchar(255) null,
     location nvarchar(255) null,
     status nvarchar(55) null,
+    tag enum('java', 'database', 'soft skill') null,
     startedDate date null,
     endedDate date null,
     createdDate date null,

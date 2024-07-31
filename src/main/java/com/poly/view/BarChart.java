@@ -19,9 +19,9 @@ public class BarChart extends JFrame {
 
         // Tạo biểu đồ
         JFreeChart chart = ChartFactory.createBarChart(
-                "Biểu đồ Doanh số",
-                "Năm",
-                "Doanh số (triệu VND)",
+                "Tổng lượt tham gia sự kiện",
+                "Tháng",
+                "Thành viên",
                 dataset,
                 PlotOrientation.VERTICAL,
                 true, true, false);
@@ -33,29 +33,29 @@ public class BarChart extends JFrame {
     }
 
     private DefaultCategoryDataset createDataset() {
-        String series1 = "Sản phẩm A";
-        String series2 = "Sản phẩm B";
+        String series1 = "Không tham gia";
+        String series2 = "Tham gia";
 
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
-        dataset.addValue(1000, series1, "2020");
-        dataset.addValue(1500, series1, "2021");
-        dataset.addValue(1300, series1, "2022");
+        dataset.addValue(5, series1, "Tháng 7");
+        dataset.addValue(1, series1, "Tháng 8");
+        dataset.addValue(3, series1, "Tháng 9");
 
-        dataset.addValue(1200, series2, "2020");
-        dataset.addValue(1600, series2, "2021");
-        dataset.addValue(1100, series2, "2022");
+        dataset.addValue(54, series2, "Tháng 7");
+        dataset.addValue(29, series2, "Tháng 8");
+        dataset.addValue(48, series2, "Tháng 9");
 
         return dataset;
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            BarChart example = new BarChart("Ví dụ JFreeChart");
-            example.setSize(800, 600);
-            example.setLocationRelativeTo(null);
-            example.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-            example.setVisible(true);
-        });
+//        SwingUtilities.invokeLater(() -> {
+//            BarChart example = new BarChart("Ví dụ JFreeChart");
+//            example.setSize(800, 600);
+//            example.setLocationRelativeTo(null);
+//            example.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+//            example.setVisible(true);
+//        });
     }
 }

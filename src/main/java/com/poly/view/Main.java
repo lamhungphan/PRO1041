@@ -14,6 +14,8 @@ import com.poly.utils.RegExInputFields;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.util.List;
+import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 import lombok.Getter;
 
 @Getter
@@ -61,11 +63,6 @@ public class Main extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         lblUserLoginedAvatar = new javax.swing.JLabel();
         container = new javax.swing.JPanel();
-        pnlMain = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        btnChart1 = new javax.swing.JButton();
-        btnChart2 = new javax.swing.JButton();
-        btnChart3 = new javax.swing.JButton();
         pnlUser = new javax.swing.JPanel();
         tabMember = new javax.swing.JTabbedPane();
         pnlListMember = new javax.swing.JPanel();
@@ -180,6 +177,13 @@ public class Main extends javax.swing.JFrame {
         btnSearchUser = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         tblListUser = new javax.swing.JTable();
+        pnlMain = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        btnChart2 = new javax.swing.JButton();
+        btnChart3 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        lblSumMember = new javax.swing.JLabel();
+        lblSumJoinedEvent = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 51, 153));
@@ -306,71 +310,6 @@ public class Main extends javax.swing.JFrame {
 
         container.setPreferredSize(new java.awt.Dimension(800, 650));
         container.setLayout(new java.awt.CardLayout());
-
-        pnlMain.setPreferredSize(new java.awt.Dimension(820, 650));
-
-        jLabel7.setFont(new java.awt.Font("Lato Black", 1, 48)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 51, 153));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Mentee to Mentor");
-        jLabel7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        btnChart1.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        btnChart1.setText("chart 1");
-        btnChart1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChart1ActionPerformed(evt);
-            }
-        });
-
-        btnChart2.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        btnChart2.setText("chart 2");
-        btnChart2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChart2ActionPerformed(evt);
-            }
-        });
-
-        btnChart3.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        btnChart3.setText("chart 3");
-        btnChart3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChart3ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnlMainLayout = new javax.swing.GroupLayout(pnlMain);
-        pnlMain.setLayout(pnlMainLayout);
-        pnlMainLayout.setHorizontalGroup(
-            pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMainLayout.createSequentialGroup()
-                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlMainLayout.createSequentialGroup()
-                        .addGap(122, 122, 122)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlMainLayout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addComponent(btnChart1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(56, 56, 56)
-                        .addComponent(btnChart2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(109, 109, 109)
-                        .addComponent(btnChart3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(136, Short.MAX_VALUE))
-        );
-        pnlMainLayout.setVerticalGroup(
-            pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMainLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(106, 106, 106)
-                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnChart1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnChart2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnChart3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(390, Short.MAX_VALUE))
-        );
-
-        container.add(pnlMain, "cardMain");
 
         pnlUser.setBackground(new java.awt.Color(153, 255, 204));
         pnlUser.setPreferredSize(new java.awt.Dimension(813, 650));
@@ -1722,6 +1661,86 @@ public class Main extends javax.swing.JFrame {
 
         container.add(pnlAdmin, "cardAdmin");
 
+        pnlMain.setPreferredSize(new java.awt.Dimension(820, 650));
+
+        jLabel7.setFont(new java.awt.Font("Lato Black", 1, 48)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 51, 153));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Mentee to Mentor");
+        jLabel7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        btnChart2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        btnChart2.setText("Tổng lượt tham gia ");
+        btnChart2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChart2ActionPerformed(evt);
+            }
+        });
+
+        btnChart3.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        btnChart3.setText("Nội dung sự kiện");
+        btnChart3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChart3ActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel8.setText("Tổng thành viên");
+
+        lblSumMember.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        lblSumMember.setText("0");
+
+        lblSumJoinedEvent.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        lblSumJoinedEvent.setText("0");
+
+        javax.swing.GroupLayout pnlMainLayout = new javax.swing.GroupLayout(pnlMain);
+        pnlMain.setLayout(pnlMainLayout);
+        pnlMainLayout.setHorizontalGroup(
+            pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMainLayout.createSequentialGroup()
+                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlMainLayout.createSequentialGroup()
+                        .addGap(122, 122, 122)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlMainLayout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pnlMainLayout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblSumMember, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlMainLayout.createSequentialGroup()
+                                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnChart2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnChart3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(173, 173, 173)
+                                .addComponent(lblSumJoinedEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(153, Short.MAX_VALUE))
+        );
+        pnlMainLayout.setVerticalGroup(
+            pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMainLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(98, 98, 98)
+                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSumMember))
+                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlMainLayout.createSequentialGroup()
+                        .addGap(224, 224, 224)
+                        .addComponent(btnChart3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlMainLayout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblSumJoinedEvent)
+                            .addComponent(btnChart2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(110, Short.MAX_VALUE))
+        );
+
+        container.add(pnlMain, "cardMain");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -2085,16 +2104,22 @@ public class Main extends javax.swing.JFrame {
         eventController.setAllDataUserToTable(lblListEvent);
     }//GEN-LAST:event_jTabbedPane3MouseClicked
 
-    private void btnChart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChart1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnChart1ActionPerformed
-
     private void btnChart2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChart2ActionPerformed
-        // TODO add your handling code here:
+          SwingUtilities.invokeLater(() -> {
+            BarChart example = new BarChart("Tổng lượt tham gia sự kiện");
+            example.setSize(800, 600);
+            example.setLocationRelativeTo(null);
+            example.setVisible(true);
+        });
     }//GEN-LAST:event_btnChart2ActionPerformed
 
     private void btnChart3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChart3ActionPerformed
-        // TODO add your handling code here:
+         SwingUtilities.invokeLater(() -> {
+            PieChart example = new PieChart("Nội dung sự kiện");
+            example.setSize(800, 600);
+            example.setLocationRelativeTo(null);
+            example.setVisible(true);
+        });
     }//GEN-LAST:event_btnChart3ActionPerformed
 
     /**
@@ -2138,7 +2163,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnAddEvent;
     private javax.swing.JButton btnAddMember;
     private javax.swing.JButton btnAddUser;
-    private javax.swing.JButton btnChart1;
     private javax.swing.JButton btnChart2;
     private javax.swing.JButton btnChart3;
     private javax.swing.JButton btnClearEvent;
@@ -2180,6 +2204,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
@@ -2213,6 +2238,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel lblSoDT4;
     private javax.swing.JLabel lblSoDT5;
     private javax.swing.JLabel lblSoDT6;
+    private javax.swing.JLabel lblSumJoinedEvent;
+    private javax.swing.JLabel lblSumMember;
     private javax.swing.JLabel lblTabWelcome;
     private javax.swing.JLabel lblThanhVien;
     private javax.swing.JLabel lblThanhVien1;
