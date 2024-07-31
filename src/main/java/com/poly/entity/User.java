@@ -61,8 +61,8 @@ public class User implements Serializable {
     @Column(name = "isActived")
     private Boolean isActived;
     
-    @Column(name = "score")
-    private Integer score;
+    @Column(name = "rate")
+    private String rate;
 
     @ManyToOne
     @JoinColumn(name = "roleId", referencedColumnName = "id")
