@@ -36,7 +36,7 @@ public class UserController {
     private final String[] GET_METHOD_NAME_USER = {"getId", "getFullname", "getEmail", "getPhone", "getBirthday", "getScore", "getAddress"};
     private List<User> listAllUser = getAllUsers();
     private RoleService roleService = UserInjector.getInstance().getRoleService();
-    Main mainForm = new Main();
+    Main mainForm = UserInjector.getInstance().getMainFrame();
 
     public void doLogin(User userRequest, Main mainFrame, Login loginFrame) {
         User loginedUser = userService.doLogin(userRequest);
