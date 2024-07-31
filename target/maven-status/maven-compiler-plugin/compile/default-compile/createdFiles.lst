@@ -3,6 +3,7 @@ com\poly\view\Main$38.class
 com\poly\view\Main$6.class
 com\poly\controller\UserController.class
 com\poly\view\Main$40.class
+com\poly\view\PieChart.class
 com\poly\view\Main$32.class
 com\poly\view\Main$12.class
 com\poly\view\Main$52.class
@@ -41,6 +42,7 @@ com\poly\view\Main$10.class
 com\poly\view\Main$3.class
 com\poly\view\Main$28.class
 com\poly\view\Main$9.class
+com\poly\view\BarChart.class
 com\poly\view\Main$43.class
 com\poly\view\Main$63.class
 com\poly\view\Main$35.class
@@ -52,6 +54,7 @@ com\poly\view\Main$42.class
 com\poly\view\Main$4.class
 com\poly\view\Main$48.class
 com\poly\view\Main$30.class
+com\poly\view\Main$70.class
 com\poly\view\Main$21.class
 com\poly\view\Main$24.class
 com\poly\view\Main$14.class
@@ -67,7 +70,9 @@ com\poly\view\Main$16.class
 com\poly\view\Main$23.class
 com\poly\view\Main$1.class
 com\poly\view\Main$39.class
+com\poly\view\Main$69.class
 com\poly\view\Main$22.class
 com\poly\view\Main$17.class
+com\poly\view\Main$68.class
 com\poly\view\Main$45.class
 com\poly\view\Main$50.class
