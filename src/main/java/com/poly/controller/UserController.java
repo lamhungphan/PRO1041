@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.poly.controller;
-
 import com.poly.entity.Role;
 import com.poly.entity.User;
 import com.poly.injection.UserInjector;
@@ -115,6 +114,15 @@ public class UserController {
         return userService.findAll();
     }
 
+ public boolean updatePassword (String email, String newPassword) {
+     User user = userService.findByEmail(email);
+     if(user != null){
+         user.setPassword(newPassword);
+         userService.update(user);
+         return true;
+     }
+     return false;
+ }
     public void setAllDataUserToTable(JTable tblListUser, String role) {
         List<User> listByRole = new ArrayList<>();
         for (User user : listAllUser) {
