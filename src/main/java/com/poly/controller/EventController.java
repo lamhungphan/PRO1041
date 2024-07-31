@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 package com.poly.controller;
 
 import com.poly.entity.Event;
@@ -14,6 +13,8 @@ import com.poly.services.UserService;
 import com.poly.utils.ComponentManagement;
 import com.poly.utils.InputFields;
 import com.poly.utils.MsgBox;
+import com.poly.utils.RegExInputFields;
+import com.poly.view.Main;
 import com.toedter.calendar.JDateChooser;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,12 +29,19 @@ import javax.swing.table.DefaultTableModel;
  */
 public class EventController {
 
-
-
     EventService eventService = EventInjector.getInstance().getEventService();
     UserService userService = UserInjector.getInstance().getUserService();
     private List<Event> listAllEvent = getAllEvents();
     private final String[] GET_METHOD_NAME_EVENT = {"getId", "getUser", "getTitle", "getContent", "getStartedDate", "getEndedDate", "getLocation"};
+    private Main mainForm = new Main();
+
+    JTextField txtIdEvent = mainForm.getTxtIdEvent();
+    JTextField txtUserIdEvent = mainForm.getTxtUserIdEvent();
+    JTextField txtTitleEvent = mainForm.getTxtTitleEvent();
+    JTextField txtAddressEvent = mainForm.getTxtAddressEvent();
+    JDateChooser dcStartedDateEvent = mainForm.getDcStartedDateEvent();
+    JDateChooser dcEndedDateEvent = mainForm.getDcEndedDateEvent();
+    JTextArea txtContentEvent = mainForm.getTxtContentEvent();
 
     public void createEvent(Event event, String nameUserManager) {
         Event createdEvent = eventService.save(event, nameUserManager);
@@ -78,7 +86,7 @@ public class EventController {
 //    ComponentManagement.fillDataTableComponent (getAllEvents(), tblListEvent, GET_METHOD_NAME_EVENT);
         fillTableEvent(tblListEvent, listEvent);
     }
-    
+
     private void fillTableEvent(JTable tblListEvent, List<Event> eventTo) {
         DefaultTableModel model = (DefaultTableModel) tblListEvent.getModel();
         model.setRowCount(0);
@@ -95,12 +103,11 @@ public class EventController {
                 };
                 model.addRow(row);
             }
-        } 
-        catch (Exception e) {
+        } catch (Exception e) {
             MsgBox.alert(null, "Lỗi truy vấn dữ liệu!");
         }
     }
-    
+
     public void createEventToForm(
             JTextField txtIdEvent,
             JTextField txtUserIdEvent,
@@ -108,7 +115,7 @@ public class EventController {
             JTextField txtAddressEvent,
             JDateChooser dcStartedDateEvent,
             JDateChooser dcEndedDateEvent,
-            JTextArea txtContentEvent){
+            JTextArea txtContentEvent) {
         try {
             Event eventRequest = new Event();
             User userRequest = new User();
@@ -126,7 +133,7 @@ public class EventController {
             e.printStackTrace();
         }
     }
-    
+
     public void findEventToTableClicked(
             JTable tblListEvent,
             Integer row,
@@ -141,7 +148,7 @@ public class EventController {
         Event eventFindOut = eventService.findById(Integer.valueOf(idFound));
         setTextFromTableToForm(eventFindOut, txtIdEvent, txtUserIdEvent, txtTitleEvent, txtAddressEvent, dcStartedDateEvent, dcEndedDateEvent, txtContentEvent);
     }
-    
+
     public void setTextFromTableToForm(
             Event eventResponse,
             JTextField txtIdEvent,
@@ -159,7 +166,7 @@ public class EventController {
         dcStartedDateEvent.setDate(eventResponse.getStartedDate());
         dcEndedDateEvent.setDate(eventResponse.getEndedDate());
     }
-    
+
     public void setClearForm(
             JTextField txtIdEvent,
             JTextField txtUserIdEvent,
@@ -176,7 +183,7 @@ public class EventController {
         dcStartedDateEvent.setDate(null);
         dcEndedDateEvent.setDate(null);
     }
-    
+
     public void deleteEventToForm(JTextField txtIdEvent) {
         try {
             eventService.delete(InputFields.getTextFieldtoInteger(txtIdEvent));
@@ -185,7 +192,7 @@ public class EventController {
             e.printStackTrace();
         }
     }
-    
+
     public void updateEventToForm(
             JTextField txtIdEvent,
             JTextField txtUserIdEvent,
@@ -193,7 +200,7 @@ public class EventController {
             JTextField txtAddressEvent,
             JDateChooser dcStartedDateEvent,
             JDateChooser dcEndedDateEvent,
-            JTextArea txtContentEvent){
+            JTextArea txtContentEvent) {
         try {
             User userRequest = new User();
             userRequest.setId(InputFields.getTextFieldtoInteger(txtUserIdEvent));
@@ -210,5 +217,11 @@ public class EventController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public Event getFormEvent(Event eventForm) {
+        String eventTitle = RegExInputFields.checkEventTitle(txtTitleEvent);
+        
+        
     }
 }

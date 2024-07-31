@@ -75,7 +75,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="9" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -305,7 +305,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="pnlMember">
+        <Container class="javax.swing.JPanel" name="pnlUser">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="ff" red="99" type="rgb"/>
@@ -550,18 +550,17 @@
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="lblThanhVien" min="-2" pref="129" max="-2" attributes="0"/>
                                                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                                      <Component id="txtNameMember" min="-2" pref="300" max="-2" attributes="0"/>
-                                                      <Group type="102" alignment="1" attributes="0">
-                                                          <Group type="103" groupAlignment="0" attributes="0">
-                                                              <Component id="dcBirthdayMember" alignment="0" min="-2" pref="169" max="-2" attributes="0"/>
-                                                              <Component id="lblNgaySinh" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          </Group>
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <Component id="dcBirthdayMember" min="-2" pref="169" max="-2" attributes="0"/>
                                                           <EmptySpace max="32767" attributes="0"/>
-                                                          <Group type="103" groupAlignment="0" attributes="0">
-                                                              <Component id="lblNgaySinh1" min="-2" max="-2" attributes="0"/>
-                                                              <Component id="cboRateMember" min="-2" pref="96" max="-2" attributes="0"/>
-                                                          </Group>
+                                                          <Component id="cboRateMember" min="-2" pref="96" max="-2" attributes="0"/>
                                                       </Group>
+                                                      <Group type="102" attributes="0">
+                                                          <Component id="lblNgaySinh" min="-2" max="-2" attributes="0"/>
+                                                          <EmptySpace max="32767" attributes="0"/>
+                                                          <Component id="lblNgaySinh1" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <Component id="txtNameMember" min="-2" pref="300" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
@@ -630,7 +629,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="92" max="32767" attributes="0"/>
+                              <EmptySpace pref="100" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -664,11 +663,14 @@
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="lblNgaySinh" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="lblNgaySinh1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="lblNgaySinh" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                                      <Component id="lblNgaySinh1" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
                                               </Group>
-                                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="cboRateMember" min="-2" pref="33" max="-2" attributes="0"/>
                                                   <Component id="dcBirthdayMember" min="-2" pref="33" max="-2" attributes="0"/>
@@ -681,7 +683,7 @@
                               <Component id="lblEmail" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="txtEmailMemBer" min="-2" pref="33" max="-2" attributes="0"/>
-                              <EmptySpace pref="24" max="32767" attributes="0"/>
+                              <EmptySpace pref="30" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="lblSoDT" min="-2" max="-2" attributes="0"/>
@@ -885,7 +887,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="&#x110;&#xe1;nh gi&#xe1;:"/>
+                        <Property name="text" type="java.lang.String" value="&#x110;i&#x1ec3;m &#x111;&#xe1;nh gi&#xe1;:"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="cboRateMember">
@@ -894,11 +896,12 @@
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="K&#xe9;m"/>
-                            <StringItem index="1" value="Trung b&#xec;nh"/>
-                            <StringItem index="2" value="T&#x1ed1;t"/>
-                            <StringItem index="3" value="Xu&#x1ea5;t s&#x1eaf;c"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
                       </Properties>
@@ -1909,7 +1912,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tabUser" max="32767" attributes="0"/>
+                      <Component id="tabMember1" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -1925,7 +1928,7 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="lblMember2" min="-2" pref="43" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tabUser" min="-2" pref="574" max="-2" attributes="0"/>
+                      <Component id="tabMember1" min="-2" pref="574" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1941,7 +1944,7 @@
                 <Property name="text" type="java.lang.String" value="H&#x1ec7; th&#x1ed1;ng"/>
               </Properties>
             </Component>
-            <Container class="javax.swing.JTabbedPane" name="tabUser">
+            <Container class="javax.swing.JTabbedPane" name="tabMember1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="0"/>
@@ -1950,7 +1953,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
               <SubComponents>
-                <Container class="javax.swing.JPanel" name="pnlSettingUser">
+                <Container class="javax.swing.JPanel" name="pnlSettingMember2">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                       <JTabbedPaneConstraints tabName="Th&#xe0;nh Vi&#xea;n">
@@ -1972,12 +1975,12 @@
                                       <Component id="txtUsernameUser" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="72" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblThanhVien2" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
-                                  <Component id="txtNameUser" alignment="0" pref="300" max="32767" attributes="0"/>
+                                  <Component id="txtNameUser" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                                   <Component id="lblNgaySinh3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cboRoleUser" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="cboRoleUser" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
                           </Group>
@@ -2046,7 +2049,7 @@
                                   <Component id="btnDeleteUser" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                                   <Component id="btnUpdateUser" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="150" max="32767" attributes="0"/>
+                              <EmptySpace pref="145" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2228,11 +2231,12 @@
                           <Font name="Segoe UI" size="18" style="0"/>
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="Ch&#x1ee7; nhi&#x1ec7;m"/>
-                            <StringItem index="1" value="Ph&#xf3; ch&#x1ee7; nhi&#x1ec7;m"/>
-                            <StringItem index="2" value="Qu&#x1ea3;n l&#xfd; s&#x1ef1; ki&#x1ec7;n"/>
-                            <StringItem index="3" value="Th&#x1ee7; qu&#x1ef9;"/>
+                          <StringArray count="5">
+                            <StringItem index="0" value="0"/>
+                            <StringItem index="1" value="1"/>
+                            <StringItem index="2" value="2"/>
+                            <StringItem index="3" value="3"/>
+                            <StringItem index="4" value="4"/>
                           </StringArray>
                         </Property>
                       </Properties>
@@ -2245,7 +2249,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="pnlListUser">
+                <Container class="javax.swing.JPanel" name="pnlListMember2">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                       <JTabbedPaneConstraints tabName="Danh S&#xe1;ch">
