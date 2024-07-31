@@ -54,7 +54,7 @@ public class UserController {
         JPanel eventPanel = mainFrame.getPnlEvent();
         JPanel adminPanel = mainFrame.getPnlAdmin();
         JPanel notificationPanel = mainFrame.getPnlNotification();
-        JPanel memberPanel = mainFrame.getPnlUser();
+        JPanel memberPanel = mainFrame.getPnlMember();
         if (authorizationService.isAdmin(userLogined)) {
             mainFrame.setVisible(true);
         } else if (authorizationService.isEventManager(userLogined)) {
@@ -173,7 +173,7 @@ public class UserController {
         txtEmailMemBer.setText(entityResponse.getEmail());
         txtAddressMember.setText(entityResponse.getAddress());
         dcBirthdayMember.setDate(entityResponse.getBirthday());
-        cboRateMember.setSelectedIndex(entityResponse.getScore());
+        cboRateMember.setSelectedItem(entityResponse.getScore());
         if (entityResponse.getSex()) {
             rdoMale.setSelected(true);
         } else {
@@ -249,7 +249,7 @@ public class UserController {
             userRequest.setAddress(InputFields.getTextFieldtoString(txtAddressMember));
             userRequest.setBirthday(InputFields.getDateSQL(dcBirthdayMember.getDate()));
             userRequest.setSex(InputFields.getSelectedRadiobutton(rdoMale, rdoMale));
-            userRequest.setScore(InputFields.getComboBoxInteger(cboRateMember));
+            userRequest.setScore(InputFields.getComboBoxString(cboRateMember));
 
             userService.save(userRequest, "Thành viên");
             System.out.println("Vào tới controller rồi.");
