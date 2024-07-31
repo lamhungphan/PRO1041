@@ -156,27 +156,46 @@ public class RegExInputFields {
     public static boolean checkDayStartedAndEndedCompare(Date startedDate, Date endedDate) {
         if (startedDate == null) {
             MsgBox.alert(null, "Ngày bắt đầu trống.");
-            return false;
+            return false; 
         } else if (endedDate == null) {
             MsgBox.alert(null, "Ngày kết thúc trống.");
-            return false;
+            return false; 
         } else if (startedDate.after(endedDate)) {
+            MsgBox.alert(null, "Ngày bắt đầu lớn hơn kết thúc.");
+            return false; 
+        }
+        return true; 
+    }
+
+    public static Date getValidStartDate(JDateChooser startChooser) {
+        Date startedDate = startChooser.getDate();
+        if (startedDate == null) {
+            MsgBox.alert(null, "Ngày bắt đầu trống.");
+            return null;
+        }
+        return startedDate;
+    }
+
+    public static Date getValidEndDate(JDateChooser endChooser) {
+        Date endedDate = endChooser.getDate();
+        if (endedDate == null) {
+            MsgBox.alert(null, "Ngày kết thúc trống.");
+            return null;
+        }
+        return endedDate;
+    }
+
+    public static boolean checkDayStartedAndEndedCompare(JDateChooser startChooser, JDateChooser endChooser) {
+        Date startedDate = startChooser.getDate();
+        Date endedDate = endChooser.getDate();
+        if (startedDate == null || endedDate == null) {
+            return false;
+        }
+        if (startedDate.after(endedDate)) {
             MsgBox.alert(null, "Ngày bắt đầu lớn hơn kết thúc.");
             return false;
         }
         return true;
-    }
-
-    public static Date getCheckDayStarted(JDateChooser startChooser, JDateChooser endChooser) {
-        Date startedDate = startChooser.getDate();
-        Date endedDate = endChooser.getDate();
-        return checkDayStartedAndEndedCompare(startedDate, endedDate)? startedDate: null;
-    }
-
-    public static Date getCheckDayEnded(JDateChooser startChooser, JDateChooser endChooser) {
-        Date startedDate = startChooser.getDate();
-        Date endedDate = endChooser.getDate();
-        return checkDayStartedAndEndedCompare(startedDate, endedDate)? endedDate: null;
     }
 }
 

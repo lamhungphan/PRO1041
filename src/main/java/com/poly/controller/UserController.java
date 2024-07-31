@@ -54,7 +54,7 @@ public class UserController {
         JPanel eventPanel = mainFrame.getPnlEvent();
         JPanel adminPanel = mainFrame.getPnlAdmin();
         JPanel notificationPanel = mainFrame.getPnlNotification();
-        JPanel memberPanel = mainFrame.getPnlMember();
+        JPanel memberPanel = mainFrame.getPnlUser();
         if (authorizationService.isAdmin(userLogined)) {
             mainFrame.setVisible(true);
         } else if (authorizationService.isEventManager(userLogined)) {
@@ -128,9 +128,9 @@ public class UserController {
     public void setAllDataUserToTable(JTable tblListUser, String role) {
         List<User> listByRole = new ArrayList<>();
         for (User user : listAllUser) {
-            if (role.equalsIgnoreCase(user.getRole().getRoleName())) {
-                listByRole.add(user);
-            }
+//            if (role.equalsIgnoreCase(user.getRole().getRoleName())) {
+            listByRole.add(user);
+//            }
         }
         ComponentManagement.fillDataTableComponent(getAllUsers(), tblListUser, GET_METHOD_NAME_USER);
     }
@@ -173,7 +173,7 @@ public class UserController {
         txtEmailMemBer.setText(entityResponse.getEmail());
         txtAddressMember.setText(entityResponse.getAddress());
         dcBirthdayMember.setDate(entityResponse.getBirthday());
-//        cboRateMember.setSelectedIndex(entityResponse.getScore());
+        cboRateMember.setSelectedIndex(entityResponse.getScore());
         if (entityResponse.getSex()) {
             rdoMale.setSelected(true);
         } else {
@@ -249,6 +249,7 @@ public class UserController {
             userRequest.setAddress(InputFields.getTextFieldtoString(txtAddressMember));
             userRequest.setBirthday(InputFields.getDateSQL(dcBirthdayMember.getDate()));
             userRequest.setSex(InputFields.getSelectedRadiobutton(rdoMale, rdoMale));
+            userRequest.setScore(InputFields.getComboBoxInteger(cboRateMember));
 
             userService.save(userRequest, "Thành viên");
             System.out.println("Vào tới controller rồi.");
@@ -287,14 +288,9 @@ public class UserController {
             String roleName = InputFields.getComboBoxString(cboRoleUser);
             Role roleUser = roleService.findByNameRole(roleName);
             userRequest.setRole(roleUser);
-            MsgBox.alert(null, "Cập nhật Thành Công!");
+             MsgBox.alert(null, "Cập nhật Thành Công!");
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public User getFormUser(User userForm) {
-
-        return userForm;
     }
 }
