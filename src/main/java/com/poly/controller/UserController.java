@@ -3,10 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.poly.controller;
+
 import com.poly.entity.Role;
 import com.poly.entity.User;
 import com.poly.injection.UserInjector;
 import com.poly.services.AuthorizationService;
+import com.poly.services.RoleService;
 import com.poly.services.UserService;
 import com.poly.utils.ComponentManagement;
 import com.poly.utils.InputFields;
@@ -16,6 +18,7 @@ import com.poly.utils.XDate;
 import com.poly.view.Login;
 import com.poly.view.Main;
 import com.toedter.calendar.JDateChooser;
+import java.awt.Container;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +35,8 @@ public class UserController {
     private UserService userService = UserInjector.getInstance().getUserService();
     private final String[] GET_METHOD_NAME_USER = {"getId", "getFullname", "getEmail", "getPhone", "getBirthday", "getScore", "getAddress"};
     private List<User> listAllUser = getAllUsers();
+    private RoleService roleService = UserInjector.getInstance().getRoleService();
+    Main mainForm = new Main();
 
     public void doLogin(User userRequest, Main mainFrame, Login loginFrame) {
         User loginedUser = userService.doLogin(userRequest);
@@ -53,7 +58,7 @@ public class UserController {
         JPanel eventPanel = mainFrame.getPnlEvent();
         JPanel adminPanel = mainFrame.getPnlAdmin();
         JPanel notificationPanel = mainFrame.getPnlNotification();
-        JPanel memberPanel = mainFrame.getPnlUser();
+        JPanel memberPanel = mainFrame.getPnlMember();
         if (authorizationService.isAdmin(userLogined)) {
             mainFrame.setVisible(true);
         } else if (authorizationService.isEventManager(userLogined)) {
@@ -114,21 +119,22 @@ public class UserController {
         return userService.findAll();
     }
 
- public boolean updatePassword (String email, String newPassword) {
-     User user = userService.findByEmail(email);
-     if(user != null){
-         user.setPassword(newPassword);
-         userService.update(user);
-         return true;
-     }
-     return false;
- }
+    public boolean updatePassword(String email, String newPassword) {
+        User user = userService.findByEmail(email);
+        if (user != null) {
+            user.setPassword(newPassword);
+            userService.update(user);
+            return true;
+        }
+        return false;
+    }
+
     public void setAllDataUserToTable(JTable tblListUser, String role) {
         List<User> listByRole = new ArrayList<>();
         for (User user : listAllUser) {
-//            if (role.equalsIgnoreCase(user.getRole().getRoleName())) {
-            listByRole.add(user);
-//            }
+            if (role.equalsIgnoreCase(user.getRole().getRoleName())) {
+                listByRole.add(user);
+            }
         }
         ComponentManagement.fillDataTableComponent(getAllUsers(), tblListUser, GET_METHOD_NAME_USER);
     }
@@ -171,7 +177,7 @@ public class UserController {
         txtEmailMemBer.setText(entityResponse.getEmail());
         txtAddressMember.setText(entityResponse.getAddress());
         dcBirthdayMember.setDate(entityResponse.getBirthday());
-        cboRateMember.setSelectedIndex(entityResponse.getScore());
+//        cboRateMember.setSelectedIndex(entityResponse.getScore());
         if (entityResponse.getSex()) {
             rdoMale.setSelected(true);
         } else {
@@ -247,8 +253,7 @@ public class UserController {
             userRequest.setAddress(InputFields.getTextFieldtoString(txtAddressMember));
             userRequest.setBirthday(InputFields.getDateSQL(dcBirthdayMember.getDate()));
             userRequest.setSex(InputFields.getSelectedRadiobutton(rdoMale, rdoMale));
-            userRequest.setScore(InputFields.getComboBoxInteger(cboRateMember));
-            
+
             userService.save(userRequest, "Thành viên");
             System.out.println("Vào tới controller rồi.");
             MsgBox.alert(null, "Tạo Mới Thành Công!");
@@ -278,18 +283,28 @@ public class UserController {
             JComboBox cboRateMember) {
         try {
             User userRequest = new User();
-            userRequest.setId(InputFields.getTextFieldtoInteger(idField));
-            userRequest.setFullname(InputFields.getTextFieldtoString(txtNameMember));
-            userRequest.setPhone(InputFields.getTextFieldtoString(txtPhoneMember));
-            userRequest.setEmail(InputFields.getTextFieldtoString(txtEmailMemBer));
-            userRequest.setAddress(InputFields.getTextFieldtoString(txtAddressMember));
-            userRequest.setBirthday(InputFields.getDateSQL(dcBirthdayMember.getDate()));          
-            userRequest.setSex(InputFields.getSelectedRadiobutton(rdoMale, rdoMale));
-            userRequest.setScore(InputFields.getComboBoxInteger(cboRateMember));
-            userService.update(userRequest);
+
             MsgBox.alert(null, "Cập nhật Thành Công!");
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public User getFormUser(User userForm) {
+
+        String userFullname = InputFields.getTextFieldtoString(mainForm.getTxtNameUser());
+        userForm.setFullname(userFullname);
+
+        String userName = InputFields.getTextFieldtoString(mainForm.getTxtUsernameUser());
+        userForm.setUsername(userName);
+
+        String passWord = InputFields.getTextFieldtoString(mainForm.getTxtPasswordUser());
+        userForm.setPassword(passWord);
+
+        String roleName = InputFields.getComboBoxString(mainForm.getCboRoleUser());
+        Role roleUser = roleService.findByNameRole(roleName);
+        userForm.setRole(roleUser);
+
+        return userForm;
     }
 }

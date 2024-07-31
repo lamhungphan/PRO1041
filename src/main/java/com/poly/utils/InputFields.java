@@ -1,5 +1,7 @@
 package com.poly.utils;
 
+import com.toedter.calendar.JDateChooser;
+
 import java.sql.Date;
 import javax.swing.*;
 
@@ -9,7 +11,7 @@ public class InputFields {
         if (isNumber(numb)) {
             txt.setText(numb);
         } else {
-            MsgBox.alert(null, "Invalid input: Not a number");
+            MsgBox.alert(null, "Xin hãy nhập vào giá trị là số!");
         }
 
     }
@@ -53,12 +55,9 @@ public class InputFields {
         if (rdo_1.isSelected()) {
             rdo_1.setSelected(true);
             return true;
-        } else if (rdo_2.isSelected()) {
-            rdo_2.setSelected(true);
-            return true;
-        } else{
-            return false;
         }
+        rdo_2.setSelected(true);
+        return false;
     }
 
     public static String getComboBoxString(JComboBox<String> cbx) {
@@ -66,9 +65,9 @@ public class InputFields {
     }
 
     public static Integer getComboBoxInteger(JComboBox<Integer> cbx) {
-        return  cbx.getSelectedIndex();
+        return cbx.getSelectedIndex();
     }
-    
+
     public static Boolean isNumber(String numb) {
         try {
             Double.valueOf(numb);
@@ -77,10 +76,18 @@ public class InputFields {
             return false;
         }
     }
-    
-    public static Date getDateSQL(java.util.Date getDateUtil){
-        Date newDate = new Date(getDateUtil.getTime());
-        return newDate;
+
+    public static Date getDateSQL(java.util.Date dateUtil) {
+        Date newDate = new Date(dateUtil.getTime());
+        return new Date(newDate.getTime());
+    }
+
+    public static Date getDatetoDateSQL(JDateChooser dateChooser) {
+        if (dateChooser.getDate() == null) {
+            MsgBox.alert(null,"Chưa chọn ngày");
+            return null;
+        }
+        return getDateSQL(dateChooser.getDate());
     }
 
 }
