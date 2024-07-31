@@ -5,6 +5,7 @@ import com.poly.controller.PasswordResetController;
 import com.poly.controller.UserController;
 import com.poly.entity.Account;
 import com.poly.entity.User;
+import com.poly.injection.UserInjector;
 import com.poly.utils.InputFields;
 import lombok.Getter;
 
@@ -16,7 +17,7 @@ import javax.swing.*;
 public class Login extends javax.swing.JFrame {
     private UserController userController;
 
-    private AccountController accountController;
+    private AccountController accountController ;
 
     private PasswordResetController  resetPasswordController;
 
@@ -252,7 +253,7 @@ public class Login extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        userController.doLogin(getForm(),new Main(),this);
+        userController.doLogin(getForm(),this,new Main());
         accountController.doSavePassword(getFormAccount(), cbSavePassword);
     }//GEN-LAST:event_btnLoginActionPerformed
 
@@ -312,6 +313,8 @@ public class Login extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
 
+        
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

@@ -14,12 +14,9 @@ import com.poly.utils.ComponentManagement;
 import com.poly.utils.InputFields;
 import com.poly.utils.MsgBox;
 import com.poly.utils.NavigationButtons;
-import com.poly.utils.XDate;
 import com.poly.view.Login;
 import com.poly.view.Main;
 import com.toedter.calendar.JDateChooser;
-import java.awt.Container;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,14 +28,13 @@ import javax.swing.*;
  */
 public class UserController {
 
-    private AuthorizationService authorizationService = UserInjector.getInstance().getAuthorizationService();
-    private UserService userService = UserInjector.getInstance().getUserService();
+    private final AuthorizationService authorizationService = UserInjector.getInstance().getAuthorizationService();
+    private final UserService userService = UserInjector.getInstance().getUserService();
     private final String[] GET_METHOD_NAME_USER = {"getId", "getFullname", "getEmail", "getPhone", "getBirthday", "getScore", "getAddress"};
-    private List<User> listAllUser = getAllUsers();
-    private RoleService roleService = UserInjector.getInstance().getRoleService();
-    Main mainForm = new Main();
+    private final List<User> listAllUser = getAllUsers();
+    private final RoleService roleService = UserInjector.getInstance().getRoleService();
 
-    public void doLogin(User userRequest, Main mainFrame, Login loginFrame) {
+    public void doLogin(User userRequest, Login loginFrame, Main mainFrame) {
         User loginedUser = userService.doLogin(userRequest);
         if (loginedUser == null) {
             MsgBox.alert(null, "Đăng nhập không thành công");
@@ -49,9 +45,9 @@ public class UserController {
         }
     }
 
-    public void doLogout(JFrame mainFrame, Login loginFrame) {
+    public void doLogout(Main mainFrame) {
         mainFrame.dispose();
-        loginFrame.setVisible(true);
+        new Login().setVisible(true);
     }
 
     public void showWorkspaceByRolename(User userLogined, Main mainFrame) {
@@ -272,18 +268,25 @@ public class UserController {
         }
     }
 
-    public void updateMemberToForm(JTextField idField,
-            JTextField txtNameMember,
-            JTextField txtPhoneMember,
-            JTextField txtEmailMemBer,
-            JTextField txtAddressMember,
-            JDateChooser dcBirthdayMember,
-            JRadioButton rdoMale,
-            JRadioButton rdoFemale,
-            JComboBox cboRateMember) {
+    public void setUserToForm(JTextField idField,
+            JTextField txtNameUser,
+            JTextField txtUsernameUser,
+            JPasswordField txtPasswordUser,
+            JComboBox cboRoleUser) {
         try {
             User userRequest = new User();
+            String userFullname = InputFields.getTextFieldtoString(txtNameUser);
+            userRequest.setFullname(userFullname);
 
+            String userName = InputFields.getTextFieldtoString(txtUsernameUser);
+            userRequest.setUsername(userName);
+
+            String passWord = InputFields.getTextFieldtoString(txtPasswordUser);
+            userRequest.setPassword(passWord);
+
+            String roleName = InputFields.getComboBoxString(cboRoleUser);
+            Role roleUser = roleService.findByNameRole(roleName);
+            userRequest.setRole(roleUser);
             MsgBox.alert(null, "Cập nhật Thành Công!");
         } catch (Exception e) {
             e.printStackTrace();
@@ -291,19 +294,6 @@ public class UserController {
     }
 
     public User getFormUser(User userForm) {
-
-        String userFullname = InputFields.getTextFieldtoString(mainForm.getTxtNameUser());
-        userForm.setFullname(userFullname);
-
-        String userName = InputFields.getTextFieldtoString(mainForm.getTxtUsernameUser());
-        userForm.setUsername(userName);
-
-        String passWord = InputFields.getTextFieldtoString(mainForm.getTxtPasswordUser());
-        userForm.setPassword(passWord);
-
-        String roleName = InputFields.getComboBoxString(mainForm.getCboRoleUser());
-        Role roleUser = roleService.findByNameRole(roleName);
-        userForm.setRole(roleUser);
 
         return userForm;
     }

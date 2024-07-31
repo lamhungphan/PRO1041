@@ -10,9 +10,11 @@ import com.poly.injection.AuthorizationInjector;
 import com.poly.injection.MailInjector;
 import com.poly.injection.UserInjector;
 import com.poly.utils.ComponentManagement;
+import com.poly.utils.InputFields;
 import com.poly.utils.RegExInputFields;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
+import java.sql.Date;
 import java.util.List;
 import lombok.Getter;
 
@@ -29,7 +31,6 @@ public class Main extends javax.swing.JFrame {
     EventController eventController;
     List<User> members = new UserController().getAllUsers();
     String buttonDirection;
-    
 
     public Main() {
         initComponents();
@@ -1725,7 +1726,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {
-        userController.doLogout(this, new Login());
+        userController.doLogout(this);
     }
 
     private void txtFindMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFindMemberActionPerformed
@@ -1764,17 +1765,17 @@ public class Main extends javax.swing.JFrame {
 
     private void btnUpdateMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateMemberActionPerformed
         // TODO add your handling code here:
-        if (RegExInputFields.checkNameMember(txtNameMember)) {
-            if (RegExInputFields.checkPhoneMember(txtPhoneMember)) {
-                if (RegExInputFields.checkEmail(txtEmailMemBer)) {
-                    if (RegExInputFields.checkAddress(txtAddressMember)) {
-                        if (RegExInputFields.checkBirthday(dcBirthdayMember.getDate())) {
-                            userController.updateMemberToForm(txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
-                        }
-                    }
-                }
-            }
-        }
+//        if (RegExInputFields.checkNameMember(txtNameMember)) {
+//            if (RegExInputFields.checkPhoneMember(txtPhoneMember)) {
+//                if (RegExInputFields.checkEmail(txtEmailMemBer)) {
+//                    if (RegExInputFields.checkAddress(txtAddressMember)) {
+//                        if (RegExInputFields.checkBirthday(dcBirthdayMember.getDate())) {
+////                            userController.updateMemberToForm(txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
+////                        }
+//                    }
+//                }
+//            }
+//        }
     }//GEN-LAST:event_btnUpdateMemberActionPerformed
 
     private void btnAddMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMemberActionPerformed
@@ -1805,7 +1806,7 @@ public class Main extends javax.swing.JFrame {
 
     private void cboRateMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboRateMemberActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_cboRateMemberActionPerformed
 
     private void btnPreMemberActionPerformed(java.awt.event.ActionEvent evt) {
@@ -1813,7 +1814,7 @@ public class Main extends javax.swing.JFrame {
         row = NavigationButtons.navButton(buttonDirection, tblListMember, row);
         userController.setFormUserPanelByButton(members, row, buttonDirection, txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
 
-    }                                            
+    }
 
     private void btnNextMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextMemberActionPerformed
         buttonDirection = "next";
@@ -1869,11 +1870,11 @@ public class Main extends javax.swing.JFrame {
 
     private void btnAddEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEventActionPerformed
         // TODO add your handling code here:
-        if(RegExInputFields.checkEventTitle(txtTitleEvent)){
+        if (RegExInputFields.checkEventTitle(txtTitleEvent)) {
             if (RegExInputFields.checkEventUserId(txtUserIdEvent)) {
-                if (RegExInputFields.checkAddress(txtAddressEvent)){
-                    if(RegExInputFields.checkDayStartedAndEndedCompare(dcStartedDateEvent.getDate(), dcEndedDateEvent.getDate())){
-                        if (RegExInputFields.checkEventContent(txtContentEvent)){
+                if (RegExInputFields.checkAddress(txtAddressEvent)) {
+                    if (RegExInputFields.checkDayStartedAndEndedCompare(dcStartedDateEvent.getDate(), dcEndedDateEvent.getDate())) {
+                        if (RegExInputFields.checkEventContent(txtContentEvent)) {
                             eventController.createEventToForm(txtIdEvent, txtUserIdEvent, txtTitleEvent, txtAddressEvent, dcStartedDateEvent, dcEndedDateEvent, txtContentEvent);
                         }
                     }
@@ -1952,10 +1953,6 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnUpdateUserActionPerformed
 
-    private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAddUserActionPerformed
-
     private void btnFirstUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstUserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnFirstUserActionPerformed
@@ -2016,7 +2013,7 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         userController = new UserController();
         userController.setAllDataUserToTable(tblListMember, "Thành viên");
-        
+
         eventController = new EventController();
         eventController.setAllDataUserToTable(lblListEvent);
     }//GEN-LAST:event_formWindowOpened
@@ -2043,6 +2040,63 @@ public class Main extends javax.swing.JFrame {
         eventController.setAllDataUserToTable(lblListEvent);
     }//GEN-LAST:event_jTabbedPane3MouseClicked
 
+    private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddUserActionPerformed
+
+    //FormMember start
+    public User getFormUser(User memberForm) {
+
+        String fullname = RegExInputFields.getCheckNameMember(txtNameMember);
+        memberForm.setFullname(fullname);
+
+        String memberEmail = RegExInputFields.getCheckEmail(txtEmailMemBer);
+        memberForm.setUsername(memberEmail);
+
+        String memberPhone = RegExInputFields.getCheckPhoneMember(txtPhoneMember);
+        memberForm.setPhone(memberPhone);
+
+        String addressMember = RegExInputFields.getCheckAddress(txtAddressMember);
+        memberForm.setAddress(addressMember);
+
+        Boolean gender = InputFields.getSelectedRadiobutton(rdoMaleMember, rdoFemaleMember);
+        memberForm.setSex(gender);
+
+        Date birthdate = InputFields.getDatetoDateSQL(dcBirthdayMember);
+        memberForm.setBirthday(birthdate);
+
+        String rateMembers = InputFields.getComboBoxString(cboRateMember);
+        memberForm.setRate(rateMembers);
+
+        return memberForm;
+    }
+
+    public void setFormUser(User memberForm) {
+        txtNameMember.setText(memberForm.getFullname());
+        txtEmailMemBer.setText(memberForm.getUsername());
+        txtPhoneMember.setText(memberForm.getPhone());
+        txtAddressMember.setText(memberForm.getAddress());
+
+        if (memberForm.getSex() != null) {
+            if (memberForm.getSex()) {
+                rdoMaleMember.setSelected(true);
+
+            } else {
+
+                rdoFemaleMember.setSelected(true);
+            }
+        }
+
+        if (memberForm.getBirthday() != null) {
+            dcBirthdayMember.setDate(new java.util.Date(memberForm.getBirthday().getTime()));
+        } else {
+            dcBirthdayMember.setDate(null);
+        }
+
+        cboRateMember.setSelectedItem(memberForm.getRate());
+    }
+
+//    FormMember end
     /**
      * @param args the command line arguments
      */
@@ -2074,7 +2128,7 @@ public class Main extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Main().setVisible(true);
+               new Main().setVisible(true);
             }
         });
     }

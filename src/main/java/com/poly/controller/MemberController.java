@@ -29,21 +29,12 @@ import javax.swing.JTextField;
 /**
  * @author Computer
  */
-public class MemberController {
+public class MemberController extends UserController {
 
     private final String[] GET_METHOD_NAME_USER = {"getId", "getFullname", "getEmail", "getPhone", "getBirthday", "getScore", "getAddress"};
     private List<User> listAllUser = getAllMembers();
     private RoleService roleService = UserInjector.getInstance().getRoleService();
-    private Main mainForm = new Main();
     private MemberService memberService = MemberInjector.getInstance().getMemberService();
-    private JTextField memberName = mainForm.getTxtNameMember();
-    private JTextField email = mainForm.getTxtEmailMemBer();
-    private JTextField phone = mainForm.getTxtPhoneMember();
-    private JDateChooser birthday = mainForm.getDcBirthdayMember();
-    private JTextField address = mainForm.getTxtAddressMember();
-    private JRadioButton male = mainForm.getRdoMaleMember();
-    private JRadioButton female = mainForm.getRdoFemaleMember();
-    private JComboBox<String> rateCore = mainForm.getCboRateMember();
 
 
     // CRUD operations
@@ -69,8 +60,17 @@ public class MemberController {
         }
     }
 
-    public void deleteUser(Integer id) {
+    public void deleteUserById(Integer id) {
         User deletedMember = memberService.delete(id);
+        if (deletedMember != null) {
+            MsgBox.alert(null, "Xóa thành viên thành công!");
+        } else {
+            MsgBox.alert(null, "Không thể xóa người dùng.");
+        }
+    }
+
+    public void deleteUserByName(String name) {
+        User deletedMember = memberService.findByFullname(name);
         if (deletedMember != null) {
             MsgBox.alert(null, "Xóa thành viên thành công!");
         } else {
@@ -82,54 +82,5 @@ public class MemberController {
         return memberService.findAll();
     }
 
-    public User getFormUser(User memberForm) {
 
-        String fullname = RegExInputFields.getCheckNameMember(memberName);
-        memberForm.setFullname(fullname);
-
-        String memberEmail = RegExInputFields.getCheckEmail(email);
-        memberForm.setUsername(memberEmail);
-
-        String memberPhone = RegExInputFields.getCheckPhoneMember(phone);
-        memberForm.setPhone(memberEmail);
-
-        String addressMember = RegExInputFields.getCheckAddress(address);
-        memberForm.setAddress(addressMember);
-
-        Boolean gender = InputFields.getSelectedRadiobutton(male, female);
-        memberForm.setSex(gender);
-
-        Date birthdate = InputFields.getDatetoDateSQL(birthday);
-        memberForm.setBirthday(birthdate);
-
-        String rateMembers = InputFields.getComboBoxString(rateCore);
-        memberForm.setRate(rateMembers);
-
-        return memberForm;
-    }
-
-    public void setFormUser(User memberForm) {
-        memberName.setText(memberForm.getFullname());
-        email.setText(memberForm.getUsername());
-        phone.setText(memberForm.getPhone());
-        address.setText(memberForm.getAddress());
-
-        if (memberForm.getSex() != null) {
-            if (memberForm.getSex()) {
-                male.setSelected(true);
-                female.setSelected(false);
-            } else {
-                male.setSelected(false);
-                female.setSelected(true);
-            }
-        }
-
-        if (memberForm.getBirthday() != null) {
-            birthday.setDate(new java.util.Date(memberForm.getBirthday().getTime()));
-        } else {
-            birthday.setDate(null);
-        }
-
-        rateCore.setSelectedItem(memberForm.getRate());
-    }
 }
