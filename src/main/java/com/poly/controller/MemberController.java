@@ -71,4 +71,6 @@ public class MemberController extends UserController {
         return memberService.findAll();
     }
 
+    
+
 }
