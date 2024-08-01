@@ -32,10 +32,9 @@ public class EventController {
 
     EventService eventService = EventInjector.getInstance().getEventService();
     UserService userService = UserInjector.getInstance().getUserService();
-    private List<Event> listAllEvent = getAllEvents();
 
-    public Event createEvent(Event event, String nameUserManager) {
-        Event createdEvent = eventService.save(event, nameUserManager);
+    public Event createEvent(Event event, String usernameManager) {
+        Event createdEvent = eventService.save(event, usernameManager);
         if (createdEvent != null) {
             MsgBox.alert(null, "Tạo sự kiện thành công!");
             return createdEvent;

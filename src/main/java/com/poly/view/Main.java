@@ -38,8 +38,8 @@ public class Main extends javax.swing.JFrame {
     MailInjector mailInjector;
     UserInjector userInjector;
     AuthorizationInjector authorizationInjector;
-    UserController userController;
-    EventController eventController;
+    UserController userController = new UserController();
+    EventController eventController = new EventController();
     MemberController memberController = new MemberController();
     String buttonDirection;
     List<User> listAllUser = new UserController().getAllUsers();
@@ -1755,17 +1755,17 @@ public class Main extends javax.swing.JFrame {
         });
 
         // Add event listeners for User
-        btnAddEvent.addActionListener(evt -> createUser());
-        btnUpdateEvent.addActionListener(evt -> updateUser());
-        btnDeleteEvent.addActionListener(evt -> deleteUser());
-        btnFirstEvent.addActionListener(evt -> firstUser());
-        btnPreviousEvent.addActionListener(evt -> prevUser());
-        btnNextEvent.addActionListener(evt -> nextUser());
-        btnLastEvent.addActionListener(evt -> lastUser());
-        btnClearEvent.addActionListener(evt -> clearFormUser());
+        btnAddEvent.addActionListener(evt -> createEvent());
+        btnUpdateEvent.addActionListener(evt -> updateEvent());
+        btnDeleteEvent.addActionListener(evt -> deleteEvent());
+        btnFirstEvent.addActionListener(evt -> firstEvent());
+        btnPreviousEvent.addActionListener(evt -> prevEvent());
+        btnNextEvent.addActionListener(evt -> nextEvent());
+        btnLastEvent.addActionListener(evt -> lastEvent());
+        btnClearEvent.addActionListener(evt -> clearFormEvent());
         tblListEvent.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                editMember();
+                editEvent();
             }
         });
     }// </editor-fold>//GEN-END:initComponents
@@ -2364,13 +2364,18 @@ public class Main extends javax.swing.JFrame {
 
     public void createEvent() {
         try {
-            Event eventRequest = new Event();
-            User userRequest = new User();
-            userRequest.setId(Integer.valueOf(txtUserIdEvent.getText()));
+            Event eventRequest = getEventFrom(new Event());
             System.out.println("Qua duoc chua ?");
+            Event event = eventController.createEvent(eventRequest, eventRequest.getUser().getUsername());
 
-            eventController.createEvent(eventRequest, "haithach");
-            MsgBox.alert(null, "Tạo Mới Thành Công!");
+            if (event != null) {
+                MsgBox.alert(null, "Tạo Mới Thành Công!");
+                fillTableEvent();
+                clearFormEvent();
+            } else {
+                MsgBox.alert(null, "Tạo sự kiện thất bại");
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -2423,13 +2428,18 @@ public class Main extends javax.swing.JFrame {
     }
 
     public void setEventForm(Event eventResponse) {
-        txtIdEvent.setText(String.valueOf(eventResponse.getId()));
-        txtUserIdEvent.setText(String.valueOf(eventResponse.getUser().getFullname()));
-        txtTitleEvent.setText(eventResponse.getTitle());
-        txtContentEvent.setText(eventResponse.getContent());
-        txtAddressEvent.setText(eventResponse.getLocation());
-        dcStartedDateEvent.setDate(eventResponse.getStartedDate());
-        dcEndedDateEvent.setDate(eventResponse.getEndedDate());
+        try {
+            txtIdEvent.setText(String.valueOf(eventResponse.getId()));
+            String nameCreatedEvent = eventResponse.getUser().getUsername() == null ? "" : eventResponse.getUser().getUsername();
+            txtUserIdEvent.setText(nameCreatedEvent);
+            txtTitleEvent.setText(eventResponse.getTitle());
+            txtContentEvent.setText(eventResponse.getContent());
+            txtAddressEvent.setText(eventResponse.getLocation());
+            dcStartedDateEvent.setDate(eventResponse.getStartedDate());
+            dcEndedDateEvent.setDate(eventResponse.getEndedDate());
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void editEvent() {
@@ -2444,7 +2454,13 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void clearFormEvent() {
-        setEventForm(new Event());
+        txtIdEvent.setText("");
+        txtUserIdEvent.setText("");
+        txtTitleEvent.setText("");
+        txtContentEvent.setText("");
+        txtAddressEvent.setText("");
+        dcStartedDateEvent.setDate(null);
+        dcEndedDateEvent.setDate(null);
         row = -1;
         updateStatusEvent();
     }
