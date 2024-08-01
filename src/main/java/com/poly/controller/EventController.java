@@ -219,9 +219,9 @@ public class EventController {
         }
     }
 
-    public Event getFormEvent(Event eventForm) {
-        String eventTitle = RegExInputFields.checkEventTitle(txtTitleEvent);
-        
-        
-    }
+//    public Event getFormEvent(Event eventForm) {
+//        String eventTitle = RegExInputFields.checkEventTitle(txtTitleEvent);
+//
+//
+//    }
 }
