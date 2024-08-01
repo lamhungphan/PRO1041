@@ -16,4 +16,6 @@ public interface EventService {
     Event findByName(String name);
 
     List<Event> findAll();
+    
+    List<Object[]> getMemberCountByEvent();
 }
