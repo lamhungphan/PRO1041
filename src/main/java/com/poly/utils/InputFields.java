@@ -1,5 +1,6 @@
 package com.poly.utils;
 
+import com.toedter.calendar.JDateChooser;
 import java.sql.Date;
 import javax.swing.*;
 
@@ -15,6 +16,11 @@ public class InputFields {
     }
 
     public static String getTextFieldtoString(JTextField txt) {
+        if(txt.getText().equals("") || txt.getText().equals(" ") || txt.getText().equals("null")) {
+            MsgBox.alert(null, "Vui lòng nhập vào!");
+            txt.requestFocus();
+            return getTextFieldtoString(txt);
+        }
         return txt.getText();
     }
 
@@ -56,7 +62,7 @@ public class InputFields {
         } else if (rdo_2.isSelected()) {
             rdo_2.setSelected(true);
             return true;
-        } else{
+        } else {
             return false;
         }
     }
@@ -66,9 +72,9 @@ public class InputFields {
     }
 
     public static Integer getComboBoxInteger(JComboBox<Integer> cbx) {
-        return  cbx.getSelectedIndex();
+        return cbx.getSelectedIndex();
     }
-    
+
     public static Boolean isNumber(String numb) {
         try {
             Double.valueOf(numb);
@@ -77,10 +83,13 @@ public class InputFields {
             return false;
         }
     }
-    
-    public static Date getDateSQL(java.util.Date getDateUtil){
+
+    public static Date getDateSQL(java.util.Date getDateUtil) {
         Date newDate = new Date(getDateUtil.getTime());
         return newDate;
     }
 
+    public static Date getDateChoosetoDateSQL(JDateChooser dateChooser) {
+        return dateChooser != null ? getDateSQL(dateChooser.getDate()) : null;
+    }
 }

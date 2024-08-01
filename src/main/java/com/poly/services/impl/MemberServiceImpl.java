@@ -9,7 +9,11 @@ import com.poly.repository.UserRepository;
 import com.poly.services.AuthorizationService;
 import com.poly.services.MemberService;
 import com.poly.services.RoleService;
+
+import java.util.ArrayList;
 import java.util.List;
+
+import com.poly.utils.MsgBox;
 import org.mindrot.jbcrypt.BCrypt;
 
 /**
@@ -35,7 +39,6 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public User update(User entity) {
-        entity.setPassword(BCrypt.hashpw(entity.getPassword(), BCrypt.gensalt()));
         return repo.update(entity);
     }
 
@@ -50,19 +53,36 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
+    public User findByFullname(String name) {
+        List<User> list = this.findAll();
+        for (User user : list) {
+            if (user.getFullname().equalsIgnoreCase(name)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    @Override
     public List<User> findAll() {
         return repo.findAll();
     }
 
     @Override
-    public User findByUsername(String name) {
-        List<User> list = this.findAll();
-        for (User user : list) {
-            if (user.getUsername().equalsIgnoreCase(name)) {
-                return user;
+    public List<User> findMembersByRole(String role) {
+        List<User> listAllUser = findAll();
+        List<User> members = new ArrayList<User>();
+        for (User user : listAllUser) {
+            String roleNameMember = user.getRole().getRoleName();
+            if (role.equalsIgnoreCase(roleNameMember)) {
+                members.add(user);
             }
         }
-        return null;
+        if(members.isEmpty()){
+            MsgBox.alert(null,"Không tìm thấy danh sách thành viên!");
+            return null;
+        }
+        return members;
     }
 
 }

@@ -10,6 +10,8 @@ import com.poly.repository.impl.UserRepoImpl;
 import com.poly.services.AuthorizationService;
 import com.poly.services.RoleService;
 import com.poly.services.UserService;
+
+import java.util.ArrayList;
 import java.util.List;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -55,6 +57,24 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findAll() {
         return repo.findAll();
+    }
+
+    @Override
+    public List<User> findByRole(String... role) {
+        List<User> listAll = findAll();
+        List<User> listAdmin = new ArrayList<>();
+        for(User user: listAll) {
+            String roleName =user.getRole().getRoleName();
+            for(String roleUser: role) {
+                if(roleName.equalsIgnoreCase(roleUser)) {
+                    listAdmin.add(user);
+                }
+            }
+        }
+        if(listAdmin.size() > 0) {
+            return listAdmin;
+        }
+        return null;
     }
 
     @Override

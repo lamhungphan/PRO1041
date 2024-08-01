@@ -13,8 +13,9 @@ public interface MemberService {
 
     User findById(Integer id);
 
-    User findByUsername(String name);
+    User findByFullname(String name);
 
     List<User> findAll();
 
+    List<User> findMembersByRole(String role);
 }
