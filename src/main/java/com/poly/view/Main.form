@@ -305,7 +305,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="pnlUser">
+        <Container class="javax.swing.JPanel" name="pnlMember">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="ff" red="99" type="rgb"/>
@@ -896,12 +896,11 @@
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="5">
-                            <StringItem index="0" value="0"/>
-                            <StringItem index="1" value="1"/>
-                            <StringItem index="2" value="2"/>
-                            <StringItem index="3" value="3"/>
-                            <StringItem index="4" value="4"/>
+                          <StringArray count="4">
+                            <StringItem index="0" value="K&#xe9;m"/>
+                            <StringItem index="1" value="Trung b&#xec;nh"/>
+                            <StringItem index="2" value="T&#x1ed1;t"/>
+                            <StringItem index="3" value="Xu&#x1ea5;t s&#x1eaf;c"/>
                           </StringArray>
                         </Property>
                       </Properties>
@@ -1953,7 +1952,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
               <SubComponents>
-                <Container class="javax.swing.JPanel" name="pnlSettingMember2">
+                <Container class="javax.swing.JPanel" name="pnlSettingUser">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                       <JTabbedPaneConstraints tabName="Th&#xe0;nh Vi&#xea;n">
@@ -1975,12 +1974,12 @@
                                       <Component id="txtUsernameUser" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="72" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblThanhVien2" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
                                   <Component id="txtNameUser" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                                   <Component id="lblNgaySinh3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cboRoleUser" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
+                                  <Component id="cboRoleUser" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
                           </Group>
@@ -2049,7 +2048,7 @@
                                   <Component id="btnDeleteUser" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                                   <Component id="btnUpdateUser" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="145" max="32767" attributes="0"/>
+                              <EmptySpace pref="150" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2231,12 +2230,11 @@
                           <Font name="Segoe UI" size="18" style="0"/>
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="5">
-                            <StringItem index="0" value="0"/>
-                            <StringItem index="1" value="1"/>
-                            <StringItem index="2" value="2"/>
-                            <StringItem index="3" value="3"/>
-                            <StringItem index="4" value="4"/>
+                          <StringArray count="4">
+                            <StringItem index="0" value="Ch&#x1ee7; nhi&#x1ec7;m"/>
+                            <StringItem index="1" value="Ph&#xf3; ch&#x1ee7; nhi&#x1ec7;m"/>
+                            <StringItem index="2" value="Th&#xe0;nh vi&#xea;n"/>
+                            <StringItem index="3" value="Th&#x1ee7; qu&#x1ef9;"/>
                           </StringArray>
                         </Property>
                       </Properties>

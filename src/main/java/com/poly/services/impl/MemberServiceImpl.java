@@ -50,19 +50,19 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public List<User> findAll() {
-        return repo.findAll();
-    }
-
-    @Override
-    public User findByUsername(String name) {
+    public User findByFullname(String name) {
         List<User> list = this.findAll();
         for (User user : list) {
-            if (user.getUsername().equalsIgnoreCase(name)) {
+            if (user.getFullname().equalsIgnoreCase(name)) {
                 return user;
             }
         }
         return null;
+    }
+
+    @Override
+    public List<User> findAll() {
+        return repo.findAll();
     }
 
 }

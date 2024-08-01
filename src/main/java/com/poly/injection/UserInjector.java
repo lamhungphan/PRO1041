@@ -4,6 +4,7 @@
  */
 package com.poly.injection;
 
+import com.poly.controller.UserController;
 import com.poly.repository.RoleRepository;
 import com.poly.repository.UserRepository;
 import com.poly.repository.impl.RoleRepoImpl;
@@ -13,7 +14,6 @@ import com.poly.services.RoleService;
 import com.poly.services.UserService;
 import com.poly.services.impl.RoleServiceImpl;
 import com.poly.services.impl.UserServiceImpl;
-import com.poly.view.Main;
 
 /**
  *
@@ -28,7 +28,6 @@ public class UserInjector {
     private final RoleService roleService;
     private final UserService userService;
     private final AuthorizationService authorizationService;
-    private Main mainFrame;
 
     private UserInjector() {
         this.userRepository = new UserRepoImpl();
@@ -36,7 +35,7 @@ public class UserInjector {
         this.authorizationService = AuthorizationInjector.getInstance().getAuthorizationService();
         this.roleService = new RoleServiceImpl(roleRepository);
         this.userService = new UserServiceImpl(userRepository, roleService, authorizationService);
-        this.mainFrame = UserInjector.getInstance().getMainFrame();
+
     }
 
     public static UserInjector getInstance() {
@@ -66,7 +65,4 @@ public class UserInjector {
         return authorizationService;
     }
 
-    public Main getMainFrame(){
-        return mainFrame;
-    }
 }
