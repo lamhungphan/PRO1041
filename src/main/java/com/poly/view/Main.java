@@ -5,6 +5,7 @@ import com.poly.controller.EventController;
 import com.poly.controller.MemberController;
 import com.poly.controller.UserController;
 import com.poly.entity.Event;
+import com.poly.entity.Role;
 import com.poly.entity.User;
 import javax.swing.JFrame;
 
@@ -73,7 +74,7 @@ public class Main extends javax.swing.JFrame {
         lblUserLoginedAvatar = new javax.swing.JLabel();
         container = new javax.swing.JPanel();
         pnlMain = new javax.swing.JPanel();
-        lblM2M = new javax.swing.JLabel();
+        lblClubName = new javax.swing.JLabel();
         lblMembers = new javax.swing.JLabel();
         lblTotalMembers = new javax.swing.JLabel();
         lblTotalAttendance = new javax.swing.JLabel();
@@ -337,11 +338,11 @@ public class Main extends javax.swing.JFrame {
 
         pnlMain.setPreferredSize(new java.awt.Dimension(820, 650));
 
-        lblM2M.setFont(new java.awt.Font("Lato Black", 1, 48)); // NOI18N
-        lblM2M.setForeground(new java.awt.Color(0, 51, 153));
-        lblM2M.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblM2M.setText("Mentee to Mentor");
-        lblM2M.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblClubName.setFont(new java.awt.Font("Lato Black", 1, 48)); // NOI18N
+        lblClubName.setForeground(new java.awt.Color(0, 51, 153));
+        lblClubName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblClubName.setText("Mentee to Mentor");
+        lblClubName.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         lblMembers.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lblMembers.setText("Thành viên");
@@ -379,7 +380,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlMainLayout.createSequentialGroup()
                         .addGap(122, 122, 122)
-                        .addComponent(lblM2M, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblClubName, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlMainLayout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -397,7 +398,7 @@ public class Main extends javax.swing.JFrame {
             pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMainLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblM2M, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblClubName, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(98, 98, 98)
                 .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMembers, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -502,6 +503,9 @@ public class Main extends javax.swing.JFrame {
         tblListMember.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblListMemberMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                tblListMemberMouseEntered(evt);
             }
         });
         jScrollPane4.setViewportView(tblListMember);
@@ -902,7 +906,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(0, 10, Short.MAX_VALUE))
         );
 
-        lblListEvent.setModel(new javax.swing.table.DefaultTableModel(
+        tblListEvent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -1829,7 +1833,7 @@ public class Main extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Id", "Vai trò", "Họ và Tên", "Tên đăng nhập", "Mật khẩu", "Ngày tạo", "Ngày xoá"
+                "Id", "Vai trò", "Họ và Tên", "Tên đăng nhập", "Mật khẩu", "Ngày tạo", "Ngày sinh"
             }
         ));
         tblListUser.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2346,6 +2350,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JLabel lblAttendance;
+    private javax.swing.JLabel lblClubName;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblEmail1;
     private javax.swing.JLabel lblEmail2;
@@ -2356,8 +2361,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel lblGhiChu5;
     private javax.swing.JLabel lblGioiTinhThanhVien;
     private javax.swing.JLabel lblGioiTinhUser;
-    private javax.swing.JTable lblListEvent;
-    private javax.swing.JLabel lblM2M;
     private javax.swing.JLabel lblMember;
     private javax.swing.JLabel lblMember2;
     private javax.swing.JLabel lblMemberAvatar;
@@ -2453,10 +2456,10 @@ public class Main extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     //Member start
-    List<User> members = memberController.getMembersByRole();
+    List<User> members;
 
     private void initMemberController() {
-        fillMemberToTable(members);
+        fillMemberToTable();
         updateStatusMember();
     }
 
@@ -2465,7 +2468,7 @@ public class Main extends javax.swing.JFrame {
         User createdUser = memberController.createUser(user, RoleConstant.THANH_VIEN);
         if (createdUser != null) {
             MsgBox.alert(this, "Tạo thành viên thành công!");
-            fillMemberToTable(members);
+            fillMemberToTable();
             clearFormMember();
         } else {
             MsgBox.alert(this, "Không thể tạo thành viên.");
@@ -2481,7 +2484,7 @@ public class Main extends javax.swing.JFrame {
         User updatedUser = memberController.updateUser(model);
         if (updatedUser != null) {
             MsgBox.alert(this, "Cập nhật thành viên thành công!");
-            fillMemberToTable(members);
+            fillMemberToTable();
             clearFormMember();
         } else {
             MsgBox.alert(this, "Không thể cập nhật thành viên.");
@@ -2495,7 +2498,7 @@ public class Main extends javax.swing.JFrame {
             User deletedUser = memberController.deleteUserById(id);
             if (deletedUser != null) {
                 MsgBox.alert(this, "Xóa thành viên thành công!");
-                fillMemberToTable(members);
+                fillMemberToTable();
                 clearFormMember();
             } else {
                 MsgBox.alert(this, "Không thể xóa thành viên.");
@@ -2505,11 +2508,12 @@ public class Main extends javax.swing.JFrame {
         }
     }
 
-    private void fillMemberToTable(List<User> listMember) {
+    private void fillMemberToTable() {
+        List<User> members = memberController.getMembersByRole();
         DefaultTableModel tableModelMember = (DefaultTableModel) tblListMember.getModel();
         tableModelMember.setRowCount(0);
         try {
-            for (User user : listMember) {
+            for (User user : members) {
                 Object[] row = {
                     user.getId(),
                     user.getFullname(),
@@ -2582,9 +2586,10 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void editMember() {
-        int selectedRow = tblListMember.getSelectedRow();
+        int selectedRow = row;
         if (selectedRow >= 0) {
-            Integer id = (Integer) tblListMember.getValueAt(selectedRow, 0);
+            Object value = tblListMember.getValueAt(selectedRow, 0);
+            Integer id = (Integer) value;
             User member = memberController.readUser(id);
             setFormMember(member);
             row = selectedRow;
@@ -2636,10 +2641,10 @@ public class Main extends javax.swing.JFrame {
 
     //======================================================================================================
 //    User start
-    List<User> users = userController.getListAllUser();
+    List<User> users;
 
     private void initUserController() {
-        fillUserToTable(users);
+        fillUserToTable();
         updateStatusUser();
     }
 
@@ -2649,7 +2654,7 @@ public class Main extends javax.swing.JFrame {
         User createdUser = userController.createUser(user, roleName);
         if (createdUser != null) {
             MsgBox.alert(this, "Tạo thành viên thành công!");
-            fillUserToTable(members);
+            fillUserToTable();
             clearFormUser();
         } else {
             MsgBox.alert(this, "Không thể tạo thành viên.");
@@ -2665,7 +2670,7 @@ public class Main extends javax.swing.JFrame {
         User updatedUser = memberController.updateUser(model);
         if (updatedUser != null) {
             MsgBox.alert(this, "Cập nhật thành viên thành công!");
-            fillUserToTable(users);
+            fillUserToTable();
             clearFormUser();
         } else {
             MsgBox.alert(this, "Không thể cập nhật thành viên.");
@@ -2679,7 +2684,7 @@ public class Main extends javax.swing.JFrame {
             User deletedUser = userController.deleteUser(id);
             if (deletedUser != null) {
                 MsgBox.alert(this, "Xóa thành viên thành công!");
-                fillUserToTable(users);
+                fillUserToTable();
                 clearFormUser();
             } else {
                 MsgBox.alert(this, "Không thể xóa thành viên.");
@@ -2689,20 +2694,20 @@ public class Main extends javax.swing.JFrame {
         }
     }
 
-    private void fillUserToTable(List<User> listUser) {
+    private void fillUserToTable() {
+        users = userController.getListAllUser();
         DefaultTableModel tableModelUser = (DefaultTableModel) tblListUser.getModel();
         tableModelUser.setRowCount(0);
         try {
-            for (User user : listUser) {
+            for (User user : users) {
                 Object[] row = {
                     user.getId(),
-                    user.getUsername(),
+                    user.getRole().getRoleName(),
                     user.getFullname(),
-                    user.getEmail(),
-                    user.getPhone(),
-                    user.getBirthday(),
-                    user.getScore(),
-                    user.getAddress()
+                    user.getUsername(),
+                    user.getPassword(),
+                    user.getCreatedDate(),
+                    user.getBirthday()
                 };
                 tableModelUser.addRow(row);
             }
@@ -2722,46 +2727,50 @@ public class Main extends javax.swing.JFrame {
         String userPassword = InputFields.getTextFieldtoString(txtPasswordUser);
         userForm.setEmail(userPassword);
 
-//        String userPhone = RegExInputFields.getCheckPhoneMember(txtPhoneUser);
-//        userForm.setPhone(userPhone);
-//
-//        String addressUser = RegExInputFields.getCheckAddress(txtAddressUser);
-//        userForm.setAddress(addressUser);
-//
-//        Boolean gender = InputFields.getSelectedRadiobutton(rdoMaleUser, rdoFemaleUser);
-//        userForm.setSex(gender);
-//
-//        Date birthdate = InputFields.getDateChoosetoDateSQL(dcBirthdayUser);
-//        userForm.setBirthday(birthdate);
+        String userMail = RegExInputFields.getCheckEmail(txtEmail);
+        userForm.setEmail(userMail);
+
+        String userPhone = RegExInputFields.getCheckPhoneMember(txtPhoneUser);
+        userForm.setPhone(userPhone);
+
+        String addressUser = RegExInputFields.getCheckAddress(txtAddressUser);
+        userForm.setAddress(addressUser);
+
+        Boolean gender = InputFields.getSelectedRadiobutton(rdoMaleUser, rdoFemaleUser);
+        userForm.setSex(gender);
+
+        Date birthdate = InputFields.getDateChoosetoDateSQL(dcBirthdayUser);
+        userForm.setBirthday(birthdate);
         String roleUser = InputFields.getComboBoxString(cboRoleUser);
-        userForm.setScore(roleUser);
+        Role role = UserInjector.getInstance().getRoleService().findByNameRole(roleUser);
+        userForm.setRole(role);
 
         return userForm;
     }
 
     private void setFormUser(User userForm) {
         txtUsernameUser.setText(userForm.getUsername());
-        txtNameMember.setText(userForm.getFullname());
+        txtNameUser.setText(userForm.getFullname());
         txtPasswordUser.setText(userForm.getPassword());
-//        txtEmailMemBer.setText(userForm.getEmail());
-//        txtPhoneMember.setText(userForm.getPhone());
-//        txtAddressMember.setText(userForm.getAddress());
-//
-//        if (userForm.getSex() != null) {
-//            if (userForm.getSex()) {
-//                rdoMaleMember.setSelected(true);
-//            } else {
-//                rdoFemaleMember.setSelected(true);
-//            }
-//        }
-//
-//        if (userForm.getBirthday() != null) {
-//            dcBirthdayMember.setDate(new java.util.Date(userForm.getBirthday().getTime()));
-//        } else {
-//            dcBirthdayMember.setDate(null);
-//        }
+        txtEmail.setText(userForm.getEmail());
+        txtPhoneUser.setText(userForm.getPhone());
+        txtAddressUser.setText(userForm.getAddress());
 
-        cboRateMember.setSelectedItem(userForm.getScore());
+        if (userForm.getSex() != null) {
+            if (userForm.getSex()) {
+                rdoMaleUser.setSelected(true);
+            } else {
+                rdoFemaleUser.setSelected(true);
+            }
+        }
+
+        if (userForm.getBirthday() != null) {
+            dcBirthdayUser.setDate(new java.util.Date(userForm.getBirthday().getTime()));
+        } else {
+            dcBirthdayUser.setDate(null);
+        }
+
+        cboRoleUser.setSelectedItem(userForm.getRole().getRoleName());
     }
 
     private void clearFormUser() {
@@ -2772,9 +2781,10 @@ public class Main extends javax.swing.JFrame {
 
     private void editUser() {
 
-        int selectedRow = tblListUser.getSelectedRow();
+        int selectedRow = row;
         if (selectedRow >= 0) {
-            Integer id = Integer.parseInt ((String) tblListUser.getValueAt(selectedRow, 0));
+            Object value = tblListUser.getValueAt(selectedRow, 0);
+            Integer id = (Integer) value;
             User user = userController.readUserById(id);
             setFormUser(user);
             row = selectedRow;
@@ -2826,7 +2836,7 @@ public class Main extends javax.swing.JFrame {
 
     //*********************************************************************************************************
     //Event start
-    List<Event> events = eventController.getAllEvents();
+    List<Event> events;
 
     void initEventController() {
         fillTableEvent();
@@ -2834,7 +2844,8 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void fillTableEvent() {
-        DefaultTableModel model = (DefaultTableModel) lblListEvent.getModel();
+        events = eventController.getAllEvents();
+        DefaultTableModel model = (DefaultTableModel) tblListEvent.getModel();
         model.setRowCount(0);
         try {
             for (Event entity : events) {
@@ -2935,9 +2946,10 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void editEvent() {
-        int selectedRow = tblListEvent.getSelectedRow();
+        int selectedRow = row;
         if (selectedRow >= 0) {
-            Integer id = (Integer) tblListEvent.getValueAt(selectedRow, 0);
+            Object value = tblListEvent.getValueAt(selectedRow, 0);
+            Integer id = (Integer) value;
             Event event = eventController.readEvent(id);
             setEventForm(event);
             row = selectedRow;
