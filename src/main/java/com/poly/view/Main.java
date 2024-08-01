@@ -147,14 +147,14 @@ public class Main extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         txtContentEvent = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel10 = new javax.swing.JLabel();
+        ggSheetStartedDate = new com.toedter.calendar.JDateChooser();
         jLabel9 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jButton1 = new javax.swing.JButton();
+        ggSheetEndedDate = new com.toedter.calendar.JDateChooser();
+        ggSheetExport = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
+        tblGGSheet = new javax.swing.JTable();
+        ggSheetFind = new javax.swing.JButton();
         pnlNotification = new javax.swing.JPanel();
         tabNotification = new javax.swing.JTabbedPane();
         pnlListMember3 = new javax.swing.JPanel();
@@ -303,7 +303,7 @@ public class Main extends javax.swing.JFrame {
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(9, Short.MAX_VALUE)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jLabel5)
@@ -1205,14 +1205,14 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPane3.addTab("Sự Kiện", pnlSettingMember1);
 
-        jLabel8.setText("Từ ngày:");
+        jLabel10.setText("Từ ngày:");
 
         jLabel9.setText("Đến ngày:");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Refresh.png"))); // NOI18N
-        jButton1.setText("Export EXCEL");
+        ggSheetExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Refresh.png"))); // NOI18N
+        ggSheetExport.setText("Export EXCEL");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblGGSheet.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -1223,10 +1223,10 @@ public class Main extends javax.swing.JFrame {
                 "Date", "Họ tên", "Sinh nhật", "Nơi ở", "SĐT", "Ngành", "Email", "Câu hỏi"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblGGSheet);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Refresh.png"))); // NOI18N
-        jButton2.setText("Tìm Kiếm");
+        ggSheetFind.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Refresh.png"))); // NOI18N
+        ggSheetFind.setText("Tìm Kiếm");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1239,17 +1239,17 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(jScrollPane1)
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
+                        .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ggSheetStartedDate, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ggSheetEndedDate, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(ggSheetFind)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(ggSheetExport)
                         .addGap(82, 82, 82))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -1257,12 +1257,12 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(ggSheetEndedDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ggSheetStartedDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ggSheetFind, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ggSheetExport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE))
         );
@@ -2292,15 +2292,15 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSearchUser2ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
-        userController = new UserController();
-        userController.setAllDataUserToTable(tblListMember, "Thành viên");
-
-        eventController = new EventController();
-        eventController.setAllDataUserToTable(lblListEvent);
-
         try {
-            SheetsQuickstart.fillTableEvent(jTable1);
+            // TODO add your handling code here:
+            userController = new UserController();
+            userController.setAllDataUserToTable(tblListMember, "Thành viên");
+            
+            eventController = new EventController();
+            eventController.setAllDataUserToTable(lblListEvent);
+            
+            SheetsQuickstart.fillTableEventRegisterResponse(tblGGSheet);
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         } catch (GeneralSecurityException ex) {
@@ -2446,11 +2446,12 @@ public class Main extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser dcBirthdayUser;
     private com.toedter.calendar.JDateChooser dcEndedDateEvent;
     private com.toedter.calendar.JDateChooser dcStartedDateEvent;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private com.toedter.calendar.JDateChooser ggSheetEndedDate;
+    private javax.swing.JButton ggSheetExport;
+    private javax.swing.JButton ggSheetFind;
+    private com.toedter.calendar.JDateChooser ggSheetStartedDate;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -2460,7 +2461,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -2469,7 +2469,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPane3;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblAttendance;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblEmail1;
@@ -2537,6 +2536,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTabbedPane tabMember;
     private javax.swing.JTabbedPane tabMember1;
     private javax.swing.JTabbedPane tabNotification;
+    private javax.swing.JTable tblGGSheet;
     private javax.swing.JTable tblListMember;
     private javax.swing.JTable tblListNotification;
     private javax.swing.JTable tblListUser;
