@@ -4,7 +4,7 @@ create database PRO1041;
 use PRO1041;
 
 drop table if exists roles;
-create table roles 
+create table roles
 (
 	id int auto_increment primary key,
     roleName nvarchar(55) null,
@@ -30,7 +30,7 @@ create table users
     updatedDate date null,
     isActived bit null,
     attendance int null,
-    foreign key (roleId) references roles(id) 
+    foreign key (roleId) references roles(id)
 );
 drop table if exists passwordresettoken;
 create table passwordresettoken(
@@ -40,7 +40,7 @@ create table passwordresettoken(
     expirationdate datetime not null
 );
 drop table if exists events;
-create table events 
+create table events
 (
     id int primary key auto_increment,
     userId int null,
@@ -66,13 +66,13 @@ create table account
 
 insert into account values (1,1, "", "");
 
-insert into roles (roleName) VALUES 
+insert into roles (roleName) VALUES
 (N'Chủ nhiệm'),
 (N'Phó chủ nhiệm'),
 (N'Thủ quỹ'),
 (N'Thành viên');
 
-insert into users (roleId, username, password, fullName, birthDay, email, address, phone, createdDate, updatedDate, isActived) VALUES 
+insert into users (roleId, username, password, fullName, birthDay, email, address, phone,sex,createdDate, updatedDate, isActived) VALUES
 (1, 'phanlamhung', '1234', N'Nguyễn Phan Lâm Hùng', '1999-01-01', 'hung@example.com', N'123 Đường A, Hà Nội', '0909123456', 1, 0, '2023-01-01', '2023-01-01', 1, 10),
 (2, 'giangnd', '123', N'Nguyễn Đằng Giang', '1999-02-01', 'giang@example.com', N'456 Đường B, TP.HCM', '0909876543', 1, 0, '2023-01-02', '2023-01-02', 1, 8),
 (3, 'haithach', '456', N'Nguyễn Dung Hải Thạch', '2002-03-01', 'thach@example.com', N'789 Đường C, Đà Nẵng', '0909345678', 1, 1, '2023-01-03', '2023-01-03', 1, 7),
