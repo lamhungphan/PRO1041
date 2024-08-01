@@ -10,6 +10,7 @@ import com.poly.injection.AuthorizationInjector;
 import com.poly.injection.MailInjector;
 import com.poly.injection.UserInjector;
 import com.poly.utils.ComponentManagement;
+import com.poly.utils.IOExcells;
 import com.poly.utils.RegExInputFields;
 import com.poly.utils.SheetsQuickstart;
 import java.awt.CardLayout;
@@ -1211,6 +1212,11 @@ public class Main extends javax.swing.JFrame {
 
         ggSheetExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Refresh.png"))); // NOI18N
         ggSheetExport.setText("Export EXCEL");
+        ggSheetExport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ggSheetExportActionPerformed(evt);
+            }
+        });
 
         tblGGSheet.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -2372,6 +2378,20 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rdoFemaleUserActionPerformed
 
+    private void ggSheetExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ggSheetExportActionPerformed
+        
+        try {
+            // TODO add your handling code here:
+            List<List<Object>> dataList = SheetsQuickstart.assignDataToList();
+            IOExcells.exportToExcel(dataList);
+            System.out.println("Xuat file thanh cong");
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (GeneralSecurityException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_ggSheetExportActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2400,6 +2420,7 @@ public class Main extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
