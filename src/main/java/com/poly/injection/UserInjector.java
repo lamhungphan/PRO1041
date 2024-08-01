@@ -4,6 +4,7 @@
  */
 package com.poly.injection;
 
+import com.poly.controller.UserController;
 import com.poly.repository.RoleRepository;
 import com.poly.repository.UserRepository;
 import com.poly.repository.impl.RoleRepoImpl;
@@ -34,6 +35,7 @@ public class UserInjector {
         this.authorizationService = AuthorizationInjector.getInstance().getAuthorizationService();
         this.roleService = new RoleServiceImpl(roleRepository);
         this.userService = new UserServiceImpl(userRepository, roleService, authorizationService);
+
     }
 
     public static UserInjector getInstance() {
@@ -63,5 +65,4 @@ public class UserInjector {
         return authorizationService;
     }
 
-    
 }
