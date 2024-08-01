@@ -12,6 +12,16 @@ import com.poly.entity.Event;
 import com.poly.entity.User;
 import com.poly.injection.*;
 
+import javax.swing.JFrame;
+
+import com.poly.utils.NavigationButtons;
+import com.poly.injection.AccountInjector;
+import com.poly.injection.AuthorizationInjector;
+import com.poly.injection.MailInjector;
+import com.poly.injection.UserInjector;
+import com.poly.utils.ComponentManagement;
+import com.poly.utils.RegExInputFields;
+
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,6 +35,10 @@ import com.poly.utils.InputFields;
 import com.poly.utils.MsgBox;
 import com.poly.utils.RegExInputFields;
 import com.toedter.calendar.JDateChooser;
+
+import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -82,6 +96,12 @@ public class Main extends javax.swing.JFrame {
         container = new javax.swing.JPanel();
         pnlMain = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        lblTotalMembers = new javax.swing.JLabel();
+        lblTotalAttendance = new javax.swing.JLabel();
+        lblAttendance = new javax.swing.JLabel();
+        lblEventContent = new javax.swing.JLabel();
+        lblTotalEventContent = new javax.swing.JLabel();
         pnlMember = new javax.swing.JPanel();
         tabMember = new javax.swing.JTabbedPane();
         pnlListMember = new javax.swing.JPanel();
@@ -172,10 +192,10 @@ public class Main extends javax.swing.JFrame {
         lblNotification = new javax.swing.JLabel();
         pnlAdmin = new javax.swing.JPanel();
         lblMember2 = new javax.swing.JLabel();
-        tabUser = new javax.swing.JTabbedPane();
-        pnlSettingUser = new javax.swing.JPanel();
+        tabMember1 = new javax.swing.JTabbedPane();
+        pnlSettingMember2 = new javax.swing.JPanel();
         lblThanhVien2 = new javax.swing.JLabel();
-        txtNameUser = new javax.swing.JTextField();
+        txtIdUser = new javax.swing.JTextField();
         btnDeleteUser = new javax.swing.JButton();
         btnUpdateUser = new javax.swing.JButton();
         btnAddUser = new javax.swing.JButton();
@@ -190,6 +210,20 @@ public class Main extends javax.swing.JFrame {
         lblSoDT5 = new javax.swing.JLabel();
         lblNgaySinh3 = new javax.swing.JLabel();
         cboRoleUser = new javax.swing.JComboBox<>();
+        txtEmail = new javax.swing.JTextField();
+        lblSoDT7 = new javax.swing.JLabel();
+        txtPhoneUser = new javax.swing.JTextField();
+        txtAddressUser = new javax.swing.JTextField();
+        lblSoDT8 = new javax.swing.JLabel();
+        lblSoDT9 = new javax.swing.JLabel();
+        txtNameUser = new javax.swing.JTextField();
+        lblUserAvatar = new javax.swing.JLabel();
+        lblThanhVien4 = new javax.swing.JLabel();
+        rdoMaleUser = new javax.swing.JRadioButton();
+        rdoFemaleUser = new javax.swing.JRadioButton();
+        lblGioiTinhUser = new javax.swing.JLabel();
+        dcBirthdayUser = new com.toedter.calendar.JDateChooser();
+        lblNgaySinh7 = new javax.swing.JLabel();
         pnlListMember2 = new javax.swing.JPanel();
         pnlTimChiTieu2 = new javax.swing.JPanel();
         txtFindUser = new javax.swing.JTextField();
@@ -285,7 +319,7 @@ public class Main extends javax.swing.JFrame {
         jPanel10Layout.setHorizontalGroup(
                 jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                                .addContainerGap(9, Short.MAX_VALUE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel6)
                                         .addComponent(jLabel5)
@@ -296,8 +330,21 @@ public class Main extends javax.swing.JFrame {
                                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                 .addComponent(lblUserLoginedAvatar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addContainerGap())
-        );
+                                .addContainerGap()));
+        jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                        .addContainerGap(9, Short.MAX_VALUE)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4)
+                                .addComponent(lblTabWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel1)
+                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(lblUserLoginedAvatar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addContainerGap());
         jPanel10Layout.setVerticalGroup(
                 jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel10Layout.createSequentialGroup()
@@ -331,6 +378,34 @@ public class Main extends javax.swing.JFrame {
         jLabel7.setText("Mentee to Mentor");
         jLabel7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel8.setText("Thành viên");
+
+        lblTotalMembers.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        lblTotalMembers.setText("0");
+
+        lblTotalAttendance.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        lblTotalAttendance.setText("0");
+
+        lblAttendance.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        lblAttendance.setText("Lượt tham gia sự kiện");
+        lblAttendance.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblAttendanceMouseClicked(evt);
+            }
+        });
+
+        lblEventContent.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        lblEventContent.setText("Nội dung sự kiện");
+        lblEventContent.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblEventContentMouseClicked(evt);
+            }
+        });
+
+        lblTotalEventContent.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        lblTotalEventContent.setText("0");
+
         javax.swing.GroupLayout pnlMainLayout = new javax.swing.GroupLayout(pnlMain);
         pnlMain.setLayout(pnlMainLayout);
         pnlMainLayout.setHorizontalGroup(
@@ -338,15 +413,49 @@ public class Main extends javax.swing.JFrame {
                         .addGroup(pnlMainLayout.createSequentialGroup()
                                 .addGap(122, 122, 122)
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(153, Short.MAX_VALUE))
-        );
+                                .addContainerGap(153, Short.MAX_VALUE)));
+                pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlMainLayout.createSequentialGroup()
+                                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(pnlMainLayout.createSequentialGroup()
+                                                .addGap(122, 122, 122)
+                                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(pnlMainLayout.createSequentialGroup()
+                                                .addGap(47, 47, 47)
+                                                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel8)
+                                                        .addComponent(lblAttendance)
+                                                        .addComponent(lblEventContent))
+                                                .addGap(216, 216, 216)
+                                                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(lblTotalMembers, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(lblTotalAttendance, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(lblTotalEventContent, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addContainerGap(153, Short.MAX_VALUE));
+
         pnlMainLayout.setVerticalGroup(
                 pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(pnlMainLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(553, Short.MAX_VALUE))
-        );
+                                .addContainerGap(553, Short.MAX_VALUE)));
+                pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlMainLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(98, 98, 98)
+                                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblTotalMembers))
+                                .addGap(87, 87, 87)
+                                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lblAttendance)
+                                        .addComponent(lblTotalAttendance))
+                                .addGap(87, 87, 87)
+                                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lblTotalEventContent)
+                                        .addComponent(lblEventContent))
+                                .addContainerGap(82, Short.MAX_VALUE));
 
         container.add(pnlMain, "cardMain");
 
@@ -909,7 +1018,7 @@ public class Main extends javax.swing.JFrame {
         txtIdEvent.setEnabled(false);
         txtIdEvent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-
+                txtIdEventActionPerformed(evt);
             }
         });
 
@@ -918,7 +1027,7 @@ public class Main extends javax.swing.JFrame {
 
         txtUserIdEvent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-
+                txtUserIdEventActionPerformed(evt);
             }
         });
 
@@ -927,7 +1036,7 @@ public class Main extends javax.swing.JFrame {
 
         txtTitleEvent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-
+                txtTitleEventActionPerformed(evt);
             }
         });
 
@@ -939,7 +1048,7 @@ public class Main extends javax.swing.JFrame {
         btnDeleteEvent.setText("Xóa");
         btnDeleteEvent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-
+                btnDeleteEventActionPerformed(evt);
             }
         });
 
@@ -948,7 +1057,7 @@ public class Main extends javax.swing.JFrame {
         btnUpdateEvent.setText("Sửa");
         btnUpdateEvent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-
+                btnUpdateEventActionPerformed(evt);
             }
         });
 
@@ -957,7 +1066,7 @@ public class Main extends javax.swing.JFrame {
         btnAddEvent.setText("Thêm");
         btnAddEvent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-
+                btnAddEventActionPerformed(evt);
             }
         });
 
@@ -1512,42 +1621,133 @@ public class Main extends javax.swing.JFrame {
         cboRoleUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Chủ nhiệm", "Phó chủ nhiệm", "Thành viên", "Thủ quỹ"}));
         cboRoleUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-
+                cboRoleUserActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout pnlSettingUserLayout = new javax.swing.GroupLayout(pnlSettingUser);
-        pnlSettingUser.setLayout(pnlSettingUserLayout);
-        pnlSettingUserLayout.setHorizontalGroup(
-                pnlSettingUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlSettingUserLayout.createSequentialGroup()
-                                .addGap(36, 36, 36)
-                                .addGroup(pnlSettingUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(txtPasswordUser, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(pnlSettingUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(lblSoDT5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(lblSoDT4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(txtUsernameUser, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                                .addGroup(pnlSettingUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblThanhVien2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtNameUser, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblNgaySinh3)
-                                        .addComponent(cboRoleUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(105, 105, 105))
-                        .addGroup(pnlSettingUserLayout.createSequentialGroup()
-                                .addGap(162, 162, 162)
-                                .addGroup(pnlSettingUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(pnlSettingUserLayout.createSequentialGroup()
-                                                .addGap(53, 53, 53)
+        txtEmail.setPreferredSize(new java.awt.Dimension(10, 22));
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActionPerformed(evt);
+            }
+        });
+
+        lblSoDT7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblSoDT7.setText("Địa chỉ");
+
+        txtPhoneUser.setPreferredSize(new java.awt.Dimension(10, 22));
+        txtPhoneUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPhoneUserActionPerformed(evt);
+            }
+        });
+
+        txtAddressUser.setPreferredSize(new java.awt.Dimension(10, 22));
+        txtAddressUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAddressUserActionPerformed(evt);
+            }
+        });
+
+        lblSoDT8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblSoDT8.setText("Số điện thoại");
+
+        lblSoDT9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblSoDT9.setText("Email");
+
+        txtNameUser.setPreferredSize(new java.awt.Dimension(10, 22));
+        txtNameUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameUserActionPerformed(evt);
+            }
+        });
+
+        lblUserAvatar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        lblThanhVien4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblThanhVien4.setText("ID");
+
+        btngroudSex.add(rdoMaleUser);
+        rdoMaleUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        rdoMaleUser.setText("Nam ");
+        rdoMaleUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdoMaleUserActionPerformed(evt);
+            }
+        });
+
+        btngroudSex.add(rdoFemaleUser);
+        rdoFemaleUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        rdoFemaleUser.setText("Nữ");
+        rdoFemaleUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdoFemaleUserActionPerformed(evt);
+            }
+        });
+
+        lblGioiTinhUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblGioiTinhUser.setText("Giới Tính");
+
+        dcBirthdayUser.setDateFormatString("dd/MM/yyyy ");
+
+        lblNgaySinh7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblNgaySinh7.setText("Ngày Sinh");
+
+        javax.swing.GroupLayout pnlSettingMember2Layout = new javax.swing.GroupLayout(pnlSettingMember2);
+        pnlSettingMember2.setLayout(pnlSettingMember2Layout);
+        pnlSettingMember2Layout.setHorizontalGroup(
+                pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlSettingMember2Layout.createSequentialGroup()
+                                .addGroup(pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(pnlSettingMember2Layout.createSequentialGroup()
+                                                .addGap(36, 36, 36)
+                                                .addGroup(pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(txtPasswordUser, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(lblSoDT9, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(lblSoDT5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(txtUsernameUser, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGroup(pnlSettingMember2Layout.createSequentialGroup()
+                                                                .addGroup(pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addGroup(pnlSettingMember2Layout.createSequentialGroup()
+                                                                                .addGap(11, 11, 11)
+                                                                                .addComponent(lblUserAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                        .addComponent(lblSoDT4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addGroup(pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(lblThanhVien4, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(txtIdUser, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(lblGioiTinhUser, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addGroup(pnlSettingMember2Layout.createSequentialGroup()
+                                                                                .addComponent(rdoMaleUser, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                                .addComponent(rdoFemaleUser, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                                .addGap(87, 87, 87)
+                                                .addGroup(pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(txtNameUser, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(lblThanhVien2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(lblNgaySinh3)
+                                                        .addComponent(cboRoleUser, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(lblSoDT8, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(txtPhoneUser, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(lblSoDT7, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(txtAddressUser, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGroup(pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                                .addComponent(dcBirthdayUser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGroup(pnlSettingMember2Layout.createSequentialGroup()
+                                                                        .addComponent(lblNgaySinh7)
+                                                                        .addGap(100, 100, 100)))))
+                                        .addGroup(pnlSettingMember2Layout.createSequentialGroup()
+                                                .addGap(237, 237, 237)
                                                 .addComponent(btnFirstUser)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(btnPreviousUser)
-                                                .addGap(18, 18, 18)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(btnNextUser)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(btnLastUser))
-                                        .addGroup(pnlSettingUserLayout.createSequentialGroup()
+                                        .addGroup(pnlSettingMember2Layout.createSequentialGroup()
+                                                .addGap(181, 181, 181)
                                                 .addComponent(btnAddUser)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(btnClearUser, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1555,45 +1755,78 @@ public class Main extends javax.swing.JFrame {
                                                 .addComponent(btnDeleteUser)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(btnUpdateUser)))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap(45, Short.MAX_VALUE))
         );
-        pnlSettingUserLayout.setVerticalGroup(
-                pnlSettingUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlSettingUserLayout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addGroup(pnlSettingUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(pnlSettingUserLayout.createSequentialGroup()
-                                                .addComponent(lblThanhVien2)
+        pnlSettingMember2Layout.setVerticalGroup(
+                pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlSettingMember2Layout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addGroup(pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSettingMember2Layout.createSequentialGroup()
+                                                .addGroup(pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addGroup(pnlSettingMember2Layout.createSequentialGroup()
+                                                                .addComponent(lblUserAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(18, 18, 18))
+                                                        .addGroup(pnlSettingMember2Layout.createSequentialGroup()
+                                                                .addComponent(lblNgaySinh7)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(dcBirthdayUser, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(14, 14, 14)))
+                                                .addGroup(pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(lblSoDT4)
+                                                        .addComponent(lblNgaySinh3))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                        .addGroup(pnlSettingMember2Layout.createSequentialGroup()
+                                                .addGroup(pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(lblThanhVien4)
+                                                        .addComponent(lblThanhVien2))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtNameUser, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(lblNgaySinh3)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(cboRoleUser, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(pnlSettingUserLayout.createSequentialGroup()
-                                                .addComponent(lblSoDT4)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtUsernameUser, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(lblSoDT5)
+                                                .addGroup(pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(txtIdUser, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(txtNameUser, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(30, 30, 30)
+                                                .addComponent(lblGioiTinhUser)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(txtPasswordUser, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(125, 125, 125)
-                                .addGroup(pnlSettingUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(btnFirstUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnPreviousUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnNextUser)
-                                        .addComponent(btnLastUser, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(pnlSettingUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnClearUser, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(rdoMaleUser)
+                                                        .addComponent(rdoFemaleUser))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(pnlSettingMember2Layout.createSequentialGroup()
+                                                .addComponent(txtUsernameUser, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(lblSoDT5))
+                                        .addGroup(pnlSettingMember2Layout.createSequentialGroup()
+                                                .addComponent(cboRoleUser)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(lblSoDT8)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(txtPasswordUser, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtPhoneUser, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lblSoDT9)
+                                        .addComponent(lblSoDT7))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtAddressUser, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(btnFirstUser, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(btnPreviousUser, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(btnNextUser, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(btnLastUser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnlSettingMember2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(btnAddUser, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnClearUser, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(btnDeleteUser, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(btnUpdateUser, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(150, Short.MAX_VALUE))
+                                .addContainerGap())
         );
-
-        tabUser.addTab("Thành Viên", pnlSettingUser);
+        tabMember1.addTab("Thành Viên", pnlSettingMember2);
 
         pnlTimChiTieu2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TÌM NGƯỜI DÙNG", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
@@ -1794,6 +2027,293 @@ public class Main extends javax.swing.JFrame {
         userController.doLogout(this);
     }
 
+    private void txtFindMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFindMemberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFindMemberActionPerformed
+
+    private void txtNameMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameMemberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameMemberActionPerformed
+
+    private void txtEmailMemBerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailMemBerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailMemBerActionPerformed
+
+    private void txtPhoneMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneMemberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPhoneMemberActionPerformed
+
+    private void rdoFemaleMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoFemaleMemberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdoFemaleMemberActionPerformed
+
+    private void rdoMaleMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoMaleMemberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdoMaleMemberActionPerformed
+
+    private void txtAddressMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressMemberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAddressMemberActionPerformed
+
+    private void btnDeleteMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteMemberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteMemberActionPerformed
+
+    private void btnUpdateMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateMemberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateMemberActionPerformed
+
+    private void btnAddMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMemberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddMemberActionPerformed
+
+    private void btnFirstMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstMemberActionPerformed
+    }//GEN-LAST:event_btnFirstMemberActionPerformed
+
+    private void btnClearMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearMemberActionPerformed
+    }//GEN-LAST:event_btnClearMemberActionPerformed
+
+    private void cboRateMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboRateMemberActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_cboRateMemberActionPerformed
+
+    private void btnPreMemberActionPerformed(java.awt.event.ActionEvent evt) {
+    }
+
+    private void btnNextMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextMemberActionPerformed
+    }//GEN-LAST:event_btnNextMemberActionPerformed
+
+    private void btnLastMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastMemberActionPerformed
+    }//GEN-LAST:event_btnLastMemberActionPerformed
+
+    private void txtFindEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFindEventActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFindEventActionPerformed
+
+    private void btnSearchEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchEventActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSearchEventActionPerformed
+
+    private void lblListEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblListEventMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblListEventMouseClicked
+
+    private void txtIdEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdEventActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdEventActionPerformed
+
+    private void txtUserIdEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserIdEventActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUserIdEventActionPerformed
+
+    private void txtTitleEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTitleEventActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTitleEventActionPerformed
+
+    private void btnDeleteEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteEventActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteEventActionPerformed
+
+    private void btnUpdateEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateEventActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateEventActionPerformed
+
+    private void btnAddEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEventActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddEventActionPerformed
+
+    private void btnFirstEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstEventActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFirstEventActionPerformed
+
+    private void btnClearEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearEventActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnClearEventActionPerformed
+
+    private void btnLastEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastEventActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLastEventActionPerformed
+
+    private void btnPreviousEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousEventActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPreviousEventActionPerformed
+
+    private void btnForwardEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForwardEventActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnForwardEventActionPerformed
+
+    private void txtAddressEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressEventActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAddressEventActionPerformed
+
+    private void tblListNotificationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListNotificationMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblListNotificationMouseClicked
+
+    private void txtIdNotificationAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdNotificationAdminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdNotificationAdminActionPerformed
+
+    private void txtUserNotificationAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNotificationAdminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUserNotificationAdminActionPerformed
+
+    private void txtTitleNotificationAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTitleNotificationAdminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTitleNotificationAdminActionPerformed
+
+    private void txtRequestNotificationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRequestNotificationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRequestNotificationActionPerformed
+
+    private void btnRejectNotificationAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectNotificationAdminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRejectNotificationAdminActionPerformed
+
+    private void btnAcceptNotificationAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptNotificationAdminActionPerformed
+        // TODO add your handling code here:
+        //sendMail();
+    }//GEN-LAST:event_btnAcceptNotificationAdminActionPerformed
+
+    private void txtContentNotificationAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContentNotificationAdminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContentNotificationAdminActionPerformed
+
+    private void txtIdUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdUserActionPerformed
+
+    private void btnDeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteUserActionPerformed
+
+    private void btnUpdateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateUserActionPerformed
+
+    private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddUserActionPerformed
+
+    private void btnFirstUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFirstUserActionPerformed
+
+    private void btnClearUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnClearUserActionPerformed
+
+    private void btnLastUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLastUserActionPerformed
+
+    private void btnPreviousUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPreviousUserActionPerformed
+
+    private void btnForwardUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForwardUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnForwardUserActionPerformed
+
+    private void txtUsernameUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsernameUserActionPerformed
+
+    private void txtPasswordUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordUserActionPerformed
+
+    private void cboRoleUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboRoleUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboRoleUserActionPerformed
+
+    private void txtFindUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFindUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFindUserActionPerformed
+
+    private void btnSearchUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSearchUserActionPerformed
+
+    private void tblListUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListUserMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblListUserMouseClicked
+
+    private void tblListMemberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListMemberMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblListMemberMouseClicked
+
+    private void btnSearchUser2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchUser2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSearchUser2ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowOpened
+
+    private void tabMemberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabMemberMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tabMemberMouseClicked
+
+    private void txtIdMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdMemberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdMemberActionPerformed
+
+    private void btnNextUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNextUserActionPerformed
+
+    private void btnNextEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextEventActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNextEventActionPerformed
+
+    private void jTabbedPane3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane3MouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jTabbedPane3MouseClicked
+
+    private void lblAttendanceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAttendanceMouseClicked
+        SwingUtilities.invokeLater(() -> {
+            BarChart example = new BarChart("Tổng lượt tham gia sự kiện");
+            example.setSize(800, 600);
+            example.setLocationRelativeTo(null);
+            example.setVisible(true);
+        });
+    }//GEN-LAST:event_lblAttendanceMouseClicked
+
+    private void lblEventContentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEventContentMouseClicked
+        SwingUtilities.invokeLater(() -> {
+            PieChart example = new PieChart("Nội dung sự kiện");
+            example.setSize(800, 600);
+            example.setLocationRelativeTo(null);
+            example.setVisible(true);
+        });
+    }//GEN-LAST:event_lblEventContentMouseClicked
+
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void txtPhoneUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPhoneUserActionPerformed
+
+    private void txtAddressUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAddressUserActionPerformed
+
+    private void txtNameUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameUserActionPerformed
+
+    private void rdoMaleUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoMaleUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdoMaleUserActionPerformed
+
+    private void rdoFemaleUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoFemaleUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdoFemaleUserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1866,6 +2386,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cboRoleUser;
     private javax.swing.JPanel container;
     private com.toedter.calendar.JDateChooser dcBirthdayMember;
+    private com.toedter.calendar.JDateChooser dcBirthdayUser;
     private com.toedter.calendar.JDateChooser dcEndedDateEvent;
     private com.toedter.calendar.JDateChooser dcStartedDateEvent;
     private javax.swing.JLabel jLabel1;
@@ -1875,6 +2396,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1882,14 +2404,18 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPane3;
+    private javax.swing.JLabel lblAttendance;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblEmail1;
     private javax.swing.JLabel lblEmail2;
     private javax.swing.JLabel lblEmail3;
     private javax.swing.JLabel lblEvent;
+    private javax.swing.JLabel lblEventContent;
     private javax.swing.JLabel lblGhiChu3;
     private javax.swing.JLabel lblGhiChu5;
     private javax.swing.JLabel lblGioiTinhThanhVien;
+    private javax.swing.JLabel lblGioiTinhUser;
+    private javax.swing.JTable lblListEvent;
     private javax.swing.JLabel lblMember;
     private javax.swing.JLabel lblMember2;
     private javax.swing.JLabel lblMemberAvatar;
@@ -1900,6 +2426,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel lblNgaySinh4;
     private javax.swing.JLabel lblNgaySinh5;
     private javax.swing.JLabel lblNgaySinh6;
+    private javax.swing.JLabel lblNgaySinh7;
     private javax.swing.JLabel lblNotification;
     private javax.swing.JLabel lblSoDT;
     private javax.swing.JLabel lblSoDT1;
@@ -1907,11 +2434,19 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel lblSoDT4;
     private javax.swing.JLabel lblSoDT5;
     private javax.swing.JLabel lblSoDT6;
+    private javax.swing.JLabel lblSoDT7;
+    private javax.swing.JLabel lblSoDT8;
+    private javax.swing.JLabel lblSoDT9;
     private javax.swing.JLabel lblTabWelcome;
     private javax.swing.JLabel lblThanhVien;
     private javax.swing.JLabel lblThanhVien1;
     private javax.swing.JLabel lblThanhVien2;
     private javax.swing.JLabel lblThanhVien3;
+    private javax.swing.JLabel lblThanhVien4;
+    private javax.swing.JLabel lblTotalAttendance;
+    private javax.swing.JLabel lblTotalEventContent;
+    private javax.swing.JLabel lblTotalMembers;
+    private javax.swing.JLabel lblUserAvatar;
     private javax.swing.JLabel lblUserLoginedAvatar;
     private javax.swing.JPanel pnlAdmin;
     private javax.swing.JPanel pnlEvent;
@@ -1924,13 +2459,15 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel pnlNotification;
     private javax.swing.JPanel pnlSettingMember;
     private javax.swing.JPanel pnlSettingMember1;
+    private javax.swing.JPanel pnlSettingMember2;
     private javax.swing.JPanel pnlSettingMember3;
-    private javax.swing.JPanel pnlSettingUser;
     private javax.swing.JPanel pnlTimChiTieu;
     private javax.swing.JPanel pnlTimChiTieu1;
     private javax.swing.JPanel pnlTimChiTieu2;
     private javax.swing.JRadioButton rdoFemaleMember;
+    private javax.swing.JRadioButton rdoFemaleUser;
     private javax.swing.JRadioButton rdoMaleMember;
+    private javax.swing.JRadioButton rdoMaleUser;
     private javax.swing.JTabbedPane tabMember;
     private javax.swing.JTabbedPane tabNotification;
     private javax.swing.JTabbedPane tabUser;
@@ -1940,8 +2477,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTable tblListUser;
     private javax.swing.JTextField txtAddressEvent;
     private javax.swing.JTextField txtAddressMember;
+    private javax.swing.JTextField txtAddressUser;
     private javax.swing.JTextArea txtContentEvent;
     private javax.swing.JTextField txtContentNotificationAdmin;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEmailMemBer;
     private javax.swing.JTextField txtFindEvent;
     private javax.swing.JTextField txtFindMember;
@@ -1949,16 +2488,19 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField txtIdEvent;
     private javax.swing.JTextField txtIdMember;
     private javax.swing.JTextField txtIdNotificationAdmin;
+    private javax.swing.JTextField txtIdUser;
     private javax.swing.JTextField txtNameMember;
     private javax.swing.JTextField txtNameUser;
     private javax.swing.JTextField txtPasswordUser;
     private javax.swing.JTextField txtPhoneMember;
+    private javax.swing.JTextField txtPhoneUser;
     private javax.swing.JTextField txtRequestNotification;
     private javax.swing.JTextField txtTitleEvent;
     private javax.swing.JTextField txtTitleNotificationAdmin;
     private javax.swing.JTextField txtUserIdEvent;
     private javax.swing.JTextField txtUserNotificationAdmin;
     private javax.swing.JTextField txtUsernameUser;
+    private javax.swing.JTabbedPane tabMember1;
     // End of variables declaration//GEN-END:variables
 //Member start
     List<User> members = memberController.getMembersByRole();
@@ -2437,7 +2979,7 @@ public class Main extends javax.swing.JFrame {
             txtAddressEvent.setText(eventResponse.getLocation());
             dcStartedDateEvent.setDate(eventResponse.getStartedDate());
             dcEndedDateEvent.setDate(eventResponse.getEndedDate());
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
