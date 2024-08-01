@@ -13,7 +13,9 @@ public interface UserService {
 
     User findById(Integer id);
 
-    User findByUsername(String name);
+    User findByUsername(String username);
+
+    User findByFullname(String fullname);
 
     List<User> findAll();
 
