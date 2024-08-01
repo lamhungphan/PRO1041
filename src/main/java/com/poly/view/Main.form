@@ -82,7 +82,7 @@
                       <Component id="lblTabEvents" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="lblTabNotification" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="lblWelcome" min="-2" pref="150" max="-2" attributes="0"/>
-                      <Component id="lblTrangChu" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblHome" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                           <Component id="lblUserLoginedAvatar" alignment="0" max="32767" attributes="0"/>
                           <Component id="lblTabMembers" alignment="0" max="32767" attributes="0"/>
@@ -100,7 +100,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblUserLoginedAvatar" min="-2" pref="151" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                  <Component id="lblTrangChu" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblHome" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Component id="lblTabMembers" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
@@ -130,7 +130,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblTrangChu">
+        <Component class="javax.swing.JLabel" name="lblHome">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>
@@ -145,7 +145,7 @@
             <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblTrangChuMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblHomeMouseClicked"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblTabMembers">
