@@ -9,6 +9,7 @@ import com.poly.injection.AccountInjector;
 import com.poly.injection.AuthorizationInjector;
 import com.poly.injection.MailInjector;
 import com.poly.injection.UserInjector;
+import com.poly.services.EventService;
 import com.poly.utils.ComponentManagement;
 import com.poly.utils.RegExInputFields;
 import java.awt.CardLayout;
@@ -2005,7 +2006,7 @@ public class Main extends javax.swing.JFrame {
 
     private void cboRateMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboRateMemberActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_cboRateMemberActionPerformed
 
     private void btnPreMemberActionPerformed(java.awt.event.ActionEvent evt) {
@@ -2013,7 +2014,7 @@ public class Main extends javax.swing.JFrame {
         row = NavigationButtons.navButton(buttonDirection, tblListMember, row);
         userController.setFormUserPanelByButton(members, row, buttonDirection, txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
 
-    }                                            
+    }
 
     private void btnNextMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextMemberActionPerformed
         buttonDirection = "next";
@@ -2069,11 +2070,11 @@ public class Main extends javax.swing.JFrame {
 
     private void btnAddEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEventActionPerformed
         // TODO add your handling code here:
-        if(RegExInputFields.checkEventTitle(txtTitleEvent)){
+        if (RegExInputFields.checkEventTitle(txtTitleEvent)) {
             if (RegExInputFields.checkEventUserId(txtUserIdEvent)) {
-                if (RegExInputFields.checkAddress(txtAddressEvent)){
-                    if(RegExInputFields.checkDayStartedAndEndedCompare(dcStartedDateEvent.getDate(), dcEndedDateEvent.getDate())){
-                        if (RegExInputFields.checkEventContent(txtContentEvent)){
+                if (RegExInputFields.checkAddress(txtAddressEvent)) {
+                    if (RegExInputFields.checkDayStartedAndEndedCompare(dcStartedDateEvent.getDate(), dcEndedDateEvent.getDate())) {
+                        if (RegExInputFields.checkEventContent(txtContentEvent)) {
                             eventController.createEventToForm(txtIdEvent, txtUserIdEvent, txtTitleEvent, txtAddressEvent, dcStartedDateEvent, dcEndedDateEvent, txtContentEvent);
                         }
                     }
@@ -2216,7 +2217,7 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         userController = new UserController();
         userController.setAllDataUserToTable(tblListMember, "Thành viên");
-        
+
         eventController = new EventController();
         eventController.setAllDataUserToTable(lblListEvent);
     }//GEN-LAST:event_formWindowOpened
@@ -2244,16 +2245,16 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jTabbedPane3MouseClicked
 
     private void lblAttendanceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAttendanceMouseClicked
-           SwingUtilities.invokeLater(() -> {
-            BarChart example = new BarChart("Tổng lượt tham gia sự kiện");
-            example.setSize(800, 600);
-            example.setLocationRelativeTo(null);
-            example.setVisible(true);
-        });
+//        SwingUtilities.invokeLater(() -> {
+//            EventChart attendanceChart = new EventChart(eventService);
+//            attendanceChart.setSize(800, 600);
+//            attendanceChart.setLocationRelativeTo(null);
+//            attendanceChart.setVisible(true);
+//        });
     }//GEN-LAST:event_lblAttendanceMouseClicked
 
     private void lblEventContentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEventContentMouseClicked
-         SwingUtilities.invokeLater(() -> {
+        SwingUtilities.invokeLater(() -> {
             PieChart example = new PieChart("Nội dung sự kiện");
             example.setSize(800, 600);
             example.setLocationRelativeTo(null);
