@@ -4,6 +4,7 @@
  */
 package com.poly.controller;
 
+import com.poly.constant.RoleConstant;
 import com.poly.entity.Role;
 import com.poly.entity.User;
 import com.poly.injection.UserInjector;
@@ -17,13 +18,13 @@ import com.poly.utils.NavigationButtons;
 import com.poly.view.Login;
 import com.poly.view.Main;
 import com.toedter.calendar.JDateChooser;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.*;
 
 /**
- *
  * @author Computer
  */
 public class UserController {
@@ -80,17 +81,23 @@ public class UserController {
     }
     // CRUD operations
 
-    public void createUser(User user, String roleName) {
+    public User createUser(User user, String roleName) {
         User createdUser = userService.save(user, roleName);
         if (createdUser != null) {
             MsgBox.alert(null, "Tạo người dùng thành công!");
+            return createdUser;
         } else {
             MsgBox.alert(null, "Không thể tạo người dùng.");
+            return null;
         }
     }
 
-    public User readUser(Integer id) {
+    public User readUserById(Integer id) {
         return userService.findById(id);
+    }
+
+    public User readUserByUserName(String username) {
+        return userService.findByUsername(username);
     }
 
     public void updateUser(User user) {
@@ -102,17 +109,24 @@ public class UserController {
         }
     }
 
-    public void deleteUser(Integer id) {
+    public User deleteUser(Integer id) {
         User deletedUser = userService.delete(id);
         if (deletedUser != null) {
             MsgBox.alert(null, "Xóa người dùng thành công!");
+            return deletedUser;
         } else {
             MsgBox.alert(null, "Không thể xóa người dùng.");
+            return null;
         }
     }
 
     public List<User> getAllUsers() {
         return userService.findAll();
+    }
+
+    public List<User> getListAllUser() {
+        String[] roles = {RoleConstant.CHU_NHIEM, RoleConstant.PHO_CHU_NHIEM, RoleConstant.THU_QUY};
+        return userService.findByRole(roles);
     }
 
     public boolean updatePassword(String email, String newPassword) {
@@ -125,172 +139,4 @@ public class UserController {
         return false;
     }
 
-    public void setAllDataUserToTable(JTable tblListUser, String role) {
-        List<User> listByRole = new ArrayList<>();
-        for (User user : listAllUser) {
-//            if (role.equalsIgnoreCase(user.getRole().getRoleName())) {
-            listByRole.add(user);
-//            }
-        }
-        ComponentManagement.fillDataTableComponent(getAllUsers(), tblListUser, GET_METHOD_NAME_USER);
-    }
-
-    public User responseUserById(Integer idUser) {
-        return userService.findById(idUser);
-    }
-
-    public void findUserIdToTableClicked(
-            JTable tblListUser,
-            Integer row,
-            JTextField idField,
-            JTextField txtNameMember,
-            JTextField txtPhoneMember,
-            JTextField txtEmailMemBer,
-            JTextField txtAddressMember,
-            JDateChooser dcBirthdayMember,
-            JRadioButton rdoMale,
-            JRadioButton rdoFemale,
-            JComboBox cboRateMember) {
-        String idFound = String.valueOf(tblListUser.getValueAt(row, 0));
-        User userFindOut = userService.findById(Integer.valueOf(idFound));
-        setTextFromTableToForm(userFindOut, idField, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMale, rdoFemale, cboRateMember);
-    }
-
-    public void setTextFromTableToForm(
-            User entityResponse,
-            JTextField idField,
-            JTextField txtNameMember,
-            JTextField txtPhoneMember,
-            JTextField txtEmailMemBer,
-            JTextField txtAddressMember,
-            JDateChooser dcBirthdayMember,
-            JRadioButton rdoMale,
-            JRadioButton rdoFemale,
-            JComboBox cboRateMember) {
-        idField.setText(String.valueOf(entityResponse.getId()));
-        txtNameMember.setText(entityResponse.getFullname());
-        txtPhoneMember.setText(entityResponse.getPhone());
-        txtEmailMemBer.setText(entityResponse.getEmail());
-        txtAddressMember.setText(entityResponse.getAddress());
-        dcBirthdayMember.setDate(entityResponse.getBirthday());
-        cboRateMember.setSelectedItem(entityResponse.getScore());
-        if (entityResponse.getSex()) {
-            rdoMale.setSelected(true);
-        } else {
-            rdoFemale.setSelected(true);
-        }
-    }
-
-    public void setFormUserPanelByButton(
-            List<User> members,
-            int index,
-            String buttonDirection,
-            JTextField txtIdUserField,
-            JTextField txtNameMember,
-            JTextField txtPhoneMember,
-            JTextField txtEmailMemBer,
-            JTextField txtAddressMember,
-            JDateChooser dcBirthdayMember,
-            JRadioButton rdoMale,
-            JRadioButton rdoFemale,
-            JComboBox cboRateMember) {
-        int sizeOfList = members.size();
-        if (members == null) {
-            MsgBox.alert(null, "không có danh sách để hiển thị");
-            return;
-        }
-        User currentMember = members.get(index);
-        NavigationButtons.navButtonInForm(buttonDirection, sizeOfList, index);
-        setTextFromTableToForm(currentMember, txtIdUserField, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMale, rdoFemale, cboRateMember);
-//        setTextFromTableToForm(currentMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMale, rdoFemale, cboRateMember);
-    }
-
-    public void setClearForm(
-            JTextField idField,
-            JTextField txtNameMember,
-            JTextField txtPhoneMember,
-            JTextField txtEmailMemBer,
-            JTextField txtAddressMember,
-            JDateChooser dcBirthdayMember,
-            JRadioButton rdoMale,
-            JRadioButton rdoFemale,
-            JComboBox cboRateMember) {
-        idField.setText("");
-        txtNameMember.setText("");
-        txtPhoneMember.setText("");
-        txtEmailMemBer.setText("");
-        txtAddressMember.setText("");
-        dcBirthdayMember.setDate(null);
-        rdoMale.setSelected(false);
-        rdoFemale.setSelected(false);
-        cboRateMember.setSelectedIndex(0);
-    }
-
-    public void createMemberToForm(
-            JTextField idField,
-            JTextField txtNameMember,
-            JTextField txtPhoneMember,
-            JTextField txtEmailMemBer,
-            JTextField txtAddressMember,
-            JDateChooser dcBirthdayMember,
-            JRadioButton rdoMale,
-            JRadioButton rdoFemale,
-            JComboBox cboRateMember) {
-        try {
-            String testIdNotNull = InputFields.getTextFieldtoString(idField);
-//            if(testIdNotNull.equals(null)){
-            User userRequest = new User();
-            Role roleMember = new Role();
-            roleMember.setRoleName("Thành viên");
-            userRequest.setRole(roleMember);
-            userRequest.setFullname(InputFields.getTextFieldtoString(txtNameMember));
-            userRequest.setPhone(InputFields.getTextFieldtoString(txtPhoneMember));
-            userRequest.setEmail(InputFields.getTextFieldtoString(txtEmailMemBer));
-            userRequest.setAddress(InputFields.getTextFieldtoString(txtAddressMember));
-            userRequest.setBirthday(InputFields.getDateSQL(dcBirthdayMember.getDate()));
-            userRequest.setSex(InputFields.getSelectedRadiobutton(rdoMale, rdoMale));
-            userRequest.setScore(InputFields.getComboBoxString(cboRateMember));
-
-            userService.save(userRequest, "Thành viên");
-            System.out.println("Vào tới controller rồi.");
-            MsgBox.alert(null, "Tạo Mới Thành Công!");
-//        }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void deleteMemberToForm(JTextField idField) {
-        try {
-            userService.delete(InputFields.getTextFieldtoInteger(idField));
-            MsgBox.alert(null, "Xoá Thành Công!");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void setUserToForm(JTextField idField,
-            JTextField txtNameUser,
-            JTextField txtUsernameUser,
-            JPasswordField txtPasswordUser,
-            JComboBox cboRoleUser) {
-        try {
-            User userRequest = new User();
-            String userFullname = InputFields.getTextFieldtoString(txtNameUser);
-            userRequest.setFullname(userFullname);
-
-            String userName = InputFields.getTextFieldtoString(txtUsernameUser);
-            userRequest.setUsername(userName);
-
-            String passWord = InputFields.getTextFieldtoString(txtPasswordUser);
-            userRequest.setPassword(passWord);
-
-            String roleName = InputFields.getComboBoxString(cboRoleUser);
-            Role roleUser = roleService.findByNameRole(roleName);
-            userRequest.setRole(roleUser);
-             MsgBox.alert(null, "Cập nhật Thành Công!");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }
