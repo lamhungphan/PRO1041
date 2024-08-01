@@ -1,4 +1,4 @@
-package com.poly.view;
+package com.poly.utils;
 
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
@@ -13,6 +13,7 @@ import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.SheetsScopes;
 import com.google.api.services.sheets.v4.model.ValueRange;
+import com.poly.entity.User;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,6 +21,8 @@ import java.io.InputStreamReader;
 import java.security.GeneralSecurityException;
 import java.util.Collections;
 import java.util.List;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class SheetsQuickstart {
     private static final String APPLICATION_NAME = "Google Sheets API Java Quickstart";
@@ -65,27 +68,58 @@ public class SheetsQuickstart {
      * Prints the names and majors of students in a sample spreadsheet:
      * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
      */
-    public static void main(String... args) throws IOException, GeneralSecurityException {
-        // Build a new authorized API client service.
-        final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-        final String spreadsheetId = "1Zd9Si50cKte_GFIhYH9gKTV7G3R8TfqTIEEaMF0685Y";
-        final String range = "FormResponse!B2:H";
-        Sheets service =
-                new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
-                        .setApplicationName(APPLICATION_NAME)
-                        .build();
-        ValueRange response = service.spreadsheets().values()
-                .get(spreadsheetId, range)
-                .execute();
-        List<List<Object>> values = response.getValues();
-        if (values == null || values.isEmpty()) {
-            System.out.println("No data found.");
-        } else {
-            System.out.println("Họ và tên, Sinh nhật, Khu vực sinh sống, Số điện thoại, Ngành học, Email, Câu hỏi cho diễn giả");
-            for (List row : values) {
-                // Print columns A and E, which correspond to indices 0 and 4.
-                System.out.printf("%s,c %s, %s, %s,%s,%s, %s\n", row.get(0), row.get(1), row.get(2), row.get(3), row.get(4), row.get(5), row.get(6));
+    public static void fillTableEvent(JTable tblListEvent) throws IOException, GeneralSecurityException {
+    final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+    final String spreadsheetId = "1Zd9Si50cKte_GFIhYH9gKTV7G3R8TfqTIEEaMF0685Y";
+    final String range = "FormResponse!A2:H";
+    Sheets service =
+            new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
+                    .setApplicationName(APPLICATION_NAME)
+                    .build();
+    ValueRange response = service.spreadsheets().values()
+            .get(spreadsheetId, range)
+            .execute();
+    List<List<Object>> values = response.getValues();
+    if (values == null || values.isEmpty()) {
+        System.out.println("No data found.");
+    } else {
+        DefaultTableModel model = (DefaultTableModel) tblListEvent.getModel();
+        model.setRowCount(0);
+        try {
+            for (List<Object> row : values) {
+                model.addRow(row.toArray());
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            MsgBox.alert(null, "Lỗi truy vấn dữ liệu!");
         }
     }
+}
+
+    
+//    public static void main(String... args) throws IOException, GeneralSecurityException {
+//        // Build a new authorized API client service.
+//        final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+//        final String spreadsheetId = "1Zd9Si50cKte_GFIhYH9gKTV7G3R8TfqTIEEaMF0685Y";
+//        final String range = "FormResponse!B2:H";
+//        Sheets service =
+//                new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
+//                        .setApplicationName(APPLICATION_NAME)
+//                        .build();
+//        ValueRange response = service.spreadsheets().values()
+//                .get(spreadsheetId, range)
+//                .execute();
+//        List<List<Object>> values = response.getValues();
+//        if (values == null || values.isEmpty()) {
+//            System.out.println("No data found.");
+//        } else {
+//            System.out.println("Họ và tên, Sinh nhật, Khu vực sinh sống, Số điện thoại, Ngành học, Email, Câu hỏi cho diễn giả");
+//            for (List row : values) {
+//                // Print columns A and E, which correspond to indices 0 and 4.
+//                
+//                System.out.printf("%s,c %s, %s, %s,%s,%s, %s\n", row.get(0), row.get(1), row.get(2), row.get(3), row.get(4), row.get(5), row.get(6));
+//            }
+//        }
+//    }
+    
 }

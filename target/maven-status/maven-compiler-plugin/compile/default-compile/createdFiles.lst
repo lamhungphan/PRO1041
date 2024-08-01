@@ -12,6 +12,7 @@ com/poly/view/Main$60.class
 com/poly/view/Login$5.class
 com/poly/view/Main$37.class
 com/poly/view/Main$20.class
+com/poly/utils/SheetsQuickstart.class
 com/poly/repository/RoleRepository.class
 com/poly/view/Main$44.class
 com/poly/view/Main$4.class
@@ -60,8 +61,8 @@ com/poly/view/Main$1.class
 com/poly/view/Main$28.class
 com/poly/view/Main$48.class
 com/poly/view/Main$62.class
-com/poly/view/Login$1.class
 com/poly/view/Main$42.class
+com/poly/view/Login$1.class
 com/poly/services/impl/UserServiceImpl.class
 com/poly/view/Login$11.class
 com/poly/view/Main$50.class
@@ -107,8 +108,8 @@ com/poly/view/Main$53.class
 com/poly/controller/PasswordResetController.class
 com/poly/utils/RegExInputFields.class
 com/poly/view/Main$18.class
-com/poly/view/Login.class
 com/poly/view/Main$23.class
+com/poly/view/Login.class
 com/poly/services/impl/AuthorizationServiceImpl.class
 com/poly/view/Login$9.class
 com/poly/repository/impl/AccountRepoImpl.class

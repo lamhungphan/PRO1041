@@ -12,10 +12,15 @@ import com.poly.injection.UserInjector;
 import com.poly.utils.ComponentManagement;
 import com.poly.utils.InputFields;
 import com.poly.utils.RegExInputFields;
+import com.poly.utils.SheetsQuickstart;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.sql.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import lombok.Getter;
 
 @Getter
@@ -134,6 +139,15 @@ public class Main extends javax.swing.JFrame {
         dcEndedDateEvent = new com.toedter.calendar.JDateChooser();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtContentEvent = new javax.swing.JTextArea();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel9 = new javax.swing.JLabel();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
         pnlNotification = new javax.swing.JPanel();
         tabNotification = new javax.swing.JTabbedPane();
         pnlListMember3 = new javax.swing.JPanel();
@@ -810,7 +824,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(txtFindEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addComponent(btnSearchEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
         pnlTimChiTieu1Layout.setVerticalGroup(
             pnlTimChiTieu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1062,7 +1076,7 @@ public class Main extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnLastEvent)
                                 .addGap(64, 64, 64)))))
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         pnlSettingMember1Layout.setVerticalGroup(
             pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1117,6 +1131,70 @@ public class Main extends javax.swing.JFrame {
         );
 
         jTabbedPane3.addTab("Sự Kiện", pnlSettingMember1);
+
+        jLabel8.setText("Từ ngày:");
+
+        jLabel9.setText("Đến ngày:");
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Refresh.png"))); // NOI18N
+        jButton1.setText("Export EXCEL");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Date", "Họ tên", "Sinh nhật", "Nơi ở", "SĐT", "Ngành", "Email", "Câu hỏi"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Refresh.png"))); // NOI18N
+        jButton2.setText("Tìm Kiếm");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(82, 82, 82))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                    .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE))
+        );
+
+        jTabbedPane3.addTab("Bảng Đăng Ký", jPanel1);
 
         javax.swing.GroupLayout pnlEventLayout = new javax.swing.GroupLayout(pnlEvent);
         pnlEvent.setLayout(pnlEventLayout);
@@ -2018,6 +2096,14 @@ public class Main extends javax.swing.JFrame {
 
         eventController = new EventController();
         eventController.setAllDataUserToTable(lblListEvent);
+        
+        try {
+            SheetsQuickstart.fillTableEvent(jTable1);
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (GeneralSecurityException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void tabMemberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabMemberMouseClicked
@@ -2172,6 +2258,10 @@ public class Main extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser dcBirthdayMember;
     private com.toedter.calendar.JDateChooser dcEndedDateEvent;
     private com.toedter.calendar.JDateChooser dcStartedDateEvent;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -2179,13 +2269,18 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPane3;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblEmail1;
     private javax.swing.JLabel lblEmail2;
