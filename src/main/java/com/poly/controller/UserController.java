@@ -5,22 +5,16 @@
 package com.poly.controller;
 
 import com.poly.constant.RoleConstant;
-import com.poly.entity.Role;
 import com.poly.entity.User;
 import com.poly.injection.UserInjector;
 import com.poly.services.AuthorizationService;
 import com.poly.services.RoleService;
 import com.poly.services.UserService;
 import com.poly.utils.ComponentManagement;
-import com.poly.utils.InputFields;
 import com.poly.utils.MsgBox;
-import com.poly.utils.NavigationButtons;
 import com.poly.view.*;
 
 
-import com.toedter.calendar.JDateChooser;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.*;
