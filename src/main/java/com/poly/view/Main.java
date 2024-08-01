@@ -66,7 +66,7 @@ public class Main extends javax.swing.JFrame {
         btngroudSex = new javax.swing.ButtonGroup();
         lblTabContainer = new javax.swing.JPanel();
         lblWelcome = new javax.swing.JLabel();
-        lblTrangChu = new javax.swing.JLabel();
+        lblHome = new javax.swing.JLabel();
         lblTabMembers = new javax.swing.JLabel();
         lblTabEvents = new javax.swing.JLabel();
         lblTabNotification = new javax.swing.JLabel();
@@ -236,14 +236,14 @@ public class Main extends javax.swing.JFrame {
         lblWelcome.setForeground(new java.awt.Color(255, 255, 255));
         lblWelcome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Unknown person.png"))); // NOI18N
 
-        lblTrangChu.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblTrangChu.setForeground(new java.awt.Color(255, 255, 255));
-        lblTrangChu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Home.png"))); // NOI18N
-        lblTrangChu.setText(" Trang chủ");
-        lblTrangChu.setVerifyInputWhenFocusTarget(false);
-        lblTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblHome.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblHome.setForeground(new java.awt.Color(255, 255, 255));
+        lblHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Home.png"))); // NOI18N
+        lblHome.setText(" Trang chủ");
+        lblHome.setVerifyInputWhenFocusTarget(false);
+        lblHome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblTrangChuMouseClicked(evt);
+                lblHomeMouseClicked(evt);
             }
         });
 
@@ -315,7 +315,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(lblTabEvents)
                     .addComponent(lblTabNotification)
                     .addComponent(lblWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTrangChu)
+                    .addComponent(lblHome)
                     .addGroup(lblTabContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(lblUserLoginedAvatar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblTabMembers, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -329,7 +329,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblUserLoginedAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
-                .addComponent(lblTrangChu)
+                .addComponent(lblHome)
                 .addGap(26, 26, 26)
                 .addComponent(lblTabMembers)
                 .addGap(29, 29, 29)
@@ -1991,9 +1991,9 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lblTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTrangChuMouseClicked
+    private void lblHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomeMouseClicked
         showCard("cardMain");
-    }//GEN-LAST:event_lblTrangChuMouseClicked
+    }//GEN-LAST:event_lblHomeMouseClicked
 
     private void lblTabMembersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTabMembersMouseClicked
         showCard("cardUser");
@@ -2417,17 +2417,23 @@ public class Main extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser dcBirthdayUser;
     private com.toedter.calendar.JDateChooser dcEndedDateEvent;
     private com.toedter.calendar.JDateChooser dcStartedDateEvent;
-
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPane3;
-
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblAttendance;
     private javax.swing.JLabel lblClubName;
-
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblEmail1;
     private javax.swing.JLabel lblEmail2;
@@ -2438,6 +2444,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel lblGhiChu5;
     private javax.swing.JLabel lblGioiTinhThanhVien;
     private javax.swing.JLabel lblGioiTinhUser;
+    private javax.swing.JLabel lblHome;
     private javax.swing.JLabel lblMember;
     private javax.swing.JLabel lblMember2;
     private javax.swing.JLabel lblMemberAvatar;
@@ -2474,7 +2481,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel lblTotalAttendance;
     private javax.swing.JLabel lblTotalEventContent;
     private javax.swing.JLabel lblTotalMembers;
-    private javax.swing.JLabel lblTrangChu;
     private javax.swing.JLabel lblUserAvatar;
     private javax.swing.JLabel lblUserLoginedAvatar;
     private javax.swing.JLabel lblWelcome;
