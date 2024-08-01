@@ -37,7 +37,6 @@ public class Main extends javax.swing.JFrame {
     String buttonDirection;
     List<User> listAllUser = new UserController().getAllUsers();
 
-
     public Main() {
         initComponents();
         cardLayout = (CardLayout) (container.getLayout());
@@ -125,7 +124,7 @@ public class Main extends javax.swing.JFrame {
         txtFindEvent = new javax.swing.JTextField();
         btnSearchEvent = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
-        lblListEvent = new javax.swing.JTable();
+        tblListEvent = new javax.swing.JTable();
         pnlSettingMember1 = new javax.swing.JPanel();
         lblThanhVien1 = new javax.swing.JLabel();
         txtIdEvent = new javax.swing.JTextField();
@@ -298,7 +297,7 @@ public class Main extends javax.swing.JFrame {
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(9, Short.MAX_VALUE)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jLabel5)
@@ -503,6 +502,9 @@ public class Main extends javax.swing.JFrame {
         tblListMember.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblListMemberMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                tblListMemberMouseEntered(evt);
             }
         });
         jScrollPane4.setViewportView(tblListMember);
@@ -903,7 +905,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(0, 10, Short.MAX_VALUE))
         );
 
-        lblListEvent.setModel(new javax.swing.table.DefaultTableModel(
+        tblListEvent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -935,12 +937,12 @@ public class Main extends javax.swing.JFrame {
                 "Id", "User", "Tiêu đề", "Nội dung", "Ngày bắt đầu", "Ngày kết thúc", "Địa chỉ"
             }
         ));
-        lblListEvent.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblListEvent.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblListEventMouseClicked(evt);
+                tblListEventMouseClicked(evt);
             }
         });
-        jScrollPane5.setViewportView(lblListEvent);
+        jScrollPane5.setViewportView(tblListEvent);
 
         javax.swing.GroupLayout pnlListMember1Layout = new javax.swing.GroupLayout(pnlListMember1);
         pnlListMember1.setLayout(pnlListMember1Layout);
@@ -1968,35 +1970,27 @@ public class Main extends javax.swing.JFrame {
 
     private void btnDeleteMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteMemberActionPerformed
         // TODO add your handling code here:
+        deleteMember();
     }//GEN-LAST:event_btnDeleteMemberActionPerformed
 
     private void btnUpdateMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateMemberActionPerformed
         // TODO add your handling code here:
-//        if (RegExInputFields.checkNameMember(txtNameMember)) {
-//            if (RegExInputFields.checkPhoneMember(txtPhoneMember)) {
-//                if (RegExInputFields.checkEmail(txtEmailMemBer)) {
-//                    if (RegExInputFields.checkAddress(txtAddressMember)) {
-//                        if (RegExInputFields.checkBirthday(dcBirthdayMember.getDate())) {
-//                            userController.updateMemberToForm(txtIdMember, txtNameMember, txtPhoneMember, txtEmailMemBer, txtAddressMember, dcBirthdayMember, rdoMaleMember, rdoFemaleMember, cboRateMember);
-//                        }
-//                    }
-//                }
-//            }
-//        }
+        updateMember();
     }//GEN-LAST:event_btnUpdateMemberActionPerformed
 
     private void btnAddMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMemberActionPerformed
         // TODO add your handling code here:
-  
+        createMember();
     }//GEN-LAST:event_btnAddMemberActionPerformed
 
     private void btnFirstMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstMemberActionPerformed
 
+        firstUser();
     }//GEN-LAST:event_btnFirstMemberActionPerformed
 
     private void btnClearMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearMemberActionPerformed
         // TODO add your handling code here:
-       
+        clearFormMember();
     }//GEN-LAST:event_btnClearMemberActionPerformed
 
     private void cboRateMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboRateMemberActionPerformed
@@ -2005,16 +1999,17 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_cboRateMemberActionPerformed
 
     private void btnPreMemberActionPerformed(java.awt.event.ActionEvent evt) {
-
+        prevMember();
     }
 
     private void btnNextMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextMemberActionPerformed
-   
+
+        nextMember();
     }//GEN-LAST:event_btnNextMemberActionPerformed
 
     private void btnLastMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastMemberActionPerformed
-   
-        
+
+        lastMember();
     }//GEN-LAST:event_btnLastMemberActionPerformed
 
     private void txtFindEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFindEventActionPerformed
@@ -2025,11 +2020,11 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSearchEventActionPerformed
 
-    private void lblListEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblListEventMouseClicked
+    private void tblListEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListEventMouseClicked
         // TODO add your handling code here:
-    
-        
-    }//GEN-LAST:event_lblListEventMouseClicked
+        row = tblListEvent.getSelectedRow();
+        editEvent();
+    }//GEN-LAST:event_tblListEventMouseClicked
 
     private void txtIdEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdEventActionPerformed
         // TODO add your handling code here:
@@ -2045,32 +2040,36 @@ public class Main extends javax.swing.JFrame {
 
     private void btnDeleteEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteEventActionPerformed
         // TODO add your handling code here:
-        
+        deleteEvent();
     }//GEN-LAST:event_btnDeleteEventActionPerformed
 
     private void btnUpdateEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateEventActionPerformed
         // TODO add your handling code here:
+        updateEvent();
     }//GEN-LAST:event_btnUpdateEventActionPerformed
 
     private void btnAddEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEventActionPerformed
-  
+        createEvent();
     }//GEN-LAST:event_btnAddEventActionPerformed
 
     private void btnFirstEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstEventActionPerformed
+        firstEvent();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnFirstEventActionPerformed
 
     private void btnClearEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearEventActionPerformed
         // TODO add your handling code here:
-    
+        clearFormEvent();
     }//GEN-LAST:event_btnClearEventActionPerformed
 
     private void btnLastEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastEventActionPerformed
         // TODO add your handling code here:
+        lastEvent();
     }//GEN-LAST:event_btnLastEventActionPerformed
 
     private void btnPreviousEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousEventActionPerformed
         // TODO add your handling code here:
+        prevEvent();
     }//GEN-LAST:event_btnPreviousEventActionPerformed
 
     private void btnForwardEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForwardEventActionPerformed
@@ -2120,34 +2119,42 @@ public class Main extends javax.swing.JFrame {
 
     private void btnDeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteUserActionPerformed
         // TODO add your handling code here:
+        deleteUser();
     }//GEN-LAST:event_btnDeleteUserActionPerformed
 
     private void btnUpdateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateUserActionPerformed
         // TODO add your handling code here:
+        updateUser();
     }//GEN-LAST:event_btnUpdateUserActionPerformed
 
     private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
         // TODO add your handling code here:
+        createUser();
     }//GEN-LAST:event_btnAddUserActionPerformed
 
     private void btnFirstUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstUserActionPerformed
         // TODO add your handling code here:
+        firstUser();
     }//GEN-LAST:event_btnFirstUserActionPerformed
 
     private void btnClearUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearUserActionPerformed
         // TODO add your handling code here:
+        clearFormUser();
     }//GEN-LAST:event_btnClearUserActionPerformed
 
     private void btnLastUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastUserActionPerformed
         // TODO add your handling code here:
+        lastUser();
     }//GEN-LAST:event_btnLastUserActionPerformed
 
     private void btnPreviousUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousUserActionPerformed
         // TODO add your handling code here:
+        prevUser();
     }//GEN-LAST:event_btnPreviousUserActionPerformed
 
     private void btnForwardUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForwardUserActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_btnForwardUserActionPerformed
 
     private void txtUsernameUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameUserActionPerformed
@@ -2172,11 +2179,14 @@ public class Main extends javax.swing.JFrame {
 
     private void tblListUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListUserMouseClicked
         // TODO add your handling code here:
+        row = tblListUser.getSelectedRow();
+        editUser();
     }//GEN-LAST:event_tblListUserMouseClicked
 
     private void tblListMemberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListMemberMouseClicked
         // TODO add your handling code here:
-      
+        row = tblListMember.getSelectedRow();
+        editMember();
     }//GEN-LAST:event_tblListMemberMouseClicked
 
     private void btnSearchUser2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchUser2ActionPerformed
@@ -2185,7 +2195,7 @@ public class Main extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-     
+
     }//GEN-LAST:event_formWindowOpened
 
     private void tabMemberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabMemberMouseClicked
@@ -2199,10 +2209,12 @@ public class Main extends javax.swing.JFrame {
 
     private void btnNextUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextUserActionPerformed
         // TODO add your handling code here:
+        nextUser();
     }//GEN-LAST:event_btnNextUserActionPerformed
 
     private void btnNextEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextEventActionPerformed
         // TODO add your handling code here:
+        nextEvent();
     }//GEN-LAST:event_btnNextEventActionPerformed
 
     private void jTabbedPane3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane3MouseClicked
@@ -2251,6 +2263,10 @@ public class Main extends javax.swing.JFrame {
     private void rdoFemaleUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoFemaleUserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rdoFemaleUserActionPerformed
+
+    private void tblListMemberMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListMemberMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblListMemberMouseEntered
 
     /**
      * @param args the command line arguments
@@ -2352,7 +2368,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel lblGhiChu5;
     private javax.swing.JLabel lblGioiTinhThanhVien;
     private javax.swing.JLabel lblGioiTinhUser;
-    private javax.swing.JTable lblListEvent;
     private javax.swing.JLabel lblMember;
     private javax.swing.JLabel lblMember2;
     private javax.swing.JLabel lblMemberAvatar;
@@ -2408,6 +2423,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTabbedPane tabMember;
     private javax.swing.JTabbedPane tabMember1;
     private javax.swing.JTabbedPane tabNotification;
+    private javax.swing.JTable tblListEvent;
     private javax.swing.JTable tblListMember;
     private javax.swing.JTable tblListNotification;
     private javax.swing.JTable tblListUser;
@@ -2438,7 +2454,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField txtUsernameUser;
     // End of variables declaration//GEN-END:variables
 
-    
     //Member start
     List<User> members = memberController.getMembersByRole();
 
@@ -2498,13 +2513,13 @@ public class Main extends javax.swing.JFrame {
         try {
             for (User user : listMember) {
                 Object[] row = {
-                        user.getId(),
-                        user.getFullname(),
-                        user.getEmail(),
-                        user.getPhone(),
-                        user.getBirthday(),
-                        user.getScore(),
-                        user.getAddress()
+                    user.getId(),
+                    user.getFullname(),
+                    user.getEmail(),
+                    user.getPhone(),
+                    user.getBirthday(),
+                    user.getScore(),
+                    user.getAddress()
                 };
                 tableModelMember.addRow(row);
             }
@@ -2615,10 +2630,10 @@ public class Main extends javax.swing.JFrame {
         btnDeleteMember.setEnabled(edit);
 
         // Trạng thái điều hướng
-        btnFirstMember.setEnabled(edit && !first);
-        btnPreMember.setEnabled(edit && !first);
-        btnNextMember.setEnabled(edit && !last);
-        btnLastMember.setEnabled(edit && !last);
+        btnFirstMember.setEnabled(!first);
+        btnPreMember.setEnabled(!first);
+        btnNextMember.setEnabled(!last);
+        btnLastMember.setEnabled(!last);
     }
 
     //======================================================================================================
@@ -2682,14 +2697,14 @@ public class Main extends javax.swing.JFrame {
         try {
             for (User user : listUser) {
                 Object[] row = {
-                        user.getId(),
-                        user.getUsername(),
-                        user.getFullname(),
-                        user.getEmail(),
-                        user.getPhone(),
-                        user.getBirthday(),
-                        user.getScore(),
-                        user.getAddress()
+                    user.getId(),
+                    user.getUsername(),
+                    user.getFullname(),
+                    user.getEmail(),
+                    user.getPhone(),
+                    user.getBirthday(),
+                    user.getScore(),
+                    user.getAddress()
                 };
                 tableModelUser.addRow(row);
             }
@@ -2720,7 +2735,6 @@ public class Main extends javax.swing.JFrame {
 //
 //        Date birthdate = InputFields.getDateChoosetoDateSQL(dcBirthdayUser);
 //        userForm.setBirthday(birthdate);
-
         String roleUser = InputFields.getComboBoxString(cboRoleUser);
         userForm.setScore(roleUser);
 
@@ -2759,9 +2773,10 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void editUser() {
+
         int selectedRow = tblListUser.getSelectedRow();
         if (selectedRow >= 0) {
-            Integer id = (Integer) tblListUser.getValueAt(selectedRow, 0);
+            Integer id = Integer.parseInt ((String) tblListUser.getValueAt(selectedRow, 0));
             User user = userController.readUserById(id);
             setFormUser(user);
             row = selectedRow;
@@ -2821,18 +2836,18 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void fillTableEvent() {
-        DefaultTableModel model = (DefaultTableModel) lblListEvent.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblListEvent.getModel();
         model.setRowCount(0);
         try {
             for (Event entity : events) {
                 Object[] row = {
-                        entity.getId(),
-                        entity.getUser().getFullname(),
-                        entity.getTitle(),
-                        entity.getContent(),
-                        entity.getStartedDate(),
-                        entity.getEndedDate(),
-                        entity.getLocation()
+                    entity.getId(),
+                    entity.getUser().getFullname(),
+                    entity.getTitle(),
+                    entity.getContent(),
+                    entity.getStartedDate(),
+                    entity.getEndedDate(),
+                    entity.getLocation()
                 };
                 model.addRow(row);
             }
@@ -2861,7 +2876,7 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void updateEvent() {
-        row = lblListEvent.getSelectedRow();
+        row = tblListEvent.getSelectedRow();
         Event model = getEventFrom(events.get(row));
         if (model == null) {
             MsgBox.alert(null, "Vui lòng chọn sự kiện trong danh sách");
@@ -2877,9 +2892,9 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void deleteEvent() {
-        int selectedRow = lblListEvent.getSelectedRow();
+        int selectedRow = tblListEvent.getSelectedRow();
         if (selectedRow >= 0) {
-            Integer id = (Integer) lblListEvent.getValueAt(selectedRow, 0);
+            Integer id = (Integer) tblListEvent.getValueAt(selectedRow, 0);
             Event deletedEvent = eventController.deleteEvent(id);
             if (deletedEvent != null) {
                 MsgBox.alert(this, "Xóa sự kiện thành công!");
@@ -2922,9 +2937,9 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void editEvent() {
-        int selectedRow = lblListEvent.getSelectedRow();
+        int selectedRow = tblListEvent.getSelectedRow();
         if (selectedRow >= 0) {
-            Integer id = (Integer) lblListEvent.getValueAt(selectedRow, 0);
+            Integer id = (Integer) tblListEvent.getValueAt(selectedRow, 0);
             Event event = eventController.readEvent(id);
             setEventForm(event);
             row = selectedRow;
@@ -2946,32 +2961,32 @@ public class Main extends javax.swing.JFrame {
 
     private void firstEvent() {
         row = 0;
-        editUser();
+        editEvent();
     }
 
     private void prevEvent() {
         if (row > 0) {
             row--;
-            editUser();
+            editEvent();
         }
     }
 
     private void nextEvent() {
-        if (row < lblListEvent.getRowCount() - 1) {
+        if (row < tblListEvent.getRowCount() - 1) {
             row++;
-            editUser();
+            editEvent();
         }
     }
 
     private void lastEvent() {
-        row = lblListEvent.getRowCount() - 1;
-        editUser();
+        row = tblListEvent.getRowCount() - 1;
+        editEvent();
     }
 
     private void updateStatusEvent() {
         boolean edit = (row >= 0);
         boolean first = (row == 0);
-        boolean last = (row == lblListEvent.getRowCount() - 1);
+        boolean last = (row == tblListEvent.getRowCount() - 1);
 
         // Trạng thái form
         txtTitleEvent.setEditable(!edit);
