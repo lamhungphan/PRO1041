@@ -63,19 +63,19 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         btngroudSex = new javax.swing.ButtonGroup();
-        jPanel10 = new javax.swing.JPanel();
-        lblTabWelcome = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lblTabContainer = new javax.swing.JPanel();
+        lblWelcome = new javax.swing.JLabel();
+        lblTrangChu = new javax.swing.JLabel();
+        lblTabMembers = new javax.swing.JLabel();
+        lblTabEvents = new javax.swing.JLabel();
+        lblTabNotification = new javax.swing.JLabel();
+        lblTabSystem = new javax.swing.JLabel();
+        lblTabLogout = new javax.swing.JLabel();
         lblUserLoginedAvatar = new javax.swing.JLabel();
         container = new javax.swing.JPanel();
         pnlMain = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lblM2M = new javax.swing.JLabel();
+        lblMembers = new javax.swing.JLabel();
         lblTotalMembers = new javax.swing.JLabel();
         lblTotalAttendance = new javax.swing.JLabel();
         lblAttendance = new javax.swing.JLabel();
@@ -218,118 +218,118 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        jPanel10.setBackground(new java.awt.Color(0, 51, 153));
-        jPanel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jPanel10.setPreferredSize(new java.awt.Dimension(200, 650));
+        lblTabContainer.setBackground(new java.awt.Color(0, 51, 153));
+        lblTabContainer.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblTabContainer.setPreferredSize(new java.awt.Dimension(200, 650));
 
-        lblTabWelcome.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblTabWelcome.setForeground(new java.awt.Color(255, 255, 255));
-        lblTabWelcome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Unknown person.png"))); // NOI18N
+        lblWelcome.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblWelcome.setForeground(new java.awt.Color(255, 255, 255));
+        lblWelcome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Unknown person.png"))); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Home.png"))); // NOI18N
-        jLabel1.setText(" Trang chủ");
-        jLabel1.setVerifyInputWhenFocusTarget(false);
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblTrangChu.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTrangChu.setForeground(new java.awt.Color(255, 255, 255));
+        lblTrangChu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Home.png"))); // NOI18N
+        lblTrangChu.setText(" Trang chủ");
+        lblTrangChu.setVerifyInputWhenFocusTarget(false);
+        lblTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                lblTrangChuMouseClicked(evt);
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Friends.png"))); // NOI18N
-        jLabel2.setText(" Thành viên");
-        jLabel2.setVerifyInputWhenFocusTarget(false);
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblTabMembers.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTabMembers.setForeground(new java.awt.Color(255, 255, 255));
+        lblTabMembers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Friends.png"))); // NOI18N
+        lblTabMembers.setText(" Thành viên");
+        lblTabMembers.setVerifyInputWhenFocusTarget(false);
+        lblTabMembers.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
+                lblTabMembersMouseClicked(evt);
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Calendar.png"))); // NOI18N
-        jLabel3.setText(" Sự kiện");
-        jLabel3.setVerifyInputWhenFocusTarget(false);
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblTabEvents.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTabEvents.setForeground(new java.awt.Color(255, 255, 255));
+        lblTabEvents.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Calendar.png"))); // NOI18N
+        lblTabEvents.setText(" Sự kiện");
+        lblTabEvents.setVerifyInputWhenFocusTarget(false);
+        lblTabEvents.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                lblTabEventsMouseClicked(evt);
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Bell.png"))); // NOI18N
-        jLabel4.setText(" Thông báo");
-        jLabel4.setVerifyInputWhenFocusTarget(false);
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblTabNotification.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTabNotification.setForeground(new java.awt.Color(255, 255, 255));
+        lblTabNotification.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Bell.png"))); // NOI18N
+        lblTabNotification.setText(" Thông báo");
+        lblTabNotification.setVerifyInputWhenFocusTarget(false);
+        lblTabNotification.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
+                lblTabNotificationMouseClicked(evt);
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Gear.png"))); // NOI18N
-        jLabel5.setText(" Hệ thống");
-        jLabel5.setVerifyInputWhenFocusTarget(false);
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblTabSystem.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTabSystem.setForeground(new java.awt.Color(255, 255, 255));
+        lblTabSystem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Gear.png"))); // NOI18N
+        lblTabSystem.setText(" Hệ thống");
+        lblTabSystem.setVerifyInputWhenFocusTarget(false);
+        lblTabSystem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
+                lblTabSystemMouseClicked(evt);
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Log out.png"))); // NOI18N
-        jLabel6.setText(" Đăng xuất");
-        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblTabLogout.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTabLogout.setForeground(new java.awt.Color(255, 255, 255));
+        lblTabLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Log out.png"))); // NOI18N
+        lblTabLogout.setText(" Đăng xuất");
+        lblTabLogout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel6MouseClicked(evt);
+                lblTabLogoutMouseClicked(evt);
             }
         });
 
         lblUserLoginedAvatar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+        javax.swing.GroupLayout lblTabContainerLayout = new javax.swing.GroupLayout(lblTabContainer);
+        lblTabContainer.setLayout(lblTabContainerLayout);
+        lblTabContainerLayout.setHorizontalGroup(
+            lblTabContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lblTabContainerLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(lblTabWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(lblTabContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTabLogout)
+                    .addComponent(lblTabSystem)
+                    .addComponent(lblTabEvents)
+                    .addComponent(lblTabNotification)
+                    .addComponent(lblWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTrangChu)
+                    .addGroup(lblTabContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(lblUserLoginedAvatar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(lblTabMembers, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
+        lblTabContainerLayout.setVerticalGroup(
+            lblTabContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(lblTabContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblTabWelcome)
+                .addComponent(lblWelcome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblUserLoginedAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
-                .addComponent(jLabel1)
+                .addComponent(lblTrangChu)
                 .addGap(26, 26, 26)
-                .addComponent(jLabel2)
+                .addComponent(lblTabMembers)
                 .addGap(29, 29, 29)
-                .addComponent(jLabel3)
+                .addComponent(lblTabEvents)
                 .addGap(31, 31, 31)
-                .addComponent(jLabel4)
+                .addComponent(lblTabNotification)
                 .addGap(27, 27, 27)
-                .addComponent(jLabel5)
+                .addComponent(lblTabSystem)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
-                .addComponent(jLabel6)
+                .addComponent(lblTabLogout)
                 .addGap(21, 21, 21))
         );
 
@@ -338,14 +338,14 @@ public class Main extends javax.swing.JFrame {
 
         pnlMain.setPreferredSize(new java.awt.Dimension(820, 650));
 
-        jLabel7.setFont(new java.awt.Font("Lato Black", 1, 48)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 51, 153));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Mentee to Mentor");
-        jLabel7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblM2M.setFont(new java.awt.Font("Lato Black", 1, 48)); // NOI18N
+        lblM2M.setForeground(new java.awt.Color(0, 51, 153));
+        lblM2M.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblM2M.setText("Mentee to Mentor");
+        lblM2M.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel8.setText("Thành viên");
+        lblMembers.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        lblMembers.setText("Thành viên");
 
         lblTotalMembers.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         lblTotalMembers.setText("0");
@@ -380,11 +380,11 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlMainLayout.createSequentialGroup()
                         .addGap(122, 122, 122)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblM2M, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlMainLayout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
+                            .addComponent(lblMembers)
                             .addComponent(lblAttendance)
                             .addComponent(lblEventContent))
                         .addGap(216, 216, 216)
@@ -398,10 +398,10 @@ public class Main extends javax.swing.JFrame {
             pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMainLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblM2M, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(98, 98, 98)
                 .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMembers, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTotalMembers))
                 .addGap(87, 87, 87)
                 .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1895,7 +1895,7 @@ public class Main extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblTabContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 835, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -1904,7 +1904,7 @@ public class Main extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblTabContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(container, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1914,27 +1914,27 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void lblTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTrangChuMouseClicked
         showCard("cardMain");
-    }//GEN-LAST:event_jLabel1MouseClicked
+    }//GEN-LAST:event_lblTrangChuMouseClicked
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    private void lblTabMembersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTabMembersMouseClicked
         showCard("cardUser");
-    }//GEN-LAST:event_jLabel2MouseClicked
+    }//GEN-LAST:event_lblTabMembersMouseClicked
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void lblTabEventsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTabEventsMouseClicked
         showCard("cardEvent");
-    }//GEN-LAST:event_jLabel3MouseClicked
+    }//GEN-LAST:event_lblTabEventsMouseClicked
 
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+    private void lblTabNotificationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTabNotificationMouseClicked
         showCard("cardNotification");
-    }//GEN-LAST:event_jLabel4MouseClicked
+    }//GEN-LAST:event_lblTabNotificationMouseClicked
 
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+    private void lblTabSystemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTabSystemMouseClicked
         showCard("cardAdmin");
-    }//GEN-LAST:event_jLabel5MouseClicked
+    }//GEN-LAST:event_lblTabSystemMouseClicked
 
-    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {
+    private void lblTabLogoutMouseClicked(java.awt.event.MouseEvent evt) {
         userController.doLogout(this);
     }
 
@@ -2326,15 +2326,6 @@ public class Main extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser dcBirthdayUser;
     private com.toedter.calendar.JDateChooser dcEndedDateEvent;
     private com.toedter.calendar.JDateChooser dcStartedDateEvent;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
@@ -2353,9 +2344,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel lblGioiTinhThanhVien;
     private javax.swing.JLabel lblGioiTinhUser;
     private javax.swing.JTable lblListEvent;
+    private javax.swing.JLabel lblM2M;
     private javax.swing.JLabel lblMember;
     private javax.swing.JLabel lblMember2;
     private javax.swing.JLabel lblMemberAvatar;
+    private javax.swing.JLabel lblMembers;
     private javax.swing.JLabel lblNgaySinh;
     private javax.swing.JLabel lblNgaySinh1;
     private javax.swing.JLabel lblNgaySinh2;
@@ -2374,7 +2367,12 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel lblSoDT7;
     private javax.swing.JLabel lblSoDT8;
     private javax.swing.JLabel lblSoDT9;
-    private javax.swing.JLabel lblTabWelcome;
+    private javax.swing.JPanel lblTabContainer;
+    private javax.swing.JLabel lblTabEvents;
+    private javax.swing.JLabel lblTabLogout;
+    private javax.swing.JLabel lblTabMembers;
+    private javax.swing.JLabel lblTabNotification;
+    private javax.swing.JLabel lblTabSystem;
     private javax.swing.JLabel lblThanhVien;
     private javax.swing.JLabel lblThanhVien1;
     private javax.swing.JLabel lblThanhVien2;
@@ -2383,8 +2381,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel lblTotalAttendance;
     private javax.swing.JLabel lblTotalEventContent;
     private javax.swing.JLabel lblTotalMembers;
+    private javax.swing.JLabel lblTrangChu;
     private javax.swing.JLabel lblUserAvatar;
     private javax.swing.JLabel lblUserLoginedAvatar;
+    private javax.swing.JLabel lblWelcome;
     private javax.swing.JPanel pnlAdmin;
     private javax.swing.JPanel pnlEvent;
     private javax.swing.JPanel pnlListMember;
