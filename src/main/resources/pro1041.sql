@@ -1,4 +1,3 @@
-
 drop database if exists PRO1041;
 create database PRO1041;
 use PRO1041;
@@ -6,7 +5,7 @@ use PRO1041;
 drop table if exists roles;
 create table roles 
 (
-	id int auto_increment primary key,
+    id int auto_increment primary key,
     roleName nvarchar(55) null,
     createdDate date null,
     updatedDate date null
@@ -15,17 +14,17 @@ create table roles
 drop table if exists users;
 create table users
 (
-	id int auto_increment primary key,
+    id int auto_increment primary key,
     roleId int,
     username varchar(55) null,
     password varchar(100) null,
     fullName nvarchar(100) null,
     birthDay date null,
-    email varchar (55) null,
+    email varchar(55) null,
     address nvarchar(255) null,
     phone varchar(11) null,
     sex bit null,
-    score int null,
+    score nvarchar(50) null,
     createdDate date null,
     updatedDate date null,
     isActived bit null,
@@ -67,7 +66,7 @@ create table account
     password varchar(55) null
 );
 
-insert into account values (1,1, "", "");
+insert into account values (1, 1, "", "");
 
 insert into roles (roleName) VALUES 
 (N'Chủ nhiệm'),
@@ -75,7 +74,7 @@ insert into roles (roleName) VALUES
 (N'Thủ quỹ'),
 (N'Thành viên');
 
-insert into users (roleId, username, password, fullName, birthDay, email, address, phone, createdDate, updatedDate, isActived) VALUES 
+insert into users (roleId, username, password, fullName, birthDay, email, address, phone, sex, score, createdDate, updatedDate, isActived, attendance) VALUES 
 (1, 'phanlamhung', '1234', N'Nguyễn Phan Lâm Hùng', '1999-01-01', 'hung@example.com', N'123 Đường A, Hà Nội', '0909123456', 1, 0, '2023-01-01', '2023-01-01', 1, 10),
 (2, 'giangnd', '123', N'Nguyễn Đằng Giang', '1999-02-01', 'giang@example.com', N'456 Đường B, TP.HCM', '0909876543', 1, 0, '2023-01-02', '2023-01-02', 1, 8),
 (3, 'haithach', '456', N'Nguyễn Dung Hải Thạch', '2002-03-01', 'thach@example.com', N'789 Đường C, Đà Nẵng', '0909345678', 1, 1, '2023-01-03', '2023-01-03', 1, 7),
