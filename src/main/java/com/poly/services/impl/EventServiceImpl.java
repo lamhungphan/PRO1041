@@ -24,6 +24,10 @@ public class EventServiceImpl implements EventService {
         this.userService = userService;
     }
 
+    public EventServiceImpl(EventRepository repo) {
+        this.repo = repo;
+    }
+
     @Override
     public Event save(Event entity, String name) {
         entity.setUser(userService.findByUsername(name));
@@ -59,5 +63,10 @@ public class EventServiceImpl implements EventService {
     @Override
     public List<Event> findAll() {
         return repo.findAll();
+    }
+
+    @Override
+    public List<Object[]> getMemberCountByEvent() {
+        return repo.countMembersByEvent();
     }
 }
