@@ -17,4 +17,5 @@ public interface MemberService {
 
     List<User> findAll();
 
+    List<User> findMembersByRole(String role);
 }
