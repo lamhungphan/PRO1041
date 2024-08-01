@@ -10,6 +10,8 @@ import com.poly.repository.impl.UserRepoImpl;
 import com.poly.services.AuthorizationService;
 import com.poly.services.RoleService;
 import com.poly.services.UserService;
+
+import java.util.ArrayList;
 import java.util.List;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -58,6 +60,24 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> findByRole(String... role) {
+        List<User> listAll = findAll();
+        List<User> listAdmin = new ArrayList<>();
+        for(User user: listAll) {
+            String roleName =user.getRole().getRoleName();
+            for(String roleUser: role) {
+                if(roleName.equalsIgnoreCase(roleUser)) {
+                    listAdmin.add(user);
+                }
+            }
+        }
+        if(listAdmin.size() > 0) {
+            return listAdmin;
+        }
+        return null;
+    }
+
+    @Override
     public User findByUsername(String name) {
         List<User> list = this.findAll();
         for (User user : list) {
@@ -67,6 +87,17 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
+
+    @Override
+    public User findByFullname(String fullname) {
+        for(User user: findAll()) {
+            if(user.getFullname().equalsIgnoreCase(fullname)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
     @Override
     public User findByEmail(String email) {
         List<User> list = this.findAll();
