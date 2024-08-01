@@ -87,6 +87,17 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
+
+    @Override
+    public User findByFullname(String fullname) {
+        for(User user: findAll()) {
+            if(user.getFullname().equalsIgnoreCase(fullname)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
     @Override
     public User findByEmail(String email) {
         List<User> list = this.findAll();

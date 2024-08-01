@@ -95,6 +95,14 @@ public class UserController {
         return userService.findByUsername(username);
     }
 
+    public User readUserByFullname(String fullname) {
+        return userService.findByFullname(fullname);
+    }
+
+    public User readUserByEmail(String email) {
+        return userService.findByEmail(email);
+    }
+
     public void updateUser(User user) {
         User updatedUser = userService.update(user);
         if (updatedUser != null) {
