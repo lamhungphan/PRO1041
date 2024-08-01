@@ -2366,7 +2366,7 @@ public class Main extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             List<List<Object>> dataList = SheetsQuickstart.assignDataToList();
-            IOExcells.exportToExcel(dataList);
+            IOExcells.exportToExcelGGSheet(dataList);
             System.out.println("Xuat file thanh cong");
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
@@ -2539,8 +2539,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTabbedPane tabMember;
     private javax.swing.JTabbedPane tabMember1;
     private javax.swing.JTabbedPane tabNotification;
-    private javax.swing.JTable tblListEvent;
     private javax.swing.JTable tblGGSheet;
+    private javax.swing.JTable tblListEvent;
     private javax.swing.JTable tblListMember;
     private javax.swing.JTable tblListNotification;
     private javax.swing.JTable tblListUser;
