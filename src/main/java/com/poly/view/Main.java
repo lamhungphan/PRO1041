@@ -25,6 +25,7 @@ import java.sql.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import lombok.Getter;
@@ -94,6 +95,7 @@ public class Main extends javax.swing.JFrame {
         btnSearchUser2 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblListMember = new javax.swing.JTable();
+        btnExportExcellMember = new javax.swing.JButton();
         pnlSettingMember = new javax.swing.JPanel();
         lblThanhVien = new javax.swing.JLabel();
         txtNameMember = new javax.swing.JTextField();
@@ -131,6 +133,7 @@ public class Main extends javax.swing.JFrame {
         btnSearchEvent = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblListEvent = new javax.swing.JTable();
+        btnExportEvent = new javax.swing.JButton();
         pnlSettingMember1 = new javax.swing.JPanel();
         lblThanhVien1 = new javax.swing.JLabel();
         txtIdEvent = new javax.swing.JTextField();
@@ -465,7 +468,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(txtFindMember, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(btnSearchUser2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         pnlTimChiTieuLayout.setVerticalGroup(
             pnlTimChiTieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -525,6 +528,13 @@ public class Main extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(tblListMember);
 
+        btnExportExcellMember.setText("Export Excel");
+        btnExportExcellMember.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportExcellMemberActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlListMemberLayout = new javax.swing.GroupLayout(pnlListMember);
         pnlListMember.setLayout(pnlListMemberLayout);
         pnlListMemberLayout.setHorizontalGroup(
@@ -538,6 +548,10 @@ public class Main extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 748, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(pnlListMemberLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(btnExportExcellMember)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlListMemberLayout.setVerticalGroup(
             pnlListMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -545,8 +559,10 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(pnlTimChiTieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnExportExcellMember)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         tabMember.addTab("Danh Sách", pnlListMember);
@@ -960,6 +976,13 @@ public class Main extends javax.swing.JFrame {
         });
         jScrollPane5.setViewportView(tblListEvent);
 
+        btnExportEvent.setText("Export Event");
+        btnExportEvent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportEventActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlListMember1Layout = new javax.swing.GroupLayout(pnlListMember1);
         pnlListMember1.setLayout(pnlListMember1Layout);
         pnlListMember1Layout.setHorizontalGroup(
@@ -973,6 +996,10 @@ public class Main extends javax.swing.JFrame {
                         .addGap(19, 19, 19)
                         .addComponent(pnlTimChiTieu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(pnlListMember1Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(btnExportEvent)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlListMember1Layout.setVerticalGroup(
             pnlListMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -980,8 +1007,10 @@ public class Main extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(pnlTimChiTieu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnExportEvent)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Danh Sách", pnlListMember1);
@@ -2394,6 +2423,16 @@ public class Main extends javax.swing.JFrame {
         exportFileGGSheetResponseRegisterForm();
     }//GEN-LAST:event_ggSheetExportActionPerformed
 
+    private void btnExportExcellMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportExcellMemberActionPerformed
+        // TODO add your handling code here:
+        exportExcellMember();
+    }//GEN-LAST:event_btnExportExcellMemberActionPerformed
+
+    private void btnExportEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportEventActionPerformed
+        // TODO add your handling code here:
+        exportExcellEvent();
+    }//GEN-LAST:event_btnExportEventActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2442,6 +2481,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnDeleteEvent;
     private javax.swing.JButton btnDeleteMember;
     private javax.swing.JButton btnDeleteUser;
+    private javax.swing.JButton btnExportEvent;
+    private javax.swing.JButton btnExportExcellMember;
     private javax.swing.JButton btnFirstEvent;
     private javax.swing.JButton btnFirstMember;
     private javax.swing.JButton btnFirstUser;
@@ -2806,6 +2847,23 @@ public class Main extends javax.swing.JFrame {
         btnNextMember.setEnabled(!last);
         btnLastMember.setEnabled(!last);
     }
+    
+    private void exportExcellMember(){
+        List<User> members = memberController.getAllMembers();
+        if(members.isEmpty() || members == null){
+            System.out.println("ko co data");
+        }
+        memberController.exportExcellAllMember(members);
+    }
+    
+    private void exportExcellEvent(){
+        List<Event> events = eventController.getAllEvents();
+        if(events.isEmpty() || events == null){
+            System.out.println("ko co data");
+        }
+        eventController.exportExcellAllEvent(events);
+    }
+    
 
     //======================================================================================================
 //    User start
@@ -3046,6 +3104,7 @@ public class Main extends javax.swing.JFrame {
         btnNextUser.setEnabled(edit && !last);
         btnLastUser.setEnabled(edit && !last);
     }
+    
 
     //*********************************************************************************************************
     //Event start
