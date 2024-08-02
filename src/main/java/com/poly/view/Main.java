@@ -133,6 +133,7 @@ public class Main extends javax.swing.JFrame {
         btnSearchEvent = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblListEvent = new javax.swing.JTable();
+        btnExportEvent = new javax.swing.JButton();
         pnlSettingMember1 = new javax.swing.JPanel();
         lblThanhVien1 = new javax.swing.JLabel();
         txtIdEvent = new javax.swing.JTextField();
@@ -975,6 +976,13 @@ public class Main extends javax.swing.JFrame {
         });
         jScrollPane5.setViewportView(tblListEvent);
 
+        btnExportEvent.setText("Export Event");
+        btnExportEvent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportEventActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlListMember1Layout = new javax.swing.GroupLayout(pnlListMember1);
         pnlListMember1.setLayout(pnlListMember1Layout);
         pnlListMember1Layout.setHorizontalGroup(
@@ -988,6 +996,10 @@ public class Main extends javax.swing.JFrame {
                         .addGap(19, 19, 19)
                         .addComponent(pnlTimChiTieu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(pnlListMember1Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(btnExportEvent)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlListMember1Layout.setVerticalGroup(
             pnlListMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -995,8 +1007,10 @@ public class Main extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(pnlTimChiTieu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnExportEvent)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Danh Sách", pnlListMember1);
@@ -2414,6 +2428,11 @@ public class Main extends javax.swing.JFrame {
         exportExcellMember();
     }//GEN-LAST:event_btnExportExcellMemberActionPerformed
 
+    private void btnExportEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportEventActionPerformed
+        // TODO add your handling code here:
+        exportExcellEvent();
+    }//GEN-LAST:event_btnExportEventActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2462,6 +2481,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnDeleteEvent;
     private javax.swing.JButton btnDeleteMember;
     private javax.swing.JButton btnDeleteUser;
+    private javax.swing.JButton btnExportEvent;
     private javax.swing.JButton btnExportExcellMember;
     private javax.swing.JButton btnFirstEvent;
     private javax.swing.JButton btnFirstMember;
@@ -2834,6 +2854,14 @@ public class Main extends javax.swing.JFrame {
             System.out.println("ko co data");
         }
         memberController.exportExcellAllMember(members);
+    }
+    
+    private void exportExcellEvent(){
+        List<Event> events = eventController.getAllEvents();
+        if(events.isEmpty() || events == null){
+            System.out.println("ko co data");
+        }
+        eventController.exportExcellAllEvent(events);
     }
     
 
