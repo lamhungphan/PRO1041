@@ -78,13 +78,7 @@ public class UserController {
 
     public User createUser(User user, String roleName) {
         User createdUser = userService.save(user, roleName);
-        if (createdUser != null) {
-            MsgBox.alert(null, "Tạo người dùng thành công!");
-            return createdUser;
-        } else {
-            MsgBox.alert(null, "Không thể tạo người dùng.");
-            return null;
-        }
+        return createdUser;
     }
 
     public User readUserById(Integer id) {
@@ -105,22 +99,11 @@ public class UserController {
 
     public void updateUser(User user) {
         User updatedUser = userService.update(user);
-        if (updatedUser != null) {
-            MsgBox.alert(null, "Cập nhật người dùng thành công!");
-        } else {
-            MsgBox.alert(null, "Không thể cập nhật người dùng.");
-        }
     }
 
     public User deleteUser(Integer id) {
         User deletedUser = userService.delete(id);
-        if (deletedUser != null) {
-            MsgBox.alert(null, "Xóa người dùng thành công!");
-            return deletedUser;
-        } else {
-            MsgBox.alert(null, "Không thể xóa người dùng.");
-            return null;
-        }
+        return deletedUser;
     }
 
     public List<User> getAllUsers() {
