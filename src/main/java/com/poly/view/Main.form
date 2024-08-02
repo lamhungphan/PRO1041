@@ -475,6 +475,8 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                               <Component id="btnExportExcellMember" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                              <Component id="btnImportExcel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -487,7 +489,10 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jScrollPane4" min="-2" pref="376" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnExportExcellMember" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="btnExportExcellMember" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnImportExcel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace pref="25" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -623,11 +628,16 @@
                     </Container>
                     <Component class="javax.swing.JButton" name="btnExportExcellMember">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Export Excel"/>
+                        <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t Excel"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExportExcellMemberActionPerformed"/>
                       </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btnImportExcel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Nh&#x1ead;p Excel"/>
+                      </Properties>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1194,6 +1204,8 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                               <Component id="btnExportEvent" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                              <Component id="btnImportEvent" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -1206,7 +1218,10 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jScrollPane5" min="-2" pref="379" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnExportEvent" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="btnExportEvent" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnImportEvent" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace pref="31" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -1298,11 +1313,16 @@
                     </Container>
                     <Component class="javax.swing.JButton" name="btnExportEvent">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Export Event"/>
+                        <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t Event"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExportEventActionPerformed"/>
                       </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btnImportEvent">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Nh&#x1ead;p Excel"/>
+                      </Properties>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1705,9 +1725,9 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                              <Component id="ggSheetExport" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnGGSheetExport" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                              <Component id="ggSheetImport" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnGGSheetImport" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -1727,8 +1747,8 @@
                               </Group>
                               <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="ggSheetExport" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                                  <Component id="ggSheetImport" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                                  <Component id="btnGGSheetExport" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                                  <Component id="btnGGSheetImport" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="60" max="32767" attributes="0"/>
                           </Group>
@@ -1750,15 +1770,15 @@
                     </Component>
                     <Component class="com.toedter.calendar.JDateChooser" name="ggSheetEndedDate">
                     </Component>
-                    <Component class="javax.swing.JButton" name="ggSheetExport">
+                    <Component class="javax.swing.JButton" name="btnGGSheetExport">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/com/m2mgroup/image/Refresh.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Export EXCEL"/>
+                        <Property name="text" type="java.lang.String" value="Nh&#x1ead;p EXCEL"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ggSheetExportActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGGSheetExportActionPerformed"/>
                       </Events>
                     </Component>
                     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -1844,15 +1864,15 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ggSheetFindActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="ggSheetImport">
+                    <Component class="javax.swing.JButton" name="btnGGSheetImport">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/com/m2mgroup/image/Refresh.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Import EXCEL"/>
+                        <Property name="text" type="java.lang.String" value="Nh&#x1ead;p sang th&#xe0;nh vi&#xea;n"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ggSheetImportActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGGSheetImportActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>

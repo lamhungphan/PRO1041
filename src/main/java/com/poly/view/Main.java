@@ -96,6 +96,7 @@ public class Main extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         tblListMember = new javax.swing.JTable();
         btnExportExcellMember = new javax.swing.JButton();
+        btnImportExcel = new javax.swing.JButton();
         pnlSettingMember = new javax.swing.JPanel();
         lblThanhVien = new javax.swing.JLabel();
         txtNameMember = new javax.swing.JTextField();
@@ -134,6 +135,7 @@ public class Main extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         tblListEvent = new javax.swing.JTable();
         btnExportEvent = new javax.swing.JButton();
+        btnImportEvent = new javax.swing.JButton();
         pnlSettingMember1 = new javax.swing.JPanel();
         lblThanhVien1 = new javax.swing.JLabel();
         txtIdEvent = new javax.swing.JTextField();
@@ -163,11 +165,11 @@ public class Main extends javax.swing.JFrame {
         ggSheetStartedDate = new com.toedter.calendar.JDateChooser();
         lblEndedDate = new javax.swing.JLabel();
         ggSheetEndedDate = new com.toedter.calendar.JDateChooser();
-        ggSheetExport = new javax.swing.JButton();
+        btnGGSheetExport = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblGGSheet = new javax.swing.JTable();
         ggSheetFind = new javax.swing.JButton();
-        ggSheetImport = new javax.swing.JButton();
+        btnGGSheetImport = new javax.swing.JButton();
         pnlNotification = new javax.swing.JPanel();
         tabNotification = new javax.swing.JTabbedPane();
         pnlListMember3 = new javax.swing.JPanel();
@@ -528,12 +530,14 @@ public class Main extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(tblListMember);
 
-        btnExportExcellMember.setText("Export Excel");
+        btnExportExcellMember.setText("Xuất Excel");
         btnExportExcellMember.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExportExcellMemberActionPerformed(evt);
             }
         });
+
+        btnImportExcel.setText("Nhập Excel");
 
         javax.swing.GroupLayout pnlListMemberLayout = new javax.swing.GroupLayout(pnlListMember);
         pnlListMember.setLayout(pnlListMemberLayout);
@@ -551,6 +555,8 @@ public class Main extends javax.swing.JFrame {
             .addGroup(pnlListMemberLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(btnExportExcellMember)
+                .addGap(57, 57, 57)
+                .addComponent(btnImportExcel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlListMemberLayout.setVerticalGroup(
@@ -561,7 +567,9 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnExportExcellMember)
+                .addGroup(pnlListMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnExportExcellMember)
+                    .addComponent(btnImportExcel))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
@@ -976,12 +984,14 @@ public class Main extends javax.swing.JFrame {
         });
         jScrollPane5.setViewportView(tblListEvent);
 
-        btnExportEvent.setText("Export Event");
+        btnExportEvent.setText("Xuất Event");
         btnExportEvent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExportEventActionPerformed(evt);
             }
         });
+
+        btnImportEvent.setText("Nhập Excel");
 
         javax.swing.GroupLayout pnlListMember1Layout = new javax.swing.GroupLayout(pnlListMember1);
         pnlListMember1.setLayout(pnlListMember1Layout);
@@ -999,6 +1009,8 @@ public class Main extends javax.swing.JFrame {
             .addGroup(pnlListMember1Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(btnExportEvent)
+                .addGap(62, 62, 62)
+                .addComponent(btnImportEvent)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlListMember1Layout.setVerticalGroup(
@@ -1009,7 +1021,9 @@ public class Main extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnExportEvent)
+                .addGroup(pnlListMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnExportEvent)
+                    .addComponent(btnImportEvent))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
@@ -1251,11 +1265,11 @@ public class Main extends javax.swing.JFrame {
 
         lblEndedDate.setText("Đến ngày:");
 
-        ggSheetExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Refresh.png"))); // NOI18N
-        ggSheetExport.setText("Export EXCEL");
-        ggSheetExport.addActionListener(new java.awt.event.ActionListener() {
+        btnGGSheetExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Refresh.png"))); // NOI18N
+        btnGGSheetExport.setText("Nhập EXCEL");
+        btnGGSheetExport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ggSheetExportActionPerformed(evt);
+                btnGGSheetExportActionPerformed(evt);
             }
         });
 
@@ -1280,11 +1294,11 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        ggSheetImport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Refresh.png"))); // NOI18N
-        ggSheetImport.setText("Import EXCEL");
-        ggSheetImport.addActionListener(new java.awt.event.ActionListener() {
+        btnGGSheetImport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Refresh.png"))); // NOI18N
+        btnGGSheetImport.setText("Nhập sang thành viên");
+        btnGGSheetImport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ggSheetImportActionPerformed(evt);
+                btnGGSheetImportActionPerformed(evt);
             }
         });
 
@@ -1312,9 +1326,9 @@ public class Main extends javax.swing.JFrame {
                         .addGap(94, 94, 94))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(52, 52, 52)
-                .addComponent(ggSheetExport)
+                .addComponent(btnGGSheetExport)
                 .addGap(34, 34, 34)
-                .addComponent(ggSheetImport)
+                .addComponent(btnGGSheetImport)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -1331,8 +1345,8 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(ggSheetFind))
                 .addGap(51, 51, 51)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ggSheetExport, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ggSheetImport, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnGGSheetExport, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGGSheetImport, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
 
@@ -2410,18 +2424,18 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tblListMemberMouseEntered
 
-    private void ggSheetImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ggSheetImportActionPerformed
+    private void btnGGSheetImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGGSheetImportActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ggSheetImportActionPerformed
+    }//GEN-LAST:event_btnGGSheetImportActionPerformed
 
     private void ggSheetFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ggSheetFindActionPerformed
-
+        fillDataResponseRegisterForm();
     }//GEN-LAST:event_ggSheetFindActionPerformed
 
-    private void ggSheetExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ggSheetExportActionPerformed
+    private void btnGGSheetExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGGSheetExportActionPerformed
         // TODO add your handling code here:
         exportFileGGSheetResponseRegisterForm();
-    }//GEN-LAST:event_ggSheetExportActionPerformed
+    }//GEN-LAST:event_btnGGSheetExportActionPerformed
 
     private void btnExportExcellMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportExcellMemberActionPerformed
         // TODO add your handling code here:
@@ -2461,7 +2475,6 @@ public class Main extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -2486,6 +2499,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnFirstEvent;
     private javax.swing.JButton btnFirstMember;
     private javax.swing.JButton btnFirstUser;
+    private javax.swing.JButton btnGGSheetExport;
+    private javax.swing.JButton btnGGSheetImport;
+    private javax.swing.JButton btnImportEvent;
+    private javax.swing.JButton btnImportExcel;
     private javax.swing.JButton btnLastEvent;
     private javax.swing.JButton btnLastMember;
     private javax.swing.JButton btnLastUser;
@@ -2511,9 +2528,7 @@ public class Main extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser dcEndedDateEvent;
     private com.toedter.calendar.JDateChooser dcStartedDateEvent;
     private com.toedter.calendar.JDateChooser ggSheetEndedDate;
-    private javax.swing.JButton ggSheetExport;
     private javax.swing.JButton ggSheetFind;
-    private javax.swing.JButton ggSheetImport;
     private com.toedter.calendar.JDateChooser ggSheetStartedDate;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -2686,7 +2701,7 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void fillMemberToTable() {
-        List<User> members = memberController.getMembersByRole();
+        members = memberController.getMembersByRole();
         DefaultTableModel tableModelMember = (DefaultTableModel) tblListMember.getModel();
         tableModelMember.setRowCount(0);
         try {
@@ -2847,23 +2862,13 @@ public class Main extends javax.swing.JFrame {
         btnNextMember.setEnabled(!last);
         btnLastMember.setEnabled(!last);
     }
-    
-    private void exportExcellMember(){
-        List<User> members = memberController.getAllMembers();
-        if(members.isEmpty() || members == null){
+
+    private void exportExcellMember() {
+        if (members.isEmpty() || members == null) {
             System.out.println("ko co data");
         }
         memberController.exportExcellAllMember(members);
     }
-    
-    private void exportExcellEvent(){
-        List<Event> events = eventController.getAllEvents();
-        if(events.isEmpty() || events == null){
-            System.out.println("ko co data");
-        }
-        eventController.exportExcellAllEvent(events);
-    }
-    
 
     //======================================================================================================
 //    User start
@@ -3104,7 +3109,6 @@ public class Main extends javax.swing.JFrame {
         btnNextUser.setEnabled(edit && !last);
         btnLastUser.setEnabled(edit && !last);
     }
-    
 
     //*********************************************************************************************************
     //Event start
@@ -3311,11 +3315,18 @@ public class Main extends javax.swing.JFrame {
         btnLastEvent.setEnabled(edit && !last);
     }
 
-    private void fillDataResponseRegisterForm(){
+    private void exportExcellEvent() {
+        if (events.isEmpty() || events == null) {
+            System.out.println("ko co data");
+        }
+        eventController.exportExcellAllEvent(events);
+    }
+
+    private void fillDataResponseRegisterForm() {
         eventController.getAllResponseRegisterForm();
     }
-    
-    private void exportFileGGSheetResponseRegisterForm(){
+
+    private void exportFileGGSheetResponseRegisterForm() {
         eventController.exportGGSheetResponseRegisterForm();
     }
 }
