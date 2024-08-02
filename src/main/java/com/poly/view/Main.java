@@ -47,7 +47,7 @@ public class Main extends javax.swing.JFrame {
         initMemberController();
         initUserController();
         initEventController();
-
+    
     }
 
     private void showCard(String cardName) {

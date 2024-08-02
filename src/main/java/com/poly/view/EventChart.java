@@ -1,6 +1,7 @@
 package com.poly.view;
 
 import com.poly.services.EventService;
+import com.poly.services.impl.EventServiceImpl;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -12,10 +13,10 @@ import java.awt.*;
 
 public class EventChart extends JFrame {
 
-    private EventService eventService;
+    private EventServiceImpl eventServiceImpl;
 
-    public EventChart(EventService eventService) {
-        this.eventService = eventService;
+    public EventChart(EventServiceImpl eventServiceImpl ) {
+        this.eventServiceImpl  = eventServiceImpl ;
         initialize();
 
 //        // Tạo dataset
@@ -37,18 +38,18 @@ public class EventChart extends JFrame {
     }
 
     private void initialize() {
-        List<Object[]> data = eventService.getMemberCountByEvent();
+        List<Object[]> data = eventServiceImpl.getMemberCountByEvent();
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
         for (Object[] row : data) {
             String eventName = (String) row[0];
             Long memberCount = (Long) row[1];
-            dataset.addValue(memberCount, "Members", eventName);
+            dataset.addValue(memberCount, "Thành viên", eventName);
         }
         JFreeChart barChart = ChartFactory.createBarChart(
-                "Member Participation by Event",
-                "Event",
-                "Number of Members",
+                "Thành viên tham gia sự kiện",
+                "Sự kiện",
+                "Số lượng thành viên",
                 dataset,
                 PlotOrientation.VERTICAL,
                 true, true, false);

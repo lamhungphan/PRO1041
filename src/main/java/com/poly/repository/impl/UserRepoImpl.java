@@ -72,10 +72,11 @@ public class UserRepoImpl implements UserRepository {
 
     @Override
     public List<User> findAll() {
-        String jpql = "Select o from User o";
+        String jpql = "Select u from User u";
         TypedQuery<User> query = em.createQuery(jpql, User.class);
         return query.getResultList();
     }
+       
     @Override
     public User findByEmail(String email) {
         TypedQuery<User> query = em.createQuery("SELECT u FROM User u WHERE u.email = :email", User.class);
