@@ -74,7 +74,7 @@ public class IOExcells implements Serializable {
             FileOutputStream outputStream = new FileOutputStream(filePath);
             workbook.write(outputStream);
             File fileName = new File(filePath);
-            MsgBox.alert(null, "Lưu thành công file: " + fileName.getName());
+            MsgBox.alert(null, "Lưu thành công file: " + fileName.getName() + "\n" + "Đường dẫn tệp: " + filePath);
         } catch (IOException e) {
             System.err.println("Error while exporting to Excel: " + e.getMessage());
             e.printStackTrace();
@@ -225,4 +225,6 @@ public class IOExcells implements Serializable {
             e.printStackTrace();
         }
     }
+    
+    
 }
