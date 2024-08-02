@@ -106,14 +106,14 @@ insert into users (roleId, username, password, fullName, birthDay, email, addres
 (4, 'user24', '3221', N'User 24', '2001-12-01', 'user24@example.com', N'101 Đường UU, Cần Thơ', '0909123424', 1, 2, '2023-02-24', '2023-02-24', 1, 7);
 
 insert into events (userId, title, content, location, status, startedDate, endedDate, createdDate, updatedDate) values
-(1, 'Hội thảo Java Cơ Bản', 'Tìm hiểu các kiến thức cơ bản về lập trình Java.', 'Phòng 101', 'sắp diễn ra', '2024-08-01', '2024-08-01', '2024-07-10', '2024-07-10'),
-(2, 'Kỹ Thuật Java Nâng Cao', 'Làm chủ các kỹ thuật lập trình Java nâng cao.', 'Phòng 102', 'sắp diễn ra', '2024-08-05', '2024-08-05', '2024-07-10', '2024-07-10'),
-(3, 'Java cho Phát Triển Web', 'Khám phá Java trong phát triển web.', 'Phòng 103', 'sắp diễn ra', '2024-08-10', '2024-08-10', '2024-07-10', '2024-07-10'),
-(4, 'Giới Thiệu Spring Boot', 'Bắt đầu với Spring Boot.', 'Phòng 104', 'sắp diễn ra', '2024-08-15', '2024-08-15', '2024-07-10', '2024-07-10'),
-(1, 'Viết CV Hiệu Quả', 'Học cách viết một CV hiệu quả.', 'Phòng 105', 'sắp diễn ra', '2024-08-20', '2024-08-20', '2024-07-10', '2024-07-10'),
-(2, 'Kỹ Năng Thuyết Trình', 'Cải thiện kỹ năng thuyết trình trước đám đông.', 'Phòng 106', 'sắp diễn ra', '2024-08-25', '2024-08-25', '2024-07-10', '2024-07-10'),
-(3, 'Kỹ Thuật Giải Quyết Vấn Đề', 'Nâng cao kỹ năng giải quyết vấn đề.', 'Phòng 107', 'sắp diễn ra', '2024-08-30', '2024-08-30', '2024-07-10', '2024-07-10'),
-(1, 'Trình Diễn Dự Án Java', 'Trình diễn các dự án Java của bạn.', 'Phòng 108', 'sắp diễn ra', '2024-09-05', '2024-09-05', '2024-07-10', '2024-07-10');
+(30, 'Hội thảo Java Cơ Bản', 'Tìm hiểu các kiến thức cơ bản về lập trình Java.', 'Phòng 101', 'sắp diễn ra', '2024-08-01', '2024-08-01', '2024-07-10', '2024-07-10'),
+(30, 'Kỹ Thuật Java Nâng Cao', 'Làm chủ các kỹ thuật lập trình Java nâng cao.', 'Phòng 102', 'sắp diễn ra', '2024-08-05', '2024-08-05', '2024-07-10', '2024-07-10'),
+(31, 'Java cho Phát Triển Web', 'Khám phá Java trong phát triển web.', 'Phòng 103', 'sắp diễn ra', '2024-08-10', '2024-08-10', '2024-07-10', '2024-07-10'),
+(31, 'Giới Thiệu Spring Boot', 'Bắt đầu với Spring Boot.', 'Phòng 104', 'sắp diễn ra', '2024-08-15', '2024-08-15', '2024-07-10', '2024-07-10'),
+(32, 'Viết CV Hiệu Quả', 'Học cách viết một CV hiệu quả.', 'Phòng 105', 'sắp diễn ra', '2024-08-20', '2024-08-20', '2024-07-10', '2024-07-10'),
+(30, 'Kỹ Năng Thuyết Trình', 'Cải thiện kỹ năng thuyết trình trước đám đông.', 'Phòng 106', 'sắp diễn ra', '2024-08-25', '2024-08-25', '2024-07-10', '2024-07-10'),
+(33, 'Kỹ Thuật Giải Quyết Vấn Đề', 'Nâng cao kỹ năng giải quyết vấn đề.', 'Phòng 107', 'sắp diễn ra', '2024-08-30', '2024-08-30', '2024-07-10', '2024-07-10'),
+(31, 'Trình Diễn Dự Án Java', 'Trình diễn các dự án Java của bạn.', 'Phòng 108', 'sắp diễn ra', '2024-09-05', '2024-09-05', '2024-07-10', '2024-07-10');
 
 INSERT INTO users (roleId, username, password, fullName, birthDay, email, address, phone, createdDate, updatedDate, isActived)VALUES 
 (0, 'trinhdongkhanh.work', '123456', N'Trịnh Đồng Khánh', '2004', 'trinhdongkhanh.work@gmail.com', N'Dĩ An Bình Dương', '0378187802', '2024-08-01', '2024-08-01', 1),
