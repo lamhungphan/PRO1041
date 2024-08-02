@@ -10,16 +10,15 @@ public class InputFields {
         if (isNumber(numb)) {
             txt.setText(numb);
         } else {
-            MsgBox.alert(null, "Invalid input: Not a number");
+            MsgBox.alert(null, "Vui lòng nhập số");
         }
 
     }
 
     public static String getTextFieldtoString(JTextField txt) {
         if(txt.getText().equals("") || txt.getText().equals(" ") || txt.getText().equals("null")) {
-            MsgBox.alert(null, "Vui lòng nhập vào!");
             txt.requestFocus();
-            return getTextFieldtoString(txt);
+            return null;
         }
         return txt.getText();
     }
