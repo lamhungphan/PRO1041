@@ -89,3 +89,17 @@ insert into events (userId, title, content, location, status, startedDate, ended
 (2, 'Kỹ Năng Thuyết Trình', 'Cải thiện kỹ năng thuyết trình trước đám đông.', 'Phòng 106', 'sắp diễn ra', '2024-08-25', '2024-08-25', '2024-07-10', '2024-07-10'),
 (3, 'Kỹ Thuật Giải Quyết Vấn Đề', 'Nâng cao kỹ năng giải quyết vấn đề.', 'Phòng 107', 'sắp diễn ra', '2024-08-30', '2024-08-30', '2024-07-10', '2024-07-10'),
 (1, 'Trình Diễn Dự Án Java', 'Trình diễn các dự án Java của bạn.', 'Phòng 108', 'sắp diễn ra', '2024-09-05', '2024-09-05', '2024-07-10', '2024-07-10');
+
+INSERT INTO users (roleId, username, password, fullName, birthDay, email, address, phone, createdDate, updatedDate, isActived)VALUES 
+(0, 'trinhdongkhanh.work', '123456', N'Trịnh Đồng Khánh', '2004', 'trinhdongkhanh.work@gmail.com', N'Dĩ An Bình Dương', '0378187802', '2024-08-01', '2024-08-01', 1),
+(0, 'leduananh96', '123456', N'Lê Duẩn Anh', '1996', 'leduananh96@gmail.com', N'gò vấp', '09093557156', '2024-08-01', '2024-08-01', 1),
+(0, 'peterdamlinh1215', '123456', N'Nguyễn Đàm Hoàng Linh', '2000', 'peterdamlinh1215@gmail.com', N'Gò Vấp', '0339974614', '2024-08-01', '2024-08-01', 1),
+(0, 'mnam3239', '123456', N'Mai Văn Nam', '2005', 'mnam3239@gmail.com', N'Quận Bình Tân', '0917174910', '2024-08-01', '2024-08-01', 1),
+(0, 'nguyentanloc3991', '123456', N'Nguyễn Tấn Lộc', '2004', 'nguyentanloc3991@gmail.com', N'Quận 8', '0379585044', '2024-08-01', '2024-08-01', 1),
+(0, 'truongtritrung1801', '123456', N'Trương Trí Trung', '2005', 'truongtritrung1801@gmail.com', N'Huyện Bình Chánh', '0563435668', '2024-08-01', '2024-08-01', 1),
+(0, 'vinhptps38840', '123456', N'Phan Thành Vinh ', '2005', 'vinhptps38840@gmail.com', N'nan', '0373696299', '2024-08-01', '2024-08-01', 1),
+(0, 'phuongndps39487', '123456', N'Nguyễn Duy Phương', '2005', 'phuongndps39487@gmail.com', N'quận 12', '0865181657', '2024-08-01', '2024-08-01', 1),
+(0, 'dangquocthanhsaclo', '123456', N'Đặng Quốc Thanh', '1995', 'dangquocthanhsaclo@gmail.com', N'Công phâng mềm Quảng Trung', '0377768950', '2024-08-01', '2024-08-01', 1);
+
+                                                                                                                                    ;
+

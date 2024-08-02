@@ -3,7 +3,7 @@ package com.poly.repository;
 import com.poly.entity.Event;
 import java.util.List;
 
-public interface EventRepository{
+public interface EventRepository {
 
     Event create(Event entity);
 
@@ -14,4 +14,6 @@ public interface EventRepository{
     Event findById(Integer id);
 
     List<Event> findAll();
+
+    List<Object[]> countMembersByEvent();
 }

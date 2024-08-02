@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 package com.poly.controller;
 
 import com.poly.entity.Event;
@@ -14,6 +13,8 @@ import com.poly.services.UserService;
 import com.poly.utils.ComponentManagement;
 import com.poly.utils.InputFields;
 import com.poly.utils.MsgBox;
+import com.poly.utils.RegExInputFields;
+import com.poly.view.Main;
 import com.toedter.calendar.JDateChooser;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,8 +28,6 @@ import javax.swing.table.DefaultTableModel;
  * @author Computer
  */
 public class EventController {
-
-
 
     EventService eventService = EventInjector.getInstance().getEventService();
     UserService userService = UserInjector.getInstance().getUserService();
@@ -73,6 +72,4 @@ public class EventController {
     public List<Event> getAllEvents() {
         return eventService.findAll();
     }
-
-
 }
