@@ -285,11 +285,11 @@
                                   <Component id="lblAttendance" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblEventContent" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="216" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="188" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblTotalMembers" min="-2" pref="37" max="-2" attributes="0"/>
-                                  <Component id="lblTotalAttendance" min="-2" pref="37" max="-2" attributes="0"/>
-                                  <Component id="lblTotalEventContent" min="-2" pref="37" max="-2" attributes="0"/>
+                                  <Component id="lblTotalEventContent" min="-2" pref="65" max="-2" attributes="0"/>
+                                  <Component id="lblTotalAttendance" min="-2" pref="65" max="-2" attributes="0"/>
+                                  <Component id="lblTotalMembers" min="-2" pref="65" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
