@@ -13,6 +13,7 @@ import com.poly.injection.AccountInjector;
 import com.poly.injection.AuthorizationInjector;
 import com.poly.injection.MailInjector;
 import com.poly.injection.UserInjector;
+import com.poly.repository.impl.UserRepoImpl;
 import com.poly.utils.IOExcells;
 import com.poly.utils.InputFields;
 import com.poly.utils.MsgBox;
@@ -44,6 +45,7 @@ public class Main extends javax.swing.JFrame {
     MemberController memberController = new MemberController();
     String buttonDirection;
     List<User> listAllUser = new UserController().getAllUsers();
+    UserRepoImpl userRepo = new UserRepoImpl();
 
     public Main() {
         initComponents();
@@ -53,6 +55,7 @@ public class Main extends javax.swing.JFrame {
         initMemberController();
         initUserController();
         initEventController();
+        totalMembers();
     }
 
     private void showCard(String cardName) {
@@ -407,11 +410,11 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(lblMembers)
                             .addComponent(lblAttendance)
                             .addComponent(lblEventContent))
-                        .addGap(216, 216, 216)
+                        .addGap(188, 188, 188)
                         .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTotalMembers, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblTotalAttendance, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblTotalEventContent, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(lblTotalEventContent, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblTotalAttendance, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblTotalMembers, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(153, Short.MAX_VALUE))
         );
         pnlMainLayout.setVerticalGroup(
@@ -2650,6 +2653,10 @@ public class Main extends javax.swing.JFrame {
     //Member start
     List<User> members;
 
+    private void totalMembers() {
+        lblTotalMembers.setText(String.valueOf(userRepo. countTotalMembers()));
+    }
+
     private void initMemberController() {
         fillMemberToTable();
         updateStatusMember();
@@ -3056,7 +3063,6 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void editUser() {
-
         int selectedRow = row;
         if (selectedRow >= 0) {
             Object value = tblListUser.getValueAt(selectedRow, 0);
