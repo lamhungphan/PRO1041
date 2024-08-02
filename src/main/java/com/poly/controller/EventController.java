@@ -68,4 +68,7 @@ public class EventController {
         IOExcells.exportToExcelGGSheet(dataList);
     }
 
+    public void exportExcellAllEvent(List<Event> dataList){
+        IOExcells.exportToExcelEvent(dataList);
+    }
 }
