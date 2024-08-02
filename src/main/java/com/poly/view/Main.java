@@ -14,6 +14,7 @@ import com.poly.injection.AccountInjector;
 import com.poly.injection.AuthorizationInjector;
 import com.poly.injection.MailInjector;
 import com.poly.injection.UserInjector;
+import com.poly.repository.impl.UserRepoImpl;
 import com.poly.utils.InputFields;
 import com.poly.utils.MsgBox;
 import com.poly.utils.RegExInputFields;
@@ -39,6 +40,7 @@ public class Main extends javax.swing.JFrame {
     MemberController memberController = new MemberController();
     String buttonDirection;
     List<User> listAllUser = new UserController().getAllUsers();
+    UserRepoImpl userRepo = new UserRepoImpl();
 
     public Main() {
         initComponents();
@@ -48,7 +50,7 @@ public class Main extends javax.swing.JFrame {
         initMemberController();
         initUserController();
         initEventController();
-    
+        totalMembers();
     }
 
     private void showCard(String cardName) {
@@ -2542,6 +2544,10 @@ public class Main extends javax.swing.JFrame {
     //Member start
     List<User> members;
 
+    private void totalMembers() {
+        lblTotalMembers.setText(String.valueOf(userRepo. countTotalMembers()));
+    }
+
     private void initMemberController() {
         fillMemberToTable();
         updateStatusMember();
@@ -2941,7 +2947,6 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void editUser() {
-
         int selectedRow = row;
         if (selectedRow >= 0) {
             Object value = tblListUser.getValueAt(selectedRow, 0);
