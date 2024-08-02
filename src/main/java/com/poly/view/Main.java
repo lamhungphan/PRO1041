@@ -8,22 +8,18 @@ import com.poly.entity.Event;
 import com.poly.entity.Role;
 import com.poly.entity.User;
 import javax.swing.JFrame;
-
 import com.poly.injection.AccountInjector;
 import com.poly.injection.AuthorizationInjector;
 import com.poly.injection.MailInjector;
 import com.poly.injection.UserInjector;
-import com.poly.utils.ComponentManagement;
 import com.poly.utils.IOExcells;
 import com.poly.utils.InputFields;
 import com.poly.utils.MsgBox;
 import com.poly.utils.RegExInputFields;
 import com.poly.utils.SheetsQuickstart;
 import java.awt.CardLayout;
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
-import java.sql.Date;
 import java.sql.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -55,7 +51,6 @@ public class Main extends javax.swing.JFrame {
         initMemberController();
         initUserController();
         initEventController();
-
     }
 
     private void showCard(String cardName) {
@@ -160,18 +155,9 @@ public class Main extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         txtContentEvent = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jLabel9 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
+        lblStartedDate = new javax.swing.JLabel();
         ggSheetStartedDate = new com.toedter.calendar.JDateChooser();
-        jLabel9 = new javax.swing.JLabel();
+        lblEndedDate = new javax.swing.JLabel();
         ggSheetEndedDate = new com.toedter.calendar.JDateChooser();
         ggSheetExport = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -326,7 +312,7 @@ public class Main extends javax.swing.JFrame {
         lblTabContainerLayout.setHorizontalGroup(
             lblTabContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lblTabContainerLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(9, Short.MAX_VALUE)
                 .addGroup(lblTabContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTabLogout)
                     .addComponent(lblTabSystem)
@@ -923,7 +909,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(txtFindEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addComponent(btnSearchEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         pnlTimChiTieu1Layout.setVerticalGroup(
             pnlTimChiTieu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1175,7 +1161,7 @@ public class Main extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnLastEvent)
                                 .addGap(64, 64, 64)))))
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         pnlSettingMember1Layout.setVerticalGroup(
             pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1231,9 +1217,9 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPane3.addTab("Sự Kiện", pnlSettingMember1);
 
-        jLabel10.setText("Từ ngày:");
+        lblStartedDate.setText("Từ ngày:");
 
-        jLabel9.setText("Đến ngày:");
+        lblEndedDate.setText("Đến ngày:");
 
         ggSheetExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Refresh.png"))); // NOI18N
         ggSheetExport.setText("Export EXCEL");
@@ -1258,6 +1244,11 @@ public class Main extends javax.swing.JFrame {
 
         ggSheetFind.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Refresh.png"))); // NOI18N
         ggSheetFind.setText("Tìm Kiếm");
+        ggSheetFind.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ggSheetFindActionPerformed(evt);
+            }
+        });
 
         ggSheetImport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Refresh.png"))); // NOI18N
         ggSheetImport.setText("Import EXCEL");
@@ -1279,11 +1270,11 @@ public class Main extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(57, 57, 57)
-                        .addComponent(jLabel10)
+                        .addComponent(lblStartedDate)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ggSheetStartedDate, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel9)
+                        .addComponent(lblEndedDate)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ggSheetEndedDate, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(61, 61, 61)
@@ -1303,8 +1294,8 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblStartedDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblEndedDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ggSheetEndedDate, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
                     .addComponent(ggSheetStartedDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ggSheetFind))
@@ -2389,23 +2380,18 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tblListMemberMouseEntered
 
-    private void ggSheetExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ggSheetExportActionPerformed
-
-        try {
-            // TODO add your handling code here:
-            List<List<Object>> dataList = SheetsQuickstart.assignDataToList();
-            IOExcells.exportToExcelGGSheet(dataList);
-            System.out.println("Xuat file thanh cong");
-        } catch (IOException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (GeneralSecurityException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_ggSheetExportActionPerformed
-
     private void ggSheetImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ggSheetImportActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ggSheetImportActionPerformed
+
+    private void ggSheetFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ggSheetFindActionPerformed
+
+    }//GEN-LAST:event_ggSheetFindActionPerformed
+
+    private void ggSheetExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ggSheetExportActionPerformed
+        // TODO add your handling code here:
+        exportFileGGSheetResponseRegisterForm();
+    }//GEN-LAST:event_ggSheetExportActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2487,24 +2473,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton ggSheetFind;
     private javax.swing.JButton ggSheetImport;
     private com.toedter.calendar.JDateChooser ggSheetStartedDate;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -2513,13 +2481,13 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPane3;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblAttendance;
     private javax.swing.JLabel lblClubName;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblEmail1;
     private javax.swing.JLabel lblEmail2;
     private javax.swing.JLabel lblEmail3;
+    private javax.swing.JLabel lblEndedDate;
     private javax.swing.JLabel lblEvent;
     private javax.swing.JLabel lblEventContent;
     private javax.swing.JLabel lblGhiChu3;
@@ -2549,6 +2517,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel lblSoDT7;
     private javax.swing.JLabel lblSoDT8;
     private javax.swing.JLabel lblSoDT9;
+    private javax.swing.JLabel lblStartedDate;
     private javax.swing.JPanel lblTabContainer;
     private javax.swing.JLabel lblTabEvents;
     private javax.swing.JLabel lblTabLogout;
@@ -3007,6 +2976,7 @@ public class Main extends javax.swing.JFrame {
     void initEventController() {
         fillTableEvent();
         updateStatusEvent();
+        fillDataResponseRegisterForm();
     }
 
     private void fillTableEvent() {
@@ -3175,5 +3145,13 @@ public class Main extends javax.swing.JFrame {
         btnPreviousEvent.setEnabled(edit && !first);
         btnNextEvent.setEnabled(edit && !last);
         btnLastEvent.setEnabled(edit && !last);
+    }
+
+    private void fillDataResponseRegisterForm(){
+        eventController.getAllResponseRegisterForm();
+    }
+    
+    private void exportFileGGSheetResponseRegisterForm(){
+        eventController.exportGGSheetResponseRegisterForm();
     }
 }
