@@ -24,18 +24,12 @@ public class Account implements Serializable {
     @Id
     private Integer id;
 
-
-
-
-
-
-
-    
+    @Column(name = "username")
     private String username;
 
     @Column(name = "password")
     private String password;
 
-    @Column(name="isActive")
+    @Column(name = "isActive")
     private Boolean isActived;
 }

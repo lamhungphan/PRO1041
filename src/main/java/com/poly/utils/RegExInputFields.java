@@ -141,9 +141,28 @@ public class RegExInputFields {
             MsgBox.alert(null, "Username người tạo trống.");
             txtUsernameEvent.setBackground(Color.PINK);
             return false;
-        } else if (Username.matches("^[a-zA-Z][a-zA-Z0-9_]{4,19}$")) {
-            MsgBox.alert(null, "Username không hợp lệ. Username phải bắt đầu bằng chữ cái, dài từ 5 đến 20 ký tự, chỉ chứa chữ cái, số và dấu gạch dưới.");
+//        } else if (Username.matches("^[a-zA-Z][a-zA-Z0-9_]{4,19}$")) {
+//            MsgBox.alert(null, "Username không hợp lệ. Username phải bắt đầu bằng chữ cái, dài từ 5 đến 20 ký tự, chỉ chứa chữ cái, số và dấu gạch dưới.");
+//            return false;
+//        } else if (userCreated == null) {
+//            txtUsernameEvent.setBackground(Color.PINK);
+//            MsgBox.alert(null, Username + " không tồn tại!");
+//            return false;
+        }
+        txtUsernameEvent.setBackground(Color.WHITE);
+        return true;
+    }
+    
+    public static boolean checkUsernameEvent(JTextField txtUsernameEvent) {
+        String Username = txtUsernameEvent.getText();
+        User userCreated = new UserController().readUserByUserName(Username);
+        if (Username.isEmpty()) {
+            MsgBox.alert(null, "Username người tạo trống.");
+            txtUsernameEvent.setBackground(Color.PINK);
             return false;
+//        } else if (Username.matches("^[a-zA-Z][a-zA-Z0-9_]{4,19}$")) {
+//            MsgBox.alert(null, "Username không hợp lệ. Username phải bắt đầu bằng chữ cái, dài từ 5 đến 20 ký tự, chỉ chứa chữ cái, số và dấu gạch dưới.");
+//            return false;
         } else if (userCreated == null) {
             txtUsernameEvent.setBackground(Color.PINK);
             MsgBox.alert(null, Username + " không tồn tại!");
@@ -151,6 +170,15 @@ public class RegExInputFields {
         }
         txtUsernameEvent.setBackground(Color.WHITE);
         return true;
+    }
+    
+    public static String getCheckUsernameEvent(JTextField txtUsername) {
+        while (!checkUsername(txtUsername)) {
+            txtUsername.setText("");
+            txtUsername.requestFocus();
+            return null;
+        }
+        return InputFields.getTextFieldtoString(txtUsername);
     }
 
     public static String getCheckUsername(JTextField txtUsername) {
@@ -237,4 +265,6 @@ public class RegExInputFields {
         }
         return null;
     }
+    
+    
 }
