@@ -5,23 +5,19 @@
 package com.poly.controller;
 
 import com.poly.entity.Event;
-import com.poly.entity.User;
 import com.poly.injection.EventInjector;
 import com.poly.injection.UserInjector;
 import com.poly.services.EventService;
 import com.poly.services.UserService;
-import com.poly.utils.ComponentManagement;
-import com.poly.utils.InputFields;
-import com.poly.utils.MsgBox;
-import com.poly.utils.RegExInputFields;
+import com.poly.utils.IOExcells;
+import com.poly.utils.SheetsQuickstart;
 import com.poly.view.Main;
-import com.toedter.calendar.JDateChooser;
-import java.util.ArrayList;
+
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.util.List;
-import javax.swing.JTable;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -34,13 +30,7 @@ public class EventController {
 
     public Event createEvent(Event event, String usernameManager) {
         Event createdEvent = eventService.save(event, usernameManager);
-        if (createdEvent != null) {
-            MsgBox.alert(null, "Tạo sự kiện thành công!");
-            return createdEvent;
-        } else {
-            MsgBox.alert(null, "Không thể tạo sự kiện.");
-            return null;
-        }
+        return createdEvent;
     }
 
     public Event readEvent(Integer id) {
@@ -49,27 +39,36 @@ public class EventController {
 
     public Event updateEvent(Event event) {
         Event updatedEvent = eventService.update(event);
-        if (updatedEvent != null) {
-            MsgBox.alert(null, "Cập nhật sự kiện thành công!");
-            return updatedEvent;
-        } else {
-            MsgBox.alert(null, "Không thể cập nhật sự kiện.");
-            return null;
-        }
+        return updatedEvent;
     }
 
     public Event deleteEvent(Integer id) {
         Event deletedEvent = eventService.delete(id);
-        if (deletedEvent != null) {
-            MsgBox.alert(null, "Xóa sự kiện thành công!");
-            return deletedEvent;
-        } else {
-            MsgBox.alert(null, "Không thể xóa sự kiện.");
-            return null;
-        }
+        return deletedEvent;
     }
 
     public List<Event> getAllEvents() {
         return eventService.findAll();
+    }
+
+    public List<List<Object>> getAllResponseRegisterForm() {
+        List<List<Object>> dataList = null;
+        try {
+            dataList = SheetsQuickstart.assignDataToList();
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (GeneralSecurityException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return dataList;
+    }
+    
+    public void exportGGSheetResponseRegisterForm(){
+        List<List<Object>> dataList = getAllResponseRegisterForm();
+        IOExcells.exportToExcelGGSheet(dataList);
+    }
+
+    public void exportExcellAllEvent(List<Event> dataList){
+        IOExcells.exportToExcelEvent(dataList);
     }
 }

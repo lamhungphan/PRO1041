@@ -9,11 +9,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import java.sql.Date;
  import java.io.Serializable;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "users")

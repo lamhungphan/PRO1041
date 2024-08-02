@@ -17,5 +17,5 @@ public interface EventService {
 
     List<Event> findAll();
     
-    List<Object[]> getMemberCountByEvent();
+//    List<Object[]> getMemberCountByEvent();
 }
