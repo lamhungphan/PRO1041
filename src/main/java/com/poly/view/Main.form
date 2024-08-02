@@ -279,7 +279,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
                               <Component id="lblClubName" min="-2" pref="550" max="-2" attributes="0"/>
@@ -293,9 +293,9 @@
                               </Group>
                               <EmptySpace min="-2" pref="188" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblTotalEventContent" min="-2" pref="65" max="-2" attributes="0"/>
-                                  <Component id="lblTotalAttendance" min="-2" pref="65" max="-2" attributes="0"/>
-                                  <Component id="lblTotalMembers" min="-2" pref="65" max="-2" attributes="0"/>
+                                  <Component id="lblTotalAttendance" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lblTotalMembers" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lblTotalEventContent" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -495,16 +495,10 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jScrollPane4" min="-2" pref="376" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-<<<<<<< HEAD
                               <Component id="btnExportExcellMember" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-=======
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnExportExcellMember" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnImportExcel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace pref="25" max="32767" attributes="0"/>
->>>>>>> 13f5d4fa29e502fc5835f2824158e4b42cdc1f72
+                              <Component id="btnImportExcel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
