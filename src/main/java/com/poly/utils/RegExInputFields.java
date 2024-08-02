@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.poly.utils;
 
 import com.toedter.calendar.JDateChooser;
@@ -33,7 +29,11 @@ public class RegExInputFields {
     }
 
     public static String getCheckNameMember(JTextField txtFullname) {
-        return checkNameMember(txtFullname) ? InputFields.getTextFieldtoString(txtFullname) : null;
+        while (!checkNameMember(txtFullname)) {
+            txtFullname.setText(""); // Clear the input field for re-entry
+            MsgBox.alert(null, "Tên không hợp lệ. Vui lòng nhập lại.");
+        }
+        return InputFields.getTextFieldtoString(txtFullname);
     }
 
     public static boolean checkPhoneMember(JTextField phoneMemberField) {
@@ -53,7 +53,11 @@ public class RegExInputFields {
     }
 
     public static String getCheckPhoneMember(JTextField phoneMemberField) {
-        return checkPhoneMember(phoneMemberField) ? InputFields.getTextFieldtoString(phoneMemberField) : null;
+        while (!checkPhoneMember(phoneMemberField)) {
+            phoneMemberField.setText(""); // Clear the input field for re-entry
+            MsgBox.alert(null, "Số điện thoại không hợp lệ. Vui lòng nhập lại.");
+        }
+        return InputFields.getTextFieldtoString(phoneMemberField);
     }
 
     public static boolean checkEmail(JTextField emailField) {
@@ -73,7 +77,11 @@ public class RegExInputFields {
     }
 
     public static String getCheckEmail(JTextField emailField) {
-        return checkEmail(emailField) ? InputFields.getTextFieldtoString(emailField) : null;
+        while (!checkEmail(emailField)) {
+            emailField.setText(""); // Clear the input field for re-entry
+            MsgBox.alert(null, "Email không hợp lệ. Vui lòng nhập lại.");
+        }
+        return InputFields.getTextFieldtoString(emailField);
     }
 
     public static boolean checkAddress(JTextField addressField){
@@ -88,7 +96,11 @@ public class RegExInputFields {
     }
 
     public static String getCheckAddress(JTextField addressField) {
-        return checkAddress(addressField) ? InputFields.getTextFieldtoString(addressField) : null;
+        while (!checkAddress(addressField)) {
+            addressField.setText(""); // Clear the input field for re-entry
+            MsgBox.alert(null, "Địa chỉ không hợp lệ. Vui lòng nhập lại.");
+        }
+        return InputFields.getTextFieldtoString(addressField);
     }
 
     public static boolean checkBirthday(Date birthDay) {
@@ -100,8 +112,15 @@ public class RegExInputFields {
     }
 
     public static Date getCheckBirthday(JDateChooser dateChooser) {
-        Date birthDay = dateChooser.getDate();
-        return checkBirthday(birthDay) ? birthDay : null;
+        while (true) {
+            Date birthDay = dateChooser.getDate();
+            if (checkBirthday(birthDay)) {
+                return birthDay;
+            } else {
+                dateChooser.setDate(null); // Clear the date chooser for re-entry
+                MsgBox.alert(null, "Ngày sinh không hợp lệ. Vui lòng nhập lại.");
+            }
+        }
     }
 
     public static boolean checkEventUserId(JTextField txtUserIdEvent) {
@@ -120,7 +139,11 @@ public class RegExInputFields {
     }
 
     public static String getCheckEventUserId(JTextField txtUserIdEvent) {
-        return checkEventUserId(txtUserIdEvent) ? InputFields.getTextFieldtoString(txtUserIdEvent) : null;
+        while (!checkEventUserId(txtUserIdEvent)) {
+            txtUserIdEvent.setText(""); // Clear the input field for re-entry
+            MsgBox.alert(null, "Id người tạo không hợp lệ. Vui lòng nhập lại.");
+        }
+        return InputFields.getTextFieldtoString(txtUserIdEvent);
     }
 
     public static boolean checkEventTitle(JTextField txtEventTitle){
@@ -135,7 +158,11 @@ public class RegExInputFields {
     }
 
     public static String getCheckEventTitle(JTextField txtEventTitle) {
-        return checkEventTitle(txtEventTitle) ? InputFields.getTextFieldtoString(txtEventTitle) : null;
+        while (!checkEventTitle(txtEventTitle)) {
+            txtEventTitle.setText(""); // Clear the input field for re-entry
+            MsgBox.alert(null, "Tên sự kiện không hợp lệ. Vui lòng nhập lại.");
+        }
+        return InputFields.getTextFieldtoString(txtEventTitle);
     }
 
     public static boolean checkEventContent(JTextArea txtEventContent){
@@ -150,7 +177,11 @@ public class RegExInputFields {
     }
 
     public static String getCheckEventContent(JTextArea txtEventContent) {
-        return checkEventContent(txtEventContent) ? txtEventContent.getText().trim() : null;
+        while (!checkEventContent(txtEventContent)) {
+            txtEventContent.setText(""); // Clear the input field for re-entry
+            MsgBox.alert(null, "Nội dung sự kiện không hợp lệ. Vui lòng nhập lại.");
+        }
+        return txtEventContent.getText().trim();
     }
 
     public static boolean checkDayStartedAndEndedCompare(Date startedDate, Date endedDate) {
@@ -167,35 +198,17 @@ public class RegExInputFields {
         return true; 
     }
 
-    public static Date getValidStartDate(JDateChooser startChooser) {
-        Date startedDate = startChooser.getDate();
-        if (startedDate == null) {
-            MsgBox.alert(null, "Ngày bắt đầu trống.");
-            return null;
-        }
-        return startedDate;
-    }
-
-    public static Date getValidEndDate(JDateChooser endChooser) {
-        Date endedDate = endChooser.getDate();
-        if (endedDate == null) {
-            MsgBox.alert(null, "Ngày kết thúc trống.");
-            return null;
-        }
-        return endedDate;
-    }
-
     public static boolean checkDayStartedAndEndedCompare(JDateChooser startChooser, JDateChooser endChooser) {
-        Date startedDate = startChooser.getDate();
-        Date endedDate = endChooser.getDate();
-        if (startedDate == null || endedDate == null) {
-            return false;
+        while (true) {
+            Date startedDate = startChooser.getDate();
+            Date endedDate = endChooser.getDate();
+            if (startedDate == null || endedDate == null || startedDate.after(endedDate)) {
+                startChooser.setDate(null);
+                endChooser.setDate(null);
+                MsgBox.alert(null, "Ngày bắt đầu và kết thúc không hợp lệ. Vui lòng nhập lại.");
+            } else {
+                return true;
+            }
         }
-        if (startedDate.after(endedDate)) {
-            MsgBox.alert(null, "Ngày bắt đầu lớn hơn kết thúc.");
-            return false;
-        }
-        return true;
     }
 }
-

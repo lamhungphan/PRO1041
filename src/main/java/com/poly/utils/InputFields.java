@@ -17,9 +17,8 @@ public class InputFields {
 
     public static String getTextFieldtoString(JTextField txt) {
         if(txt.getText().equals("") || txt.getText().equals(" ") || txt.getText().equals("null")) {
-            MsgBox.alert(null, "Vui lòng nhập vào!");
             txt.requestFocus();
-            return getTextFieldtoString(txt);
+            return null;
         }
         return txt.getText();
     }
