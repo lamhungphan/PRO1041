@@ -63,6 +63,9 @@ public class User implements Serializable {
     @Column(name = "score")
     private String score;
 
+    @Column(name = "attendance")
+    private Integer attendace;
+
     @ManyToOne
     @JoinColumn(name = "roleId", referencedColumnName = "id")
     private Role role;
