@@ -1,9 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.poly.utils;
 
+import com.poly.controller.UserController;
+import com.poly.entity.User;
 import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
 import java.util.Date;
@@ -33,7 +31,12 @@ public class RegExInputFields {
     }
 
     public static String getCheckNameMember(JTextField txtFullname) {
-        return checkNameMember(txtFullname) ? InputFields.getTextFieldtoString(txtFullname) : null;
+        if (!checkNameMember(txtFullname)) {
+            txtFullname.setText(""); // Clear the input field for re-entry
+            txtFullname.requestFocus();
+            return null;
+        }
+        return InputFields.getTextFieldtoString(txtFullname);
     }
 
     public static boolean checkPhoneMember(JTextField phoneMemberField) {
@@ -53,7 +56,12 @@ public class RegExInputFields {
     }
 
     public static String getCheckPhoneMember(JTextField phoneMemberField) {
-        return checkPhoneMember(phoneMemberField) ? InputFields.getTextFieldtoString(phoneMemberField) : null;
+        if (!checkPhoneMember(phoneMemberField)) {
+            phoneMemberField.setText(""); // Clear the input field for re-entry
+            phoneMemberField.requestFocus();
+            return null;
+        }
+        return InputFields.getTextFieldtoString(phoneMemberField);
     }
 
     public static boolean checkEmail(JTextField emailField) {
@@ -73,10 +81,16 @@ public class RegExInputFields {
     }
 
     public static String getCheckEmail(JTextField emailField) {
-        return checkEmail(emailField) ? InputFields.getTextFieldtoString(emailField) : null;
+        if (!checkEmail(emailField)) {
+            emailField.setText(""); // Clear the input field for re-entry
+            MsgBox.alert(null, "Email không hợp lệ. Vui lòng nhập lại.");
+            emailField.requestFocus();
+            return null;
+        }
+        return InputFields.getTextFieldtoString(emailField);
     }
 
-    public static boolean checkAddress(JTextField addressField){
+    public static boolean checkAddress(JTextField addressField) {
         String address = addressField.getText().trim();
         if (address.isEmpty()) {
             MsgBox.alert(null, "Địa chỉ đang trống.");
@@ -88,42 +102,67 @@ public class RegExInputFields {
     }
 
     public static String getCheckAddress(JTextField addressField) {
-        return checkAddress(addressField) ? InputFields.getTextFieldtoString(addressField) : null;
+        if (!checkAddress(addressField)) {
+            addressField.setText(""); // Clear the input field for re-entry
+            MsgBox.alert(null, "Địa chỉ không hợp lệ. Vui lòng nhập lại.");
+            addressField.requestFocus();
+            return null;
+        }
+        return InputFields.getTextFieldtoString(addressField);
     }
 
     public static boolean checkBirthday(Date birthDay) {
         if (birthDay == null) {
             MsgBox.alert(null, "Ngày sinh đang trống.");
             return false;
+        } else if (birthDay.after(new Date())) {
+            MsgBox.alert(null, "Ngày sinh không hợp lệ. Vui lòng nhập lại.");
+            return false;
         }
+
         return true;
     }
 
-    public static Date getCheckBirthday(JDateChooser dateChooser) {
-        Date birthDay = dateChooser.getDate();
-        return checkBirthday(birthDay) ? birthDay : null;
+    public static java.sql.Date getCheckBirthday(JDateChooser dateChooser) {
+        java.sql.Date birthDay = InputFields.getDateChoosetoDateSQL(dateChooser);
+        if (checkBirthday(birthDay)) {
+            return birthDay;
+        }
+        dateChooser.setDate(null);
+        dateChooser.requestFocus();
+        return null;
+
     }
 
-    public static boolean checkEventUserId(JTextField txtUserIdEvent) {
-        String userId = txtUserIdEvent.getText();
-        if (userId.isEmpty()) {
-            MsgBox.alert(null, "Id người tạo trống.");
-            txtUserIdEvent.setBackground(Color.PINK);
+    public static boolean checkUsername(JTextField txtUsernameEvent) {
+        String Username = txtUsernameEvent.getText();
+        User userCreated = new UserController().readUserByUserName(Username);
+        if (Username.isEmpty()) {
+            MsgBox.alert(null, "Username người tạo trống.");
+            txtUsernameEvent.setBackground(Color.PINK);
             return false;
-        } else if (!userId.matches("\\d+")) {
-            MsgBox.alert(null, "Id chỉ được chứa ký tự số.");
-            txtUserIdEvent.setBackground(Color.PINK);
+        } else if (Username.matches("^[a-zA-Z][a-zA-Z0-9_]{4,19}$")) {
+            MsgBox.alert(null, "Username không hợp lệ. Username phải bắt đầu bằng chữ cái, dài từ 5 đến 20 ký tự, chỉ chứa chữ cái, số và dấu gạch dưới.");
+            return false;
+        } else if (userCreated == null) {
+            txtUsernameEvent.setBackground(Color.PINK);
+            MsgBox.alert(null, Username + " không tồn tại!");
             return false;
         }
-        txtUserIdEvent.setBackground(Color.WHITE);
+        txtUsernameEvent.setBackground(Color.WHITE);
         return true;
     }
 
-    public static String getCheckEventUserId(JTextField txtUserIdEvent) {
-        return checkEventUserId(txtUserIdEvent) ? InputFields.getTextFieldtoString(txtUserIdEvent) : null;
+    public static String getCheckUsername(JTextField txtUsername) {
+        while (!checkUsername(txtUsername)) {
+            txtUsername.setText("");
+            txtUsername.requestFocus();
+            return null;
+        }
+        return InputFields.getTextFieldtoString(txtUsername);
     }
 
-    public static boolean checkEventTitle(JTextField txtEventTitle){
+    public static boolean checkEventTitle(JTextField txtEventTitle) {
         String eventTitle = txtEventTitle.getText().trim();
         if (eventTitle.isEmpty()) {
             MsgBox.alert(null, "Tên sự kiện trống.");
@@ -135,10 +174,15 @@ public class RegExInputFields {
     }
 
     public static String getCheckEventTitle(JTextField txtEventTitle) {
-        return checkEventTitle(txtEventTitle) ? InputFields.getTextFieldtoString(txtEventTitle) : null;
+        if (!checkEventTitle(txtEventTitle)) {
+            txtEventTitle.setText(""); // Clear the input field for re-entry
+            txtEventTitle.requestFocus();
+            return null;
+        }
+        return InputFields.getTextFieldtoString(txtEventTitle);
     }
 
-    public static boolean checkEventContent(JTextArea txtEventContent){
+    public static boolean checkEventContent(JTextArea txtEventContent) {
         String eventContent = txtEventContent.getText().trim();
         if (eventContent.isEmpty()) {
             MsgBox.alert(null, "Nội dung sự kiện trống.");
@@ -150,52 +194,47 @@ public class RegExInputFields {
     }
 
     public static String getCheckEventContent(JTextArea txtEventContent) {
-        return checkEventContent(txtEventContent) ? txtEventContent.getText().trim() : null;
-    }
-
-    public static boolean checkDayStartedAndEndedCompare(Date startedDate, Date endedDate) {
-        if (startedDate == null) {
-            MsgBox.alert(null, "Ngày bắt đầu trống.");
-            return false; 
-        } else if (endedDate == null) {
-            MsgBox.alert(null, "Ngày kết thúc trống.");
-            return false; 
-        } else if (startedDate.after(endedDate)) {
-            MsgBox.alert(null, "Ngày bắt đầu lớn hơn kết thúc.");
-            return false; 
-        }
-        return true; 
-    }
-
-    public static Date getValidStartDate(JDateChooser startChooser) {
-        Date startedDate = startChooser.getDate();
-        if (startedDate == null) {
-            MsgBox.alert(null, "Ngày bắt đầu trống.");
+        if (!checkEventContent(txtEventContent)) {
+            txtEventContent.setText(""); // Clear the input field for re-entry
+            txtEventContent.requestFocus();
             return null;
         }
-        return startedDate;
+        return txtEventContent.getText().trim();
     }
 
-    public static Date getValidEndDate(JDateChooser endChooser) {
-        Date endedDate = endChooser.getDate();
-        if (endedDate == null) {
-            MsgBox.alert(null, "Ngày kết thúc trống.");
-            return null;
-        }
-        return endedDate;
-    }
+    public static boolean checkDayStartedAndEndedCompare(JDateChooser startedDate, JDateChooser endedDate) {
 
-    public static boolean checkDayStartedAndEndedCompare(JDateChooser startChooser, JDateChooser endChooser) {
-        Date startedDate = startChooser.getDate();
-        Date endedDate = endChooser.getDate();
-        if (startedDate == null || endedDate == null) {
+        java.sql.Date startDate = InputFields.getDateSQL(startedDate.getDate());
+        java.sql.Date endDate = InputFields.getDateSQL(endedDate.getDate());
+
+        if (startDate == null) {
+            MsgBox.alert(null, "Ngày bắt đầu trống.");
             return false;
-        }
-        if (startedDate.after(endedDate)) {
+        } else if (endDate == null) {
+            MsgBox.alert(null, "Ngày kết thúc trống.");
+            return false;
+        } else if (startDate.after(endDate)) {
             MsgBox.alert(null, "Ngày bắt đầu lớn hơn kết thúc.");
             return false;
         }
         return true;
     }
-}
 
+    public static java.sql.Date getDateStarted(JDateChooser startedDate, JDateChooser endedDate) {
+        java.sql.Date startDate = InputFields.getDateSQL(startedDate.getDate());
+
+        if (checkDayStartedAndEndedCompare(startedDate, endedDate)) {
+            return startDate;
+        }
+        return null;
+    }
+
+    public static java.sql.Date getDateEnded(JDateChooser startedDate, JDateChooser endedDate) {
+        java.sql.Date endDate = InputFields.getDateSQL(endedDate.getDate());
+
+        if (checkDayStartedAndEndedCompare(startedDate, endedDate)) {
+            return endDate;
+        }
+        return null;
+    }
+}
