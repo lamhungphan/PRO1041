@@ -67,19 +67,19 @@ public class EventRepoImpl implements EventRepository {
 
     @Override
     public List<Event> findAll() {
-        String jpql = "Select o from Event o";
+        String jpql = "Select e from Event e";
         TypedQuery<Event> query = em.createQuery(jpql, Event.class);
         return query.getResultList();
     }
 
-    @Override
-    public List<Object[]> countMembersByEvent() {
-        try {
-            String hql = "SELECT e.name, COUNT(m.id) FROM Event e JOIN e.members m GROUP BY e.name";
-            Query query = em.createQuery(hql);
-            return query.getResultList();
-        } finally {
-            em.close();
-        }
-    }
+//    @Override
+//    public List<Object[]> countMembersByEvent() {
+//        try {
+//            String hql = "SELECT COUNT(e.id) FROM events e LEFT JOIN users u ON e.id = u.id GROUP BY id;";
+//            Query query = em.createQuery(hql);
+//            return query.getResultList();
+//        } finally {
+//            em.close();
+//        }
+//    }
 }
