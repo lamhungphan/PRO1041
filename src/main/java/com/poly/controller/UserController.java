@@ -15,6 +15,7 @@ import com.poly.utils.MsgBox;
 import com.poly.view.*;
 
 
+
 import java.util.List;
 
 import javax.swing.*;
@@ -97,8 +98,9 @@ public class UserController {
         return userService.findByEmail(email);
     }
 
-    public void updateUser(User user) {
+    public User updateUser(User user) {
         User updatedUser = userService.update(user);
+            return updatedUser;
     }
 
     public User deleteUser(Integer id) {

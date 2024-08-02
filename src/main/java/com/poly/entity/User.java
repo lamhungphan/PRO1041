@@ -62,6 +62,9 @@ public class User implements Serializable {
     
     @Column(name = "score")
     private String score;
+    
+    @Column(name = "image")
+    private String image;
 
     @Column(name = "attendance")
     private Integer attendace;
