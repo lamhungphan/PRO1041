@@ -17,6 +17,5 @@ public interface UserRepository {
 
     User findByEmail(String email);
 
-    public int countTotalMembers();
 
 }

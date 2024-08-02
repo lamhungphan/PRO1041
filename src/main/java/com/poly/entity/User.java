@@ -63,8 +63,13 @@ public class User implements Serializable {
     @Column(name = "score")
     private String score;
     
+<<<<<<< HEAD
+    @Column(name = "attendance")
+    private Integer attendance;
+=======
     @Column(name = "image")
     private String image;
+>>>>>>> 13f5d4fa29e502fc5835f2824158e4b42cdc1f72
 
     @ManyToOne
     @JoinColumn(name = "roleId", referencedColumnName = "id")

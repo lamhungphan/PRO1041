@@ -84,8 +84,4 @@ public class MemberServiceImpl implements MemberService {
         }
         return members;
     }
-
-    public int getTotalMembers() {
-        return repo. countTotalMembers();
-    }
 }
