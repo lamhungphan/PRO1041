@@ -18,31 +18,32 @@
 //    public EventChart(EventServiceImpl eventServiceImpl) {
 //        this.eventServiceImpl = eventServiceImpl;
 //        initialize();
-//        
-//        
-//    private void initialize() {
-//        List<Object[]> data = eventServiceImpl.getMemberCountByEvent();
-//        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 //
-//        for (Object[] row : data) {
-//            String eventName = (String) row[0];
-//            Long memberCount = (Long) row[1];
-//            dataset.addValue(memberCount, "Thành viên", eventName);
+//
+//        private void initialize () {
+//            List<Object[]> data = eventServiceImpl.getMemberCountByEvent();
+//            DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+//
+//            for (Object[] row : data) {
+//                String eventName = (String) row[0];
+//                Long memberCount = (Long) row[1];
+//                dataset.addValue(memberCount, "Thành viên", eventName);
+//            }
+//            JFreeChart barChart = ChartFactory.createBarChart(
+//                    "Thành viên tham gia sự kiện",
+//                    "Sự kiện",
+//                    "Số lượng thành viên",
+//                    dataset,
+//                    PlotOrientation.VERTICAL,
+//                    true, true, false);
+//
+//            ChartPanel chartPanel = new ChartPanel(barChart);
+//            chartPanel.setPreferredSize(new java.awt.Dimension(560, 367));
+//            add(chartPanel);
 //        }
-//        JFreeChart barChart = ChartFactory.createBarChart(
-//                "Thành viên tham gia sự kiện",
-//                "Sự kiện",
-//                "Số lượng thành viên",
-//                dataset,
-//                PlotOrientation.VERTICAL,
-//                true, true, false);
-//
-//        ChartPanel chartPanel = new ChartPanel(barChart);
-//        chartPanel.setPreferredSize(new java.awt.Dimension(560, 367));
-//        add(chartPanel);
 //    }
+//        public static void main (String[] args){
 //
-//    public static void main(String[] args) {
-//
+//        }
 //    }
 //}
