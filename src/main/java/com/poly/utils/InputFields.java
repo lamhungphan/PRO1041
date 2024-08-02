@@ -10,7 +10,7 @@ public class InputFields {
         if (isNumber(numb)) {
             txt.setText(numb);
         } else {
-            MsgBox.alert(null, "Invalid input: Not a number");
+            MsgBox.alert(null, "Vui lòng nhập số");
         }
 
     }
