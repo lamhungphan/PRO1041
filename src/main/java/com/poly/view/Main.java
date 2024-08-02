@@ -1,5 +1,6 @@
 package com.poly.view;
 
+import com.google.api.client.googleapis.util.Utils;
 import com.poly.constant.RoleConstant;
 import com.poly.controller.EventController;
 import com.poly.controller.MemberController;
@@ -2615,28 +2616,60 @@ public class Main extends javax.swing.JFrame {
     }
 
     private User getFormMember(User memberForm) {
-        String fullname = RegExInputFields.getCheckNameMember(txtNameMember);
-        memberForm.setFullname(fullname);
+        try {
+            // Lấy và kiểm tra fullname
+            String fullname = RegExInputFields.getCheckNameMember(txtNameMember);
+            if (fullname.isEmpty()) {
+                return getFormMember(memberForm);
+            }
+            memberForm.setFullname(fullname);
 
-        String memberEmail = RegExInputFields.getCheckEmail(txtEmailMemBer);
-        memberForm.setEmail(memberEmail);
+            // Lấy và kiểm tra email
+            String memberEmail = RegExInputFields.getCheckEmail(txtEmailMemBer);
+            if (memberEmail.isEmpty()) {
+                return getFormMember(memberForm);
+            }
+            memberForm.setEmail(memberEmail);
 
-        String memberPhone = RegExInputFields.getCheckPhoneMember(txtPhoneMember);
-        memberForm.setPhone(memberPhone);
+            // Lấy và kiểm tra số điện thoại
+            String memberPhone = RegExInputFields.getCheckPhoneMember(txtPhoneMember);
+            if (memberPhone.isEmpty()) {
+                return getFormMember(memberForm);
+            }
+            memberForm.setPhone(memberPhone);
 
-        String addressMember = RegExInputFields.getCheckAddress(txtAddressMember);
-        memberForm.setAddress(addressMember);
+            // Lấy và kiểm tra địa chỉ
+            String addressMember = RegExInputFields.getCheckAddress(txtAddressMember);
+            if (addressMember.isEmpty()) {
+                return getFormMember(memberForm);
+            }
+            memberForm.setAddress(addressMember);
 
-        Boolean gender = InputFields.getSelectedRadiobutton(rdoMaleMember, rdoFemaleMember);
-        memberForm.setSex(gender);
+            // Lấy giới tính
+            Boolean gender = InputFields.getSelectedRadiobutton(rdoMaleMember, rdoFemaleMember);
+            if (gender == null) {
+                return getFormMember(memberForm);
+            }
+            memberForm.setSex(gender);
 
-        Date birthdate = InputFields.getDateChoosetoDateSQL(dcBirthdayMember);
-        memberForm.setBirthday(birthdate);
+            // Lấy và kiểm tra ngày sinh
+            Date birthdate = InputFields.getDateChoosetoDateSQL(dcBirthdayMember);
+            if (birthdate == null) {
+                return getFormMember(memberForm);
+            }
+            memberForm.setBirthday(birthdate);
 
-        String rateMembers = InputFields.getComboBoxString(cboRateMember);
-        memberForm.setScore(rateMembers);
+            // Lấy và kiểm tra điểm thành viên từ combobox
+            String rateMembers = InputFields.getComboBoxString(cboRateMember);
+            if (rateMembers.isEmpty()) {
+                return getFormMember(memberForm);
+            }
+            memberForm.setScore(rateMembers);
 
-        return memberForm;
+            return memberForm;
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     private void setFormMember(User memberForm) {
@@ -2801,34 +2834,79 @@ public class Main extends javax.swing.JFrame {
     }
 
     private User getFormUser(User userForm) {
-        String username = InputFields.getTextFieldtoString(txtUsernameUser);
-        userForm.setFullname(username);
+        try {
+            // Lấy và kiểm tra username
+            String username = RegExInputFields.getCheckUsername(txtUsernameUser);
+            if (username.isEmpty()) {
+                return getFormUser(userForm);
+            }
+            userForm.setUsername(username);
 
-        String fullname = RegExInputFields.getCheckNameMember(txtNameUser);
-        userForm.setFullname(fullname);
+            // Lấy và kiểm tra fullname
+            String fullname = RegExInputFields.getCheckNameMember(txtNameUser);
+            if (fullname.isEmpty()) {
+                return getFormUser(userForm);
+            }
+            userForm.setFullname(fullname);
 
-        String userPassword = InputFields.getTextFieldtoString(txtPasswordUser);
-        userForm.setEmail(userPassword);
+            // Lấy password
+            String userPassword = InputFields.getTextFieldtoString(txtPasswordUser);
+            if (userPassword.isEmpty()) {
+                return getFormUser(userForm);
+            }
+            userForm.setPassword(userPassword);
 
-        String userMail = RegExInputFields.getCheckEmail(txtEmail);
-        userForm.setEmail(userMail);
+            // Lấy và kiểm tra email
+            String userMail = RegExInputFields.getCheckEmail(txtEmail);
+            if (userMail.isEmpty()) {
+                return getFormUser(userForm);
+            }
+            userForm.setEmail(userMail);
 
-        String userPhone = RegExInputFields.getCheckPhoneMember(txtPhoneUser);
-        userForm.setPhone(userPhone);
+            // Lấy và kiểm tra số điện thoại
+            String userPhone = RegExInputFields.getCheckPhoneMember(txtPhoneUser);
+            if (userPhone.isEmpty()) {
+                return getFormUser(userForm);
+            }
+            userForm.setPhone(userPhone);
 
-        String addressUser = RegExInputFields.getCheckAddress(txtAddressUser);
-        userForm.setAddress(addressUser);
+            // Lấy và kiểm tra địa chỉ
+            String addressUser = RegExInputFields.getCheckAddress(txtAddressUser);
+            if (addressUser.isEmpty()) {
+                return getFormUser(userForm);
+            }
+            userForm.setAddress(addressUser);
 
-        Boolean gender = InputFields.getSelectedRadiobutton(rdoMaleUser, rdoFemaleUser);
-        userForm.setSex(gender);
+            // Lấy giới tính
+            Boolean gender = InputFields.getSelectedRadiobutton(rdoMaleUser, rdoFemaleUser);
+            if (gender == null) {
+                return getFormUser(userForm);
+            }
+            userForm.setSex(gender);
 
-        Date birthdate = InputFields.getDateChoosetoDateSQL(dcBirthdayUser);
-        userForm.setBirthday(birthdate);
-        String roleUser = InputFields.getComboBoxString(cboRoleUser);
-        Role role = UserInjector.getInstance().getRoleService().findByNameRole(roleUser);
-        userForm.setRole(role);
+            // Lấy và kiểm tra ngày sinh
+            Date birthdate = RegExInputFields.getCheckBirthday(dcBirthdayUser);
+            if (birthdate == null) {
+                return getFormUser(userForm);
+            }
+            userForm.setBirthday(birthdate);
 
-        return userForm;
+            // Lấy vai trò người dùng từ combobox
+            String roleUser = InputFields.getComboBoxString(cboRoleUser);
+            if (roleUser.isEmpty()) {
+                return getFormUser(userForm);
+            }
+            Role role = UserInjector.getInstance().getRoleService().findByNameRole(roleUser);
+            if (role == null) {
+                return getFormUser(userForm);
+            }
+            userForm.setRole(role);
+
+            return userForm;
+
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     private void setFormUser(User userForm) {
@@ -3001,16 +3079,43 @@ public class Main extends javax.swing.JFrame {
     }
 
     public Event getEventFrom(Event eventRequest) {
+        try {
+            String userNameCreatedEvent = RegExInputFields.getCheckUsername(txtUserIdEvent);
+            if (userNameCreatedEvent.isEmpty()) {
+                return getEventFrom(eventRequest);
+            }
+            User userCreated = userController.readUserByUserName(userNameCreatedEvent);
+            eventRequest.setUser(userCreated);
 
-        String userNameCreatedEvent = txtUserIdEvent.getText();
-        User userCreated = userController.readUserByUserName(userNameCreatedEvent);
-        eventRequest.setUser(userCreated);
-        eventRequest.setTitle(InputFields.getTextFieldtoString(txtTitleEvent));
-        eventRequest.setLocation(InputFields.getTextFieldtoString(txtAddressEvent));
-        eventRequest.setStartedDate(InputFields.getDateSQL(dcStartedDateEvent.getDate()));
-        eventRequest.setEndedDate(InputFields.getDateSQL(dcEndedDateEvent.getDate()));
-        eventRequest.setContent(InputFields.getTextAreatoString(txtContentEvent));
-        return eventRequest;
+            if (eventRequest.getUser() == null) {
+                return getEventFrom(eventRequest);
+            }
+
+            String eventTitle = RegExInputFields.getCheckEventTitle(txtTitleEvent);
+            if (eventTitle.isEmpty()) {
+                return getEventFrom(eventRequest);
+            }
+            eventRequest.setTitle(eventTitle);
+
+            String eventLocation = RegExInputFields.getCheckAddress(txtAddressEvent);
+            eventRequest.setLocation(eventLocation);
+
+            java.sql.Date startedDate = RegExInputFields.getDateStarted(dcStartedDateEvent, dcEndedDateEvent);
+            java.sql.Date endedDate = RegExInputFields.getDateEnded(dcStartedDateEvent, dcEndedDateEvent);
+            eventRequest.setStartedDate(startedDate);
+            eventRequest.setEndedDate(endedDate);
+
+            String eventContent = RegExInputFields.getCheckEventContent(txtContentEvent);
+            if (eventContent.isEmpty()) {
+                return getEventFrom(eventRequest);
+            }
+            eventRequest.setContent(eventContent);
+
+            return eventRequest;
+        } catch (Exception e) {
+            e.getMessage();
+            return null;
+        }
     }
 
     public void setEventForm(Event eventResponse) {
