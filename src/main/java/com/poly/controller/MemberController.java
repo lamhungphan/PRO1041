@@ -34,10 +34,6 @@ public class MemberController {
         return memberService.findByFullname(name);
     }
 
-    public List<User> getAllMembers() {
-        return memberService.findAll();
-    }
-
     public List<User> getMembersByRole() {
             return memberService.findMembersByRole(RoleConstant.THANH_VIEN);
     }
@@ -45,6 +41,5 @@ public class MemberController {
     public void exportExcellAllMember(List<User> dataList){
         IOExcells.exportToExcelMember(dataList);
     }
-    
     
 }

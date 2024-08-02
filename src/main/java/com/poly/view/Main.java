@@ -2464,7 +2464,6 @@ public class Main extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -2639,12 +2638,14 @@ public class Main extends javax.swing.JFrame {
     List<User> members;
 
     private void totalMembers() {
-        lblTotalMembers.setText(String.valueOf(userRepo. countTotalMembers()));
+        Integer totalMember = members.size();
+        lblTotalMembers.setText(totalMember.toString());
     }
 
     private void initMemberController() {
         fillMemberToTable();
         updateStatusMember();
+        totalMembers();
     }
 
     private void createMember() {
@@ -2693,7 +2694,7 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void fillMemberToTable() {
-        List<User> members = memberController.getMembersByRole();
+        members = memberController.getMembersByRole();
         DefaultTableModel tableModelMember = (DefaultTableModel) tblListMember.getModel();
         tableModelMember.setRowCount(0);
         try {
@@ -2854,23 +2855,22 @@ public class Main extends javax.swing.JFrame {
         btnNextMember.setEnabled(!last);
         btnLastMember.setEnabled(!last);
     }
-    
-    private void exportExcellMember(){
-        List<User> members = memberController.getAllMembers();
-        if(members.isEmpty() || members == null){
-            System.out.println("ko co data");
-        }
+
+    private void exportExcellMember() {
+//         members = memberController.getAllMembers();
+//        if(members.isEmpty() || members == null){
+//            System.out.println("ko co data");
+//        }
         memberController.exportExcellAllMember(members);
     }
-    
-    private void exportExcellEvent(){
+
+    private void exportExcellEvent() {
         List<Event> events = eventController.getAllEvents();
-        if(events.isEmpty() || events == null){
+        if (events.isEmpty() || events == null) {
             System.out.println("ko co data");
         }
         eventController.exportExcellAllEvent(events);
     }
-    
 
     //======================================================================================================
 //    User start
@@ -2879,8 +2879,17 @@ public class Main extends javax.swing.JFrame {
     private void initUserController() {
         fillUserToTable();
         updateStatusUser();
+        setTotalAttendence();
     }
 
+    private void setTotalAttendence(){
+        int totalAttendence = 0;
+        for (User user : listAllUser) {
+            int attendence = user.getAttendance();
+            totalAttendence = totalAttendence + attendence; 
+        }
+        lblTotalAttendance.setText(String.valueOf(totalAttendence));
+    }
     private void createUser() {
         User user = getFormUser(new User());
         String roleName = user.getRole().getRoleName();
@@ -3110,7 +3119,6 @@ public class Main extends javax.swing.JFrame {
         btnNextUser.setEnabled(edit && !last);
         btnLastUser.setEnabled(edit && !last);
     }
-    
 
     //*********************************************************************************************************
     //Event start
@@ -3120,8 +3128,13 @@ public class Main extends javax.swing.JFrame {
         fillTableEvent();
         updateStatusEvent();
         fillDataResponseRegisterForm();
+        setTotalEvent();
     }
 
+    private void setTotalEvent(){
+        int totalEvent = events.size();
+        lblTotalEventContent.setText(String.valueOf(totalEvent));
+    }
     private void fillTableEvent() {
         events = eventController.getAllEvents();
         DefaultTableModel model = (DefaultTableModel) tblListEvent.getModel();
@@ -3317,11 +3330,11 @@ public class Main extends javax.swing.JFrame {
         btnLastEvent.setEnabled(edit && !last);
     }
 
-    private void fillDataResponseRegisterForm(){
+    private void fillDataResponseRegisterForm() {
         eventController.getAllResponseRegisterForm();
     }
 
-    private void exportFileGGSheetResponseRegisterForm(){
+    private void exportFileGGSheetResponseRegisterForm() {
         eventController.exportGGSheetResponseRegisterForm();
     }
 }

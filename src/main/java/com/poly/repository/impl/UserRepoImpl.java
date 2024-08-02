@@ -84,9 +84,4 @@ public class UserRepoImpl implements UserRepository {
         return query.getResultList().stream().findFirst().orElse(null);
     }
     
-    public int countTotalMembers() {
-        String hql = "SELECT COUNT(u) FROM User u  "; 
-        TypedQuery query = (TypedQuery) em.createQuery(hql);
-        return ((Long) query.getSingleResult()).intValue();
-    }
 }
