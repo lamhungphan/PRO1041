@@ -2,6 +2,7 @@ package com.poly.view;
 
 import com.google.api.client.googleapis.util.Utils;
 import com.poly.constant.RoleConstant;
+import com.poly.controller.AccountController;
 import com.poly.controller.EventController;
 import com.poly.controller.MemberController;
 import com.poly.controller.UserController;
@@ -18,15 +19,20 @@ import com.poly.utils.InputFields;
 import com.poly.utils.MsgBox;
 import com.poly.utils.RegExInputFields;
 import com.poly.utils.SheetsQuickstart;
+import com.poly.utils.XImage;
 import java.awt.CardLayout;
+import java.io.File;
 import java.sql.Date;
 import java.util.List;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import lombok.Getter;
+import org.mindrot.jbcrypt.BCrypt;
 
 @Getter
-public class Main extends javax.swing.JFrame {
+public final class Main extends javax.swing.JFrame {
 
     private int row = -1;
     CardLayout cardLayout;
@@ -41,6 +47,7 @@ public class Main extends javax.swing.JFrame {
     List<User> listAllUser = new UserController().getAllUsers();
 
     public Main() {
+        setAvatarUserLogined();
         initComponents();
         cardLayout = (CardLayout) (container.getLayout());
         this.setLocationRelativeTo(null);
@@ -65,6 +72,9 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         btngroudSex = new javax.swing.ButtonGroup();
+        fileAvatarUser = new javax.swing.JFileChooser();
+        fileAvatarUserLogined = new javax.swing.JFileChooser();
+        fileAvatarMember = new javax.swing.JFileChooser();
         lblTabContainer = new javax.swing.JPanel();
         lblWelcome = new javax.swing.JLabel();
         lblHome = new javax.swing.JLabel();
@@ -309,7 +319,7 @@ public class Main extends javax.swing.JFrame {
         lblTabContainerLayout.setHorizontalGroup(
             lblTabContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lblTabContainerLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(9, Short.MAX_VALUE)
                 .addGroup(lblTabContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTabLogout)
                     .addComponent(lblTabSystem)
@@ -689,6 +699,11 @@ public class Main extends javax.swing.JFrame {
         dcBirthdayMember.setDateFormatString("dd/MM/yyyy ");
 
         lblMemberAvatar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblMemberAvatar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMemberAvatarMouseClicked(evt);
+            }
+        });
 
         lblEmail2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblEmail2.setText("ID:");
@@ -1553,6 +1568,7 @@ public class Main extends javax.swing.JFrame {
         lblThanhVien2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblThanhVien2.setText("Tên thành viên");
 
+        txtIdUser.setEnabled(false);
         txtIdUser.setPreferredSize(new java.awt.Dimension(10, 22));
         txtIdUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1697,6 +1713,11 @@ public class Main extends javax.swing.JFrame {
         });
 
         lblUserAvatar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblUserAvatar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblUserAvatarMouseClicked(evt);
+            }
+        });
 
         lblThanhVien4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblThanhVien4.setText("ID");
@@ -2344,6 +2365,16 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tblListMemberMouseEntered
 
+    private void lblUserAvatarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUserAvatarMouseClicked
+        // TODO add your handling code here:
+        setAvatarUser();
+    }//GEN-LAST:event_lblUserAvatarMouseClicked
+
+    private void lblMemberAvatarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMemberAvatarMouseClicked
+        // TODO add your handling code here:
+        setAvatarMember();
+    }//GEN-LAST:event_lblMemberAvatarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -2418,6 +2449,9 @@ public class Main extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser dcBirthdayUser;
     private com.toedter.calendar.JDateChooser dcEndedDateEvent;
     private com.toedter.calendar.JDateChooser dcStartedDateEvent;
+    private javax.swing.JFileChooser fileAvatarMember;
+    private javax.swing.JFileChooser fileAvatarUser;
+    private javax.swing.JFileChooser fileAvatarUserLogined;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private com.toedter.calendar.JDateChooser jDateChooser1;
@@ -2593,7 +2627,7 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void fillMemberToTable() {
-        List<User> members = memberController.getMembersByRole();
+        members = memberController.getMembersByRole();
         DefaultTableModel tableModelMember = (DefaultTableModel) tblListMember.getModel();
         tableModelMember.setRowCount(0);
         try {
@@ -2673,6 +2707,7 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void setFormMember(User memberForm) {
+
         txtNameMember.setText(memberForm.getFullname());
         txtEmailMemBer.setText(memberForm.getEmail());
         txtPhoneMember.setText(memberForm.getPhone());
@@ -2693,6 +2728,12 @@ public class Main extends javax.swing.JFrame {
         }
 
         cboRateMember.setSelectedItem(memberForm.getScore());
+        if (memberForm.getImage() != null) {
+            lblUserAvatar.setToolTipText(memberForm.getImage());
+            lblUserAvatar.setIcon(XImage.read(memberForm.getImage()));
+        } else {
+            lblUserAvatar.setIcon(null);
+        }
     }
 
     private void clearFormMember() {
@@ -2710,6 +2751,16 @@ public class Main extends javax.swing.JFrame {
             setFormMember(member);
             row = selectedRow;
             updateStatusMember();
+        }
+    }
+
+    void setAvatarMember() {
+        if (fileAvatarMember.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            File file = fileAvatarMember.getSelectedFile();
+            XImage.save(file); // lưu hình vào thư mục avatar
+            ImageIcon icon = XImage.read(file.getName()); // đọc hình từ avatar
+            lblMemberAvatar.setIcon(icon);
+            lblMemberAvatar.setToolTipText(file.getName()); // giữ tên hình trong tooltip
         }
     }
 
@@ -2765,7 +2816,7 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void createUser() {
-        User user = getFormUser(new User());
+        User user = getFormUser();
         String roleName = user.getRole().getRoleName();
         User createdUser = userController.createUser(user, roleName);
         if (createdUser != null) {
@@ -2779,18 +2830,32 @@ public class Main extends javax.swing.JFrame {
 
     private void updateUser() {
         row = tblListUser.getSelectedRow();
-        User model = getFormUser(users.get(row));
-        if (model == null) {
+        User userInList = users.get(row);
+        if (userInList == null) {
             MsgBox.alert(null, "Vui lòng chọn thành viên trong danh sách");
+            return;
         }
-        User updatedUser = memberController.updateUser(model);
-        if (updatedUser != null) {
-            MsgBox.alert(this, "Cập nhật thành viên thành công!");
-            fillUserToTable();
-            clearFormUser();
+        User userInForm = getFormUser();
+
+        String oldBcryptPassword = userInList.getPassword();
+        String newPassword = userInForm.getPassword();
+
+        if (newPassword.equals(oldBcryptPassword)) {
+            userInForm.setPassword(oldBcryptPassword);
         } else {
-            MsgBox.alert(this, "Không thể cập nhật thành viên.");
+            newPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+            userInForm.setPassword(newPassword);
         }
+        
+        User updatedUser = userController.updateUser(userInForm);
+        if (updatedUser == null) {
+            MsgBox.alert(this, "Không thể cập nhật thành viên.");
+            return;
+        }
+        users.set(row, updatedUser);
+        MsgBox.alert(this, "Cập nhật thành viên thành công!");
+        clearFormUser();
+        fillUserToTable();
     }
 
     private void deleteUser() {
@@ -2833,75 +2898,83 @@ public class Main extends javax.swing.JFrame {
         }
     }
 
-    private User getFormUser(User userForm) {
+    private User getFormUser() {
+        User userForm = new User();
         try {
+            Integer id = InputFields.getTextFieldtoInteger(txtIdUser);
+            userForm.setId(id);
+            
             // Lấy và kiểm tra username
             String username = RegExInputFields.getCheckUsername(txtUsernameUser);
             if (username.isEmpty()) {
-                return getFormUser(userForm);
+                return null;
             }
             userForm.setUsername(username);
 
             // Lấy và kiểm tra fullname
             String fullname = RegExInputFields.getCheckNameMember(txtNameUser);
             if (fullname.isEmpty()) {
-                return getFormUser(userForm);
+                return null;
             }
             userForm.setFullname(fullname);
 
             // Lấy password
             String userPassword = InputFields.getTextFieldtoString(txtPasswordUser);
             if (userPassword.isEmpty()) {
-                return getFormUser(userForm);
+                return null;
             }
             userForm.setPassword(userPassword);
 
             // Lấy và kiểm tra email
             String userMail = RegExInputFields.getCheckEmail(txtEmail);
             if (userMail.isEmpty()) {
-                return getFormUser(userForm);
+                return null;
             }
             userForm.setEmail(userMail);
 
             // Lấy và kiểm tra số điện thoại
             String userPhone = RegExInputFields.getCheckPhoneMember(txtPhoneUser);
             if (userPhone.isEmpty()) {
-                return getFormUser(userForm);
+                return null;
             }
             userForm.setPhone(userPhone);
 
             // Lấy và kiểm tra địa chỉ
             String addressUser = RegExInputFields.getCheckAddress(txtAddressUser);
             if (addressUser.isEmpty()) {
-                return getFormUser(userForm);
+                return null;
             }
             userForm.setAddress(addressUser);
 
             // Lấy giới tính
             Boolean gender = InputFields.getSelectedRadiobutton(rdoMaleUser, rdoFemaleUser);
             if (gender == null) {
-                return getFormUser(userForm);
+                return null;
             }
             userForm.setSex(gender);
 
             // Lấy và kiểm tra ngày sinh
             Date birthdate = RegExInputFields.getCheckBirthday(dcBirthdayUser);
             if (birthdate == null) {
-                return getFormUser(userForm);
+                return null;
             }
             userForm.setBirthday(birthdate);
 
             // Lấy vai trò người dùng từ combobox
             String roleUser = InputFields.getComboBoxString(cboRoleUser);
             if (roleUser.isEmpty()) {
-                return getFormUser(userForm);
+                return null;
             }
             Role role = UserInjector.getInstance().getRoleService().findByNameRole(roleUser);
             if (role == null) {
-                return getFormUser(userForm);
+                return null;
             }
             userForm.setRole(role);
 
+            userForm.setImage(lblUserAvatar.getToolTipText());
+            userForm.setUpdatedDate(InputFields.getDateSQL(new java.util.Date()));
+            
+            userForm.setIsActived(true);
             return userForm;
 
         } catch (Exception e) {
@@ -2910,6 +2983,7 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void setFormUser(User userForm) {
+        txtIdUser.setText(userForm.getId().toString());
         txtUsernameUser.setText(userForm.getUsername());
         txtNameUser.setText(userForm.getFullname());
         txtPasswordUser.setText(userForm.getPassword());
@@ -2932,6 +3006,13 @@ public class Main extends javax.swing.JFrame {
         }
 
         cboRoleUser.setSelectedItem(userForm.getRole().getRoleName());
+
+        if (userForm.getImage() != null) {
+            lblUserAvatar.setToolTipText(userForm.getImage());
+            lblUserAvatar.setIcon(XImage.read(userForm.getImage()));
+        } else {
+            lblUserAvatar.setIcon(null);
+        }
     }
 
     private void clearFormUser() {
@@ -2950,6 +3031,16 @@ public class Main extends javax.swing.JFrame {
             setFormUser(user);
             row = selectedRow;
             updateStatusUser();
+        }
+    }
+
+    void setAvatarUser() {
+        if (fileAvatarUser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            File file = fileAvatarUser.getSelectedFile();
+            XImage.save(file); // lưu hình vào thư mục avatar
+            ImageIcon icon = XImage.read(file.getName()); // đọc hình từ avatar
+            lblUserAvatar.setIcon(icon);
+            lblUserAvatar.setToolTipText(file.getName()); // giữ tên hình trong tooltip
         }
     }
 
@@ -3080,7 +3171,7 @@ public class Main extends javax.swing.JFrame {
 
     public Event getEventFrom(Event eventRequest) {
         try {
-            String userNameCreatedEvent = RegExInputFields.getCheckUsername(txtUserIdEvent);
+            String userNameCreatedEvent = RegExInputFields.getCheckUsernameEvent(txtUserIdEvent);
             if (userNameCreatedEvent.isEmpty()) {
                 return getEventFrom(eventRequest);
             }
@@ -3128,6 +3219,7 @@ public class Main extends javax.swing.JFrame {
             txtAddressEvent.setText(eventResponse.getLocation());
             dcStartedDateEvent.setDate(eventResponse.getStartedDate());
             dcEndedDateEvent.setDate(eventResponse.getEndedDate());
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -3197,5 +3289,21 @@ public class Main extends javax.swing.JFrame {
         btnPreviousEvent.setEnabled(edit && !first);
         btnNextEvent.setEnabled(edit && !last);
         btnLastEvent.setEnabled(edit && !last);
+    }
+
+    public void setAvatarUserLogined() {
+        try {
+            String usernameLogined = new AccountController().getAccountInDB().getUsername();
+
+            User userLogined = userController.readUserByUserName(usernameLogined);
+            if (userLogined.getImage() != null) {
+                lblUserLoginedAvatar.setToolTipText(userLogined.getImage());
+                lblUserLoginedAvatar.setIcon(XImage.read(userLogined.getImage()));
+            } else {
+                lblUserLoginedAvatar.setIcon(null);
+            }
+        } catch (Exception e) {
+
+        }
     }
 }

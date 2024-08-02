@@ -103,12 +103,12 @@ public class UserController {
         return userService.findByEmail(email);
     }
 
-    public void updateUser(User user) {
+    public User updateUser(User user) {
         User updatedUser = userService.update(user);
         if (updatedUser != null) {
-            MsgBox.alert(null, "Cập nhật người dùng thành công!");
+            return updatedUser;
         } else {
-            MsgBox.alert(null, "Không thể cập nhật người dùng.");
+            return null;
         }
     }
 
