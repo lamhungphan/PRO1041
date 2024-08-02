@@ -71,6 +71,7 @@ public class User implements Serializable {
     private String image;
 
 
+
     @ManyToOne
     @JoinColumn(name = "roleId", referencedColumnName = "id")
     private Role role;

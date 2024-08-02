@@ -497,8 +497,16 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnExportExcellMember" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
+<<<<<<< HEAD
                               <Component id="btnImportExcel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
+=======
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="btnExportExcellMember" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnImportExcel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="25" max="32767" attributes="0"/>
+>>>>>>> 069b2b6665ba47251a1f0e7b17e3590ca1170491
                           </Group>
                       </Group>
                     </DimensionLayout>
