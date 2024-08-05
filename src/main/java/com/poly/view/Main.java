@@ -30,6 +30,7 @@ import javax.swing.JFileChooser;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.sql.Date;
+import java.text.ParseException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -335,7 +336,7 @@ public final class Main extends javax.swing.JFrame {
         lblTabContainerLayout.setHorizontalGroup(
             lblTabContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lblTabContainerLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(9, Short.MAX_VALUE)
                 .addGroup(lblTabContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTabLogout)
                     .addComponent(lblTabSystem)
@@ -555,6 +556,11 @@ public final class Main extends javax.swing.JFrame {
         });
 
         btnImportExcel.setText("Nhập Excel");
+        btnImportExcel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImportExcelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlListMemberLayout = new javax.swing.GroupLayout(pnlListMember);
         pnlListMember.setLayout(pnlListMemberLayout);
@@ -572,7 +578,7 @@ public final class Main extends javax.swing.JFrame {
             .addGroup(pnlListMemberLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(btnExportExcellMember)
-                .addGap(57, 57, 57)
+                .addGap(56, 56, 56)
                 .addComponent(btnImportExcel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -584,10 +590,10 @@ public final class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnExportExcellMember)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnImportExcel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnlListMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnExportExcellMember)
+                    .addComponent(btnImportExcel))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         tabMember.addTab("Danh Sách", pnlListMember);
@@ -926,7 +932,7 @@ public final class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblMember, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabMember, javax.swing.GroupLayout.PREFERRED_SIZE, 577, Short.MAX_VALUE)
+                .addComponent(tabMember, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
                 .addGap(18, 18, 18))
         );
 
@@ -1029,6 +1035,11 @@ public final class Main extends javax.swing.JFrame {
         });
 
         btnImportEvent.setText("Nhập Excel");
+        btnImportEvent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImportEventActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlListMember1Layout = new javax.swing.GroupLayout(pnlListMember1);
         pnlListMember1.setLayout(pnlListMember1Layout);
@@ -2518,9 +2529,20 @@ public final class Main extends javax.swing.JFrame {
         exportExcellEvent();
     }//GEN-LAST:event_btnExportEventActionPerformed
 
+    private void btnImportExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportExcelActionPerformed
+        // TODO add your handling code here:
+        importExcelMember();
+    }//GEN-LAST:event_btnImportExcelActionPerformed
+
+    private void btnImportEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportEventActionPerformed
+        // TODO add your handling code here:
+        importExcelEvent();
+    }//GEN-LAST:event_btnImportEventActionPerformed
+
     private void txtAddressMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressMemberActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAddressMemberActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -2970,12 +2992,14 @@ public final class Main extends javax.swing.JFrame {
         btnNextMember.setEnabled(!last);
         btnLastMember.setEnabled(!last);
     }
-
+    
+    private void importExcelMember(){
+        memberController.importExcelMember();
+        fillMemberToTable();
+        MsgBox.alert(this, "Thêm thành công !");
+    }
+    
     private void exportExcellMember() {
-//         members = memberController.getAllMembers();
-//        if(members.isEmpty() || members == null){
-//            System.out.println("ko co data");
-//        }
         memberController.exportExcellAllMember(members);
     }
 
@@ -2991,6 +3015,7 @@ public final class Main extends javax.swing.JFrame {
         }
         memberController.exportExcellAllMember(members);
     }
+   
 
     //======================================================================================================
 //    User start
@@ -3005,8 +3030,15 @@ public final class Main extends javax.swing.JFrame {
     private void setTotalAttendence() {
         int totalAttendence = 0;
         for (User user : listAllUser) {
+
+            Integer attendence = user.getAttendance();
+            if(attendence != null){
+                totalAttendence += attendence;
+            }
+
             int attendence = user.getAttendance();
             totalAttendence += attendence;
+
         }
         lblTotalAttendance.setText(String.valueOf(totalAttendence));
     }
@@ -3516,5 +3548,16 @@ public final class Main extends javax.swing.JFrame {
 
     private void exportFileGGSheetResponseRegisterForm() {
         eventController.exportGGSheetResponseRegisterForm();
+    }
+    
+    private void importExcelEvent(){
+        try {
+            Event eventRequest = getEventFrom(new Event());
+            eventController.importExcellEvent(eventRequest.getUser().getUsername());
+            fillTableEvent();
+            MsgBox.alert(this, "Thêm event thành công !");
+        } catch (ParseException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

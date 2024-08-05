@@ -10,11 +10,14 @@ import com.poly.injection.UserInjector;
 import com.poly.services.EventService;
 import com.poly.services.UserService;
 import com.poly.utils.IOExcells;
+import com.poly.utils.MsgBox;
 import com.poly.utils.SheetsQuickstart;
 import com.poly.view.Main;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -70,5 +73,21 @@ public class EventController {
 
     public void exportExcellAllEvent(List<Event> dataList){
         IOExcells.exportToExcelEvent(dataList);
+    }
+
+    public List<Event> importExcellEvent(String usernameManager) throws ParseException {
+            List<Event> saveEvents = new ArrayList<>();
+    try {
+        List<Event> dataListFound = IOExcells.importToExcelEvent();
+
+        for (Event entityExcelEvent : dataListFound) {
+            Event savedEvent = eventService.save(entityExcelEvent, usernameManager);
+            saveEvents.add(savedEvent);
+        }
+    } catch (ParseException ex) {
+        Logger.getLogger(MemberController.class.getName()).log(Level.SEVERE, "Error while importing members from Excel", ex);
+        MsgBox.alert(null, "Lỗi khi nhập thành viên từ file Excel. Vui lòng kiểm tra lại.");
+    }
+    return saveEvents;
     }
 }
