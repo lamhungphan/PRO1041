@@ -52,6 +52,9 @@ public class Event implements Serializable {
     @Column(name = "location")
     private String location;
 
+    @Column(name = "type")
+    private String type;
+
     @ManyToOne
     @JoinColumn(name = "userId", referencedColumnName = "id")
     private User user;

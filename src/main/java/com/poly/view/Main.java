@@ -64,7 +64,6 @@ public final class Main extends javax.swing.JFrame {
         initMemberController();
         initUserController();
         initEventController();
-        totalMembers();
     }
 
     private void showCard(String cardName) {
@@ -142,7 +141,7 @@ public final class Main extends javax.swing.JFrame {
         lblMember = new javax.swing.JLabel();
         pnlEvent = new javax.swing.JPanel();
         lblEvent = new javax.swing.JLabel();
-        jTabbedPane3 = new javax.swing.JTabbedPane();
+        tabEvent = new javax.swing.JTabbedPane();
         pnlListMember1 = new javax.swing.JPanel();
         pnlTimChiTieu1 = new javax.swing.JPanel();
         txtFindEvent = new javax.swing.JTextField();
@@ -923,10 +922,10 @@ public final class Main extends javax.swing.JFrame {
         lblEvent.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblEvent.setText("Sự kiện");
 
-        jTabbedPane3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTabbedPane3.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabEvent.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tabEvent.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTabbedPane3MouseClicked(evt);
+                tabEventMouseClicked(evt);
             }
         });
 
@@ -1047,7 +1046,7 @@ public final class Main extends javax.swing.JFrame {
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
-        jTabbedPane3.addTab("Danh Sách", pnlListMember1);
+        tabEvent.addTab("Danh Sách", pnlListMember1);
 
         lblThanhVien1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblThanhVien1.setText("Id Sự Kiện:");
@@ -1279,7 +1278,7 @@ public final class Main extends javax.swing.JFrame {
                 .addGap(65, 65, 65))
         );
 
-        jTabbedPane3.addTab("Sự Kiện", pnlSettingMember1);
+        tabEvent.addTab("Sự Kiện", pnlSettingMember1);
 
         lblStartedDate.setText("Từ ngày:");
 
@@ -1370,7 +1369,7 @@ public final class Main extends javax.swing.JFrame {
                 .addContainerGap(60, Short.MAX_VALUE))
         );
 
-        jTabbedPane3.addTab("Bảng Đăng Ký", jPanel1);
+        tabEvent.addTab("Bảng Đăng Ký", jPanel1);
 
         javax.swing.GroupLayout pnlEventLayout = new javax.swing.GroupLayout(pnlEvent);
         pnlEvent.setLayout(pnlEventLayout);
@@ -1378,7 +1377,7 @@ public final class Main extends javax.swing.JFrame {
             pnlEventLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEventLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane3)
+                .addComponent(tabEvent)
                 .addContainerGap())
             .addGroup(pnlEventLayout.createSequentialGroup()
                 .addGap(265, 265, 265)
@@ -1391,7 +1390,7 @@ public final class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane3)
+                .addComponent(tabEvent)
                 .addContainerGap())
         );
 
@@ -2399,18 +2398,17 @@ public final class Main extends javax.swing.JFrame {
         nextEvent();
     }//GEN-LAST:event_btnNextEventActionPerformed
 
-    private void jTabbedPane3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane3MouseClicked
+    private void tabEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabEventMouseClicked
         // TODO add your handling code here:
-
-    }//GEN-LAST:event_jTabbedPane3MouseClicked
+    }//GEN-LAST:event_tabEventMouseClicked
 
     private void lblAttendanceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAttendanceMouseClicked
-//        SwingUtilities.invokeLater(() -> {
-//            EventChart attendanceChart = new EventChart(eventService);
-//            attendanceChart.setSize(800, 600);
-//            attendanceChart.setLocationRelativeTo(null);
-//            attendanceChart.setVisible(true);
-//        });
+        SwingUtilities.invokeLater(() -> {
+            EventChart attendanceChart = new EventChart("");
+            attendanceChart.setSize(800, 600);
+            attendanceChart.setLocationRelativeTo(null);
+            attendanceChart.setVisible(true);
+        });
     }//GEN-LAST:event_lblAttendanceMouseClicked
 
     private void lblEventContentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEventContentMouseClicked
@@ -2577,7 +2575,6 @@ public final class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JLabel lblAttendance;
     private javax.swing.JLabel lblClubName;
     private javax.swing.JLabel lblEmail;
@@ -2652,6 +2649,7 @@ public final class Main extends javax.swing.JFrame {
     private javax.swing.JRadioButton rdoFemaleUser;
     private javax.swing.JRadioButton rdoMaleMember;
     private javax.swing.JRadioButton rdoMaleUser;
+    private javax.swing.JTabbedPane tabEvent;
     private javax.swing.JTabbedPane tabMember;
     private javax.swing.JTabbedPane tabMember1;
     private javax.swing.JTabbedPane tabNotification;
@@ -2961,10 +2959,11 @@ public final class Main extends javax.swing.JFrame {
         int totalAttendence = 0;
         for (User user : listAllUser) {
             int attendence = user.getAttendance();
-            totalAttendence = totalAttendence + attendence; 
+            totalAttendence += attendence; 
         }
         lblTotalAttendance.setText(String.valueOf(totalAttendence));
     }
+    
     private void createUser() {
         User user = getFormUser();
         String roleName = user.getRole().getRoleName();
@@ -3250,6 +3249,7 @@ public final class Main extends javax.swing.JFrame {
         int totalEvent = events.size();
         lblTotalEventContent.setText(String.valueOf(totalEvent));
     }
+    
     private void fillTableEvent() {
         events = eventController.getAllEvents();
         DefaultTableModel model = (DefaultTableModel) tblListEvent.getModel();
@@ -3461,7 +3461,6 @@ public final class Main extends javax.swing.JFrame {
 
         }
     }
-
 
     private void fillDataResponseRegisterForm() {
         eventController.getAllResponseRegisterForm();
