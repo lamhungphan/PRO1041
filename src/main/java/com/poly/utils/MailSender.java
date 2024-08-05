@@ -17,7 +17,7 @@ public class MailSender {
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", host);
-        props.put("mail.smtp.port", "2525"); // Port mặc định của Mailtrap
+        props.put("mail.smtp.port", "587"); // Port mặc định của Gmail
 
         // Tạo phiên object
         Session session = Session.getInstance(props, new jakarta.mail.Authenticator() {
