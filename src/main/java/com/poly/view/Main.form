@@ -81,7 +81,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="9" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="lblTabLogout" min="-2" max="-2" attributes="0"/>
                       <Component id="lblTabSystem" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -279,7 +279,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
                               <Component id="lblClubName" min="-2" pref="550" max="-2" attributes="0"/>
@@ -293,9 +293,9 @@
                               </Group>
                               <EmptySpace min="-2" pref="188" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblTotalEventContent" min="-2" pref="65" max="-2" attributes="0"/>
-                                  <Component id="lblTotalAttendance" min="-2" pref="65" max="-2" attributes="0"/>
-                                  <Component id="lblTotalMembers" min="-2" pref="65" max="-2" attributes="0"/>
+                                  <Component id="lblTotalAttendance" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lblTotalMembers" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lblTotalEventContent" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -497,11 +497,8 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnExportExcellMember" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnExportExcellMember" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnImportExcel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace pref="25" max="32767" attributes="0"/>
+                              <Component id="btnImportExcel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -704,19 +701,21 @@
                                                   <Component id="lblEmail2" min="-2" pref="61" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
+                                          <Component id="txtEmailMemBer" min="-2" pref="300" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="lblSoDT" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
                                                   <Component id="txtPhoneMember" min="-2" pref="300" max="-2" attributes="0"/>
+                                                  <Component id="lblEmail" alignment="0" min="-2" pref="61" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="lblGhiChu3" min="-2" pref="58" max="-2" attributes="0"/>
-                                                  <Component id="txtAddressMember" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                                                  <Component id="txtAttendance" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                                                  <Component id="txtAddressMember" min="-2" pref="300" max="-2" attributes="0"/>
+                                                  <Component id="lblGhiChu4" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <Component id="lblEmail" min="-2" pref="61" max="-2" attributes="0"/>
-                                          <Component id="txtEmailMemBer" min="-2" pref="300" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -750,7 +749,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="100" max="32767" attributes="0"/>
+                              <EmptySpace pref="81" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -801,10 +800,16 @@
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                              <Component id="lblEmail" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblGhiChu4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtEmailMemBer" min="-2" pref="33" max="-2" attributes="0"/>
-                              <EmptySpace pref="30" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txtEmailMemBer" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                                  <Component id="txtAttendance" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="25" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="lblSoDT" min="-2" max="-2" attributes="0"/>
@@ -928,9 +933,9 @@
                         <Property name="text" type="java.lang.String" value="Ng&#xe0;y Sinh :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtAddressMember">
+                    <Component class="javax.swing.JTextField" name="txtAttendance">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAddressMemberActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAttendanceActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnDeleteMember">
@@ -1105,6 +1110,19 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIdMemberActionPerformed"/>
                       </Events>
                     </Component>
+                    <Component class="javax.swing.JTextField" name="txtAddressMember">
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAddressMemberActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblGhiChu4">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Segoe UI" size="14" style="0"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="S&#x1ed1; l&#x1ea7;n tham gia"/>
+                      </Properties>
+                    </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>
@@ -1140,7 +1158,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTabbedPane3" max="32767" attributes="0"/>
+                      <Component id="tabEvent" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -1156,7 +1174,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblEvent" min="-2" pref="43" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTabbedPane3" max="32767" attributes="0"/>
+                      <Component id="tabEvent" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1175,14 +1193,14 @@
                 <Property name="text" type="java.lang.String" value="S&#x1ef1; ki&#x1ec7;n"/>
               </Properties>
             </Component>
-            <Container class="javax.swing.JTabbedPane" name="jTabbedPane3">
+            <Container class="javax.swing.JTabbedPane" name="tabEvent">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTabbedPane3MouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tabEventMouseClicked"/>
               </Events>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
