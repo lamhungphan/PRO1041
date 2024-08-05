@@ -14,7 +14,9 @@ import java.sql.Date;
  import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
+@ToString
 @Entity
 @Table(name = "users")
 @Getter
@@ -68,9 +70,6 @@ public class User implements Serializable {
     
     @Column(name = "image")
     private String image;
-
-    @Column(name = "attendance")
-    private Integer attendace;
 
     @ManyToOne
     @JoinColumn(name = "roleId", referencedColumnName = "id")

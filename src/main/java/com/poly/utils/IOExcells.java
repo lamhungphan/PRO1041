@@ -2,32 +2,22 @@ package com.poly.utils;
 
 import com.poly.entity.Event;
 import com.poly.entity.User;
-import java.io.File;
+import java.io.*;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.Serializable;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.sql.Date;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 
 public class IOExcells implements Serializable {
 
     private static String openSaveFileExport() {
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Chọn nơi để lưu file!");
-        fileChooser.setSelectedFile(new File("demo.xlsx"));
-        int userSelection = fileChooser.showSaveDialog(null);
-        if (userSelection == JFileChooser.APPROVE_OPTION) {
-            File fileToSave = fileChooser.getSelectedFile();
-            return fileToSave.getAbsolutePath();
-        }
-        return null;
-    }
-
-    private static String openReadFileExport() {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Chọn nơi để lưu file!");
         fileChooser.setSelectedFile(new File("demo.xlsx"));
@@ -175,7 +165,7 @@ public class IOExcells implements Serializable {
             e.printStackTrace();
         }
     }
-    
+
     public static void exportToExcelEvent(List<Event> data) {
         if (data == null || data.isEmpty()) {
             System.err.println("No data provided for export.");
@@ -225,6 +215,102 @@ public class IOExcells implements Serializable {
             e.printStackTrace();
         }
     }
-    
-    
+
+public static List<User> importToExcelMember() throws ParseException {
+        FileInputStream fis = null;
+        List<User> userList = new ArrayList<>();
+        try {
+            String filePath = openSaveFileExport();
+            System.out.println(filePath);
+            if (filePath == null || filePath.isEmpty()) {
+                MsgBox.alert(null, "Đường dẫn không tồn tại !");
+                return userList;
+            }
+            fis = new FileInputStream(new File(filePath)); // use path choose 
+            XSSFWorkbook wb = new XSSFWorkbook(fis); // use XSSFWorkbook file .xlsx
+            XSSFSheet sheet = wb.getSheetAt(0);
+            FormulaEvaluator formulaEvaluator = wb.getCreationHelper().createFormulaEvaluator();
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+            for (Row row : sheet) {
+                if (row.getRowNum() == 0) {
+                    continue;
+                }
+                String fullname = null;
+                String email = null;
+                String phone = null;
+                Date birthday = null;
+                String score = null;
+                String address = null;
+
+                for (Cell cell : row) {
+                    switch (cell.getColumnIndex()) {
+                        case 1:
+                            fullname = cell.getStringCellValue();
+                            break;
+                        case 2:
+                            email = cell.getStringCellValue();
+                            break;
+                        case 3:
+                            phone = cell.getStringCellValue();
+                            break;
+                        case 4:
+                            if (cell.getCellType() == CellType.STRING) {
+                                birthday = InputFields.getDateSQL(sdf.parse(cell.getStringCellValue()));
+                            } else if (cell.getCellType() == CellType.NUMERIC) {
+                                birthday = InputFields.getDateSQL(cell.getDateCellValue());
+                            }
+                            break;
+                        case 5:
+                            if (cell.getCellType() == CellType.NUMERIC) {
+                                score = String.valueOf(cell.getNumericCellValue());
+                            } else if (cell.getCellType() == CellType.STRING) {
+                                score = cell.getStringCellValue();
+                            }
+                            break;
+                        case 6:
+                            address = cell.getStringCellValue();
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                User user = new User();
+                user.setFullname(fullname);
+                user.setAddress(address);
+                if (birthday != null) {
+                    user.setBirthday(new java.sql.Date(birthday.getTime())); // Chuyển đổi sang java.sql.Date
+                }
+                user.setPhone(phone);
+                user.setScore(score);
+                user.setEmail(email);
+                userList.add(user);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(IOExcells.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (fis != null) {
+                try {
+                    fis.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(IOExcells.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        for(User user: userList){
+            System.out.println(user.toString());
+        }
+        return userList;
+    }
+
+     
+    public static void main(String[] args) {
+//        try {
+//            importToExcelMember();
+//        } catch (ParseException ex) {
+//            Logger.getLogger(IOExcells.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+    }
 }
