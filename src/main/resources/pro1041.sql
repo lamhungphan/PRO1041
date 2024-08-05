@@ -75,17 +75,6 @@ insert into roles (roleName) VALUES
                                  (N'Thủ quỹ'),
                                  (N'Thành viên');
 
-<<<<<<< HEAD
-insert into events (userId, title, content, location, status, startedDate, endedDate, createdDate, updatedDate) values
-(1, 'Hội thảo Java Cơ Bản', 'Tìm hiểu các kiến thức cơ bản về lập trình Java.', 'Phòng 101', 'sắp diễn ra', '2024-08-01', '2024-08-01', '2024-07-10', '2024-07-10'),
-(2, 'Kỹ Thuật Java Nâng Cao', 'Làm chủ các kỹ thuật lập trình Java nâng cao.', 'Phòng 102', 'sắp diễn ra', '2024-08-05', '2024-08-05', '2024-07-10', '2024-07-10'),
-(3, 'Java cho Phát Triển Web', 'Khám phá Java trong phát triển web.', 'Phòng 103', 'sắp diễn ra', '2024-08-10', '2024-08-10', '2024-07-10', '2024-07-10'),
-(4, 'Giới Thiệu Spring Boot', 'Bắt đầu với Spring Boot.', 'Phòng 104', 'sắp diễn ra', '2024-08-15', '2024-08-15', '2024-07-10', '2024-07-10'),
-(1, 'Viết CV Hiệu Quả', 'Học cách viết một CV hiệu quả.', 'Phòng 105', 'sắp diễn ra', '2024-08-20', '2024-08-20', '2024-07-10', '2024-07-10'),
-(2, 'Kỹ Năng Thuyết Trình', 'Cải thiện kỹ năng thuyết trình trước đám đông.', 'Phòng 106', 'sắp diễn ra', '2024-08-25', '2024-08-25', '2024-07-10', '2024-07-10'),
-(4, 'Kỹ Thuật Giải Quyết Vấn Đề', 'Nâng cao kỹ năng giải quyết vấn đề.', 'Phòng 107', 'sắp diễn ra', '2024-08-30', '2024-08-30', '2024-07-10', '2024-07-10'),
-(3, 'Trình Diễn Dự Án Java', 'Trình diễn các dự án Java của bạn.', 'Phòng 108', 'sắp diễn ra', '2024-09-05', '2024-09-05', '2024-07-10', '2024-07-10');
-=======
 INSERT INTO users (roleId, username, password, fullName, birthDay, email, address, phone, sex, score, createdDate, updatedDate, isActived, attendance) VALUES
                                                                                                                                                            (1, 'phanlamhung', '1234', N'Nguyễn Phan Lâm Hùng', '1999-01-01', 'hung@example.com', N'123 Đường A, Hà Nội', '0909123456', 1, 0, '2023-01-01', '2023-01-01', 1, 8),
                                                                                                                                                            (2, 'giangnd', '123', N'Nguyễn Đằng Giang', '1999-02-01', 'giang@example.com', N'456 Đường B, TP.HCM', '0909876543', 1, 0, '2023-01-02', '2023-01-02', 1, 8),
@@ -117,8 +106,6 @@ INSERT INTO users (roleId, username, password, fullName, birthDay, email, addres
                                                                                                                                                            (4, 'user24', '3221', N'User 24', '2001-12-01', 'user24@example.com', N'101 Đường UU, Cần Thơ', '0909123424', 0, 2, '2023-02-24', '2023-02-24', 1, 5),
                                                                                                                                                            (4, 'user25', '3221', N'User 25', '2002-01-01', 'user25@example.com', N'123 Đường WW, Hà Nội', '0909123425', 1, 0, '2023-02-25', '2023-02-25', 1, 2),
                                                                                                                                                            (4, 'user26', '3221', N'User 26', '2002-02-01', 'user26@example.com', N'456 Đường XX, TP.HCM', '0909123426', 1, 3, '2023-02-26', '2023-02-26', 1, 0);
->>>>>>> cfd6a2a1d561bd0aebda77826e9ff7cfbafdf7a9
-
 insert into events (userId, title, content, location, status, startedDate, endedDate, createdDate, updatedDate, type) values
                                                                                                                           (1, 'Hội thảo Java Cơ Bản', 'Tìm hiểu các kiến thức cơ bản về lập trình Java.', 'Phòng 102', 'đã diễn ra', '2024-06-02', '2024-06-02', '2024-07-10', '2024-07-10', 'core'),
                                                                                                                           (2, 'Kỹ Thuật Java Nâng Cao', 'Làm chủ các kỹ thuật lập trình Java nâng cao.', 'Phòng 102', 'đã diễn ra', '2024-06-05', '2024-06-05', '2024-07-10', '2024-07-10', 'core'),

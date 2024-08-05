@@ -2759,6 +2759,7 @@ public final class Main extends javax.swing.JFrame {
     List<User> members;
 
     private void totalMembers() {
+        if (members == null) return;
         Integer totalMember = members.size();
         lblTotalMembers.setText(totalMember.toString());
     }
@@ -2816,6 +2817,7 @@ public final class Main extends javax.swing.JFrame {
 
     private void fillMemberToTable() {
         members = memberController.getMembersByRole();
+        if(members == null) return;
         DefaultTableModel tableModelMember = (DefaultTableModel) tblListMember.getModel();
         tableModelMember.setRowCount(0);
         try {
@@ -2931,7 +2933,7 @@ public final class Main extends javax.swing.JFrame {
         cboRateMember.setSelectedItem(memberForm.getScore());
         if (memberForm.getImage() != null) {
             lblUserAvatar.setToolTipText(memberForm.getImage());
-            lblUserAvatar.setIcon(XImage.read(memberForm.getImage()));
+            lblUserAvatar.setIcon(XImage.read(lblUserAvatar, memberForm.getImage()));
         } else {
             lblUserAvatar.setIcon(null);
         }
@@ -2959,7 +2961,7 @@ public final class Main extends javax.swing.JFrame {
         if (fileAvatarMember.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             File file = fileAvatarMember.getSelectedFile();
             XImage.save(file); // lưu hình vào thư mục avatar
-            ImageIcon icon = XImage.read(file.getName()); // đọc hình từ avatar
+            ImageIcon icon = XImage.read(lblMemberAvatar, file.getName()); // đọc hình từ avatar
             lblMemberAvatar.setIcon(icon);
             lblMemberAvatar.setToolTipText(file.getName()); // giữ tên hình trong tooltip
         }
@@ -3050,9 +3052,6 @@ public final class Main extends javax.swing.JFrame {
                 totalAttendence += attendence;
             }
 
-            attendence = user.getAttendance();
-            totalAttendence += attendence;
-
         }
         lblTotalAttendance.setText(String.valueOf(totalAttendence));
     }
@@ -3120,6 +3119,7 @@ public final class Main extends javax.swing.JFrame {
 
     private void fillUserToTable() {
         users = userController.getListAllUser();
+        if(users == null)return;
         DefaultTableModel tableModelUser = (DefaultTableModel) tblListUser.getModel();
         tableModelUser.setRowCount(0);
         try {
@@ -3252,7 +3252,7 @@ public final class Main extends javax.swing.JFrame {
 
         if (userForm.getImage() != null) {
             lblUserAvatar.setToolTipText(userForm.getImage());
-            lblUserAvatar.setIcon(XImage.read(userForm.getImage()));
+            lblUserAvatar.setIcon(XImage.read(lblUserAvatar, userForm.getImage()));
         } else {
             lblUserAvatar.setIcon(null);
         }
@@ -3280,7 +3280,7 @@ public final class Main extends javax.swing.JFrame {
         if (fileAvatarUser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             File file = fileAvatarUser.getSelectedFile();
             XImage.save(file); // lưu hình vào thư mục avatar
-            ImageIcon icon = XImage.read(file.getName()); // đọc hình từ avatar
+            ImageIcon icon = XImage.read(lblUserAvatar, file.getName()); // đọc hình từ avatar
             lblUserAvatar.setIcon(icon);
             lblUserAvatar.setToolTipText(file.getName()); // giữ tên hình trong tooltip
         }
@@ -3346,6 +3346,8 @@ public final class Main extends javax.swing.JFrame {
 
     private void fillTableEvent() {
         events = eventController.getAllEvents();
+        if (events == null)return;
+
         DefaultTableModel model = (DefaultTableModel) tblListEvent.getModel();
         model.setRowCount(0);
         try {
@@ -3551,7 +3553,7 @@ public final class Main extends javax.swing.JFrame {
             User userLogined = userController.readUserByUserName(usernameLogined);
             if (userLogined.getImage() != null) {
                 lblUserLoginedAvatar.setToolTipText(userLogined.getImage());
-                lblUserLoginedAvatar.setIcon(XImage.read(userLogined.getImage()));
+                lblUserLoginedAvatar.setIcon(XImage.read(lblUserAvatar, userLogined.getImage()));
             } else {
                 lblUserLoginedAvatar.setIcon(null);
             }
