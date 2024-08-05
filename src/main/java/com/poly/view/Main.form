@@ -279,7 +279,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
                               <Component id="lblClubName" min="-2" pref="550" max="-2" attributes="0"/>
@@ -293,9 +293,9 @@
                               </Group>
                               <EmptySpace min="-2" pref="188" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblTotalEventContent" min="-2" pref="65" max="-2" attributes="0"/>
-                                  <Component id="lblTotalAttendance" min="-2" pref="65" max="-2" attributes="0"/>
-                                  <Component id="lblTotalMembers" min="-2" pref="65" max="-2" attributes="0"/>
+                                  <Component id="lblTotalAttendance" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lblTotalMembers" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lblTotalEventContent" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -497,11 +497,8 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnExportExcellMember" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnExportExcellMember" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnImportExcel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace pref="25" max="32767" attributes="0"/>
+                              <Component id="btnImportExcel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1140,7 +1137,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTabbedPane3" max="32767" attributes="0"/>
+                      <Component id="tabEvent" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -1156,7 +1153,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblEvent" min="-2" pref="43" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTabbedPane3" max="32767" attributes="0"/>
+                      <Component id="tabEvent" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1175,14 +1172,14 @@
                 <Property name="text" type="java.lang.String" value="S&#x1ef1; ki&#x1ec7;n"/>
               </Properties>
             </Component>
-            <Container class="javax.swing.JTabbedPane" name="jTabbedPane3">
+            <Container class="javax.swing.JTabbedPane" name="tabEvent">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTabbedPane3MouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tabEventMouseClicked"/>
               </Events>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
