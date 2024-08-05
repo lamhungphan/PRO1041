@@ -6,8 +6,11 @@ import com.poly.injection.MemberInjector;
 import com.poly.services.MemberService;
 import com.poly.utils.IOExcells;
 import com.poly.utils.MsgBox;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MemberController {
 
@@ -46,4 +49,20 @@ public class MemberController {
         IOExcells.exportToExcelMember(dataList);
     }
     
+    public List<User> importExcelMember() {
+    List<User> savedUsers = new ArrayList<>();
+    try {
+        List<User> dataListFound = IOExcells.importToExcelMember();
+
+        for (User entityExcelUser : dataListFound) {
+            User savedUser = memberService.save(entityExcelUser, RoleConstant.THANH_VIEN);
+            savedUsers.add(savedUser);
+        }
+    } catch (ParseException ex) {
+        Logger.getLogger(MemberController.class.getName()).log(Level.SEVERE, "Error while importing members from Excel", ex);
+        MsgBox.alert(null, "Lỗi khi nhập thành viên từ file Excel. Vui lòng kiểm tra lại.");
+    }
+    return savedUsers;
+}
+
 }
