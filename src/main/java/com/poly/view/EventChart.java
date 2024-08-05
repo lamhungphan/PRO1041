@@ -41,10 +41,10 @@ public class EventChart extends JFrame {
     private CategoryDataset createDataset() {
 //        List<Object[]> data = eventServiceImpl.getMemberCountByEvent();
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.addValue(10, "Thành viên", "Sự kiện A");
-        dataset.addValue(15, "Thành viên", "Sự kiện B");
-        dataset.addValue(20, "Thành viên", "Sự kiện C");
-        dataset.addValue(25, "Thành viên", "Sự kiện D");
+        dataset.addValue(10, "Thành viên", "Tháng 6");
+        dataset.addValue(15, "Thành viên", "Tháng 7");
+        dataset.addValue(20, "Thành viên", "Tháng 8");
+        dataset.addValue(5, "Thành viên", "Tháng 9");
         return dataset;
     }
 }
