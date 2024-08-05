@@ -79,7 +79,6 @@ public class MemberServiceImpl implements MemberService {
             }
         }
         if (members.isEmpty()) {
-            MsgBox.alert(null, "Không tìm thấy danh sách thành viên!");
             return null;
         }
         return members;
