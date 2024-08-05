@@ -32,7 +32,7 @@ public class RegExInputFields {
 
     public static String getCheckNameMember(JTextField txtFullname) {
         if (!checkNameMember(txtFullname)) {
-            txtFullname.setText(""); // Clear the input field for re-entry
+            txtFullname.setText(""); 
             txtFullname.requestFocus();
             return null;
         }

@@ -64,6 +64,7 @@ public final class Main extends javax.swing.JFrame {
         initMemberController();
         initUserController();
         initEventController();
+        new ChaoJDialog(this, true).setVisible(true);
     }
 
     private void showCard(String cardName) {
@@ -123,7 +124,7 @@ public final class Main extends javax.swing.JFrame {
         rdoFemaleMember = new javax.swing.JRadioButton();
         rdoMaleMember = new javax.swing.JRadioButton();
         lblNgaySinh = new javax.swing.JLabel();
-        txtAddressMember = new javax.swing.JTextField();
+        txtAttendance = new javax.swing.JTextField();
         btnDeleteMember = new javax.swing.JButton();
         btnUpdateMember = new javax.swing.JButton();
         btnAddMember = new javax.swing.JButton();
@@ -138,6 +139,8 @@ public final class Main extends javax.swing.JFrame {
         lblMemberAvatar = new javax.swing.JLabel();
         lblEmail2 = new javax.swing.JLabel();
         txtIdMember = new javax.swing.JTextField();
+        txtAddressMember = new javax.swing.JTextField();
+        lblGhiChu4 = new javax.swing.JLabel();
         lblMember = new javax.swing.JLabel();
         pnlEvent = new javax.swing.JPanel();
         lblEvent = new javax.swing.JLabel();
@@ -643,9 +646,9 @@ public final class Main extends javax.swing.JFrame {
         lblNgaySinh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblNgaySinh.setText("Ngày Sinh :");
 
-        txtAddressMember.addActionListener(new java.awt.event.ActionListener() {
+        txtAttendance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAddressMemberActionPerformed(evt);
+                txtAttendanceActionPerformed(evt);
             }
         });
 
@@ -748,6 +751,15 @@ public final class Main extends javax.swing.JFrame {
             }
         });
 
+        txtAddressMember.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAddressMemberActionPerformed(evt);
+            }
+        });
+
+        lblGhiChu4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblGhiChu4.setText("Số lần tham gia");
+
         javax.swing.GroupLayout pnlSettingMemberLayout = new javax.swing.GroupLayout(pnlSettingMember);
         pnlSettingMember.setLayout(pnlSettingMemberLayout);
         pnlSettingMemberLayout.setHorizontalGroup(
@@ -785,16 +797,18 @@ public final class Main extends javax.swing.JFrame {
                                             .addGap(90, 90, 90)))
                                     .addComponent(txtIdMember, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblEmail2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtEmailMemBer, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnlSettingMemberLayout.createSequentialGroup()
                                 .addGroup(pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblSoDT, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtPhoneMember, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtPhoneMember, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(60, 60, 60)
                                 .addGroup(pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblGhiChu3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtAddressMember, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEmailMemBer, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtAttendance, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtAddressMember, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblGhiChu4)))))
                     .addGroup(pnlSettingMemberLayout.createSequentialGroup()
                         .addGap(149, 149, 149)
                         .addGroup(pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -818,7 +832,7 @@ public final class Main extends javax.swing.JFrame {
                                 .addComponent(btnDeleteMember, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnUpdateMember, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         pnlSettingMemberLayout.setVerticalGroup(
             pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -855,10 +869,14 @@ public final class Main extends javax.swing.JFrame {
                                     .addComponent(cboRateMember, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(dcBirthdayMember, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(29, 29, 29)
-                .addComponent(lblEmail)
+                .addGroup(pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEmail)
+                    .addComponent(lblGhiChu4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtEmailMemBer, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGroup(pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtEmailMemBer, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAttendance, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(pnlSettingMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlSettingMemberLayout.createSequentialGroup()
                         .addComponent(lblSoDT)
@@ -2139,9 +2157,9 @@ public final class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rdoMaleMemberActionPerformed
 
-    private void txtAddressMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressMemberActionPerformed
+    private void txtAttendanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAttendanceActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtAddressMemberActionPerformed
+    }//GEN-LAST:event_txtAttendanceActionPerformed
 
     private void btnDeleteMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteMemberActionPerformed
         // TODO add your handling code here:
@@ -2365,6 +2383,26 @@ public final class Main extends javax.swing.JFrame {
 
     private void btnSearchUser2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchUser2ActionPerformed
         // TODO add your handling code here:
+        User userFind = new User();//Tạo đối tượng mới lưu giữ nếu tìm được thành viên
+        String nameFinder = RegExInputFields.getCheckNameMember(txtFindMember);//kiểm tra tên hợp lệ
+
+        for (User member : members) {//Tạo vòng lập từ list users để tìm theo tên
+            if (member.getFullname().equalsIgnoreCase(nameFinder)) {//lấy tên của mỗi member so sánh với tên từ input
+                userFind = member;// nếu tìm thấy thì gán member vào đối tượng mới tạo ra
+                break;// thoát khỏi vòng lặp
+            }
+        }
+
+        if (userFind == null) {//Điều kiện return sớm nếu không có user
+            MsgBox.alert(null, "Không tìm thấy thành viên này!");
+            return;
+        }
+        setFormMember(userFind);//Đưa member lên form view
+        updateStatusMember();
+        row = members.indexOf(userFind);//tìm vị trí của thành viên trong list members
+        tblListMember.setRowSelectionInterval(row, row);
+
+        txtFindMember.setText("");
     }//GEN-LAST:event_btnSearchUser2ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -2480,6 +2518,9 @@ public final class Main extends javax.swing.JFrame {
         exportExcellEvent();
     }//GEN-LAST:event_btnExportEventActionPerformed
 
+    private void txtAddressMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressMemberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAddressMemberActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2512,6 +2553,7 @@ public final class Main extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
+
                 new Main().setVisible(true);
             }
         });
@@ -2584,6 +2626,7 @@ public final class Main extends javax.swing.JFrame {
     private javax.swing.JLabel lblEvent;
     private javax.swing.JLabel lblEventContent;
     private javax.swing.JLabel lblGhiChu3;
+    private javax.swing.JLabel lblGhiChu4;
     private javax.swing.JLabel lblGhiChu5;
     private javax.swing.JLabel lblGioiTinhThanhVien;
     private javax.swing.JLabel lblGioiTinhUser;
@@ -2660,6 +2703,7 @@ public final class Main extends javax.swing.JFrame {
     private javax.swing.JTextField txtAddressEvent;
     private javax.swing.JTextField txtAddressMember;
     private javax.swing.JTextField txtAddressUser;
+    private javax.swing.JTextField txtAttendance;
     private javax.swing.JTextArea txtContentEvent;
     private javax.swing.JTextField txtContentNotificationAdmin;
     private javax.swing.JTextField txtEmail;
@@ -2750,13 +2794,13 @@ public final class Main extends javax.swing.JFrame {
         try {
             for (User user : members) {
                 Object[] row = {
-                        user.getId(),
-                        user.getFullname(),
-                        user.getEmail(),
-                        user.getPhone(),
-                        user.getBirthday(),
-                        user.getScore(),
-                        user.getAddress()
+                    user.getId(),
+                    user.getFullname(),
+                    user.getEmail(),
+                    user.getPhone(),
+                    user.getBirthday(),
+                    user.getScore(),
+                    user.getAddress()
                 };
                 tableModelMember.addRow(row);
             }
@@ -2790,7 +2834,7 @@ public final class Main extends javax.swing.JFrame {
             memberForm.setPhone(memberPhone);
 
             // Lấy và kiểm tra địa chỉ
-            String addressMember = RegExInputFields.getCheckAddress(txtAddressMember);
+            String addressMember = RegExInputFields.getCheckAddress(txtAttendance);
             if (addressMember.isEmpty()) {
                 return getFormMember(memberForm);
             }
@@ -2817,6 +2861,9 @@ public final class Main extends javax.swing.JFrame {
             }
             memberForm.setScore(rateMembers);
 
+            Integer attendance = InputFields.getTextFieldtoInteger(txtAttendance);
+            memberForm.setAttendance(attendance);
+
             return memberForm;
         } catch (Exception e) {
             return null;
@@ -2829,6 +2876,7 @@ public final class Main extends javax.swing.JFrame {
         txtEmailMemBer.setText(memberForm.getEmail());
         txtPhoneMember.setText(memberForm.getPhone());
         txtAddressMember.setText(memberForm.getAddress());
+        txtAttendance.setText(memberForm.getAttendance().toString());
 
         if (memberForm.getSex() != null) {
             if (memberForm.getSex()) {
@@ -2864,7 +2912,7 @@ public final class Main extends javax.swing.JFrame {
         if (selectedRow >= 0) {
             Object value = tblListMember.getValueAt(selectedRow, 0);
             Integer id = (Integer) value;
-            User member = memberController.readUser(id);
+            User member = memberController.readUserByID(id);
             setFormMember(member);
             row = selectedRow;
             updateStatusMember();
@@ -2954,15 +3002,15 @@ public final class Main extends javax.swing.JFrame {
         setTotalAttendence();
     }
 
-    private void setTotalAttendence(){
+    private void setTotalAttendence() {
         int totalAttendence = 0;
         for (User user : listAllUser) {
             int attendence = user.getAttendance();
-            totalAttendence += attendence; 
+            totalAttendence += attendence;
         }
         lblTotalAttendance.setText(String.valueOf(totalAttendence));
     }
-    
+
     private void createUser() {
         User user = getFormUser();
         String roleName = user.getRole().getRoleName();
@@ -2994,7 +3042,7 @@ public final class Main extends javax.swing.JFrame {
             newPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
             userInForm.setPassword(newPassword);
         }
-        
+
         User updatedUser = userController.updateUser(userInForm);
         if (updatedUser == null) {
             MsgBox.alert(this, "Không thể cập nhật thành viên.");
@@ -3002,8 +3050,9 @@ public final class Main extends javax.swing.JFrame {
         }
         users.set(row, updatedUser);
         MsgBox.alert(this, "Cập nhật thành viên thành công!");
-        clearFormUser();
+
         fillUserToTable();
+        clearFormUser();
     }
 
     private void deleteUser() {
@@ -3051,7 +3100,7 @@ public final class Main extends javax.swing.JFrame {
         try {
             Integer id = InputFields.getTextFieldtoInteger(txtIdUser);
             userForm.setId(id);
-            
+
             // Lấy và kiểm tra username
             String username = RegExInputFields.getCheckUsername(txtUsernameUser);
             if (username.isEmpty()) {
@@ -3121,7 +3170,7 @@ public final class Main extends javax.swing.JFrame {
 
             userForm.setImage(lblUserAvatar.getToolTipText());
             userForm.setUpdatedDate(InputFields.getDateSQL(new java.util.Date()));
-            
+
             userForm.setIsActived(true);
             return userForm;
 
@@ -3244,11 +3293,11 @@ public final class Main extends javax.swing.JFrame {
         setTotalEvent();
     }
 
-    private void setTotalEvent(){
+    private void setTotalEvent() {
         int totalEvent = events.size();
         lblTotalEventContent.setText(String.valueOf(totalEvent));
     }
-    
+
     private void fillTableEvent() {
         events = eventController.getAllEvents();
         DefaultTableModel model = (DefaultTableModel) tblListEvent.getModel();
