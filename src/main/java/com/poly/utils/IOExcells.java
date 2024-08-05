@@ -305,12 +305,108 @@ public static List<User> importToExcelMember() throws ParseException {
         return userList;
     }
 
+    public static List<Event> importToExcelEvent() throws ParseException {
+        FileInputStream fis = null;
+        List<Event> eventList = new ArrayList<>();
+        try {
+            String filePath = openSaveFileExport();
+            System.out.println(filePath);
+            if (filePath == null || filePath.isEmpty()) {
+                MsgBox.alert(null, "Đường dẫn không tồn tại !");
+                return eventList;
+            }
+            fis = new FileInputStream(new File(filePath)); // use path choose
+            XSSFWorkbook wb = new XSSFWorkbook(fis); // use XSSFWorkbook file .xlsx
+            XSSFSheet sheet = wb.getSheetAt(0);
+            FormulaEvaluator formulaEvaluator = wb.getCreationHelper().createFormulaEvaluator();
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+            for (Row row : sheet) {
+                if (row.getRowNum() == 0) {
+                    continue;
+                }
+                Integer idUserEvent = null;
+                String fullname = null;
+                String title = null;
+                String content = null;
+                Date startedDate = null;
+                Date endedDate = null;
+                String room = null;
+
+                for (Cell cell : row) {
+                    switch (cell.getColumnIndex()) {
+                        case 0:
+                            idUserEvent = Integer.valueOf(cell.getStringCellValue());
+                        case 1:
+                            fullname = cell.getStringCellValue();
+                            break;
+                        case 2:
+                            title = cell.getStringCellValue();
+                            break;
+                        case 3:
+                            content = cell.getStringCellValue();
+                            break;
+                        case 4:
+                            if (cell.getCellType() == CellType.STRING) {
+                                startedDate = InputFields.getDateSQL(sdf.parse(cell.getStringCellValue()));
+                            } else if (cell.getCellType() == CellType.NUMERIC) {
+                                startedDate = InputFields.getDateSQL(cell.getDateCellValue());
+                            }
+                            break;
+                        case 5:
+                            if (cell.getCellType() == CellType.STRING) {
+                                endedDate = InputFields.getDateSQL(sdf.parse(cell.getStringCellValue()));
+                            } else if (cell.getCellType() == CellType.NUMERIC) {
+                                endedDate = InputFields.getDateSQL(cell.getDateCellValue());
+                            }
+                            break;
+                        case 6:
+                            room = cell.getStringCellValue();
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                Event event = new Event();
+                User userEvent = new User();
+                userEvent.setId(idUserEvent);
+                event.setUser(userEvent);
+                event.setTitle(title);
+                event.setContent(content);
+                if (startedDate != null) {
+                    event.setStartedDate(new java.sql.Date(startedDate.getTime())); // Chuyển đổi sang java.sql.Date
+                }
+                if (endedDate != null) {
+                    event.setStartedDate(new java.sql.Date(endedDate.getTime())); // Chuyển đổi sang java.sql.Date
+                }
+                event.setLocation(room);
+                eventList.add(event);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(IOExcells.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (fis != null) {
+                try {
+                    fis.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(IOExcells.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        for(Event event: eventList){
+            System.out.println(event.toString());
+        }
+        return eventList;
+    }
+
      
     public static void main(String[] args) {
-//        try {
-//            importToExcelMember();
-//        } catch (ParseException ex) {
-//            Logger.getLogger(IOExcells.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        try {
+            importToExcelEvent();
+        } catch (ParseException ex) {
+            Logger.getLogger(IOExcells.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
