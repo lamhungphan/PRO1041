@@ -4,8 +4,8 @@ import com.poly.constant.RoleConstant;
 import com.poly.entity.User;
 import com.poly.injection.MemberInjector;
 import com.poly.services.MemberService;
+import com.poly.utils.IOExcells;
 import com.poly.utils.MsgBox;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,11 +34,12 @@ public class MemberController {
         return memberService.findByFullname(name);
     }
 
-    public List<User> getAllMembers() {
-        return memberService.findAll();
-    }
-
     public List<User> getMembersByRole() {
             return memberService.findMembersByRole(RoleConstant.THANH_VIEN);
     }
+    
+    public void exportExcellAllMember(List<User> dataList){
+        IOExcells.exportToExcelMember(dataList);
+    }
+    
 }

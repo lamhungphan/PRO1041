@@ -9,11 +9,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import java.sql.Date;
  import java.io.Serializable;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "users")
@@ -62,6 +62,12 @@ public class User implements Serializable {
     
     @Column(name = "score")
     private String score;
+    
+    @Column(name = "attendance")
+    private Integer attendance;
+
+    @Column(name = "image")
+    private String image;
 
     @ManyToOne
     @JoinColumn(name = "roleId", referencedColumnName = "id")

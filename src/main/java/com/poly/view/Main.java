@@ -2,6 +2,7 @@ package com.poly.view;
 
 import com.google.api.client.googleapis.util.Utils;
 import com.poly.constant.RoleConstant;
+import com.poly.controller.AccountController;
 import com.poly.controller.EventController;
 import com.poly.controller.MemberController;
 import com.poly.controller.UserController;
@@ -9,24 +10,37 @@ import com.poly.entity.Event;
 import com.poly.entity.Role;
 import com.poly.entity.User;
 import javax.swing.JFrame;
-
 import com.poly.injection.AccountInjector;
 import com.poly.injection.AuthorizationInjector;
 import com.poly.injection.MailInjector;
 import com.poly.injection.UserInjector;
+import com.poly.repository.impl.UserRepoImpl;
+import com.poly.utils.IOExcells;
 import com.poly.utils.InputFields;
 import com.poly.utils.MsgBox;
 import com.poly.utils.RegExInputFields;
 import com.poly.utils.SheetsQuickstart;
+import com.poly.utils.XImage;
 import java.awt.CardLayout;
+import java.io.File;
 import java.sql.Date;
 import java.util.List;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import java.io.IOException;
+import java.security.GeneralSecurityException;
+import java.sql.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import lombok.Getter;
+import org.mindrot.jbcrypt.BCrypt;
 
 @Getter
-public class Main extends javax.swing.JFrame {
+public final class Main extends javax.swing.JFrame {
 
     private int row = -1;
     CardLayout cardLayout;
@@ -39,8 +53,10 @@ public class Main extends javax.swing.JFrame {
     MemberController memberController = new MemberController();
     String buttonDirection;
     List<User> listAllUser = new UserController().getAllUsers();
+    UserRepoImpl userRepo = new UserRepoImpl();
 
     public Main() {
+        setAvatarUserLogined();
         initComponents();
         cardLayout = (CardLayout) (container.getLayout());
         this.setLocationRelativeTo(null);
@@ -48,7 +64,6 @@ public class Main extends javax.swing.JFrame {
         initMemberController();
         initUserController();
         initEventController();
-
     }
 
     private void showCard(String cardName) {
@@ -65,6 +80,9 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         btngroudSex = new javax.swing.ButtonGroup();
+        fileAvatarUser = new javax.swing.JFileChooser();
+        fileAvatarUserLogined = new javax.swing.JFileChooser();
+        fileAvatarMember = new javax.swing.JFileChooser();
         lblTabContainer = new javax.swing.JPanel();
         lblWelcome = new javax.swing.JLabel();
         lblHome = new javax.swing.JLabel();
@@ -91,6 +109,8 @@ public class Main extends javax.swing.JFrame {
         btnSearchUser2 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblListMember = new javax.swing.JTable();
+        btnExportExcellMember = new javax.swing.JButton();
+        btnImportExcel = new javax.swing.JButton();
         pnlSettingMember = new javax.swing.JPanel();
         lblThanhVien = new javax.swing.JLabel();
         txtNameMember = new javax.swing.JTextField();
@@ -121,13 +141,15 @@ public class Main extends javax.swing.JFrame {
         lblMember = new javax.swing.JLabel();
         pnlEvent = new javax.swing.JPanel();
         lblEvent = new javax.swing.JLabel();
-        jTabbedPane3 = new javax.swing.JTabbedPane();
+        tabEvent = new javax.swing.JTabbedPane();
         pnlListMember1 = new javax.swing.JPanel();
         pnlTimChiTieu1 = new javax.swing.JPanel();
         txtFindEvent = new javax.swing.JTextField();
         btnSearchEvent = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblListEvent = new javax.swing.JTable();
+        btnExportEvent = new javax.swing.JButton();
+        btnImportEvent = new javax.swing.JButton();
         pnlSettingMember1 = new javax.swing.JPanel();
         lblThanhVien1 = new javax.swing.JLabel();
         txtIdEvent = new javax.swing.JTextField();
@@ -153,14 +175,15 @@ public class Main extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         txtContentEvent = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jLabel9 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jButton1 = new javax.swing.JButton();
+        lblStartedDate = new javax.swing.JLabel();
+        ggSheetStartedDate = new com.toedter.calendar.JDateChooser();
+        lblEndedDate = new javax.swing.JLabel();
+        ggSheetEndedDate = new com.toedter.calendar.JDateChooser();
+        btnGGSheetExport = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
+        tblGGSheet = new javax.swing.JTable();
+        ggSheetFind = new javax.swing.JButton();
+        btnGGSheetImport = new javax.swing.JButton();
         pnlNotification = new javax.swing.JPanel();
         tabNotification = new javax.swing.JTabbedPane();
         pnlListMember3 = new javax.swing.JPanel();
@@ -388,7 +411,7 @@ public class Main extends javax.swing.JFrame {
         pnlMainLayout.setHorizontalGroup(
             pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMainLayout.createSequentialGroup()
-                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(pnlMainLayout.createSequentialGroup()
                         .addGap(122, 122, 122)
                         .addComponent(lblClubName, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -398,11 +421,11 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(lblMembers)
                             .addComponent(lblAttendance)
                             .addComponent(lblEventContent))
-                        .addGap(216, 216, 216)
+                        .addGap(188, 188, 188)
                         .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTotalMembers, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblTotalAttendance, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblTotalEventContent, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(lblTotalAttendance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblTotalMembers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblTotalEventContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(153, Short.MAX_VALUE))
         );
         pnlMainLayout.setVerticalGroup(
@@ -461,7 +484,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(txtFindMember, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(btnSearchUser2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         pnlTimChiTieuLayout.setVerticalGroup(
             pnlTimChiTieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -521,6 +544,15 @@ public class Main extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(tblListMember);
 
+        btnExportExcellMember.setText("Xuất Excel");
+        btnExportExcellMember.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportExcellMemberActionPerformed(evt);
+            }
+        });
+
+        btnImportExcel.setText("Nhập Excel");
+
         javax.swing.GroupLayout pnlListMemberLayout = new javax.swing.GroupLayout(pnlListMember);
         pnlListMember.setLayout(pnlListMemberLayout);
         pnlListMemberLayout.setHorizontalGroup(
@@ -534,6 +566,12 @@ public class Main extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 748, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(pnlListMemberLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(btnExportExcellMember)
+                .addGap(57, 57, 57)
+                .addComponent(btnImportExcel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlListMemberLayout.setVerticalGroup(
             pnlListMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -541,8 +579,12 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(pnlTimChiTieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnExportExcellMember)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnImportExcel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabMember.addTab("Danh Sách", pnlListMember);
@@ -689,6 +731,11 @@ public class Main extends javax.swing.JFrame {
         dcBirthdayMember.setDateFormatString("dd/MM/yyyy ");
 
         lblMemberAvatar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblMemberAvatar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMemberAvatarMouseClicked(evt);
+            }
+        });
 
         lblEmail2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblEmail2.setText("ID:");
@@ -861,7 +908,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblMember, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabMember, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
+                .addComponent(tabMember, javax.swing.GroupLayout.PREFERRED_SIZE, 577, Short.MAX_VALUE)
                 .addGap(18, 18, 18))
         );
 
@@ -875,10 +922,10 @@ public class Main extends javax.swing.JFrame {
         lblEvent.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblEvent.setText("Sự kiện");
 
-        jTabbedPane3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTabbedPane3.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabEvent.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tabEvent.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTabbedPane3MouseClicked(evt);
+                tabEventMouseClicked(evt);
             }
         });
 
@@ -906,7 +953,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(txtFindEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addComponent(btnSearchEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         pnlTimChiTieu1Layout.setVerticalGroup(
             pnlTimChiTieu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -956,6 +1003,15 @@ public class Main extends javax.swing.JFrame {
         });
         jScrollPane5.setViewportView(tblListEvent);
 
+        btnExportEvent.setText("Xuất Event");
+        btnExportEvent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportEventActionPerformed(evt);
+            }
+        });
+
+        btnImportEvent.setText("Nhập Excel");
+
         javax.swing.GroupLayout pnlListMember1Layout = new javax.swing.GroupLayout(pnlListMember1);
         pnlListMember1.setLayout(pnlListMember1Layout);
         pnlListMember1Layout.setHorizontalGroup(
@@ -969,6 +1025,12 @@ public class Main extends javax.swing.JFrame {
                         .addGap(19, 19, 19)
                         .addComponent(pnlTimChiTieu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(pnlListMember1Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(btnExportEvent)
+                .addGap(62, 62, 62)
+                .addComponent(btnImportEvent)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlListMember1Layout.setVerticalGroup(
             pnlListMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -976,11 +1038,15 @@ public class Main extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(pnlTimChiTieu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(pnlListMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnExportEvent)
+                    .addComponent(btnImportEvent))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
-        jTabbedPane3.addTab("Danh Sách", pnlListMember1);
+        tabEvent.addTab("Danh Sách", pnlListMember1);
 
         lblThanhVien1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblThanhVien1.setText("Id Sự Kiện:");
@@ -1158,7 +1224,7 @@ public class Main extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnLastEvent)
                                 .addGap(64, 64, 64)))))
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         pnlSettingMember1Layout.setVerticalGroup(
             pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1212,16 +1278,21 @@ public class Main extends javax.swing.JFrame {
                 .addGap(65, 65, 65))
         );
 
-        jTabbedPane3.addTab("Sự Kiện", pnlSettingMember1);
+        tabEvent.addTab("Sự Kiện", pnlSettingMember1);
 
-        jLabel8.setText("Từ ngày:");
+        lblStartedDate.setText("Từ ngày:");
 
-        jLabel9.setText("Đến ngày:");
+        lblEndedDate.setText("Đến ngày:");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Refresh.png"))); // NOI18N
-        jButton1.setText("Export EXCEL");
+        btnGGSheetExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Refresh.png"))); // NOI18N
+        btnGGSheetExport.setText("Nhập EXCEL");
+        btnGGSheetExport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGGSheetExportActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblGGSheet.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -1232,10 +1303,23 @@ public class Main extends javax.swing.JFrame {
                 "Date", "Họ tên", "Sinh nhật", "Nơi ở", "SĐT", "Ngành", "Email", "Câu hỏi"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblGGSheet);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Refresh.png"))); // NOI18N
-        jButton2.setText("Tìm Kiếm");
+        ggSheetFind.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Refresh.png"))); // NOI18N
+        ggSheetFind.setText("Tìm Kiếm");
+        ggSheetFind.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ggSheetFindActionPerformed(evt);
+            }
+        });
+
+        btnGGSheetImport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Refresh.png"))); // NOI18N
+        btnGGSheetImport.setText("Nhập sang thành viên");
+        btnGGSheetImport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGGSheetImportActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1245,38 +1329,47 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 801, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
+                        .addGap(57, 57, 57)
+                        .addComponent(lblStartedDate)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(ggSheetStartedDate, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(82, 82, 82))))
+                        .addComponent(lblEndedDate)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ggSheetEndedDate, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61)
+                        .addComponent(ggSheetFind)
+                        .addGap(94, 94, 94))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addComponent(btnGGSheetExport)
+                .addGap(34, 34, 34)
+                .addComponent(btnGGSheetImport)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(lblStartedDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblEndedDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ggSheetEndedDate, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                    .addComponent(ggSheetStartedDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ggSheetFind))
+                .addGap(51, 51, 51)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGGSheetExport, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGGSheetImport, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
-        jTabbedPane3.addTab("Bảng Đăng Ký", jPanel1);
+        tabEvent.addTab("Bảng Đăng Ký", jPanel1);
 
         javax.swing.GroupLayout pnlEventLayout = new javax.swing.GroupLayout(pnlEvent);
         pnlEvent.setLayout(pnlEventLayout);
@@ -1284,7 +1377,7 @@ public class Main extends javax.swing.JFrame {
             pnlEventLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEventLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane3)
+                .addComponent(tabEvent)
                 .addContainerGap())
             .addGroup(pnlEventLayout.createSequentialGroup()
                 .addGap(265, 265, 265)
@@ -1297,7 +1390,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane3)
+                .addComponent(tabEvent)
                 .addContainerGap())
         );
 
@@ -1553,6 +1646,7 @@ public class Main extends javax.swing.JFrame {
         lblThanhVien2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblThanhVien2.setText("Tên thành viên");
 
+        txtIdUser.setEnabled(false);
         txtIdUser.setPreferredSize(new java.awt.Dimension(10, 22));
         txtIdUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1697,6 +1791,11 @@ public class Main extends javax.swing.JFrame {
         });
 
         lblUserAvatar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblUserAvatar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblUserAvatarMouseClicked(evt);
+            }
+        });
 
         lblThanhVien4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblThanhVien4.setText("ID");
@@ -2060,7 +2159,6 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddMemberActionPerformed
 
     private void btnFirstMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstMemberActionPerformed
-
         firstUser();
     }//GEN-LAST:event_btnFirstMemberActionPerformed
 
@@ -2270,8 +2368,14 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSearchUser2ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
-
+        try {
+            // TODO add your handling code here:
+            SheetsQuickstart.fillTableEventRegisterResponse(tblGGSheet);
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (GeneralSecurityException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void tabMemberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabMemberMouseClicked
@@ -2293,18 +2397,17 @@ public class Main extends javax.swing.JFrame {
         nextEvent();
     }//GEN-LAST:event_btnNextEventActionPerformed
 
-    private void jTabbedPane3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane3MouseClicked
+    private void tabEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabEventMouseClicked
         // TODO add your handling code here:
-
-    }//GEN-LAST:event_jTabbedPane3MouseClicked
+    }//GEN-LAST:event_tabEventMouseClicked
 
     private void lblAttendanceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAttendanceMouseClicked
-//        SwingUtilities.invokeLater(() -> {
-//            EventChart attendanceChart = new EventChart(eventService);
-//            attendanceChart.setSize(800, 600);
-//            attendanceChart.setLocationRelativeTo(null);
-//            attendanceChart.setVisible(true);
-//        });
+        SwingUtilities.invokeLater(() -> {
+            EventChart attendanceChart = new EventChart("");
+            attendanceChart.setSize(800, 600);
+            attendanceChart.setLocationRelativeTo(null);
+            attendanceChart.setVisible(true);
+        });
     }//GEN-LAST:event_lblAttendanceMouseClicked
 
     private void lblEventContentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEventContentMouseClicked
@@ -2343,6 +2446,40 @@ public class Main extends javax.swing.JFrame {
     private void tblListMemberMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListMemberMouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_tblListMemberMouseEntered
+
+    private void lblUserAvatarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUserAvatarMouseClicked
+        // TODO add your handling code here:
+        setAvatarUser();
+    }//GEN-LAST:event_lblUserAvatarMouseClicked
+
+    private void lblMemberAvatarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMemberAvatarMouseClicked
+        // TODO add your handling code here:
+        setAvatarMember();
+    }//GEN-LAST:event_lblMemberAvatarMouseClicked
+
+    private void btnGGSheetImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGGSheetImportActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGGSheetImportActionPerformed
+
+    private void ggSheetFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ggSheetFindActionPerformed
+        fillDataResponseRegisterForm();
+    }//GEN-LAST:event_ggSheetFindActionPerformed
+
+    private void btnGGSheetExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGGSheetExportActionPerformed
+        // TODO add your handling code here:
+        exportFileGGSheetResponseRegisterForm();
+    }//GEN-LAST:event_btnGGSheetExportActionPerformed
+
+    private void btnExportExcellMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportExcellMemberActionPerformed
+        // TODO add your handling code here:
+        exportExcellMember();
+    }//GEN-LAST:event_btnExportExcellMemberActionPerformed
+
+    private void btnExportEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportEventActionPerformed
+        // TODO add your handling code here:
+        exportExcellEvent();
+    }//GEN-LAST:event_btnExportEventActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -2391,9 +2528,15 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnDeleteEvent;
     private javax.swing.JButton btnDeleteMember;
     private javax.swing.JButton btnDeleteUser;
+    private javax.swing.JButton btnExportEvent;
+    private javax.swing.JButton btnExportExcellMember;
     private javax.swing.JButton btnFirstEvent;
     private javax.swing.JButton btnFirstMember;
     private javax.swing.JButton btnFirstUser;
+    private javax.swing.JButton btnGGSheetExport;
+    private javax.swing.JButton btnGGSheetImport;
+    private javax.swing.JButton btnImportEvent;
+    private javax.swing.JButton btnImportExcel;
     private javax.swing.JButton btnLastEvent;
     private javax.swing.JButton btnLastMember;
     private javax.swing.JButton btnLastUser;
@@ -2418,12 +2561,12 @@ public class Main extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser dcBirthdayUser;
     private com.toedter.calendar.JDateChooser dcEndedDateEvent;
     private com.toedter.calendar.JDateChooser dcStartedDateEvent;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JFileChooser fileAvatarMember;
+    private javax.swing.JFileChooser fileAvatarUser;
+    private javax.swing.JFileChooser fileAvatarUserLogined;
+    private com.toedter.calendar.JDateChooser ggSheetEndedDate;
+    private javax.swing.JButton ggSheetFind;
+    private com.toedter.calendar.JDateChooser ggSheetStartedDate;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -2431,14 +2574,13 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTabbedPane jTabbedPane3;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblAttendance;
     private javax.swing.JLabel lblClubName;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblEmail1;
     private javax.swing.JLabel lblEmail2;
     private javax.swing.JLabel lblEmail3;
+    private javax.swing.JLabel lblEndedDate;
     private javax.swing.JLabel lblEvent;
     private javax.swing.JLabel lblEventContent;
     private javax.swing.JLabel lblGhiChu3;
@@ -2468,6 +2610,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel lblSoDT7;
     private javax.swing.JLabel lblSoDT8;
     private javax.swing.JLabel lblSoDT9;
+    private javax.swing.JLabel lblStartedDate;
     private javax.swing.JPanel lblTabContainer;
     private javax.swing.JLabel lblTabEvents;
     private javax.swing.JLabel lblTabLogout;
@@ -2505,9 +2648,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JRadioButton rdoFemaleUser;
     private javax.swing.JRadioButton rdoMaleMember;
     private javax.swing.JRadioButton rdoMaleUser;
+    private javax.swing.JTabbedPane tabEvent;
     private javax.swing.JTabbedPane tabMember;
     private javax.swing.JTabbedPane tabMember1;
     private javax.swing.JTabbedPane tabNotification;
+    private javax.swing.JTable tblGGSheet;
     private javax.swing.JTable tblListEvent;
     private javax.swing.JTable tblListMember;
     private javax.swing.JTable tblListNotification;
@@ -2542,9 +2687,15 @@ public class Main extends javax.swing.JFrame {
     //Member start
     List<User> members;
 
+    private void totalMembers() {
+        Integer totalMember = members.size();
+        lblTotalMembers.setText(totalMember.toString());
+    }
+
     private void initMemberController() {
         fillMemberToTable();
         updateStatusMember();
+        totalMembers();
     }
 
     private void createMember() {
@@ -2593,19 +2744,19 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void fillMemberToTable() {
-        List<User> members = memberController.getMembersByRole();
+        members = memberController.getMembersByRole();
         DefaultTableModel tableModelMember = (DefaultTableModel) tblListMember.getModel();
         tableModelMember.setRowCount(0);
         try {
             for (User user : members) {
                 Object[] row = {
-                    user.getId(),
-                    user.getFullname(),
-                    user.getEmail(),
-                    user.getPhone(),
-                    user.getBirthday(),
-                    user.getScore(),
-                    user.getAddress()
+                        user.getId(),
+                        user.getFullname(),
+                        user.getEmail(),
+                        user.getPhone(),
+                        user.getBirthday(),
+                        user.getScore(),
+                        user.getAddress()
                 };
                 tableModelMember.addRow(row);
             }
@@ -2673,6 +2824,7 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void setFormMember(User memberForm) {
+
         txtNameMember.setText(memberForm.getFullname());
         txtEmailMemBer.setText(memberForm.getEmail());
         txtPhoneMember.setText(memberForm.getPhone());
@@ -2693,6 +2845,12 @@ public class Main extends javax.swing.JFrame {
         }
 
         cboRateMember.setSelectedItem(memberForm.getScore());
+        if (memberForm.getImage() != null) {
+            lblUserAvatar.setToolTipText(memberForm.getImage());
+            lblUserAvatar.setIcon(XImage.read(memberForm.getImage()));
+        } else {
+            lblUserAvatar.setIcon(null);
+        }
     }
 
     private void clearFormMember() {
@@ -2710,6 +2868,16 @@ public class Main extends javax.swing.JFrame {
             setFormMember(member);
             row = selectedRow;
             updateStatusMember();
+        }
+    }
+
+    void setAvatarMember() {
+        if (fileAvatarMember.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            File file = fileAvatarMember.getSelectedFile();
+            XImage.save(file); // lưu hình vào thư mục avatar
+            ImageIcon icon = XImage.read(file.getName()); // đọc hình từ avatar
+            lblMemberAvatar.setIcon(icon);
+            lblMemberAvatar.setToolTipText(file.getName()); // giữ tên hình trong tooltip
         }
     }
 
@@ -2755,6 +2923,27 @@ public class Main extends javax.swing.JFrame {
         btnLastMember.setEnabled(!last);
     }
 
+    private void exportExcellMember() {
+//         members = memberController.getAllMembers();
+//        if(members.isEmpty() || members == null){
+//            System.out.println("ko co data");
+//        }
+        memberController.exportExcellAllMember(members);
+    }
+
+    private void exportExcellEvent() {
+        List<Event> events = eventController.getAllEvents();
+        if (events.isEmpty() || events == null) {
+            System.out.println("ko co data");
+        }
+        eventController.exportExcellAllEvent(events);
+
+        if (members.isEmpty() || members == null) {
+            System.out.println("ko co data");
+        }
+        memberController.exportExcellAllMember(members);
+    }
+
     //======================================================================================================
 //    User start
     List<User> users;
@@ -2762,10 +2951,20 @@ public class Main extends javax.swing.JFrame {
     private void initUserController() {
         fillUserToTable();
         updateStatusUser();
+        setTotalAttendence();
     }
 
+    private void setTotalAttendence(){
+        int totalAttendence = 0;
+        for (User user : listAllUser) {
+            int attendence = user.getAttendance();
+            totalAttendence += attendence; 
+        }
+        lblTotalAttendance.setText(String.valueOf(totalAttendence));
+    }
+    
     private void createUser() {
-        User user = getFormUser(new User());
+        User user = getFormUser();
         String roleName = user.getRole().getRoleName();
         User createdUser = userController.createUser(user, roleName);
         if (createdUser != null) {
@@ -2779,18 +2978,32 @@ public class Main extends javax.swing.JFrame {
 
     private void updateUser() {
         row = tblListUser.getSelectedRow();
-        User model = getFormUser(users.get(row));
-        if (model == null) {
+        User userInList = users.get(row);
+        if (userInList == null) {
             MsgBox.alert(null, "Vui lòng chọn thành viên trong danh sách");
+            return;
         }
-        User updatedUser = memberController.updateUser(model);
-        if (updatedUser != null) {
-            MsgBox.alert(this, "Cập nhật thành viên thành công!");
-            fillUserToTable();
-            clearFormUser();
+        User userInForm = getFormUser();
+
+        String oldBcryptPassword = userInList.getPassword();
+        String newPassword = userInForm.getPassword();
+
+        if (newPassword.equals(oldBcryptPassword)) {
+            userInForm.setPassword(oldBcryptPassword);
         } else {
-            MsgBox.alert(this, "Không thể cập nhật thành viên.");
+            newPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+            userInForm.setPassword(newPassword);
         }
+        
+        User updatedUser = userController.updateUser(userInForm);
+        if (updatedUser == null) {
+            MsgBox.alert(this, "Không thể cập nhật thành viên.");
+            return;
+        }
+        users.set(row, updatedUser);
+        MsgBox.alert(this, "Cập nhật thành viên thành công!");
+        clearFormUser();
+        fillUserToTable();
     }
 
     private void deleteUser() {
@@ -2833,75 +3046,83 @@ public class Main extends javax.swing.JFrame {
         }
     }
 
-    private User getFormUser(User userForm) {
+    private User getFormUser() {
+        User userForm = new User();
         try {
+            Integer id = InputFields.getTextFieldtoInteger(txtIdUser);
+            userForm.setId(id);
+            
             // Lấy và kiểm tra username
             String username = RegExInputFields.getCheckUsername(txtUsernameUser);
             if (username.isEmpty()) {
-                return getFormUser(userForm);
+                return null;
             }
             userForm.setUsername(username);
 
             // Lấy và kiểm tra fullname
             String fullname = RegExInputFields.getCheckNameMember(txtNameUser);
             if (fullname.isEmpty()) {
-                return getFormUser(userForm);
+                return null;
             }
             userForm.setFullname(fullname);
 
             // Lấy password
             String userPassword = InputFields.getTextFieldtoString(txtPasswordUser);
             if (userPassword.isEmpty()) {
-                return getFormUser(userForm);
+                return null;
             }
             userForm.setPassword(userPassword);
 
             // Lấy và kiểm tra email
             String userMail = RegExInputFields.getCheckEmail(txtEmail);
             if (userMail.isEmpty()) {
-                return getFormUser(userForm);
+                return null;
             }
             userForm.setEmail(userMail);
 
             // Lấy và kiểm tra số điện thoại
             String userPhone = RegExInputFields.getCheckPhoneMember(txtPhoneUser);
             if (userPhone.isEmpty()) {
-                return getFormUser(userForm);
+                return null;
             }
             userForm.setPhone(userPhone);
 
             // Lấy và kiểm tra địa chỉ
             String addressUser = RegExInputFields.getCheckAddress(txtAddressUser);
             if (addressUser.isEmpty()) {
-                return getFormUser(userForm);
+                return null;
             }
             userForm.setAddress(addressUser);
 
             // Lấy giới tính
             Boolean gender = InputFields.getSelectedRadiobutton(rdoMaleUser, rdoFemaleUser);
             if (gender == null) {
-                return getFormUser(userForm);
+                return null;
             }
             userForm.setSex(gender);
 
             // Lấy và kiểm tra ngày sinh
             Date birthdate = RegExInputFields.getCheckBirthday(dcBirthdayUser);
             if (birthdate == null) {
-                return getFormUser(userForm);
+                return null;
             }
             userForm.setBirthday(birthdate);
 
             // Lấy vai trò người dùng từ combobox
             String roleUser = InputFields.getComboBoxString(cboRoleUser);
             if (roleUser.isEmpty()) {
-                return getFormUser(userForm);
+                return null;
             }
             Role role = UserInjector.getInstance().getRoleService().findByNameRole(roleUser);
             if (role == null) {
-                return getFormUser(userForm);
+                return null;
             }
             userForm.setRole(role);
 
+            userForm.setImage(lblUserAvatar.getToolTipText());
+            userForm.setUpdatedDate(InputFields.getDateSQL(new java.util.Date()));
+            
+            userForm.setIsActived(true);
             return userForm;
 
         } catch (Exception e) {
@@ -2910,6 +3131,7 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void setFormUser(User userForm) {
+        txtIdUser.setText(userForm.getId().toString());
         txtUsernameUser.setText(userForm.getUsername());
         txtNameUser.setText(userForm.getFullname());
         txtPasswordUser.setText(userForm.getPassword());
@@ -2932,6 +3154,13 @@ public class Main extends javax.swing.JFrame {
         }
 
         cboRoleUser.setSelectedItem(userForm.getRole().getRoleName());
+
+        if (userForm.getImage() != null) {
+            lblUserAvatar.setToolTipText(userForm.getImage());
+            lblUserAvatar.setIcon(XImage.read(userForm.getImage()));
+        } else {
+            lblUserAvatar.setIcon(null);
+        }
     }
 
     private void clearFormUser() {
@@ -2941,7 +3170,6 @@ public class Main extends javax.swing.JFrame {
     }
 
     private void editUser() {
-
         int selectedRow = row;
         if (selectedRow >= 0) {
             Object value = tblListUser.getValueAt(selectedRow, 0);
@@ -2950,6 +3178,16 @@ public class Main extends javax.swing.JFrame {
             setFormUser(user);
             row = selectedRow;
             updateStatusUser();
+        }
+    }
+
+    void setAvatarUser() {
+        if (fileAvatarUser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            File file = fileAvatarUser.getSelectedFile();
+            XImage.save(file); // lưu hình vào thư mục avatar
+            ImageIcon icon = XImage.read(file.getName()); // đọc hình từ avatar
+            lblUserAvatar.setIcon(icon);
+            lblUserAvatar.setToolTipText(file.getName()); // giữ tên hình trong tooltip
         }
     }
 
@@ -3002,8 +3240,15 @@ public class Main extends javax.swing.JFrame {
     void initEventController() {
         fillTableEvent();
         updateStatusEvent();
+        fillDataResponseRegisterForm();
+        setTotalEvent();
     }
 
+    private void setTotalEvent(){
+        int totalEvent = events.size();
+        lblTotalEventContent.setText(String.valueOf(totalEvent));
+    }
+    
     private void fillTableEvent() {
         events = eventController.getAllEvents();
         DefaultTableModel model = (DefaultTableModel) tblListEvent.getModel();
@@ -3080,7 +3325,7 @@ public class Main extends javax.swing.JFrame {
 
     public Event getEventFrom(Event eventRequest) {
         try {
-            String userNameCreatedEvent = RegExInputFields.getCheckUsername(txtUserIdEvent);
+            String userNameCreatedEvent = RegExInputFields.getCheckUsernameEvent(txtUserIdEvent);
             if (userNameCreatedEvent.isEmpty()) {
                 return getEventFrom(eventRequest);
             }
@@ -3128,6 +3373,7 @@ public class Main extends javax.swing.JFrame {
             txtAddressEvent.setText(eventResponse.getLocation());
             dcStartedDateEvent.setDate(eventResponse.getStartedDate());
             dcEndedDateEvent.setDate(eventResponse.getEndedDate());
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -3197,5 +3443,29 @@ public class Main extends javax.swing.JFrame {
         btnPreviousEvent.setEnabled(edit && !first);
         btnNextEvent.setEnabled(edit && !last);
         btnLastEvent.setEnabled(edit && !last);
+    }
+
+    public void setAvatarUserLogined() {
+        try {
+            String usernameLogined = new AccountController().getAccountInDB().getUsername();
+
+            User userLogined = userController.readUserByUserName(usernameLogined);
+            if (userLogined.getImage() != null) {
+                lblUserLoginedAvatar.setToolTipText(userLogined.getImage());
+                lblUserLoginedAvatar.setIcon(XImage.read(userLogined.getImage()));
+            } else {
+                lblUserLoginedAvatar.setIcon(null);
+            }
+        } catch (Exception e) {
+
+        }
+    }
+
+    private void fillDataResponseRegisterForm() {
+        eventController.getAllResponseRegisterForm();
+    }
+
+    private void exportFileGGSheetResponseRegisterForm() {
+        eventController.exportGGSheetResponseRegisterForm();
     }
 }
