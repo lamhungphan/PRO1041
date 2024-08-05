@@ -2777,14 +2777,21 @@ public final class Main extends javax.swing.JFrame {
     }
 
     private User getFormMember(User memberForm) {
+        User newMember = new User();
         try {
+            String id = txtIdMember.getText();
+            if (id.isEmpty()) {
+                return getFormMember(memberForm);
+            }
+            memberForm.setId(Integer.valueOf(id));
+            
             // Lấy và kiểm tra fullname
             String fullname = RegExInputFields.getCheckNameMember(txtNameMember);
             if (fullname.isEmpty()) {
                 return getFormMember(memberForm);
             }
             memberForm.setFullname(fullname);
-
+            
             // Lấy và kiểm tra email
             String memberEmail = RegExInputFields.getCheckEmail(txtEmailMemBer);
             if (memberEmail.isEmpty()) {
@@ -2826,15 +2833,17 @@ public final class Main extends javax.swing.JFrame {
                 return getFormMember(memberForm);
             }
             memberForm.setScore(rateMembers);
-
-            return memberForm;
+            newMember = memberForm;
+            
+            return newMember;
         } catch (Exception e) {
+            e.getMessage();
             return null;
         }
     }
 
     private void setFormMember(User memberForm) {
-
+        txtIdMember.setText(memberForm.getId().toString());
         txtNameMember.setText(memberForm.getFullname());
         txtEmailMemBer.setText(memberForm.getEmail());
         txtPhoneMember.setText(memberForm.getPhone());
@@ -3299,6 +3308,7 @@ public final class Main extends javax.swing.JFrame {
     }
 
     private void updateEvent() {
+       
         row = tblListEvent.getSelectedRow();
         Event model = getEventFrom(events.get(row));
         if (model == null) {
@@ -3332,6 +3342,7 @@ public final class Main extends javax.swing.JFrame {
     }
 
     public Event getEventFrom(Event eventRequest) {
+        Event newEvent = new Event();
         try {
             String userNameCreatedEvent = RegExInputFields.getCheckUsernameEvent(txtUserIdEvent);
             if (userNameCreatedEvent.isEmpty()) {
@@ -3364,7 +3375,9 @@ public final class Main extends javax.swing.JFrame {
             }
             eventRequest.setContent(eventContent);
 
-            return eventRequest;
+            newEvent = eventRequest;
+            
+            return newEvent;
         } catch (Exception e) {
             e.getMessage();
             return null;

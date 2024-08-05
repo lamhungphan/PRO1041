@@ -14,8 +14,6 @@ import com.poly.utils.ComponentManagement;
 import com.poly.utils.MsgBox;
 import com.poly.view.*;
 
-
-
 import java.util.List;
 
 import javax.swing.*;
@@ -33,6 +31,11 @@ public class UserController {
 
     public void doLogin(User userRequest, Login loginFrame, Main mainFrame) {
         User loginedUser = userService.doLogin(userRequest);
+        if (loginedUser.getUsername().equals("admin")) {
+            MsgBox.alert(null, "Đăng nhập thành công");
+            loginFrame.dispose();
+            mainFrame.setVisible(true);
+        }
         if (loginedUser == null) {
             MsgBox.alert(null, "Đăng nhập không thành công");
         } else {
@@ -100,7 +103,7 @@ public class UserController {
 
     public User updateUser(User user) {
         User updatedUser = userService.update(user);
-            return updatedUser;
+        return updatedUser;
     }
 
     public User deleteUser(Integer id) {
