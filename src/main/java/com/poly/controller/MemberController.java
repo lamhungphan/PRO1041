@@ -21,8 +21,12 @@ public class MemberController {
         return memberService.save(user, roleName);
     }
 
-    public User readUser(Integer id) {
+    public User readUserByID(Integer id) {
         return memberService.findById(id);
+    }
+    
+    public User readUserByName(String name) {
+        return memberService.findByFullname(name);
     }
 
     public User updateUser(User user) {
