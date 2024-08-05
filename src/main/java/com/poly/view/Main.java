@@ -64,7 +64,6 @@ public final class Main extends javax.swing.JFrame {
         initMemberController();
         initUserController();
         initEventController();
-        totalMembers();
     }
 
     private void showCard(String cardName) {
@@ -142,7 +141,7 @@ public final class Main extends javax.swing.JFrame {
         lblMember = new javax.swing.JLabel();
         pnlEvent = new javax.swing.JPanel();
         lblEvent = new javax.swing.JLabel();
-        jTabbedPane3 = new javax.swing.JTabbedPane();
+        tabEvent = new javax.swing.JTabbedPane();
         pnlListMember1 = new javax.swing.JPanel();
         pnlTimChiTieu1 = new javax.swing.JPanel();
         txtFindEvent = new javax.swing.JTextField();
@@ -333,7 +332,7 @@ public final class Main extends javax.swing.JFrame {
         lblTabContainerLayout.setHorizontalGroup(
             lblTabContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lblTabContainerLayout.createSequentialGroup()
-                .addContainerGap(9, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(lblTabContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTabLogout)
                     .addComponent(lblTabSystem)
@@ -412,7 +411,7 @@ public final class Main extends javax.swing.JFrame {
         pnlMainLayout.setHorizontalGroup(
             pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMainLayout.createSequentialGroup()
-                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(pnlMainLayout.createSequentialGroup()
                         .addGap(122, 122, 122)
                         .addComponent(lblClubName, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -424,9 +423,9 @@ public final class Main extends javax.swing.JFrame {
                             .addComponent(lblEventContent))
                         .addGap(188, 188, 188)
                         .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTotalEventContent, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblTotalAttendance, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblTotalMembers, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(lblTotalAttendance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblTotalMembers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblTotalEventContent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(153, Short.MAX_VALUE))
         );
         pnlMainLayout.setVerticalGroup(
@@ -553,11 +552,6 @@ public final class Main extends javax.swing.JFrame {
         });
 
         btnImportExcel.setText("Nhập Excel");
-        btnImportExcel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnImportExcelActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout pnlListMemberLayout = new javax.swing.GroupLayout(pnlListMember);
         pnlListMember.setLayout(pnlListMemberLayout);
@@ -575,7 +569,7 @@ public final class Main extends javax.swing.JFrame {
             .addGroup(pnlListMemberLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(btnExportExcellMember)
-                .addGap(41, 41, 41)
+                .addGap(57, 57, 57)
                 .addComponent(btnImportExcel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -587,10 +581,10 @@ public final class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(pnlListMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnExportExcellMember)
-                    .addComponent(btnImportExcel))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addComponent(btnExportExcellMember)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnImportExcel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabMember.addTab("Danh Sách", pnlListMember);
@@ -914,7 +908,7 @@ public final class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblMember, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabMember, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
+                .addComponent(tabMember, javax.swing.GroupLayout.PREFERRED_SIZE, 577, Short.MAX_VALUE)
                 .addGap(18, 18, 18))
         );
 
@@ -928,10 +922,10 @@ public final class Main extends javax.swing.JFrame {
         lblEvent.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblEvent.setText("Sự kiện");
 
-        jTabbedPane3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTabbedPane3.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabEvent.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tabEvent.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTabbedPane3MouseClicked(evt);
+                tabEventMouseClicked(evt);
             }
         });
 
@@ -1052,7 +1046,7 @@ public final class Main extends javax.swing.JFrame {
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
-        jTabbedPane3.addTab("Danh Sách", pnlListMember1);
+        tabEvent.addTab("Danh Sách", pnlListMember1);
 
         lblThanhVien1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblThanhVien1.setText("Id Sự Kiện:");
@@ -1284,7 +1278,7 @@ public final class Main extends javax.swing.JFrame {
                 .addGap(65, 65, 65))
         );
 
-        jTabbedPane3.addTab("Sự Kiện", pnlSettingMember1);
+        tabEvent.addTab("Sự Kiện", pnlSettingMember1);
 
         lblStartedDate.setText("Từ ngày:");
 
@@ -1375,7 +1369,7 @@ public final class Main extends javax.swing.JFrame {
                 .addContainerGap(60, Short.MAX_VALUE))
         );
 
-        jTabbedPane3.addTab("Bảng Đăng Ký", jPanel1);
+        tabEvent.addTab("Bảng Đăng Ký", jPanel1);
 
         javax.swing.GroupLayout pnlEventLayout = new javax.swing.GroupLayout(pnlEvent);
         pnlEvent.setLayout(pnlEventLayout);
@@ -1383,7 +1377,7 @@ public final class Main extends javax.swing.JFrame {
             pnlEventLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEventLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane3)
+                .addComponent(tabEvent)
                 .addContainerGap())
             .addGroup(pnlEventLayout.createSequentialGroup()
                 .addGap(265, 265, 265)
@@ -1396,7 +1390,7 @@ public final class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane3)
+                .addComponent(tabEvent)
                 .addContainerGap())
         );
 
@@ -2165,7 +2159,6 @@ public final class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddMemberActionPerformed
 
     private void btnFirstMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstMemberActionPerformed
-
         firstUser();
     }//GEN-LAST:event_btnFirstMemberActionPerformed
 
@@ -2404,18 +2397,17 @@ public final class Main extends javax.swing.JFrame {
         nextEvent();
     }//GEN-LAST:event_btnNextEventActionPerformed
 
-    private void jTabbedPane3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane3MouseClicked
+    private void tabEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabEventMouseClicked
         // TODO add your handling code here:
-
-    }//GEN-LAST:event_jTabbedPane3MouseClicked
+    }//GEN-LAST:event_tabEventMouseClicked
 
     private void lblAttendanceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAttendanceMouseClicked
-//        SwingUtilities.invokeLater(() -> {
-//            EventChart attendanceChart = new EventChart(eventService);
-//            attendanceChart.setSize(800, 600);
-//            attendanceChart.setLocationRelativeTo(null);
-//            attendanceChart.setVisible(true);
-//        });
+        SwingUtilities.invokeLater(() -> {
+            EventChart attendanceChart = new EventChart("");
+            attendanceChart.setSize(800, 600);
+            attendanceChart.setLocationRelativeTo(null);
+            attendanceChart.setVisible(true);
+        });
     }//GEN-LAST:event_lblAttendanceMouseClicked
 
     private void lblEventContentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEventContentMouseClicked
@@ -2487,11 +2479,6 @@ public final class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         exportExcellEvent();
     }//GEN-LAST:event_btnExportEventActionPerformed
-
-    private void btnImportExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportExcelActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btnImportExcelActionPerformed
 
 
     /**
@@ -2587,7 +2574,6 @@ public final class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JLabel lblAttendance;
     private javax.swing.JLabel lblClubName;
     private javax.swing.JLabel lblEmail;
@@ -2662,6 +2648,7 @@ public final class Main extends javax.swing.JFrame {
     private javax.swing.JRadioButton rdoFemaleUser;
     private javax.swing.JRadioButton rdoMaleMember;
     private javax.swing.JRadioButton rdoMaleUser;
+    private javax.swing.JTabbedPane tabEvent;
     private javax.swing.JTabbedPane tabMember;
     private javax.swing.JTabbedPane tabMember1;
     private javax.swing.JTabbedPane tabNotification;
@@ -2971,10 +2958,11 @@ public final class Main extends javax.swing.JFrame {
         int totalAttendence = 0;
         for (User user : listAllUser) {
             int attendence = user.getAttendance();
-            totalAttendence = totalAttendence + attendence; 
+            totalAttendence += attendence;
         }
         lblTotalAttendance.setText(String.valueOf(totalAttendence));
     }
+
     private void createUser() {
         User user = getFormUser();
         String roleName = user.getRole().getRoleName();
@@ -3260,6 +3248,7 @@ public final class Main extends javax.swing.JFrame {
         int totalEvent = events.size();
         lblTotalEventContent.setText(String.valueOf(totalEvent));
     }
+
     private void fillTableEvent() {
         events = eventController.getAllEvents();
         DefaultTableModel model = (DefaultTableModel) tblListEvent.getModel();
@@ -3471,7 +3460,6 @@ public final class Main extends javax.swing.JFrame {
 
         }
     }
-
 
     private void fillDataResponseRegisterForm() {
         eventController.getAllResponseRegisterForm();
