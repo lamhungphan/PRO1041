@@ -61,7 +61,7 @@ public final class Main extends javax.swing.JFrame {
     UserRepoImpl userRepo = new UserRepoImpl();
 
     public Main() {
-        new ChaoJDialog(this, true).setVisible(true);
+
         setAvatarUserLogined();
         initComponents();
         cardLayout = (CardLayout) (container.getLayout());

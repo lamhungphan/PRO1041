@@ -29,19 +29,21 @@ public class UserController {
     private final List<User> listAllUser = getAllUsers();
     private final RoleService roleService = UserInjector.getInstance().getRoleService();
 
-    public void doLogin(User userRequest, Login loginFrame, Main mainFrame) {
+    public boolean doLogin(User userRequest, Login loginFrame, Main mainFrame) {
         User loginedUser = userService.doLogin(userRequest);
-        if (loginedUser.getUsername().equals("admin")) {
+        if (loginedUser == null){
+            MsgBox.alert(null, "Tài khoản hoặc mật khẩu không đúng !");
+            return false;
+        } else if (loginedUser.getUsername().equals("admin")) {
             MsgBox.alert(null, "Đăng nhập thành công");
             loginFrame.dispose();
             mainFrame.setVisible(true);
-        }
-        if (loginedUser == null) {
-            MsgBox.alert(null, "Đăng nhập không thành công");
+            return true;
         } else {
             MsgBox.alert(null, "Đăng nhập thành công");
             loginFrame.dispose();
             showWorkspaceByRolename(loginedUser, mainFrame);
+            return true;
         }
     }
 

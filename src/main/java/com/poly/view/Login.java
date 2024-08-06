@@ -276,9 +276,12 @@ public class Login extends javax.swing.JFrame {
              txtPassword.requestFocus(); // Kích đúp chuột vào username 
             return;
         }
+
         try {
-            userController.doLogin(getForm(), this, new Main());
-            accountController.doSavePassword(getFormAccount(), cbSavePassword);
+            if(userController.doLogin(getForm(), this, new Main())){
+                accountController.doSavePassword(getFormAccount(), cbSavePassword);
+                new ChaoJDialog(this, true).setVisible(true);
+            }
         } catch (Exception e) {
             // MsgBox.alert(this,"Đã xảy ra lỗi "+e.getMessage());
             e.printStackTrace(); // In stack trace để debug
