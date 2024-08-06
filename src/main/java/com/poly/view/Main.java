@@ -2548,7 +2548,6 @@ public final class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAddressMemberActionPerformed
 
-
     /**
      * @param args the command line arguments
      */
@@ -2759,7 +2758,9 @@ public final class Main extends javax.swing.JFrame {
     List<User> members;
 
     private void totalMembers() {
-        if (members == null) return;
+        if (members == null) {
+            return;
+        }
         Integer totalMember = members.size();
         lblTotalMembers.setText(totalMember.toString());
     }
@@ -2817,19 +2818,21 @@ public final class Main extends javax.swing.JFrame {
 
     private void fillMemberToTable() {
         members = memberController.getMembersByRole();
-        if (members == null) return;
+        if (members == null) {
+            return;
+        }
         DefaultTableModel tableModelMember = (DefaultTableModel) tblListMember.getModel();
         tableModelMember.setRowCount(0);
         try {
             for (User user : members) {
                 Object[] row = {
-                        user.getId(),
-                        user.getFullname(),
-                        user.getEmail(),
-                        user.getPhone(),
-                        user.getBirthday(),
-                        user.getScore(),
-                        user.getAddress()
+                    user.getId(),
+                    user.getFullname(),
+                    user.getEmail(),
+                    user.getPhone(),
+                    user.getBirthday(),
+                    user.getScore(),
+                    user.getAddress()
                 };
                 tableModelMember.addRow(row);
             }
@@ -2843,11 +2846,11 @@ public final class Main extends javax.swing.JFrame {
         User newMember = new User();
         try {
             String id = txtIdMember.getText();
-            if (id.isEmpty()) {
-                return getFormMember(memberForm);
+            if (id == null || id.equals("")) {
+                memberForm.setId(null);
+            } else {
+                memberForm.setId(Integer.valueOf(id));
             }
-            memberForm.setId(Integer.valueOf(id));
-
             // Lấy và kiểm tra fullname
             String fullname = RegExInputFields.getCheckNameMember(txtNameMember);
             if (fullname.isEmpty()) {
@@ -2897,9 +2900,10 @@ public final class Main extends javax.swing.JFrame {
             }
             memberForm.setScore(rateMembers);
 
-
             Integer attendance = InputFields.getTextFieldtoInteger(txtAttendance);
             memberForm.setAttendance(attendance);
+            
+            memberForm.setRole(new Role());
             newMember = memberForm;
             return memberForm;
         } catch (Exception e) {
@@ -2909,8 +2913,9 @@ public final class Main extends javax.swing.JFrame {
     }
 
     private void setFormMember(User memberForm) {
-        if (memberForm.getId() == null) txtIdMember.setText("");
-        else {
+        if (memberForm.getId() == null) {
+            txtIdMember.setText("");
+        } else {
             txtIdMember.setText(memberForm.getId().toString());
         }
         txtNameMember.setText(memberForm.getFullname());
@@ -2918,8 +2923,9 @@ public final class Main extends javax.swing.JFrame {
         txtPhoneMember.setText(memberForm.getPhone());
         txtAddressMember.setText(memberForm.getAddress());
 
-        if (memberForm.getAttendance() == null) txtAttendance.setText("");
-        else {
+        if (memberForm.getAttendance() == null) {
+            txtAttendance.setText("");
+        } else {
             txtAttendance.setText(memberForm.getAttendance().toString());
         }
 
@@ -3039,7 +3045,6 @@ public final class Main extends javax.swing.JFrame {
         memberController.exportExcellAllMember(members);
     }
 
-
     //======================================================================================================
 //    User start
     List<User> users;
@@ -3126,19 +3131,21 @@ public final class Main extends javax.swing.JFrame {
 
     private void fillUserToTable() {
         users = userController.getListAllUser();
-        if (users == null) return;
+        if (users == null) {
+            return;
+        }
         DefaultTableModel tableModelUser = (DefaultTableModel) tblListUser.getModel();
         tableModelUser.setRowCount(0);
         try {
             for (User user : users) {
                 Object[] row = {
-                        user.getId(),
-                        user.getRole().getRoleName(),
-                        user.getFullname(),
-                        user.getUsername(),
-                        user.getPassword(),
-                        user.getCreatedDate(),
-                        user.getBirthday()
+                    user.getId(),
+                    user.getRole().getRoleName(),
+                    user.getFullname(),
+                    user.getUsername(),
+                    user.getPassword(),
+                    user.getCreatedDate(),
+                    user.getBirthday()
                 };
                 tableModelUser.addRow(row);
             }
@@ -3235,9 +3242,9 @@ public final class Main extends javax.swing.JFrame {
     private void setFormUser(User userForm) {
         try {
 
-
-            if (userForm.getId() == null) txtIdUser.setText("");
-            else {
+            if (userForm.getId() == null) {
+                txtIdUser.setText("");
+            } else {
                 txtIdUser.setText(userForm.getId().toString());
             }
             txtUsernameUser.setText(userForm.getUsername());
@@ -3261,8 +3268,9 @@ public final class Main extends javax.swing.JFrame {
                 dcBirthdayUser.setDate(null);
             }
 
-            if (userForm.getRole() == null) cboRoleUser.setSelectedItem(null);
-            else {
+            if (userForm.getRole() == null) {
+                cboRoleUser.setSelectedItem(null);
+            } else {
                 cboRoleUser.setSelectedItem(userForm.getRole().getRoleName());
             }
             if (userForm.getImage() != null) {
@@ -3364,20 +3372,22 @@ public final class Main extends javax.swing.JFrame {
 
     private void fillTableEvent() {
         events = eventController.getAllEvents();
-        if (events == null) return;
+        if (events == null) {
+            return;
+        }
 
         DefaultTableModel model = (DefaultTableModel) tblListEvent.getModel();
         model.setRowCount(0);
         try {
             for (Event entity : events) {
                 Object[] row = {
-                        entity.getId(),
-                        entity.getUser().getFullname(),
-                        entity.getTitle(),
-                        entity.getContent(),
-                        entity.getStartedDate(),
-                        entity.getEndedDate(),
-                        entity.getLocation()
+                    entity.getId(),
+                    entity.getUser().getFullname(),
+                    entity.getTitle(),
+                    entity.getContent(),
+                    entity.getStartedDate(),
+                    entity.getEndedDate(),
+                    entity.getLocation()
                 };
                 model.addRow(row);
             }
