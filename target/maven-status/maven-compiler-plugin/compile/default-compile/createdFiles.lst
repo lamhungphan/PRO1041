@@ -21,6 +21,7 @@ com/poly/view/Main$40.class
 com/poly/view/Main$34.class
 com/poly/utils/MailSender.class
 com/poly/utils/XImage.class
+com/poly/view/Login$12.class
 com/poly/view/Login$2.class
 com/poly/view/Main$11.class
 com/poly/view/Main$64.class
@@ -32,8 +33,8 @@ com/poly/injection/MailInjector.class
 com/poly/controller/AccountController.class
 com/poly/view/Main$48.class
 com/poly/view/Main$62.class
-com/poly/view/Main$42.class
 com/poly/view/Login$1.class
+com/poly/view/Main$42.class
 com/poly/services/impl/UserServiceImpl.class
 com/poly/view/Login$11.class
 com/poly/view/Main$50.class
