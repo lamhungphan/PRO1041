@@ -42,7 +42,7 @@ public class Notification implements Serializable{
     @Column(name = "isActived")
     private Boolean isActived;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId", referencedColumnName = "id")
     private User userId;
 }

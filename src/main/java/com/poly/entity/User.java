@@ -1,20 +1,15 @@
 package com.poly.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import java.sql.Date;
  import java.io.Serializable;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
+@ToString
 @Entity
 @Table(name = "users")
 @Getter
@@ -62,8 +57,14 @@ public class User implements Serializable {
     
     @Column(name = "score")
     private String score;
+    
+    @Column(name = "attendance")
+    private Integer attendance;
 
-    @ManyToOne
+    @Column(name = "image")
+    private String image;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "roleId", referencedColumnName = "id")
     private Role role;
 }

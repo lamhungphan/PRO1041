@@ -29,8 +29,6 @@ public class AccountController {
     
     public void doSavePassword(Account accountRequest ,JCheckBox cbSavePassword) {
             updateAccountFillToFormLogin(accountRequest, cbSavePassword);
-            System.out.println("Checkbox duoc chon");
-            System.out.println("Luu tai khoan mat khau thanh cong");
     }
 
     public Account updateAccountFillToFormLogin(Account accountRequest, JCheckBox cbSavePassword){

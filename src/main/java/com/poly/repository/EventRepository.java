@@ -15,5 +15,5 @@ public interface EventRepository {
 
     List<Event> findAll();
 
-    List<Object[]> countMembersByEvent();
+//    List<Object[]> countMembersByEvent();
 }

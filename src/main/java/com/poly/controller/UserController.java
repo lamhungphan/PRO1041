@@ -14,7 +14,6 @@ import com.poly.utils.ComponentManagement;
 import com.poly.utils.MsgBox;
 import com.poly.view.*;
 
-
 import java.util.List;
 
 import javax.swing.*;
@@ -32,6 +31,11 @@ public class UserController {
 
     public void doLogin(User userRequest, Login loginFrame, Main mainFrame) {
         User loginedUser = userService.doLogin(userRequest);
+        if (loginedUser.getUsername().equals("admin")) {
+            MsgBox.alert(null, "Đăng nhập thành công");
+            loginFrame.dispose();
+            mainFrame.setVisible(true);
+        }
         if (loginedUser == null) {
             MsgBox.alert(null, "Đăng nhập không thành công");
         } else {
@@ -78,13 +82,7 @@ public class UserController {
 
     public User createUser(User user, String roleName) {
         User createdUser = userService.save(user, roleName);
-        if (createdUser != null) {
-            MsgBox.alert(null, "Tạo người dùng thành công!");
-            return createdUser;
-        } else {
-            MsgBox.alert(null, "Không thể tạo người dùng.");
-            return null;
-        }
+        return createdUser;
     }
 
     public User readUserById(Integer id) {
@@ -103,24 +101,14 @@ public class UserController {
         return userService.findByEmail(email);
     }
 
-    public void updateUser(User user) {
+    public User updateUser(User user) {
         User updatedUser = userService.update(user);
-        if (updatedUser != null) {
-            MsgBox.alert(null, "Cập nhật người dùng thành công!");
-        } else {
-            MsgBox.alert(null, "Không thể cập nhật người dùng.");
-        }
+        return updatedUser;
     }
 
     public User deleteUser(Integer id) {
         User deletedUser = userService.delete(id);
-        if (deletedUser != null) {
-            MsgBox.alert(null, "Xóa người dùng thành công!");
-            return deletedUser;
-        } else {
-            MsgBox.alert(null, "Không thể xóa người dùng.");
-            return null;
-        }
+        return deletedUser;
     }
 
     public List<User> getAllUsers() {

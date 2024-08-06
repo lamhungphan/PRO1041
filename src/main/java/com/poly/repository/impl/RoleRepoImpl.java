@@ -70,4 +70,12 @@ public class RoleRepoImpl implements RoleRepository {
         TypedQuery<Role> query = em.createQuery(jpql, Role.class);
         return query.getResultList();
     }
+    
+      // Thêm phương thức tìm vai trò của người dùng dựa trên userId
+    public Role findRoleByUserId(Integer userId) {
+        String jpql = "SELECT r FROM Role r JOIN User u ON r.id = u.roleId WHERE u.id = :userId";
+        TypedQuery<Role> query = em.createQuery(jpql, Role.class);
+        query.setParameter("userId", userId);
+        return query.getSingleResult();
+    }
 }
