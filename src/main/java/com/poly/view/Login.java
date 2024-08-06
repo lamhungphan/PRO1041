@@ -7,6 +7,7 @@ import com.poly.entity.Account;
 import com.poly.entity.User;
 import com.poly.injection.UserInjector;
 import com.poly.utils.InputFields;
+import com.poly.utils.MsgBox;
 import lombok.Getter;
 
 
@@ -16,9 +17,7 @@ import javax.swing.*;
 @Getter
 public class Login extends javax.swing.JFrame {
     private UserController userController;
-
     private AccountController accountController ;
-
     private PasswordResetController  resetPasswordController;
 
     public Login() throws HeadlessException {
@@ -252,9 +251,27 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPasswordActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        // TODO add your handling code here:
-        userController.doLogin(getForm(),this,new Main());
-        accountController.doSavePassword(getFormAccount(), cbSavePassword);
+        try {
+            String username = getForm().getUsername();
+            String password = getForm().getPassword();
+            if (username.isEmpty() || password.isEmpty()) {
+                if (username.isEmpty() && !password.isEmpty()) {
+                    MsgBox.alert(this, "Vui lòng nhập tên đăng nhập");
+                    return;
+                } else if (!username.isEmpty() && password.isEmpty()) {
+                    MsgBox.alert(this, "Vui lòng nhập mật khẩu");
+                    return;
+                } else {
+                    MsgBox.alert(this, "Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu");
+                    return;
+                }
+            }
+            userController.doLogin(getForm(), this, new Main());
+            accountController.doSavePassword(getFormAccount(), cbSavePassword);
+        }catch (Exception e) {
+//            MsgBox.alert(this,"Đã xảy ra lỗi "+e.getMessage());
+
+        }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void lblForgotPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblForgotPasswordMouseClicked

@@ -2193,7 +2193,7 @@ public final class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddMemberActionPerformed
 
     private void btnFirstMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstMemberActionPerformed
-        firstUser();
+        firstMember();
     }//GEN-LAST:event_btnFirstMemberActionPerformed
 
     private void btnClearMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearMemberActionPerformed
@@ -2548,6 +2548,7 @@ public final class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAddressMemberActionPerformed
 
+
     /**
      * @param args the command line arguments
      */
@@ -2853,48 +2854,68 @@ public final class Main extends javax.swing.JFrame {
             }
             // Lấy và kiểm tra fullname
             String fullname = RegExInputFields.getCheckNameMember(txtNameMember);
-            if (fullname.isEmpty()) {
-                return getFormMember(memberForm);
+            if (fullname == null || fullname.equals("")) {
+                memberForm.setFullname(null);
+            } else {
+                memberForm.setFullname(fullname);
             }
-            memberForm.setFullname(fullname);
 
             // Lấy và kiểm tra email
             String memberEmail = RegExInputFields.getCheckEmail(txtEmailMemBer);
-            if (memberEmail.isEmpty()) {
-                return getFormMember(memberForm);
+            if (memberEmail == null || memberEmail.equals("")) {
+                memberForm.setEmail("");
+            } else {
+                memberForm.setEmail(memberEmail);
             }
-            memberForm.setEmail(memberEmail);
 
             // Lấy và kiểm tra số điện thoại
             String memberPhone = RegExInputFields.getCheckPhoneMember(txtPhoneMember);
-            if (memberPhone.isEmpty()) {
-                return getFormMember(memberForm);
+            if (memberPhone == null || memberPhone.equals("")) {
+                memberForm.setPhone(null);
+            } else {
+                memberForm.setPhone(memberPhone);
             }
-            memberForm.setPhone(memberPhone);
+
+            // Lấy và kiểm tra số lần tham gia sự kiện
+            Integer memberAttendance = RegExInputFields.getCheckAttendance(txtAttendance);
+            if (memberAttendance == null) {
+                memberForm.setAttendance(null);
+            } else {
+                memberForm.setAttendance(memberAttendance);
+            }
 
             // Lấy và kiểm tra địa chỉ
             String addressMember = RegExInputFields.getCheckAddress(txtAttendance);
-            if (addressMember.isEmpty()) {
-                return getFormMember(memberForm);
+            if (addressMember == null || addressMember.equals("")) {
+                memberForm.setAddress(null);
+            } else {
+                memberForm.setAddress(addressMember);
             }
-            memberForm.setAddress(addressMember);
 
             // Lấy giới tính
             Boolean gender = InputFields.getSelectedRadiobutton(rdoMaleMember, rdoFemaleMember);
             if (gender == null) {
-                return getFormMember(memberForm);
+                memberForm.setSex(null);
+            } else {
+                memberForm.setSex(gender);
             }
-            memberForm.setSex(gender);
 
             // Lấy và kiểm tra ngày sinh
             Date birthdate = InputFields.getDateChoosetoDateSQL(dcBirthdayMember);
             if (birthdate == null) {
-                return getFormMember(memberForm);
+                memberForm.setBirthday(null);
+            } else {
+                memberForm.setBirthday(birthdate);
             }
-            memberForm.setBirthday(birthdate);
 
             // Lấy và kiểm tra điểm thành viên từ combobox
             String rateMembers = InputFields.getComboBoxString(cboRateMember);
+            if (rateMembers == null || rateMembers.equals("")) {
+                memberForm.setScore(null);
+            } else {
+                memberForm.setScore(rateMembers);
+            }
+
             if (rateMembers.isEmpty()) {
                 return getFormMember(memberForm);
             }
@@ -2902,7 +2923,7 @@ public final class Main extends javax.swing.JFrame {
 
             Integer attendance = InputFields.getTextFieldtoInteger(txtAttendance);
             memberForm.setAttendance(attendance);
-            
+
             memberForm.setRole(new Role());
             newMember = memberForm;
             return memberForm;
@@ -3044,6 +3065,7 @@ public final class Main extends javax.swing.JFrame {
         }
         memberController.exportExcellAllMember(members);
     }
+
 
     //======================================================================================================
 //    User start
