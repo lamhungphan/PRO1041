@@ -2817,7 +2817,7 @@ public final class Main extends javax.swing.JFrame {
 
     private void fillMemberToTable() {
         members = memberController.getMembersByRole();
-        if(members == null) return;
+        if (members == null) return;
         DefaultTableModel tableModelMember = (DefaultTableModel) tblListMember.getModel();
         tableModelMember.setRowCount(0);
         try {
@@ -2909,12 +2909,19 @@ public final class Main extends javax.swing.JFrame {
     }
 
     private void setFormMember(User memberForm) {
-        txtIdMember.setText(memberForm.getId().toString());
+        if (memberForm.getId() == null) txtIdMember.setText("");
+        else {
+            txtIdMember.setText(memberForm.getId().toString());
+        }
         txtNameMember.setText(memberForm.getFullname());
         txtEmailMemBer.setText(memberForm.getEmail());
         txtPhoneMember.setText(memberForm.getPhone());
         txtAddressMember.setText(memberForm.getAddress());
-        txtAttendance.setText(memberForm.getAttendance().toString());
+
+        if (memberForm.getAttendance() == null) txtAttendance.setText("");
+        else {
+            txtAttendance.setText(memberForm.getAttendance().toString());
+        }
 
         if (memberForm.getSex() != null) {
             if (memberForm.getSex()) {
@@ -3119,7 +3126,7 @@ public final class Main extends javax.swing.JFrame {
 
     private void fillUserToTable() {
         users = userController.getListAllUser();
-        if(users == null)return;
+        if (users == null) return;
         DefaultTableModel tableModelUser = (DefaultTableModel) tblListUser.getModel();
         tableModelUser.setRowCount(0);
         try {
@@ -3226,35 +3233,46 @@ public final class Main extends javax.swing.JFrame {
     }
 
     private void setFormUser(User userForm) {
-        txtIdUser.setText(userForm.getId().toString());
-        txtUsernameUser.setText(userForm.getUsername());
-        txtNameUser.setText(userForm.getFullname());
-        txtPasswordUser.setText(userForm.getPassword());
-        txtEmail.setText(userForm.getEmail());
-        txtPhoneUser.setText(userForm.getPhone());
-        txtAddressUser.setText(userForm.getAddress());
+        try {
 
-        if (userForm.getSex() != null) {
-            if (userForm.getSex()) {
-                rdoMaleUser.setSelected(true);
-            } else {
-                rdoFemaleUser.setSelected(true);
+
+            if (userForm.getId() == null) txtIdUser.setText("");
+            else {
+                txtIdUser.setText(userForm.getId().toString());
             }
-        }
+            txtUsernameUser.setText(userForm.getUsername());
+            txtNameUser.setText(userForm.getFullname());
+            txtPasswordUser.setText(userForm.getPassword());
+            txtEmail.setText(userForm.getEmail());
+            txtPhoneUser.setText(userForm.getPhone());
+            txtAddressUser.setText(userForm.getAddress());
 
-        if (userForm.getBirthday() != null) {
-            dcBirthdayUser.setDate(new java.util.Date(userForm.getBirthday().getTime()));
-        } else {
-            dcBirthdayUser.setDate(null);
-        }
+            if (userForm.getSex() != null) {
+                if (userForm.getSex()) {
+                    rdoMaleUser.setSelected(true);
+                } else {
+                    rdoFemaleUser.setSelected(true);
+                }
+            }
 
-        cboRoleUser.setSelectedItem(userForm.getRole().getRoleName());
+            if (userForm.getBirthday() != null) {
+                dcBirthdayUser.setDate(new java.util.Date(userForm.getBirthday().getTime()));
+            } else {
+                dcBirthdayUser.setDate(null);
+            }
 
-        if (userForm.getImage() != null) {
-            lblUserAvatar.setToolTipText(userForm.getImage());
-            lblUserAvatar.setIcon(XImage.read(lblUserAvatar, userForm.getImage()));
-        } else {
-            lblUserAvatar.setIcon(null);
+            if (userForm.getRole() == null) cboRoleUser.setSelectedItem(null);
+            else {
+                cboRoleUser.setSelectedItem(userForm.getRole().getRoleName());
+            }
+            if (userForm.getImage() != null) {
+                lblUserAvatar.setToolTipText(userForm.getImage());
+                lblUserAvatar.setIcon(XImage.read(lblUserAvatar, userForm.getImage()));
+            } else {
+                lblUserAvatar.setIcon(null);
+            }
+        } catch (Exception e) {
+            e.getMessage();
         }
     }
 
@@ -3346,7 +3364,7 @@ public final class Main extends javax.swing.JFrame {
 
     private void fillTableEvent() {
         events = eventController.getAllEvents();
-        if (events == null)return;
+        if (events == null) return;
 
         DefaultTableModel model = (DefaultTableModel) tblListEvent.getModel();
         model.setRowCount(0);

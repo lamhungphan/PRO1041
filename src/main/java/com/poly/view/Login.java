@@ -16,9 +16,7 @@ import javax.swing.*;
 @Getter
 public class Login extends javax.swing.JFrame {
     private UserController userController;
-
     private AccountController accountController ;
-
     private PasswordResetController  resetPasswordController;
 
     public Login() throws HeadlessException {
