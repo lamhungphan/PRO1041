@@ -9,9 +9,8 @@ import jakarta.persistence.TypedQuery;
 import java.util.List;
 
 public class NotificationRepoImpl implements NotificationRepository {
-
     private EntityManager em = HibernateUtils.getEntityManage();
-
+    
     @Override
     protected void finalize() throws Throwable {
         em.close();

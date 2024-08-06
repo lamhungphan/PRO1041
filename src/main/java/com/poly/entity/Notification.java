@@ -41,7 +41,7 @@ public class Notification implements Serializable{
     @JoinColumn(name = "eventId", referencedColumnName = "id")
     private Event eventId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "userId", referencedColumnName = "id")
     private User userId;
 }

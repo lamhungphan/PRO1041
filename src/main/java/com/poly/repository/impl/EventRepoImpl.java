@@ -4,10 +4,8 @@ import com.poly.entity.Event;
 import com.poly.repository.EventRepository;
 import com.poly.utils.HibernateUtils;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import java.util.List;
-import org.hibernate.Session;
 
 public class EventRepoImpl implements EventRepository {
 
@@ -29,6 +27,8 @@ public class EventRepoImpl implements EventRepository {
         } catch (Exception e) {
             em.getTransaction().rollback();
             throw new RuntimeException(e);
+        } finally{
+            em.close();
         }
     }
 
@@ -42,6 +42,8 @@ public class EventRepoImpl implements EventRepository {
         } catch (Exception e) {
             em.getTransaction().rollback();
             throw new RuntimeException(e);
+        } finally{
+            em.close();
         }
     }
 
@@ -56,6 +58,8 @@ public class EventRepoImpl implements EventRepository {
         } catch (Exception e) {
             em.getTransaction().rollback();
             throw new RuntimeException(e);
+        } finally{
+            em.close();
         }
     }
 

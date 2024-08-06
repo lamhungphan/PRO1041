@@ -31,6 +31,8 @@ public class UserRepoImpl implements UserRepository {
         } catch (Exception e) {
             em.getTransaction().rollback();
             throw new RuntimeException(e);
+        } finally{
+            em.close();
         }
     }
 
@@ -44,6 +46,8 @@ public class UserRepoImpl implements UserRepository {
         } catch (Exception e) {
             em.getTransaction().rollback();
             throw new RuntimeException();
+        } finally{
+            em.close();
         }
     }
 
@@ -58,6 +62,8 @@ public class UserRepoImpl implements UserRepository {
         } catch (Exception e) {
             em.getTransaction().rollback();
             throw new RuntimeException(e);
+        } finally{
+            em.close();
         }
     }
 
