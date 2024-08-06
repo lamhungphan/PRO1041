@@ -2548,6 +2548,7 @@ public final class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAddressMemberActionPerformed
 
+
     /**
      * @param args the command line arguments
      */
@@ -2851,7 +2852,6 @@ public final class Main extends javax.swing.JFrame {
             } else {
                 memberForm.setId(Integer.valueOf(id));
             }
-
             // Lấy và kiểm tra fullname
             String fullname = RegExInputFields.getCheckNameMember(txtNameMember);
             if (fullname == null || fullname.equals("")) {
@@ -2916,8 +2916,15 @@ public final class Main extends javax.swing.JFrame {
                 memberForm.setScore(rateMembers);
             }
 
+            if (rateMembers.isEmpty()) {
+                return getFormMember(memberForm);
+            }
+            memberForm.setScore(rateMembers);
+
             Integer attendance = InputFields.getTextFieldtoInteger(txtAttendance);
             memberForm.setAttendance(attendance);
+
+            memberForm.setRole(new Role());
             newMember = memberForm;
             return memberForm;
         } catch (Exception e) {
@@ -3058,6 +3065,7 @@ public final class Main extends javax.swing.JFrame {
         }
         memberController.exportExcellAllMember(members);
     }
+
 
     //======================================================================================================
 //    User start
