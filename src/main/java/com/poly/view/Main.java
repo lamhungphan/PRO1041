@@ -9,8 +9,14 @@ import com.poly.controller.UserController;
 import com.poly.entity.Event;
 import com.poly.entity.Role;
 import com.poly.entity.User;
+import javax.swing.table.DefaultTableCellRenderer;
 
 import javax.swing.JFrame;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.text.Normalizer;
+import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 import com.poly.injection.AccountInjector;
 import com.poly.injection.AuthorizationInjector;
@@ -24,7 +30,6 @@ import com.poly.utils.RegExInputFields;
 import com.poly.utils.SheetsQuickstart;
 import com.poly.utils.XImage;
 
-import java.awt.CardLayout;
 import java.io.File;
 import java.sql.Date;
 import java.util.List;
@@ -40,6 +45,7 @@ import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.DefaultTableCellRenderer;
 
 import lombok.Getter;
 import org.mindrot.jbcrypt.BCrypt;
@@ -2397,29 +2403,25 @@ public final class Main extends javax.swing.JFrame {
         editMember();
     }//GEN-LAST:event_tblListMemberMouseClicked
 
-    private void btnSearchUser2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchUser2ActionPerformed
-        // TODO add your handling code here:
-        User userFind = new User();//Tạo đối tượng mới lưu giữ nếu tìm được thành viên
-        String nameFinder = RegExInputFields.getCheckNameMember(txtFindMember);//kiểm tra tên hợp lệ
-
-        for (User member : members) {//Tạo vòng lập từ list users để tìm theo tên
-            if (member.getFullname().equalsIgnoreCase(nameFinder)) {//lấy tên của mỗi member so sánh với tên từ input
-                userFind = member;// nếu tìm thấy thì gán member vào đối tượng mới tạo ra
-                break;// thoát khỏi vòng lặp
+    private void btnSearchUser2ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnSearchUser2ActionPerformed
+        String nameFinder = RegExInputFields.getCheckNameMember(txtFindMember).toLowerCase(); //kiểm tra tên hợp lệ, chuyển về in thường
+        nameFinder = removeAccents(nameFinder); // Bỏ dấu tiếng Việt
+        List<User> matchedMembers = new ArrayList<>(); // Tạo danh sách để lưu các thành viên
+        for (User member : members) { //Tạo vòng lập từ list users để tìm theo tên
+            String memberName = removeAccents(member.getFullname()).toLowerCase();
+            if (memberName.contains(nameFinder)) { //lấy tên của mỗi member so sánh với tên từ input
+                matchedMembers.add(member); // Thêm thành viên vào danh sách kết quả
             }
         }
-
-        if (userFind == null) {//Điều kiện return sớm nếu không có user
+            // Kiểm tra nếu có thành viên
+        if (matchedMembers.isEmpty()) {
             MsgBox.alert(null, "Không tìm thấy thành viên này!");
-            return;
+        } else {
+            // Cập nhật bảng với danh sách thành viên
+            updateTableWithMembers(matchedMembers);
         }
-        setFormMember(userFind);//Đưa member lên form view
-        updateStatusMember();
-        row = members.indexOf(userFind);//tìm vị trí của thành viên trong list members
-        tblListMember.setRowSelectionInterval(row, row);
+    }
 
-        txtFindMember.setText("");
-    }//GEN-LAST:event_btnSearchUser2ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
@@ -2547,7 +2549,6 @@ public final class Main extends javax.swing.JFrame {
     private void txtAddressMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressMemberActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAddressMemberActionPerformed
-
 
     /**
      * @param args the command line arguments
@@ -2766,6 +2767,20 @@ public final class Main extends javax.swing.JFrame {
         lblTotalMembers.setText(totalMember.toString());
     }
 
+    public static String removeAccents(String input) {
+        String normalized = Normalizer.normalize(input, Normalizer.Form.NFD);
+        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+        return pattern.matcher(normalized).replaceAll("");
+    }
+
+    private void updateTableWithMembers(List<User> members) {
+        DefaultTableModel model = (DefaultTableModel) tblListMember.getModel();
+        model.setRowCount(0);
+        for (User member : members) {
+            model.addRow(new Object[]{member.getFullname()});
+        }
+    }
+
     private void initMemberController() {
         fillMemberToTable();
         updateStatusMember();
@@ -2809,6 +2824,7 @@ public final class Main extends javax.swing.JFrame {
                 MsgBox.alert(this, "Xóa thành viên thành công!");
                 fillMemberToTable();
                 clearFormMember();
+                totalMembers();
             } else {
                 MsgBox.alert(this, "Không thể xóa thành viên.");
             }
@@ -2827,13 +2843,13 @@ public final class Main extends javax.swing.JFrame {
         try {
             for (User user : members) {
                 Object[] row = {
-                    user.getId(),
-                    user.getFullname(),
-                    user.getEmail(),
-                    user.getPhone(),
-                    user.getBirthday(),
-                    user.getScore(),
-                    user.getAddress()
+                        user.getId(),
+                        user.getFullname(),
+                        user.getEmail(),
+                        user.getPhone(),
+                        user.getBirthday(),
+                        user.getScore(),
+                        user.getAddress()
                 };
                 tableModelMember.addRow(row);
             }
@@ -3066,7 +3082,6 @@ public final class Main extends javax.swing.JFrame {
         memberController.exportExcellAllMember(members);
     }
 
-
     //======================================================================================================
 //    User start
     List<User> users;
@@ -3161,13 +3176,13 @@ public final class Main extends javax.swing.JFrame {
         try {
             for (User user : users) {
                 Object[] row = {
-                    user.getId(),
-                    user.getRole().getRoleName(),
-                    user.getFullname(),
-                    user.getUsername(),
-                    user.getPassword(),
-                    user.getCreatedDate(),
-                    user.getBirthday()
+                        user.getId(),
+                        user.getRole().getRoleName(),
+                        user.getFullname(),
+                        user.getUsername(),
+                        user.getPassword(),
+                        user.getCreatedDate(),
+                        user.getBirthday()
                 };
                 tableModelUser.addRow(row);
             }
@@ -3403,13 +3418,13 @@ public final class Main extends javax.swing.JFrame {
         try {
             for (Event entity : events) {
                 Object[] row = {
-                    entity.getId(),
-                    entity.getUser().getFullname(),
-                    entity.getTitle(),
-                    entity.getContent(),
-                    entity.getStartedDate(),
-                    entity.getEndedDate(),
-                    entity.getLocation()
+                        entity.getId(),
+                        entity.getUser().getFullname(),
+                        entity.getTitle(),
+                        entity.getContent(),
+                        entity.getStartedDate(),
+                        entity.getEndedDate(),
+                        entity.getLocation()
                 };
                 model.addRow(row);
             }
