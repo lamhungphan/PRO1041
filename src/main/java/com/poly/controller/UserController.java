@@ -55,27 +55,31 @@ public class UserController {
         JPanel adminPanel = mainFrame.getPnlAdmin();
         JPanel notificationPanel = mainFrame.getPnlNotification();
         JPanel memberPanel = mainFrame.getPnlMember();
+        JLabel test = mainFrame.getLblWelcome();
         if (authorizationService.isAdmin(userLogined)) {
             mainFrame.setVisible(true);
+            mainFrame.setText(RoleConstant.CHU_NHIEM);
         } else if (authorizationService.isEventManager(userLogined)) {
             mainFrame.setVisible(true);
             ComponentManagement.setEnabledRecursively(eventPanel, true);
             ComponentManagement.setEnabledRecursively(adminPanel, false);
             ComponentManagement.setEnabledRecursively(notificationPanel, false);
             ComponentManagement.setEnabledRecursively(memberPanel, false);
-
+            mainFrame.setText(RoleConstant.PHO_CHU_NHIEM);
         } else if (authorizationService.isMember(userLogined)) {
             mainFrame.setVisible(true);
             ComponentManagement.setEnabledRecursively(eventPanel, false);
             ComponentManagement.setEnabledRecursively(adminPanel, false);
             ComponentManagement.setEnabledRecursively(notificationPanel, false);
             ComponentManagement.setEnabledRecursively(memberPanel, true);
+            mainFrame.setText(RoleConstant.THANH_VIEN);
         } else if (authorizationService.isAccoutant(userLogined)) {
             mainFrame.setVisible(true);
             ComponentManagement.setEnabledRecursively(eventPanel, false);
             ComponentManagement.setEnabledRecursively(adminPanel, false);
             ComponentManagement.setEnabledRecursively(notificationPanel, true);
             ComponentManagement.setEnabledRecursively(memberPanel, false);
+            mainFrame.setText(RoleConstant.THU_QUY);
         }
     }
     // CRUD operations
