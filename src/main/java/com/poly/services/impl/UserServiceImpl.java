@@ -92,7 +92,9 @@ public class UserServiceImpl implements UserService {
     public User findByUsername(String name) {
         List<User> list = this.findAll();
         for (User user : list) {
-            if (user.getUsername().equalsIgnoreCase(name)) {
+            // Kiểm tra xem user.getUsername() có phải là null không
+            String username = user.getUsername();
+            if (username != null && user.getUsername().equalsIgnoreCase(name)) {
                 return user;
             }
         }
@@ -135,23 +137,33 @@ public class UserServiceImpl implements UserService {
     @Override
     public User doLogin(User userRequest) {
         User userResponse = findByUsername(userRequest.getUsername());
-         String admin = "admin";
+        String admin = "admin";
         String adminPassword = "123";
-        
-        if(userRequest.getUsername().equals(admin)&& userRequest.getPassword().equals(adminPassword)){
-            return userRequest;
+
+        // Kiểm tra userResponse trước khi gọi phương thức
+        if (userResponse == null) {
+            return null; // Không tìm thấy người dùng
         }
-        
-        if (userResponse.getIsActived() == false || userResponse == null) {
-            return null;
+
+        if (userRequest.getUsername().equals(admin) && userRequest.getPassword().equals(adminPassword)) {
+            return userRequest; // Trả về userRequest nếu là admin
         }
+
+        // Kiểm tra tài khoản không hoạt động
+        if (userResponse.getIsActived() == false) {
+            return null; // Tài khoản không hoạt động
+        }
+
+        // Kiểm tra mật khẩu
         if (BCrypt.checkpw(userRequest.getPassword(), userResponse.getPassword())) {
-            return userResponse;
+            return userResponse; // Trả về userResponse nếu mật khẩu đúng
         }
-        return null;
+
+        return null; // Trả về null nếu mật khẩu không đúng
     }
 
-//Test
+
+    //Test
     public static void main(String[] args) {
         UserRepoImpl repoImpl = new UserRepoImpl();
         User user_Hung = repoImpl.findById(1);

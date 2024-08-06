@@ -3,7 +3,6 @@ package com.poly.controller;
 import com.poly.entity.Account;
 import com.poly.injection.AccountInjector;
 import com.poly.services.AccountService;
-import lombok.RequiredArgsConstructor;
 
 import javax.swing.*;
 
