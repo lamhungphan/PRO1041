@@ -5,20 +5,19 @@ import com.poly.controller.PasswordResetController;
 import com.poly.controller.UserController;
 import com.poly.entity.Account;
 import com.poly.entity.User;
-import com.poly.injection.UserInjector;
 import com.poly.utils.InputFields;
 import com.poly.utils.MsgBox;
 import lombok.Getter;
-
 
 import java.awt.HeadlessException;
 import javax.swing.*;
 
 @Getter
 public class Login extends javax.swing.JFrame {
+
     private UserController userController;
-    private AccountController accountController ;
-    private PasswordResetController  resetPasswordController;
+    private AccountController accountController;
+    private PasswordResetController resetPasswordController;
 
     public Login() throws HeadlessException {
         initComponents();
@@ -29,11 +28,12 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    private void initInject(){
+    private void initInject() {
         accountController = new AccountController();
         userController = new UserController();
         resetPasswordController = new PasswordResetController();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -184,6 +184,15 @@ public class Login extends javax.swing.JFrame {
         lblForgotPassword.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblForgotPassword.setText("Quên mật khẩu ?");
         lblForgotPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblForgotPassword.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                lblForgotPasswordAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         lblForgotPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblForgotPasswordMouseClicked(evt);
@@ -251,26 +260,31 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPasswordActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        try {
-            String username = getForm().getUsername();
-            String password = getForm().getPassword();
-            if (username.isEmpty() || password.isEmpty()) {
-                if (username.isEmpty() && !password.isEmpty()) {
-                    MsgBox.alert(this, "Vui lòng nhập tên đăng nhập");
-                    return;
-                } else if (!username.isEmpty() && password.isEmpty()) {
-                    MsgBox.alert(this, "Vui lòng nhập mật khẩu");
-                    return;
-                } else {
-                    MsgBox.alert(this, "Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu");
-                    return;
-                }
-            }
-            userController.doLogin(getForm(), this, new Main());
-            accountController.doSavePassword(getFormAccount(), cbSavePassword);
-        }catch (Exception e) {
-//            MsgBox.alert(this,"Đã xảy ra lỗi "+e.getMessage());
+        String username = getForm().getUsername();
+        String password = getForm().getPassword();
+        if (username == null && password == null) {
+            MsgBox.alert(this, "Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu");
+            txtUsername.requestFocus(); // Kích đúp chuột vào username 
+            return;
+        } else
+        if (username == null) {
+            MsgBox.alert(this, "Vui lòng nhập tên đăng nhập");
+             txtUsername.requestFocus(); // Kích đúp chuột vào username 
+            return;
+        } else if (password== null) {
+            MsgBox.alert(this, "Vui lòng nhập mật khẩu");
+             txtPassword.requestFocus(); // Kích đúp chuột vào username 
+            return;
+        }
 
+        try {
+            if(userController.doLogin(getForm(), this, new Main())){
+                accountController.doSavePassword(getFormAccount(), cbSavePassword);
+                new ChaoJDialog(this, true).setVisible(true);
+            }
+        } catch (Exception e) {
+            // MsgBox.alert(this,"Đã xảy ra lỗi "+e.getMessage());
+            e.printStackTrace(); // In stack trace để debug
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
@@ -289,7 +303,7 @@ public class Login extends javax.swing.JFrame {
         return userRequest;
     }
 
-    Account getFormAccount(){
+    Account getFormAccount() {
         Account accountRequest = new Account();
         accountRequest.setId(1);
         accountRequest.setUsername(InputFields.getTextFieldtoString(txtUsername));
@@ -304,6 +318,10 @@ public class Login extends javax.swing.JFrame {
     private void cbSavePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSavePasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbSavePasswordActionPerformed
+
+    private void lblForgotPasswordAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblForgotPasswordAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblForgotPasswordAncestorAdded
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -330,8 +348,6 @@ public class Login extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
 
-        
-        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -360,4 +376,17 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
+
+    private void checkNullFieldUsernamePassword() {
+        String usernameCheckNull = txtUsername.getText().trim();
+        String passwordCheckNull = txtPassword.getPassword().toString();
+        if (usernameCheckNull == null || passwordCheckNull == null) {
+            MsgBox.alert(this, "Tên đăng nhập đang trống !");
+            return;
+        }
+        if (passwordCheckNull == null) {
+            MsgBox.alert(this, "Mật khẩu đang trống !");
+            return;
+        }
+    }
 }

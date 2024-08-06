@@ -33,12 +33,6 @@ public class Notification implements Serializable{
     @Column(name = "updateDate")
     private Date updatedDate;
 
-    @Column(name = "request")
-    private String request;
-
-    @Column(name = "reply")
-    private String reply;
-
     @Column(name = "isActived")
     private Boolean isActived;
 

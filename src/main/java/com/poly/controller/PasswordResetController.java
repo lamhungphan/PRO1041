@@ -25,8 +25,8 @@ public class PasswordResetController {
 
     public void showResetPasswordForm() {
         JFrame frame = new JFrame("Quên mật khẩu");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(500, 270);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize(700, 270);
         frame.setLocationRelativeTo(null);
 
         JPanel panel = new JPanel();
@@ -114,7 +114,7 @@ public class PasswordResetController {
 
     public void showVerifyTokenForm() {
         JFrame frame = new JFrame("Xác nhận token và cài đặt lại mật khẩu");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(400, 250);
         frame.setLocationRelativeTo(null);
 
@@ -144,7 +144,7 @@ public class PasswordResetController {
             public void actionPerformed(ActionEvent e) {
                 String token = tokenField.getText();
                 String newPassword = new String(newPasswordField.getPassword());
-                resetPassword(token, newPassword);
+                resetPassword(token, newPassword, frame); // truyền frame vào đây
             }
         });
 
@@ -178,7 +178,7 @@ public class PasswordResetController {
         frame.setVisible(true);
     }
 
-    public User resetPassword(String token, String newPassword) {
+    public User resetPassword(String token, String newPassword, JFrame currentFrame) {
         PasswordResetToken resetToken = passwordResetTokenService.findBytoken(token);
         if (resetToken != null) {
             System.out.println("Token expiration date: " + resetToken.getExpirationdate());
@@ -187,10 +187,11 @@ public class PasswordResetController {
             if (resetToken.getExpirationdate().isAfter(LocalDateTime.now())) {
                 User userAfterSetPass = userService.updatePassword(resetToken.getEmail(), newPassword);
                 passwordResetTokenService.deleteByToken(resetToken.getToken());
-                JOptionPane.showMessageDialog(null, "Đặt lại mật khẩu thành công.");
+                JOptionPane.showMessageDialog(currentFrame, "Đặt lại mật khẩu thành công.");
+                currentFrame.dispose(); // đóng JFrame hiện tại
                 return userAfterSetPass;
             } else {
-                MsgBox.alert(null, "Token không hợp lệ hoặc đã hết hạn.");
+                MsgBox.alert(currentFrame, "Token không hợp lệ hoặc đã hết hạn.");
                 return null;
             }
         }
