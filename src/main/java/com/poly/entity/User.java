@@ -1,5 +1,6 @@
 package com.poly.entity;
 
+import com.poly.utils.EntityListener;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@EntityListeners(EntityListener.class)
 public class User implements Serializable {
 
     @Id

@@ -1,8 +1,8 @@
 package com.poly.entity;
 
+import com.poly.utils.EntityListener;
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.io.Serializable;
 import java.sql.Date;
 
@@ -13,6 +13,7 @@ import java.sql.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@EntityListeners(EntityListener.class)
 public class Event implements Serializable {
 
     @Id

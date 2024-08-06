@@ -3589,13 +3589,15 @@ public final class Main extends javax.swing.JFrame {
     }
 
     private void importExcelEvent() {
-        try {
-            Event eventRequest = getEventFrom(new Event());
-            eventController.importExcellEvent(eventRequest.getUser().getUsername());
-            fillTableEvent();
-            MsgBox.alert(this, "Thêm event thành công !");
-        } catch (ParseException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        try{
+        Event eventRequest = getEventFrom(new Event());
+        System.out.println("Qua duoc chua ?");
+        eventController.importExcellEvent(eventRequest.getUser().getUsername());
+        fillTableEvent();
+        MsgBox.alert(this, "Thêm event thành công !");
+        } catch(Exception e){
+            e.printStackTrace();
         }
+        
     }
 }

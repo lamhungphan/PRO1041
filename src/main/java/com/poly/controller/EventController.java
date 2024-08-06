@@ -65,29 +65,29 @@ public class EventController {
         }
         return dataList;
     }
-    
-    public void exportGGSheetResponseRegisterForm(){
+
+    public void exportGGSheetResponseRegisterForm() {
         List<List<Object>> dataList = getAllResponseRegisterForm();
         IOExcells.exportToExcelGGSheet(dataList);
     }
 
-    public void exportExcellAllEvent(List<Event> dataList){
+    public void exportExcellAllEvent(List<Event> dataList) {
         IOExcells.exportToExcelEvent(dataList);
     }
 
     public List<Event> importExcellEvent(String usernameManager) throws ParseException {
-            List<Event> saveEvents = new ArrayList<>();
-    try {
-        List<Event> dataListFound = IOExcells.importToExcelEvent();
+        List<Event> saveEvents = new ArrayList<>();
+        try {
+            List<Event> dataListFound = IOExcells.importToExcelEvent();
 
-        for (Event entityExcelEvent : dataListFound) {
-            Event savedEvent = eventService.save(entityExcelEvent, usernameManager);
-            saveEvents.add(savedEvent);
+            for (Event entityExcelEvent : dataListFound) {
+                Event savedEvent = eventService.save(entityExcelEvent, usernameManager);
+                saveEvents.add(savedEvent);
+            }
+        } catch (ParseException ex) {
+            Logger.getLogger(MemberController.class.getName()).log(Level.SEVERE, "Error while importing members from Excel", ex);
+            MsgBox.alert(null, "Lỗi khi nhập thành viên từ file Excel. Vui lòng kiểm tra lại.");
         }
-    } catch (ParseException ex) {
-        Logger.getLogger(MemberController.class.getName()).log(Level.SEVERE, "Error while importing members from Excel", ex);
-        MsgBox.alert(null, "Lỗi khi nhập thành viên từ file Excel. Vui lòng kiểm tra lại.");
-    }
-    return saveEvents;
+        return saveEvents;
     }
 }
