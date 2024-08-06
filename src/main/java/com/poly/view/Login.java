@@ -257,17 +257,20 @@ public class Login extends javax.swing.JFrame {
             if (username.isEmpty() || password.isEmpty()) {
                 if (username.isEmpty() && !password.isEmpty()) {
                     MsgBox.alert(this, "Vui lòng nhập tên đăng nhập");
+                    return;
                 } else if (!username.isEmpty() && password.isEmpty()) {
                     MsgBox.alert(this, "Vui lòng nhập mật khẩu");
+                    return;
                 } else {
                     MsgBox.alert(this, "Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu");
+                    return;
                 }
-                return;
             }
             userController.doLogin(getForm(), this, new Main());
             accountController.doSavePassword(getFormAccount(), cbSavePassword);
         }catch (Exception e) {
-            MsgBox.alert(this,"Đã xảy ra lỗi"+e.getMessage());
+//            MsgBox.alert(this,"Đã xảy ra lỗi "+e.getMessage());
+
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
