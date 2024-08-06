@@ -8,6 +8,7 @@ import com.poly.services.UserService;
 import com.poly.services.impl.PasswordResetTokenServiceImpl;
 import com.poly.utils.MailSender;
 import com.poly.utils.MsgBox;
+import com.poly.utils.RegExInputFields;
 
 import javax.swing.*;
 import java.awt.*;
@@ -84,32 +85,35 @@ public class PasswordResetController {
     }
 
     public void sendResetLink(String email, JFrame currentFrame) {
-        // Kiểm tra xem email có tồn tại trong database không
-        User user = userService.findByEmail(email);
-        if (user == null) {
-            JOptionPane.showMessageDialog(currentFrame, "Email không tồn tại trong hệ thống.");
-            return;
+        if(checkEmail(email)){
+            // Kiểm tra xem email có tồn tại trong database không
+            User user = userService.findByEmail(email);
+            if (user == null) {
+                MsgBox.alert(currentFrame,"Sai Email !" );
+                return;
+            }
+
+            // Tạo token vơ UUID của Java
+            String token = UUID.randomUUID().toString();
+            LocalDateTime expirationDate = LocalDateTime.now().plusMinutes(10);
+
+            // Tạo PasswordResetToken entity
+            PasswordResetToken resetToken = new PasswordResetToken();
+            resetToken.setEmail(email);
+            resetToken.setToken(token);
+            resetToken.setExpirationdate(expirationDate);
+
+            // Lưu token vào database
+            passwordResetTokenService.save(resetToken);
+
+            // Gửi mail cho user
+            String message = "Dưới đây là mã đặt lại mật khẩu của bạn: " + token;
+            MailSender.sendEmailresetpassword(email, token, message); // Giả sử MailSender đã được triển khai
+            MsgBox.alert(currentFrame, "Liên kết đặt lại mật khẩu đã được gửi đến email của bạn.");
+            showVerifyTokenForm();
+            currentFrame.dispose();
         }
 
-        // Tạo token vơ UUID của Java
-        String token = UUID.randomUUID().toString();
-        LocalDateTime expirationDate = LocalDateTime.now().plusMinutes(10);
-
-        // Tạo PasswordResetToken entity
-        PasswordResetToken resetToken = new PasswordResetToken();
-        resetToken.setEmail(email);
-        resetToken.setToken(token);
-        resetToken.setExpirationdate(expirationDate);
-
-        // Lưu token vào database
-        passwordResetTokenService.save(resetToken);
-
-        // Gửi mail cho user
-        String message = "Dưới đây là mã đặt lại mật khẩu của bạn: " + token;
-        MailSender.sendEmailresetpassword(email, token, message); // Giả sử MailSender đã được triển khai
-        JOptionPane.showMessageDialog(currentFrame, "Liên kết đặt lại mật khẩu đã được gửi đến email của bạn.");
-        showVerifyTokenForm();
-        currentFrame.dispose();
     }
 
     public void showVerifyTokenForm() {
@@ -183,7 +187,6 @@ public class PasswordResetController {
         if (resetToken != null) {
             System.out.println("Token expiration date: " + resetToken.getExpirationdate());
             System.out.println("Current date: " + LocalDateTime.now());
-
             if (resetToken.getExpirationdate().isAfter(LocalDateTime.now())) {
                 User userAfterSetPass = userService.updatePassword(resetToken.getEmail(), newPassword);
                 passwordResetTokenService.deleteByToken(resetToken.getToken());
@@ -191,13 +194,26 @@ public class PasswordResetController {
                 currentFrame.dispose(); // đóng JFrame hiện tại
                 return userAfterSetPass;
             } else {
-                MsgBox.alert(currentFrame, "Token không hợp lệ hoặc đã hết hạn.");
+                MsgBox.alert(currentFrame, "Token hết hạn !");
                 return null;
             }
+        }else {
+            MsgBox.alert(currentFrame, "Token không hợp lệ !");
+            return null;
         }
-        return null;
     }
 
+    public static boolean checkEmail(String email) {
+        String regex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
+        if (email.isEmpty()) {
+            MsgBox.alert(null, "Email đang trống.");
+            return false;
+        } else if (!email.matches(regex)) {
+            MsgBox.alert(null, "Lỗi cấu trúc Email.");
+            return false;
+        }
+        return true;
+    }
 //    public static void main(String[] args) {
 //        PasswordResetController controller = new PasswordResetController();
 //        controller.showResetPasswordForm();
