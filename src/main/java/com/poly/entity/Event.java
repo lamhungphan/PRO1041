@@ -1,21 +1,12 @@
 package com.poly.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.io.Serializable;
 import java.sql.Date;
 
+@ToString
 @Entity
 @Table(name = "events")
 @Getter
@@ -52,7 +43,10 @@ public class Event implements Serializable {
     @Column(name = "location")
     private String location;
 
-    @ManyToOne
+    @Column(name = "type")
+    private String type;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId", referencedColumnName = "id")
     private User user;
 }

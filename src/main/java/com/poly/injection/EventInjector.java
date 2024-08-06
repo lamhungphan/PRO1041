@@ -24,6 +24,7 @@ public class EventInjector {
     private final UserService userService;
 
     private EventInjector() {
+        this.userInjector = UserInjector.getInstance();
         this.eventRepository = new EventRepoImpl();
         this.userService = userInjector.getUserService();
         this.eventService = new EventServiceImpl(eventRepository, userService);

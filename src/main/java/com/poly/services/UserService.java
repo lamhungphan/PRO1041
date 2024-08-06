@@ -13,9 +13,17 @@ public interface UserService {
 
     User findById(Integer id);
 
-    User findByUsername(String name);
+    User findByUsername(String username);
+
+    User findByFullname(String fullname);
 
     List<User> findAll();
 
+    List<User> findByRole(String... role);
+
+    User findByEmail(String email);
+
     User doLogin(User userRequest);
+
+    User updatePassword(String email, String newPassword);
 }

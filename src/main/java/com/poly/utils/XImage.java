@@ -1,12 +1,13 @@
 package com.poly.utils;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import javax.swing.ImageIcon;
+import javax.swing.*;
 
 public class XImage {
 
@@ -28,7 +29,7 @@ public class XImage {
      * @param src là đối tượng file ảnh
      */
     public static void save(File src) {
-        File dst = new File("Images", src.getName());
+        File dst = new File("resources/avatar", src.getName());
         if (!dst.getParentFile().exists()) {
             dst.getParentFile().mkdirs();
         }
@@ -46,8 +47,27 @@ public class XImage {
      * @param fileName  là tên file logo
      * @return ảnh đọc được
      */   
-    public static ImageIcon read(String fileName){
-        File path = new File("Images", fileName);
-        return new ImageIcon(path.getAbsolutePath());
+    public static ImageIcon read(JLabel label,String fileName){
+        File path = new File("resources/avatar", fileName);
+        return scaleImageToLabel(label, path.getAbsolutePath());
+    }
+
+    public static ImageIcon scaleImageToLabel(JLabel label, String imagePath) {
+        // Tạo ImageIcon từ đường dẫn ảnh
+        ImageIcon icon = new ImageIcon(imagePath);
+
+        // Lấy kích thước của JLabel
+        int labelWidth = label.getWidth();
+        int labelHeight = label.getHeight();
+
+        // Lấy Image từ ImageIcon và scale theo kích thước của JLabel
+        Image scaledImage = icon.getImage().getScaledInstance(labelWidth, labelHeight, Image.SCALE_SMOOTH);
+
+        // Tạo lại ImageIcon từ ảnh đã scale
+        ImageIcon scaledIcon = new ImageIcon(scaledImage);
+
+        // Gán ImageIcon đã scale vào JLabel
+        label.setIcon(scaledIcon);
+        return scaledIcon;
     }
 }

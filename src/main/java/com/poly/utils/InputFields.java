@@ -1,5 +1,7 @@
 package com.poly.utils;
 
+import com.toedter.calendar.JDateChooser;
+import java.sql.Date;
 import javax.swing.*;
 
 public class InputFields {
@@ -8,12 +10,16 @@ public class InputFields {
         if (isNumber(numb)) {
             txt.setText(numb);
         } else {
-            MsgBox.alert(null, "Invalid input: Not a number");
+            MsgBox.alert(null, "Vui lòng nhập số");
         }
 
     }
 
     public static String getTextFieldtoString(JTextField txt) {
+        if(txt.getText().equals("") || txt.getText().equals(" ") || txt.getText().equals("null")) {
+            txt.requestFocus();
+            return null;
+        }
         return txt.getText();
     }
 
@@ -48,20 +54,27 @@ public class InputFields {
         }
     }
 
-    public static String getSelectedRadiobutton(JRadioButton rdo_1, JRadioButton rdo_2) {
+    public static boolean getSelectedRadiobutton(JRadioButton rdo_1, JRadioButton rdo_2) {
         if (rdo_1.isSelected()) {
-            return rdo_1.getText();
+            rdo_1.setSelected(true);
+            return true;
         } else if (rdo_2.isSelected()) {
-            return rdo_2.getText();
+            rdo_2.setSelected(true);
+            return true;
+        } else {
+            return false;
         }
-        return null;
     }
 
     public static String getComboBoxString(JComboBox<String> cbx) {
         return (String) cbx.getSelectedItem();
     }
 
-    private static Boolean isNumber(String numb) {
+    public static Integer getComboBoxInteger(JComboBox<Integer> cbx) {
+        return cbx.getSelectedIndex();
+    }
+
+    public static Boolean isNumber(String numb) {
         try {
             Double.valueOf(numb);
             return true;
@@ -70,4 +83,12 @@ public class InputFields {
         }
     }
 
+    public static Date getDateSQL(java.util.Date getDateUtil) {
+        Date newDate = new Date(getDateUtil.getTime());
+        return newDate;
+    }
+
+    public static Date getDateChoosetoDateSQL(JDateChooser dateChooser) {
+        return dateChooser != null ? getDateSQL(dateChooser.getDate()) : null;
+    }
 }

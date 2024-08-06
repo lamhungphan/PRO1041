@@ -1,56 +1,68 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.poly.controller;
 
+import com.poly.constant.RoleConstant;
 import com.poly.entity.User;
 import com.poly.injection.MemberInjector;
 import com.poly.services.MemberService;
+import com.poly.utils.IOExcells;
 import com.poly.utils.MsgBox;
+import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-/**
- *
- * @author Computer
- */
 public class MemberController {
 
-    MemberService memberService = MemberInjector.getInstance().getMemberService();
+    private final MemberService memberService = MemberInjector.getInstance().getMemberService();
 
     // CRUD operations
-    public void createUser(User user, String roleName) {
-        User createdUser = memberService.save(user, roleName);
-        if (createdUser != null) {
-            MsgBox.alert(null, "Tạo thành viên thành công!");
-        } else {
-            MsgBox.alert(null, "Không thể tạo thành viên.");
-        }
+    public User createUser(User user, String roleName) {
+        return memberService.save(user, roleName);
     }
 
-    public User readUser(Integer id) {
+    public User readUserByID(Integer id) {
         return memberService.findById(id);
     }
+    
+    public User readUserByName(String name) {
+        return memberService.findByFullname(name);
+    }
 
-    public void updateUser(User user) {
-        User updatedUser = memberService.update(user);
-        if (updatedUser != null) {
-            MsgBox.alert(null, "Cập nhật thành viên thành công!");
-        } else {
-            MsgBox.alert(null, "Không thể cập nhật thành viên.");
+    public User updateUser(User user) {
+        return memberService.update(user);
+    }
+
+    public User deleteUserById(Integer id) {
+        return memberService.delete(id);
+    }
+
+    public User deleteUserByName(String name) {
+        return memberService.findByFullname(name);
+    }
+
+    public List<User> getMembersByRole() {
+            return memberService.findMembersByRole(RoleConstant.THANH_VIEN);
+    }
+    
+    public void exportExcellAllMember(List<User> dataList){
+        IOExcells.exportToExcelMember(dataList);
+    }
+    
+    public List<User> importExcelMember() {
+    List<User> savedUsers = new ArrayList<>();
+    try {
+        List<User> dataListFound = IOExcells.importToExcelMember();
+
+        for (User entityExcelUser : dataListFound) {
+            User savedUser = memberService.save(entityExcelUser, RoleConstant.THANH_VIEN);
+            savedUsers.add(savedUser);
         }
+    } catch (ParseException ex) {
+        Logger.getLogger(MemberController.class.getName()).log(Level.SEVERE, "Error while importing members from Excel", ex);
+        MsgBox.alert(null, "Lỗi khi nhập thành viên từ file Excel. Vui lòng kiểm tra lại.");
     }
+    return savedUsers;
+}
 
-    public void deleteUser(Integer id) {
-        User deletedUser = memberService.delete(id);
-        if (deletedUser != null) {
-            MsgBox.alert(null, "Xóa thành viên thành công!");
-        } else {
-            MsgBox.alert(null, "Không thể xóa người dùng.");
-        }
-    }
-
-    public List<User> getAllUsers() {
-        return memberService.findAll();
-    }
 }

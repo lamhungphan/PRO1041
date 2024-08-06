@@ -6,50 +6,88 @@ package com.poly.controller;
 
 import com.poly.entity.Event;
 import com.poly.injection.EventInjector;
+import com.poly.injection.UserInjector;
 import com.poly.services.EventService;
+import com.poly.services.UserService;
+import com.poly.utils.IOExcells;
 import com.poly.utils.MsgBox;
+import com.poly.utils.SheetsQuickstart;
+import com.poly.view.Main;
+
+import java.io.IOException;
+import java.security.GeneralSecurityException;
+import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Computer
  */
 public class EventController {
-    
-     EventService eventService = EventInjector.getInstance().getEventService();
 
-    public void createEvent(Event event,String nameUserManager) {
-        Event createdEvent = eventService.save(event,nameUserManager);
-        if (createdEvent != null) {
-            MsgBox.alert(null, "Tạo sự kiện thành công!");
-        } else {
-            MsgBox.alert(null, "Không thể tạo sự kiện.");
-        }
+    EventService eventService = EventInjector.getInstance().getEventService();
+    UserService userService = UserInjector.getInstance().getUserService();
+
+    public Event createEvent(Event event, String usernameManager) {
+        Event createdEvent = eventService.save(event, usernameManager);
+        return createdEvent;
     }
 
     public Event readEvent(Integer id) {
         return eventService.findById(id);
     }
 
-    public void updateEvent(Event event) {
+    public Event updateEvent(Event event) {
         Event updatedEvent = eventService.update(event);
-        if (updatedEvent != null) {
-            MsgBox.alert(null, "Cập nhật sự kiện thành công!");
-        } else {
-            MsgBox.alert(null, "Không thể cập nhật sự kiện.");
-        }
+        return updatedEvent;
     }
 
-    public void deleteEvent(Integer id) {
+    public Event deleteEvent(Integer id) {
         Event deletedEvent = eventService.delete(id);
-        if (deletedEvent != null) {
-            MsgBox.alert(null, "Xóa sự kiện thành công!");
-        } else {
-            MsgBox.alert(null, "Không thể xóa sự kiện.");
-        }
+        return deletedEvent;
     }
 
     public List<Event> getAllEvents() {
         return eventService.findAll();
+    }
+
+    public List<List<Object>> getAllResponseRegisterForm() {
+        List<List<Object>> dataList = null;
+        try {
+            dataList = SheetsQuickstart.assignDataToList();
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (GeneralSecurityException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return dataList;
+    }
+    
+    public void exportGGSheetResponseRegisterForm(){
+        List<List<Object>> dataList = getAllResponseRegisterForm();
+        IOExcells.exportToExcelGGSheet(dataList);
+    }
+
+    public void exportExcellAllEvent(List<Event> dataList){
+        IOExcells.exportToExcelEvent(dataList);
+    }
+
+    public List<Event> importExcellEvent(String usernameManager) throws ParseException {
+            List<Event> saveEvents = new ArrayList<>();
+    try {
+        List<Event> dataListFound = IOExcells.importToExcelEvent();
+
+        for (Event entityExcelEvent : dataListFound) {
+            Event savedEvent = eventService.save(entityExcelEvent, usernameManager);
+            saveEvents.add(savedEvent);
+        }
+    } catch (ParseException ex) {
+        Logger.getLogger(MemberController.class.getName()).log(Level.SEVERE, "Error while importing members from Excel", ex);
+        MsgBox.alert(null, "Lỗi khi nhập thành viên từ file Excel. Vui lòng kiểm tra lại.");
+    }
+    return saveEvents;
     }
 }

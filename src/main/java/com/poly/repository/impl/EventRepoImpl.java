@@ -4,8 +4,10 @@ import com.poly.entity.Event;
 import com.poly.repository.EventRepository;
 import com.poly.utils.HibernateUtils;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import java.util.List;
+import org.hibernate.Session;
 
 public class EventRepoImpl implements EventRepository {
 
@@ -65,9 +67,19 @@ public class EventRepoImpl implements EventRepository {
 
     @Override
     public List<Event> findAll() {
-        String jpql = "Select o from Event o";
+        String jpql = "Select e from Event e";
         TypedQuery<Event> query = em.createQuery(jpql, Event.class);
         return query.getResultList();
     }
 
+//    @Override
+//    public List<Object[]> countMembersByEvent() {
+//        try {
+//            String hql = "SELECT COUNT(e.id) FROM events e LEFT JOIN users u ON e.id = u.id GROUP BY id;";
+//            Query query = em.createQuery(hql);
+//            return query.getResultList();
+//        } finally {
+//            em.close();
+//        }
+//    }
 }
