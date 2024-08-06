@@ -60,12 +60,13 @@ create table account
 
 drop table if exists user_event;	--  NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW
 create table user_event(
-    userId INT,
-    eventId INT,
-    PRIMARY KEY (userId, eventId),
-    FOREIGN KEY (userId) REFERENCES users(id),
-    FOREIGN KEY (eventId) REFERENCES events(id)
+   userId INT,
+   eventId INT,
+   PRIMARY KEY (userId, eventId),
+   FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE,
+   FOREIGN KEY (eventId) REFERENCES events(id) ON DELETE CASCADE
 );
+
 
 insert into account values (1,1, "", "");
 
