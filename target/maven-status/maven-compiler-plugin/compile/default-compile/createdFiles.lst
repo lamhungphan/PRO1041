@@ -41,6 +41,7 @@ com/poly/view/Main$50.class
 com/poly/view/Main$10.class
 com/poly/view/Main$43.class
 com/poly/utils/MsgBox.class
+com/poly/controller/UserController$1.class
 com/poly/injection/UserInjector.class
 com/poly/view/Login$10.class
 com/poly/view/Main$55.class
@@ -50,6 +51,7 @@ com/poly/view/Main$46.class
 com/poly/view/Main$51.class
 com/poly/view/Main$54.class
 com/poly/utils/HibernateUtils.class
+com/poly/utils/ThreadUtils.class
 com/poly/services/RoleService.class
 com/poly/view/Main$47.class
 com/poly/view/Main$53.class

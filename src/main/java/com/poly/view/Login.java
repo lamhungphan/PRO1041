@@ -276,7 +276,6 @@ public class Login extends javax.swing.JFrame {
              txtPassword.requestFocus(); // Kích đúp chuột vào username 
             return;
         }
-
         try {
             if(userController.doLogin(getForm(), this, new Main())){
                 accountController.doSavePassword(getFormAccount(), cbSavePassword);
@@ -377,16 +376,4 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 
-    private void checkNullFieldUsernamePassword() {
-        String usernameCheckNull = txtUsername.getText().trim();
-        String passwordCheckNull = txtPassword.getPassword().toString();
-        if (usernameCheckNull == null || passwordCheckNull == null) {
-            MsgBox.alert(this, "Tên đăng nhập đang trống !");
-            return;
-        }
-        if (passwordCheckNull == null) {
-            MsgBox.alert(this, "Mật khẩu đang trống !");
-            return;
-        }
-    }
 }
