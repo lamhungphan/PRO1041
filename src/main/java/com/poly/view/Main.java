@@ -2239,7 +2239,7 @@ public final class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFindEventActionPerformed
 
     private void btnSearchEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchEventActionPerformed
-        String nameFinder = txtFindEvent.getText().toLowerCase(); //kiểm tra tên hợp lệ, chuyển về in thường
+        String nameFinder = txtFindEvent.getText().toLowerCase().trim(); //kiểm tra tên hợp lệ, chuyển về in thường
         nameFinder = removeAccents(nameFinder); // Bỏ dấu tiếng Việt
         List<Event> matchedEvents = new ArrayList<>(); // Tạo danh sách để lưu các thành viên
         if (nameFinder.equals("") || nameFinder.isEmpty()) {
@@ -2413,7 +2413,7 @@ public final class Main extends javax.swing.JFrame {
 
     private void btnSearchUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchUserActionPerformed
         // TODO add your handling code here:
-        String nameFinder = txtFindUser.getText().toLowerCase();//kiểm tra tên hợp lệ, chuyển về in thường
+        String nameFinder = txtFindUser.getText().toLowerCase().trim();//kiểm tra tên hợp lệ, chuyển về in thường
         nameFinder = removeAccents(nameFinder); // Bỏ dấu tiếng Việt
         List<User> matchedUsers = new ArrayList<>(); // Tạo danh sách để lưu các thành viên
         if (nameFinder.equals("") || nameFinder.isEmpty()) {
@@ -2461,7 +2461,7 @@ public final class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_tblListMemberMouseClicked
 
     private void btnSearchUser2ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnSearchUser2ActionPerformed
-        String nameFinder = txtFindMember.getText().toLowerCase();//kiểm tra tên hợp lệ, chuyển về in thường
+        String nameFinder = txtFindMember.getText().toLowerCase().trim();//kiểm tra tên hợp lệ, chuyển về in thường
         nameFinder = removeAccents(nameFinder); // Bỏ dấu tiếng Việt
         List<User> matchedMembers = new ArrayList<>(); // Tạo danh sách để lưu các thành viên
         if (nameFinder.equals("") || nameFinder.isEmpty()) {
@@ -3185,7 +3185,7 @@ public final class Main extends javax.swing.JFrame {
         boolean last = (row == tblListMember.getRowCount() - 1);
 
         // Trạng thái form
-        txtNameMember.setEditable(!edit);
+        txtIdMember.setEditable(!edit);
         btnAddMember.setEnabled(!edit);
         btnUpdateMember.setEnabled(edit);
         btnDeleteMember.setEnabled(edit);

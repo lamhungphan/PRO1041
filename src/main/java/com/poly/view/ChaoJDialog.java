@@ -51,6 +51,7 @@ public class ChaoJDialog extends javax.swing.JDialog {
         lblLogo.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         lblLogo.setMaximumSize(new java.awt.Dimension(514, 300));
         lblLogo.setOpaque(true);
+        lblLogo.setPreferredSize(new java.awt.Dimension(500, 500));
         getContentPane().add(lblLogo, java.awt.BorderLayout.CENTER);
 
         progressBar.setStringPainted(true);
