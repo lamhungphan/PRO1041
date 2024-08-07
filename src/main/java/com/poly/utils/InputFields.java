@@ -1,6 +1,7 @@
 package com.poly.utils;
 
 import com.toedter.calendar.JDateChooser;
+import java.awt.Color;
 import java.sql.Date;
 import javax.swing.*;
 
@@ -91,4 +92,5 @@ public class InputFields {
     public static Date getDateChoosetoDateSQL(JDateChooser dateChooser) {
         return dateChooser != null ? getDateSQL(dateChooser.getDate()) : null;
     }
+    
 }
