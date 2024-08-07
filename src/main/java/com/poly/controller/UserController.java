@@ -15,6 +15,8 @@ import com.poly.utils.MsgBox;
 import com.poly.view.*;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.*;
 
@@ -29,19 +31,21 @@ public class UserController {
     private final List<User> listAllUser = getAllUsers();
     private final RoleService roleService = UserInjector.getInstance().getRoleService();
 
-    public void doLogin(User userRequest, Login loginFrame, Main mainFrame) {
+    public boolean doLogin(User userRequest, Login loginFrame, Main mainFrame) {
         User loginedUser = userService.doLogin(userRequest);
-        if (loginedUser.getUsername().equals("admin")) {
+        if (loginedUser == null) {
+            MsgBox.alert(null, "Tài khoản hoặc mật khẩu không đúng !");
+            return false;
+        } else if (loginedUser.getUsername().equals("admin")) {
             MsgBox.alert(null, "Đăng nhập thành công");
             loginFrame.dispose();
             mainFrame.setVisible(true);
-        }
-        if (loginedUser == null) {
-            MsgBox.alert(null, "Đăng nhập không thành công");
+            return true;
         } else {
             MsgBox.alert(null, "Đăng nhập thành công");
             loginFrame.dispose();
             showWorkspaceByRolename(loginedUser, mainFrame);
+            return true;
         }
     }
 
@@ -51,32 +55,47 @@ public class UserController {
     }
 
     public void showWorkspaceByRolename(User userLogined, Main mainFrame) {
-        JPanel eventPanel = mainFrame.getPnlEvent();
-        JPanel adminPanel = mainFrame.getPnlAdmin();
-        JPanel notificationPanel = mainFrame.getPnlNotification();
-        JPanel memberPanel = mainFrame.getPnlMember();
-        if (authorizationService.isAdmin(userLogined)) {
-            mainFrame.setVisible(true);
-        } else if (authorizationService.isEventManager(userLogined)) {
-            mainFrame.setVisible(true);
-            ComponentManagement.setEnabledRecursively(eventPanel, true);
-            ComponentManagement.setEnabledRecursively(adminPanel, false);
-            ComponentManagement.setEnabledRecursively(notificationPanel, false);
-            ComponentManagement.setEnabledRecursively(memberPanel, false);
-
-        } else if (authorizationService.isMember(userLogined)) {
-            mainFrame.setVisible(true);
-            ComponentManagement.setEnabledRecursively(eventPanel, false);
-            ComponentManagement.setEnabledRecursively(adminPanel, false);
-            ComponentManagement.setEnabledRecursively(notificationPanel, false);
-            ComponentManagement.setEnabledRecursively(memberPanel, true);
-        } else if (authorizationService.isAccoutant(userLogined)) {
-            mainFrame.setVisible(true);
-            ComponentManagement.setEnabledRecursively(eventPanel, false);
-            ComponentManagement.setEnabledRecursively(adminPanel, false);
-            ComponentManagement.setEnabledRecursively(notificationPanel, true);
-            ComponentManagement.setEnabledRecursively(memberPanel, false);
-        }
+        Thread delayMain = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(2500);
+                    JPanel eventPanel = mainFrame.getPnlEvent();
+                    JPanel adminPanel = mainFrame.getPnlAdmin();
+                    JPanel notificationPanel = mainFrame.getPnlNotification();
+                    JPanel memberPanel = mainFrame.getPnlMember();
+                    JLabel test = mainFrame.getLblWelcome();
+                    if (authorizationService.isAdmin(userLogined)) {
+                        mainFrame.setVisible(true);
+                        mainFrame.setText(RoleConstant.CHU_NHIEM);
+                    } else if (authorizationService.isEventManager(userLogined)) {
+                        mainFrame.setVisible(true);
+                        ComponentManagement.setEnabledRecursively(eventPanel, true);
+                        ComponentManagement.setEnabledRecursively(adminPanel, false);
+                        ComponentManagement.setEnabledRecursively(notificationPanel, false);
+                        ComponentManagement.setEnabledRecursively(memberPanel, false);
+                        mainFrame.setText(RoleConstant.PHO_CHU_NHIEM);
+                    } else if (authorizationService.isMember(userLogined)) {
+                        mainFrame.setVisible(true);
+                        ComponentManagement.setEnabledRecursively(eventPanel, false);
+                        ComponentManagement.setEnabledRecursively(adminPanel, false);
+                        ComponentManagement.setEnabledRecursively(notificationPanel, false);
+                        ComponentManagement.setEnabledRecursively(memberPanel, true);
+                        mainFrame.setText(RoleConstant.THANH_VIEN);
+                    } else if (authorizationService.isAccoutant(userLogined)) {
+                        mainFrame.setVisible(true);
+                        ComponentManagement.setEnabledRecursively(eventPanel, false);
+                        ComponentManagement.setEnabledRecursively(adminPanel, false);
+                        ComponentManagement.setEnabledRecursively(notificationPanel, true);
+                        ComponentManagement.setEnabledRecursively(memberPanel, false);
+                        mainFrame.setText(RoleConstant.THU_QUY);
+                    }
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        delayMain.start();
     }
     // CRUD operations
 

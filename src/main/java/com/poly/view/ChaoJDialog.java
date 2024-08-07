@@ -32,7 +32,6 @@ public class ChaoJDialog extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
         lblLogo = new javax.swing.JLabel();
         progressBar = new javax.swing.JProgressBar();
 
@@ -41,8 +40,15 @@ public class ChaoJDialog extends javax.swing.JDialog {
         setModal(true);
         setUndecorated(true);
 
+        // Load the image
+        java.awt.Image originalImage = new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/logo_white.png")).getImage();
+
+        // Resize the image
+        java.awt.Image resizedImage = originalImage.getScaledInstance(514, 300, java.awt.Image.SCALE_SMOOTH);
+
+        // Set the resized image to the label
+        lblLogo.setIcon(new javax.swing.ImageIcon(resizedImage));
         lblLogo.setBackground(new java.awt.Color(255, 255, 255));
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/logo-small.png"))); // NOI18N
         lblLogo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 102, 0), 1, true));
         lblLogo.setMaximumSize(new java.awt.Dimension(514, 300));
         lblLogo.setOpaque(true);
