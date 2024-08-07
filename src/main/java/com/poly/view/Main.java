@@ -174,7 +174,6 @@ public final class Main extends javax.swing.JFrame {
         lblThanhVien1 = new javax.swing.JLabel();
         txtIdEvent = new javax.swing.JTextField();
         lblEmail1 = new javax.swing.JLabel();
-        txtUserIdEvent = new javax.swing.JTextField();
         lblSoDT1 = new javax.swing.JLabel();
         txtTitleEvent = new javax.swing.JTextField();
         lblNgaySinh2 = new javax.swing.JLabel();
@@ -359,7 +358,7 @@ public final class Main extends javax.swing.JFrame {
         lblTabContainerLayout.setHorizontalGroup(
             lblTabContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lblTabContainerLayout.createSequentialGroup()
-                .addContainerGap(9, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(lblTabContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTabLogout)
                     .addComponent(lblTabSystem)
@@ -1095,7 +1094,7 @@ public final class Main extends javax.swing.JFrame {
                 .addGroup(pnlListMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExportEvent)
                     .addComponent(btnImportEvent))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         tabEvent.addTab("Danh Sách", pnlListMember1);
@@ -1112,12 +1111,6 @@ public final class Main extends javax.swing.JFrame {
 
         lblEmail1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblEmail1.setText("Người Tổ Chức:");
-
-        txtUserIdEvent.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUserIdEventActionPerformed(evt);
-            }
-        });
 
         lblSoDT1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblSoDT1.setText("Chủ Đề:");
@@ -1254,10 +1247,7 @@ public final class Main extends javax.swing.JFrame {
                                     .addComponent(dcEndedDateEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtAddressEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblSoDT2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(pnlSettingMember1Layout.createSequentialGroup()
-                                .addComponent(lblNgaySinh4)
-                                .addGap(123, 123, 123)
-                                .addComponent(txtUserIdEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(lblNgaySinh4)))
                     .addGroup(pnlSettingMember1Layout.createSequentialGroup()
                         .addGap(153, 153, 153)
                         .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1278,7 +1268,7 @@ public final class Main extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnLastEvent)
                                 .addGap(64, 64, 64)))))
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
         pnlSettingMember1Layout.setVerticalGroup(
             pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1312,9 +1302,7 @@ public final class Main extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dcStartedDateEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNgaySinh4)
-                    .addComponent(txtUserIdEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lblNgaySinh4)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -1421,7 +1409,7 @@ public final class Main extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGGSheetExport, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGGSheetImport, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         tabEvent.addTab("Bảng Đăng Ký", jPanel1);
@@ -1445,7 +1433,7 @@ public final class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabEvent)
+                .addComponent(tabEvent, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2247,9 +2235,13 @@ public final class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFindEventActionPerformed
 
     private void btnSearchEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchEventActionPerformed
-        String nameFinder = RegExInputFields.getCheckEventTitle(txtFindEvent).toLowerCase(); //kiểm tra tên hợp lệ, chuyển về in thường
+        String nameFinder = txtFindEvent.getText().toLowerCase(); //kiểm tra tên hợp lệ, chuyển về in thường
         nameFinder = removeAccents(nameFinder); // Bỏ dấu tiếng Việt
         List<Event> matchedEvents = new ArrayList<>(); // Tạo danh sách để lưu các thành viên
+        if (nameFinder.equals("") || nameFinder.isEmpty()) {
+            fillTableEvent();
+            return;
+        }
         for (Event event : events) { //Tạo vòng lập từ list users để tìm theo tên
             String memberName = removeAccents(event.getTitle()).toLowerCase();
             if (memberName.contains(nameFinder)) { //lấy tên của mỗi member so sánh với tên từ input
@@ -2432,9 +2424,13 @@ public final class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_tblListMemberMouseClicked
 
     private void btnSearchUser2ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnSearchUser2ActionPerformed
-        String nameFinder = RegExInputFields.getCheckNameMember(txtFindMember).toLowerCase(); //kiểm tra tên hợp lệ, chuyển về in thường
+        String nameFinder = txtFindMember.getText().toLowerCase();//kiểm tra tên hợp lệ, chuyển về in thường
         nameFinder = removeAccents(nameFinder); // Bỏ dấu tiếng Việt
         List<User> matchedMembers = new ArrayList<>(); // Tạo danh sách để lưu các thành viên
+        if (nameFinder.equals("") || nameFinder.isEmpty()) {
+            fillMemberToTable();
+            return;
+        }
         for (User member : members) { //Tạo vòng lập từ list users để tìm theo tên
             String memberName = removeAccents(member.getFullname()).toLowerCase();
             if (memberName.contains(nameFinder)) { //lấy tên của mỗi member so sánh với tên từ input
@@ -2587,10 +2583,6 @@ public final class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
 //        interedLabel();
     }//GEN-LAST:event_lblHomeMouseEntered
-
-    private void txtUserIdEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserIdEventActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUserIdEventActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2794,7 +2786,6 @@ public final class Main extends javax.swing.JFrame {
     private javax.swing.JTextField txtRequestNotification;
     private javax.swing.JTextField txtTitleEvent;
     private javax.swing.JTextField txtTitleNotificationAdmin;
-    private javax.swing.JTextField txtUserIdEvent;
     private javax.swing.JTextField txtUserNotificationAdmin;
     private javax.swing.JTextField txtUsernameUser;
     // End of variables declaration//GEN-END:variables
@@ -2821,13 +2812,13 @@ public final class Main extends javax.swing.JFrame {
         model.setRowCount(0);
         for (User member : members) {
             model.addRow(new Object[]{
-                    member.getId(),
-                    member.getFullname(),
-                    member.getEmail(),
-                    member.getPhone(),
-                    member.getBirthday(),
-                    member.getScore(),
-                    member.getAddress()
+                member.getId(),
+                member.getFullname(),
+                member.getEmail(),
+                member.getPhone(),
+                member.getBirthday(),
+                member.getScore(),
+                member.getAddress()
             });
         }
     }
@@ -2837,13 +2828,13 @@ public final class Main extends javax.swing.JFrame {
         model.setRowCount(0);
         for (Event event : events) {
             model.addRow(new Object[]{
-                    event.getId(),
-                    event.getUser(),
-                    event.getTitle(),
-                    event.getContent(),
-                    event.getCreatedDate(),
-                    event.getEndedDate(),
-                    event.getLocation()
+                event.getId(),
+                event.getUser(),
+                event.getTitle(),
+                event.getContent(),
+                event.getCreatedDate(),
+                event.getEndedDate(),
+                event.getLocation()
             });
         }
     }
@@ -3638,8 +3629,6 @@ public final class Main extends javax.swing.JFrame {
 
         try {
             txtIdEvent.setText(String.valueOf(eventResponse.getId()));
-            String nameCreatedEvent = eventResponse.getUser().getUsername() == null ? "" : eventResponse.getUser().getUsername();
-            txtUserIdEvent.setText(nameCreatedEvent);
             txtTitleEvent.setText(eventResponse.getTitle());
             txtContentEvent.setText(eventResponse.getContent());
             txtAddressEvent.setText(eventResponse.getLocation());
@@ -3668,7 +3657,6 @@ public final class Main extends javax.swing.JFrame {
 
     private void clearFormEvent() {
         txtIdEvent.setText("");
-        txtUserIdEvent.setText("");
         txtTitleEvent.setText("");
         txtContentEvent.setText("");
         txtAddressEvent.setText("");
