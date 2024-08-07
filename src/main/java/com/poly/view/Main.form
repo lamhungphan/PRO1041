@@ -1180,7 +1180,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblEvent" min="-2" pref="43" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tabEvent" pref="585" max="32767" attributes="0"/>
+                      <Component id="tabEvent" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1239,7 +1239,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                               <Component id="btnExportEvent" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                               <Component id="btnImportEvent" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -1257,7 +1257,7 @@
                                   <Component id="btnExportEvent" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnImportEvent" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="26" max="32767" attributes="0"/>
+                              <EmptySpace pref="31" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1814,7 +1814,7 @@
                     <Component class="javax.swing.JButton" name="btnGGSheetExport">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/m2mgroup/image/Refresh.png"/>
+                          <Image iconType="3" name="/com/m2mgroup/image/Printer.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Nh&#x1ead;p EXCEL"/>
                       </Properties>
@@ -1908,9 +1908,9 @@
                     <Component class="javax.swing.JButton" name="btnGGSheetImport">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/com/m2mgroup/image/Refresh.png"/>
+                          <Image iconType="3" name="/com/m2mgroup/image/Properties.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Nh&#x1ead;p sang th&#xe0;nh vi&#xea;n"/>
+                        <Property name="text" type="java.lang.String" value="Ch&#x1b0;a bi&#x1ebf;t "/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGGSheetImportActionPerformed"/>
