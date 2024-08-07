@@ -65,8 +65,8 @@ public class EventServiceImpl implements EventService {
         return repo.findAll();
     }
 
-//    @Override
-//    public List<Object[]> getMemberCountByEvent() {
-//        return repo.countMembersByEvent();
-//    }
+    @Override
+    public List<Object[]> getMemberCountByEvent() {
+        return repo.countMembersByEvent();
+    }
 }

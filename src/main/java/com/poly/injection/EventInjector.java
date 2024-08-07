@@ -9,12 +9,26 @@ import com.poly.repository.impl.EventRepoImpl;
 import com.poly.services.EventService;
 import com.poly.services.UserService;
 import com.poly.services.impl.EventServiceImpl;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
 /**
  *
  * @author Computer
  */
 public class EventInjector {
+
+    private static EntityManagerFactory entityManagerFactory;
+
+    static {
+        // Khởi tạo EntityManagerFactory một lần duy nhất
+        entityManagerFactory = Persistence.createEntityManagerFactory("pro1041");
+    }
+
+    public static EventService getEventService() {
+        EventRepoImpl eventRepo = new EventRepoImpl(entityManagerFactory);
+        return new EventServiceImpl(eventRepo);
+    }
 
     private static EventInjector instance;
 
@@ -41,8 +55,8 @@ public class EventInjector {
         return eventRepository;
     }
 
-    public EventService getEventService() {
-        return eventService;
-    }
+//    public EventService getEventService() {
+//        return eventService;
+//    }
 
 }

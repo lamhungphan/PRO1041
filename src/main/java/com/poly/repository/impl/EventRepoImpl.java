@@ -4,14 +4,24 @@ import com.poly.entity.Event;
 import com.poly.repository.EventRepository;
 import com.poly.utils.HibernateUtils;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 public class EventRepoImpl implements EventRepository {
 
     private EntityManager em = HibernateUtils.getEntityManage();
+    private EntityManagerFactory entityManagerFactory;
+
+    public EventRepoImpl(EntityManagerFactory entityManagerFactory) {
+        this.entityManagerFactory = entityManagerFactory;
+    }
+
+    public EventRepoImpl() {
+    }
 
     @Override
     protected void finalize() throws Throwable {
@@ -72,14 +82,11 @@ public class EventRepoImpl implements EventRepository {
         return query.getResultList();
     }
 
-//    @Override
-//    public List<Object[]> countMembersByEvent() {
-//        try {
-//            String hql = "SELECT COUNT(e.id) FROM events e LEFT JOIN users u ON e.id = u.id GROUP BY id;";
-//            Query query = em.createQuery(hql);
-//            return query.getResultList();
-//        } finally {
-//            em.close();
-//        }
-//    }
+    @Override
+    public List<Object[]> countMembersByEvent() {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+       String hql = "SELECT e.title, COUNT(u.id) FROM Event e JOIN User u ON u.id = e.userId GROUP BY e.title";
+        TypedQuery<Object[]> query = entityManager.createQuery(hql, Object[].class);
+        return query.getResultList();
+    }
 }

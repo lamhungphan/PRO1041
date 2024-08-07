@@ -5,6 +5,8 @@
         <!-- Driver class -->
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <!-- Data source -->
+        <class>com.poly.entity.Event</class>
+        <class>com.poly.entity.User</class>
         <properties>
             <!-- JDBC connection properties -->
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
