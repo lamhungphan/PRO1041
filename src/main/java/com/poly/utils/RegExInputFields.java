@@ -5,6 +5,8 @@ import com.poly.entity.User;
 import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
 import java.util.Date;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -292,5 +294,6 @@ public class RegExInputFields {
         }
         return null;
     }
+
 
 }

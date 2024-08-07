@@ -41,6 +41,7 @@ com/poly/view/Main$50.class
 com/poly/view/Main$10.class
 com/poly/view/Main$43.class
 com/poly/utils/MsgBox.class
+com/poly/controller/UserController$1.class
 com/poly/injection/UserInjector.class
 com/poly/view/Login$10.class
 com/poly/view/Main$55.class
