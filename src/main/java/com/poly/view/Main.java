@@ -194,6 +194,7 @@ public final class Main extends javax.swing.JFrame {
         dcEndedDateEvent = new com.toedter.calendar.JDateChooser();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtContentEvent = new javax.swing.JTextArea();
+        cbUserEvent = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         lblStartedDate = new javax.swing.JLabel();
         ggSheetStartedDate = new com.toedter.calendar.JDateChooser();
@@ -564,7 +565,6 @@ public final class Main extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblListMemberMouseClicked(evt);
             }
-
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 tblListMemberMouseEntered(evt);
             }
@@ -1231,32 +1231,6 @@ public final class Main extends javax.swing.JFrame {
             .addGroup(pnlSettingMember1Layout.createSequentialGroup()
                 .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlSettingMember1Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlSettingMember1Layout.createSequentialGroup()
-                                .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblThanhVien1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtIdEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(55, 55, 55)
-                                .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblEmail1)
-                                    .addComponent(txtUserIdEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblNgaySinh4)
-                            .addGroup(pnlSettingMember1Layout.createSequentialGroup()
-                                .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblSoDT1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtTitleEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblNgaySinh2)
-                                    .addComponent(dcStartedDateEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(55, 55, 55)
-                                .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblNgaySinh5)
-                                    .addComponent(dcEndedDateEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtAddressEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblSoDT2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(43, 43, 43))
-                    .addGroup(pnlSettingMember1Layout.createSequentialGroup()
                         .addGap(153, 153, 153)
                         .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSettingMember1Layout.createSequentialGroup()
@@ -1275,7 +1249,38 @@ public final class Main extends javax.swing.JFrame {
                                 .addComponent(btnNextEvent)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnLastEvent)
-                                .addGap(64, 64, 64)))))
+                                .addGap(64, 64, 64))))
+                    .addGroup(pnlSettingMember1Layout.createSequentialGroup()
+                        .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pnlSettingMember1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(cbUserEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlSettingMember1Layout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlSettingMember1Layout.createSequentialGroup()
+                                        .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblThanhVien1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtIdEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(55, 55, 55)
+                                        .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblEmail1)
+                                            .addComponent(txtUserIdEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblNgaySinh4)
+                                    .addGroup(pnlSettingMember1Layout.createSequentialGroup()
+                                        .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblSoDT1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtTitleEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lblNgaySinh2)
+                                            .addComponent(dcStartedDateEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(55, 55, 55)
+                                        .addGroup(pnlSettingMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblNgaySinh5)
+                                            .addComponent(dcEndedDateEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtAddressEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lblSoDT2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(43, 43, 43)))
                 .addContainerGap(78, Short.MAX_VALUE))
         );
         pnlSettingMember1Layout.setVerticalGroup(
@@ -1327,7 +1332,9 @@ public final class Main extends javax.swing.JFrame {
                     .addComponent(btnDeleteEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnClearEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAddEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(65, 65, 65))
+                .addGap(18, 18, 18)
+                .addComponent(cbUserEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
 
         tabEvent.addTab("Sự Kiện", pnlSettingMember1);
@@ -2646,6 +2653,7 @@ public final class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnUpdateMember;
     private javax.swing.JButton btnUpdateUser;
     private javax.swing.ButtonGroup btngroudSex;
+    private javax.swing.JComboBox<String> cbUserEvent;
     private javax.swing.JComboBox<String> cboRateMember;
     private javax.swing.JComboBox<String> cboRoleUser;
     private javax.swing.JPanel container;
@@ -2865,13 +2873,13 @@ public final class Main extends javax.swing.JFrame {
         try {
             for (User user : members) {
                 Object[] row = {
-                        user.getId(),
-                        user.getFullname(),
-                        user.getEmail(),
-                        user.getPhone(),
-                        user.getBirthday(),
-                        user.getScore(),
-                        user.getAddress()
+                    user.getId(),
+                    user.getFullname(),
+                    user.getEmail(),
+                    user.getPhone(),
+                    user.getBirthday(),
+                    user.getScore(),
+                    user.getAddress()
                 };
                 tableModelMember.addRow(row);
             }
@@ -3202,13 +3210,13 @@ public final class Main extends javax.swing.JFrame {
         try {
             for (User user : users) {
                 Object[] row = {
-                        user.getId(),
-                        user.getRole().getRoleName(),
-                        user.getFullname(),
-                        user.getUsername(),
-                        user.getPassword(),
-                        user.getCreatedDate(),
-                        user.getBirthday()
+                    user.getId(),
+                    user.getRole().getRoleName(),
+                    user.getFullname(),
+                    user.getUsername(),
+                    user.getPassword(),
+                    user.getCreatedDate(),
+                    user.getBirthday()
                 };
                 tableModelUser.addRow(row);
             }
@@ -3444,13 +3452,13 @@ public final class Main extends javax.swing.JFrame {
         try {
             for (Event entity : events) {
                 Object[] row = {
-                        entity.getId(),
-                        entity.getUser().getFullname(),
-                        entity.getTitle(),
-                        entity.getContent(),
-                        entity.getStartedDate(),
-                        entity.getEndedDate(),
-                        entity.getLocation()
+                    entity.getId(),
+                    entity.getUser().getFullname(),
+                    entity.getTitle(),
+                    entity.getContent(),
+                    entity.getStartedDate(),
+                    entity.getEndedDate(),
+                    entity.getLocation()
                 };
                 model.addRow(row);
             }
@@ -3556,6 +3564,36 @@ public final class Main extends javax.swing.JFrame {
     }
 
     public void setEventForm(Event eventResponse) {
+
+        for (Event entity : events) {
+            // Chỉ thêm username nếu role khác 4
+            if (entity.getUser().getRole().getId() != 4) {
+                String username = entity.getUser().getUsername();
+                String selectedUser = (String) cbUserEvent.getSelectedItem();
+
+                // Kiểm tra nếu tên người dùng chưa tồn tại trong JComboBox
+                boolean exists = false;
+                for (int i = 0; i < cbUserEvent.getItemCount(); i++) {
+                    if (cbUserEvent.getItemAt(i).equals(username)) {
+                        exists = true; // Đã tồn tại
+                        break;
+                    }
+                }
+
+                // Nếu chưa tồn tại, thêm vào JComboBox
+                if (!exists) {
+                    cbUserEvent.addItem(username);
+                    System.out.println("Người dùng đã thêm: " + username);
+                    System.out.println("Role: " + username);
+                }
+
+                // Kiểm tra và in ra người dùng đã chọn
+                if (username.equals(selectedUser)) {
+                    System.out.println("Người dùng đã chọn: " + selectedUser);
+                }
+            }
+        }
+
         try {
             txtIdEvent.setText(String.valueOf(eventResponse.getId()));
             String nameCreatedEvent = eventResponse.getUser().getUsername() == null ? "" : eventResponse.getUser().getUsername();
