@@ -13,6 +13,7 @@ import java.sql.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@EntityListeners(EntityListener.class)
 public class Event implements Serializable {
 
     @Id
