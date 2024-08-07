@@ -37,9 +37,9 @@ public class Notification implements Serializable {
     @Column(name = "isActived")
     private Boolean isActived;
 
-    @Column(name = "userId")
-    private Integer userId;
+    @Column(name = "userFullname")
+    private String userFullname;
 
-    @Column(name = "eventId")
-    private Integer eventId;
+    @Column(name = "eventTitle")
+    private String eventTitle;
 }

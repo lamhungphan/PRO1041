@@ -6,6 +6,7 @@ import com.poly.controller.AccountController;
 import com.poly.controller.EventController;
 import com.poly.controller.MemberController;
 import com.poly.controller.NotificationController;
+import com.poly.controller.QRcodeController;
 import com.poly.controller.UserController;
 import com.poly.entity.Event;
 import com.poly.entity.Notification;
@@ -70,7 +71,8 @@ public final class Main extends javax.swing.JFrame {
     String buttonDirection;
     List<User> listAllUser = new UserController().getAllUsers();
     UserRepoImpl userRepo = new UserRepoImpl();
-
+    QRcodeController qRcodeController = new QRcodeController();
+        
     public Main() {
 
         setAvatarUserLogined();
@@ -1079,7 +1081,7 @@ public final class Main extends javax.swing.JFrame {
             .addGroup(pnlListMember1Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(btnExportEvent)
-                .addGap(51, 51, 51)
+                .addGap(62, 62, 62)
                 .addComponent(btnImportEvent)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1094,7 +1096,7 @@ public final class Main extends javax.swing.JFrame {
                 .addGroup(pnlListMember1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExportEvent)
                     .addComponent(btnImportEvent))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         tabEvent.addTab("Danh Sách", pnlListMember1);
@@ -1327,7 +1329,7 @@ public final class Main extends javax.swing.JFrame {
 
         lblEndedDate.setText("Đến ngày:");
 
-        btnGGSheetExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Printer.png"))); // NOI18N
+        btnGGSheetExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Refresh.png"))); // NOI18N
         btnGGSheetExport.setText("Nhập EXCEL");
         btnGGSheetExport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1356,8 +1358,8 @@ public final class Main extends javax.swing.JFrame {
             }
         });
 
-        btnGGSheetImport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Properties.png"))); // NOI18N
-        btnGGSheetImport.setText("Chưa biết ");
+        btnGGSheetImport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/Refresh.png"))); // NOI18N
+        btnGGSheetImport.setText("Xuất mã QR code");
         btnGGSheetImport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGGSheetImportActionPerformed(evt);
@@ -1433,7 +1435,7 @@ public final class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabEvent)
+                .addComponent(tabEvent, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2262,7 +2264,6 @@ public final class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         row = tblListEvent.getSelectedRow();
         editEvent();
-        initComboBox();
     }//GEN-LAST:event_tblListEventMouseClicked
 
     private void txtIdEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdEventActionPerformed
@@ -2502,7 +2503,6 @@ public final class Main extends javax.swing.JFrame {
 
     private void tabEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabEventMouseClicked
         // TODO add your handling code here:
-        fillTableEvent();
     }//GEN-LAST:event_tabEventMouseClicked
 
     private void lblAttendanceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAttendanceMouseClicked
@@ -2562,12 +2562,13 @@ public final class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_lblMemberAvatarMouseClicked
 
     private void btnGGSheetImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGGSheetImportActionPerformed
-        // TODO add your handling code here:
+            // TODO add your handling code here:
+            qRcodeController.createAndShowGUI();
+                    
     }//GEN-LAST:event_btnGGSheetImportActionPerformed
 
     private void ggSheetFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ggSheetFindActionPerformed
-//        fillDataResponseRegisterForm();
-        checkFindDateGGSheet();
+        fillDataResponseRegisterForm();
     }//GEN-LAST:event_ggSheetFindActionPerformed
 
     private void btnGGSheetExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGGSheetExportActionPerformed
@@ -2837,13 +2838,13 @@ public final class Main extends javax.swing.JFrame {
         model.setRowCount(0);
         for (User member : members) {
             model.addRow(new Object[]{
-                member.getId(),
-                member.getFullname(),
-                member.getEmail(),
-                member.getPhone(),
-                member.getBirthday(),
-                member.getScore(),
-                member.getAddress()
+                    member.getId(),
+                    member.getFullname(),
+                    member.getEmail(),
+                    member.getPhone(),
+                    member.getBirthday(),
+                    member.getScore(),
+                    member.getAddress()
             });
         }
     }
@@ -2853,13 +2854,13 @@ public final class Main extends javax.swing.JFrame {
         model.setRowCount(0);
         for (Event event : events) {
             model.addRow(new Object[]{
-                event.getId(),
-                event.getUser(),
-                event.getTitle(),
-                event.getContent(),
-                event.getCreatedDate(),
-                event.getEndedDate(),
-                event.getLocation()
+                    event.getId(),
+                    event.getUser(),
+                    event.getTitle(),
+                    event.getContent(),
+                    event.getCreatedDate(),
+                    event.getEndedDate(),
+                    event.getLocation()
             });
         }
     }
@@ -2940,13 +2941,13 @@ public final class Main extends javax.swing.JFrame {
         try {
             for (User user : members) {
                 Object[] row = {
-                    user.getId(),
-                    user.getFullname(),
-                    user.getEmail(),
-                    user.getPhone(),
-                    user.getBirthday(),
-                    user.getScore(),
-                    user.getAddress()
+                        user.getId(),
+                        user.getFullname(),
+                        user.getEmail(),
+                        user.getPhone(),
+                        user.getBirthday(),
+                        user.getScore(),
+                        user.getAddress()
                 };
                 tableModelMember.addRow(row);
             }
@@ -3007,7 +3008,7 @@ public final class Main extends javax.swing.JFrame {
 
             // Lấy giới tính
             Boolean gender = InputFields.getSelectedRadiobutton(rdoMaleMember, rdoFemaleMember);
-            memberForm.setSex(gender);
+                memberForm.setSex(gender);
 
             // Lấy và kiểm tra ngày sinh
             Date birthdate = InputFields.getDateChoosetoDateSQL(dcBirthdayMember);
@@ -3086,6 +3087,8 @@ public final class Main extends javax.swing.JFrame {
         setFormMember(new User());
         row = -1;
         updateStatusMember();
+
+        initNotificationController();
     }
 
     private void editMember() {
@@ -3261,7 +3264,7 @@ public final class Main extends javax.swing.JFrame {
             } else {
                 MsgBox.alert(this, "Không thể xóa thành viên.");
             }
-        } else if (selectedRow < 0) {
+        }else if(selectedRow < 0){
             Integer id = InputFields.getTextFieldtoInteger(txtIdUser);
             User deletedUser = userController.deleteUser(id);
             if (deletedUser != null) {
@@ -3271,7 +3274,8 @@ public final class Main extends javax.swing.JFrame {
             } else {
                 MsgBox.alert(this, "Không thể xóa thành viên.");
             }
-        } else {
+        }
+        else {
             MsgBox.alert(this, "Chọn một thành viên để xóa.");
         }
     }
@@ -3286,13 +3290,13 @@ public final class Main extends javax.swing.JFrame {
         try {
             for (User user : users) {
                 Object[] row = {
-                    user.getId(),
-                    user.getRole().getRoleName(),
-                    user.getFullname(),
-                    user.getUsername(),
-                    user.getPassword(),
-                    user.getCreatedDate(),
-                    user.getBirthday()
+                        user.getId(),
+                        user.getRole().getRoleName(),
+                        user.getFullname(),
+                        user.getUsername(),
+                        user.getPassword(),
+                        user.getCreatedDate(),
+                        user.getBirthday()
                 };
                 tableModelUser.addRow(row);
             }
@@ -3309,13 +3313,13 @@ public final class Main extends javax.swing.JFrame {
         try {
             for (User user : listUserFinder) {
                 Object[] row = {
-                    user.getId(),
-                    user.getRole().getRoleName(),
-                    user.getFullname(),
-                    user.getUsername(),
-                    user.getPassword(),
-                    user.getCreatedDate(),
-                    user.getBirthday()
+                        user.getId(),
+                        user.getRole().getRoleName(),
+                        user.getFullname(),
+                        user.getUsername(),
+                        user.getPassword(),
+                        user.getCreatedDate(),
+                        user.getBirthday()
                 };
                 tableModelUser.addRow(row);
             }
@@ -3462,6 +3466,7 @@ public final class Main extends javax.swing.JFrame {
         setFormUser(new User());
         row = -1;
         updateStatusUser();
+        initNotificationController();
     }
 
     private void editUser() {
@@ -3537,7 +3542,6 @@ public final class Main extends javax.swing.JFrame {
         updateStatusEvent();
         fillDataResponseRegisterForm();
         setTotalEvent();
-        initComboBox();
     }
 
     private void setTotalEvent() {
@@ -3550,21 +3554,23 @@ public final class Main extends javax.swing.JFrame {
         if (events == null) {
             return;
         }
+
         DefaultTableModel model = (DefaultTableModel) tblListEvent.getModel();
         model.setRowCount(0);
         try {
             for (Event entity : events) {
                 Object[] row = {
-                    entity.getId(),
-                    entity.getUser().getFullname(),
-                    entity.getTitle(),
-                    entity.getContent(),
-                    entity.getStartedDate(),
-                    entity.getEndedDate(),
-                    entity.getLocation()
+                        entity.getId(),
+                        entity.getUser().getFullname(),
+                        entity.getTitle(),
+                        entity.getContent(),
+                        entity.getStartedDate(),
+                        entity.getEndedDate(),
+                        entity.getLocation()
                 };
                 model.addRow(row);
             }
+
         } catch (Exception e) {
             MsgBox.alert(null, "Lỗi truy vấn dữ liệu!");
         }
@@ -3592,7 +3598,7 @@ public final class Main extends javax.swing.JFrame {
     private void updateEvent() {
 
         row = tblListEvent.getSelectedRow();
-        Event model = getEventFrom(events.get(row + 1));
+        Event model = getEventFrom(events.get(row));
         if (model == null) {
             MsgBox.alert(null, "Vui lòng chọn sự kiện trong danh sách");
         }
@@ -3618,20 +3624,10 @@ public final class Main extends javax.swing.JFrame {
             } else {
                 MsgBox.alert(this, "Không thể xóa sự kiện.");
             }
-        } else if (selectedRow < 0) {
-            Integer id = InputFields.getTextFieldtoInteger(txtIdEvent);
-            Event deletedEvent = eventController.deleteEvent(id);
-            if (deletedEvent != null) {
-                MsgBox.alert(this, "Xóa sự kiện thành công!");
-                fillTableEvent();
-                clearFormEvent();
-            } else {
-                MsgBox.alert(this, "Chọn một sự kiện để xóa.");
-            }
+        } else {
+            MsgBox.alert(this, "Chọn một sự kiện để xóa.");
         }
     }
-
-    
 
     public Event getEventFrom(Event eventRequest) {
         Event newEvent = new Event();
@@ -3678,7 +3674,8 @@ public final class Main extends javax.swing.JFrame {
         }
     }
 
-    public void initComboBox() {
+    public void setEventForm(Event eventResponse) {
+
         for (Event entity : events) {
             // Chỉ thêm username nếu role khác 4
             if (entity.getUser().getRole().getId() != 4) {
@@ -3707,10 +3704,7 @@ public final class Main extends javax.swing.JFrame {
                 }
             }
         }
-    }
 
-    public void setEventForm(Event eventResponse) {
-        initComboBox();
         try {
             txtIdEvent.setText(String.valueOf(eventResponse.getId()));
             txtTitleEvent.setText(eventResponse.getTitle());
@@ -3748,6 +3742,7 @@ public final class Main extends javax.swing.JFrame {
         dcEndedDateEvent.setDate(null);
         row = -1;
         updateStatusEvent();
+        initNotificationController();
     }
 
     private void firstEvent() {
@@ -3816,10 +3811,6 @@ public final class Main extends javax.swing.JFrame {
         eventController.exportGGSheetResponseRegisterForm();
     }
 
-    private void checkFileExcel() {
-
-    }
-
     private void importExcelEvent() {
         try {
             Event eventRequest = getEventFrom(new Event());
@@ -3856,7 +3847,6 @@ public final class Main extends javax.swing.JFrame {
 //        labelChoose.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); // Biến con trỏ thành hình bàn tay
 //    }
 
-// ==================================== Notification =================================================
     // ==================================== Notification =================================================
     List<Notification> notifications;
 
@@ -3875,12 +3865,12 @@ public final class Main extends javax.swing.JFrame {
         try {
             for (Notification entity : notifications) {
                 Object[] row = {
-                    entity.getId(),
-                    entity.getUserId(),
-                    entity.getEventId(),
-                    entity.getTitle(),
-                    entity.getContent(),
-                    entity.getCreatedDate()
+                        entity.getId(),
+                        entity.getUserFullname(),
+                        entity.getEventTitle(),
+                        entity.getTitle(),
+                        entity.getContent(),
+                        entity.getCreatedDate()
                 };
                 model.addRow(row);
             }
@@ -3888,27 +3878,4 @@ public final class Main extends javax.swing.JFrame {
             MsgBox.alert(null, "Lỗi truy vấn dữ liệu!");
         }
     }
-
-    private void checkFindDateGGSheet() {
-        // Chuyển đổi chuỗi ngày thành đối tượng Date
-        Date startedDate = InputFields.getDateChoosetoDateSQL(ggSheetStartedDate);
-        System.out.println(startedDate);
-        Date endedDate = InputFields.getDateChoosetoDateSQL(ggSheetEndedDate);
-        System.out.println(endedDate);
-        // Kiểm tra xem ngày bắt đầu có lớn hơn ngày kết thúc hay không
-        if (startedDate.after(endedDate)) {
-            // Hiển thị thông báo nếu ngày bắt đầu lớn hơn ngày kết thúc
-            MsgBox.alert(this, "Ngày bắt đầu phải nhỏ hơn hoặc bằng ngày kết thúc. Vui lòng nhập lại.");
-            ggSheetEndedDate.setDate(null);
-            ggSheetStartedDate.setDate(null);
-            return;
-        } else {
-            
-        }
-    }
-
-    private void findDateGGSheet() {
-
-    }
-
 }

@@ -40,14 +40,14 @@ public class EntityListener {
         if (entity instanceof Event) {
             Event event = (Event) entity;
             notification.setContent(NotificationContent.EVENT);
-            notification.setEventId(event.getId());
+            notification.setEventTitle(event.getTitle());
             if (event.getUser() != null) {
-                notification.setUserId(event.getUser().getId());
+                notification.setUserFullname(event.getUser().getFullname());
             }
         } else if (entity instanceof User) {
             User user = (User) entity;
             notification.setContent(NotificationContent.MEMBER);
-            notification.setUserId(user.getId());
+            notification.setUserFullname(user.getFullname());
         }
         repo.create(notification);
     }
