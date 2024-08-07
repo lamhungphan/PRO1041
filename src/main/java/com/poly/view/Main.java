@@ -2941,7 +2941,8 @@ public final class Main extends javax.swing.JFrame {
                     user.getPhone(),
                     user.getBirthday(),
                     user.getScore(),
-                    user.getAddress()
+                    user.getAddress(),
+                    user.getImage()
                 };
                 tableModelMember.addRow(row);
             }
@@ -3023,14 +3024,26 @@ public final class Main extends javax.swing.JFrame {
             } else {
                 memberForm.setScore(rateMembers);
             }
-
             if (rateMembers.isEmpty()) {
                 return getFormMember(memberForm);
             }
             memberForm.setScore(rateMembers);
 
+            // Lấy và kiểm tra số lần tham gia sự kiện
             Integer attendance = InputFields.getTextFieldtoInteger(txtAttendance);
-            memberForm.setAttendance(attendance);
+            if (attendance == null || attendance.equals("")) {
+                memberForm.setImage(null);
+            } else {
+                memberForm.setAttendance(attendance);
+            }
+            
+            // Lấy và kiểm tra hình ảnh
+            String image = lblMemberAvatar.getText();
+            if (image == null || image.equals("")) {
+                memberForm.setImage(null);
+            } else {
+                memberForm.setImage(image);
+            }
 
             memberForm.setRole(new Role());
             newMember = memberForm;
@@ -3074,10 +3087,10 @@ public final class Main extends javax.swing.JFrame {
 
         cboRateMember.setSelectedItem(memberForm.getScore());
         if (memberForm.getImage() != null) {
-            lblUserAvatar.setToolTipText(memberForm.getImage());
-            lblUserAvatar.setIcon(XImage.read(lblUserAvatar, memberForm.getImage()));
+            lblMemberAvatar.setToolTipText(memberForm.getImage());
+            lblMemberAvatar.setIcon(XImage.read(lblMemberAvatar, memberForm.getImage()));
         } else {
-            lblUserAvatar.setIcon(null);
+            lblMemberAvatar.setIcon(null);
         }
     }
 
