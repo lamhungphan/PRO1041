@@ -2266,6 +2266,7 @@ public final class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         row = tblListEvent.getSelectedRow();
         editEvent();
+        initComboBox();
     }//GEN-LAST:event_tblListEventMouseClicked
 
     private void txtIdEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdEventActionPerformed
@@ -2516,6 +2517,7 @@ public final class Main extends javax.swing.JFrame {
 
     private void tabEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabEventMouseClicked
         // TODO add your handling code here:
+        fillTableEvent();
     }//GEN-LAST:event_tabEventMouseClicked
 
     private void lblAttendanceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAttendanceMouseClicked
@@ -2579,7 +2581,8 @@ public final class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGGSheetImportActionPerformed
 
     private void ggSheetFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ggSheetFindActionPerformed
-        fillDataResponseRegisterForm();
+//        fillDataResponseRegisterForm();
+        checkFindDateGGSheet();
     }//GEN-LAST:event_ggSheetFindActionPerformed
 
     private void btnGGSheetExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGGSheetExportActionPerformed
@@ -3582,6 +3585,7 @@ public final class Main extends javax.swing.JFrame {
         updateStatusEvent();
         fillDataResponseRegisterForm();
         setTotalEvent();
+        initComboBox();
     }
 
     private void setTotalEvent() {
@@ -3594,7 +3598,6 @@ public final class Main extends javax.swing.JFrame {
         if (events == null) {
             return;
         }
-
         DefaultTableModel model = (DefaultTableModel) tblListEvent.getModel();
         model.setRowCount(0);
         try {
@@ -3637,7 +3640,7 @@ public final class Main extends javax.swing.JFrame {
     private void updateEvent() {
 
         row = tblListEvent.getSelectedRow();
-        Event model = getEventFrom(events.get(row));
+        Event model = getEventFrom(events.get(row + 1));
         if (model == null) {
             MsgBox.alert(null, "Vui lòng chọn sự kiện trong danh sách");
         }
@@ -3713,8 +3716,7 @@ public final class Main extends javax.swing.JFrame {
         }
     }
 
-    public void setEventForm(Event eventResponse) {
-
+    public void initComboBox() {
         for (Event entity : events) {
             // Chỉ thêm username nếu role khác 4
             if (entity.getUser().getRole().getId() != 4) {
@@ -3743,7 +3745,10 @@ public final class Main extends javax.swing.JFrame {
                 }
             }
         }
+    }
 
+    public void setEventForm(Event eventResponse) {
+        initComboBox();
         try {
             txtIdEvent.setText(String.valueOf(eventResponse.getId()));
             txtTitleEvent.setText(eventResponse.getTitle());
@@ -3849,6 +3854,10 @@ public final class Main extends javax.swing.JFrame {
         eventController.exportGGSheetResponseRegisterForm();
     }
 
+    private void checkFileExcel() {
+
+    }
+
     private void importExcelEvent() {
         try {
             Event eventRequest = getEventFrom(new Event());
@@ -3885,6 +3894,8 @@ public final class Main extends javax.swing.JFrame {
 //        labelChoose.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); // Biến con trỏ thành hình bàn tay
 //    }
 
+// ==================================== Notification =================================================
+
     // ==================================== Notification =================================================
     List<Notification> notifications;
 
@@ -3916,4 +3927,25 @@ public final class Main extends javax.swing.JFrame {
             MsgBox.alert(null, "Lỗi truy vấn dữ liệu!");
         }
     }
+
+    private void checkFindDateGGSheet() {
+        // Chuyển đổi chuỗi ngày thành đối tượng Date
+        Date startedDate = InputFields.getDateChoosetoDateSQL(ggSheetStartedDate);
+        System.out.println(startedDate);
+        Date endedDate = InputFields.getDateChoosetoDateSQL(ggSheetEndedDate);
+        System.out.println(endedDate);
+        // Kiểm tra xem ngày bắt đầu có lớn hơn ngày kết thúc hay không
+        if (startedDate.after(endedDate)) {
+            // Hiển thị thông báo nếu ngày bắt đầu lớn hơn ngày kết thúc
+            MsgBox.alert(this, "Ngày bắt đầu phải nhỏ hơn hoặc bằng ngày kết thúc. Vui lòng nhập lại.");
+            ggSheetEndedDate.setDate(null);
+            ggSheetStartedDate.setDate(null);
+            return;
+        }
+    }
+
+    private void findDateGGSheet(){
+
+    }
+
 }

@@ -315,6 +315,11 @@ public static List<User> importToExcelMember() throws ParseException {
                 MsgBox.alert(null, "Đường dẫn không tồn tại !");
                 return eventList;
             }
+            File file = new File(filePath);
+            if (!checkFileExcel(file)) {
+                MsgBox.alert(null, "File không phải là file Excel !");
+                return eventList;
+            }
             fis = new FileInputStream(new File(filePath)); // use path choose
             XSSFWorkbook wb = new XSSFWorkbook(fis); // use XSSFWorkbook file .xlsx
             XSSFSheet sheet = wb.getSheetAt(0);
@@ -400,13 +405,22 @@ public static List<User> importToExcelMember() throws ParseException {
         }
         return eventList;
     }
-
-     
-    public static void main(String[] args) {
-        try {
-            importToExcelEvent();
-        } catch (ParseException ex) {
-            Logger.getLogger(IOExcells.class.getName()).log(Level.SEVERE, null, ex);
+    
+     private static boolean checkFileExcel(File file) {
+        if (file == null) {
+            return false;
         }
+
+        String fileName = file.getName();
+        return fileName.endsWith(".xls") || fileName.endsWith(".xlsx");
     }
+
+//     
+//    public static void main(String[] args) {
+//        try {
+//            importToExcelEvent();
+//        } catch (ParseException ex) {
+//            Logger.getLogger(IOExcells.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
 }
