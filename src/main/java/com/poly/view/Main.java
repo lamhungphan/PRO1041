@@ -25,6 +25,9 @@ import com.poly.utils.SheetsQuickstart;
 import com.poly.utils.XImage;
 
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
 import java.io.File;
 import java.sql.Date;
 import java.util.List;
@@ -37,6 +40,8 @@ import java.text.ParseException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
@@ -70,7 +75,7 @@ public final class Main extends javax.swing.JFrame {
         initMemberController();
         initUserController();
         initEventController();
-        
+
     }
 
     private void showCard(String cardName) {
@@ -277,6 +282,12 @@ public final class Main extends javax.swing.JFrame {
         lblHome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblHomeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblHomeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblHomeMouseExited(evt);
             }
         });
 
@@ -598,7 +609,7 @@ public final class Main extends javax.swing.JFrame {
                 .addGroup(pnlListMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExportExcellMember)
                     .addComponent(btnImportExcel))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabMember.addTab("Danh Sách", pnlListMember);
@@ -2424,7 +2435,7 @@ public final class Main extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            
+
             // TODO add your handling code here:
             SheetsQuickstart.fillTableEventRegisterResponse(tblGGSheet);
         } catch (IOException ex) {
@@ -2550,6 +2561,15 @@ public final class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAddressMemberActionPerformed
 
+    private void lblHomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomeMouseExited
+        // TODO add your handling code here:
+//        exitedLabel();
+    }//GEN-LAST:event_lblHomeMouseExited
+
+    private void lblHomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomeMouseEntered
+        // TODO add your handling code here:
+//        interedLabel();
+    }//GEN-LAST:event_lblHomeMouseEntered
 
     /**
      * @param args the command line arguments
@@ -3067,7 +3087,7 @@ public final class Main extends javax.swing.JFrame {
         }
         memberController.exportExcellAllMember(members);
     }
-    
+
     public void setText(String text) {
         lblWelcome.setText(text);
     }
@@ -3624,7 +3644,7 @@ public final class Main extends javax.swing.JFrame {
     private void exportFileGGSheetResponseRegisterForm() {
         eventController.exportGGSheetResponseRegisterForm();
     }
-    
+
     private void importExcelEvent() {
         try {
             Event eventRequest = getEventFrom(new Event());
@@ -3634,5 +3654,30 @@ public final class Main extends javax.swing.JFrame {
         } catch (ParseException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+// Ví dụ bảng màu
+    Color primaryColor = new Color(0, 123, 255); // Xanh dương
+    Color secondaryColor = new Color(255, 193, 7); // Vàng
+    Color backgroundColor = new Color(245, 245, 245); // Xám nhạt
+
+    private void exitedLabel(JLabel labelChoose) {
+        // Khi chuột rời khỏi nút
+        labelChoose.setFont(new Font("Open Sans", Font.PLAIN, 18));
+        labelChoose.setBackground(backgroundColor);
+        labelChoose.setForeground(primaryColor);
+        labelChoose.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15)); // Thêm padding
+        labelChoose.setOpaque(true); // Đảm bảo màu nền hiển thị
+    }
+
+    private void interedLabel(JLabel labelChoose) {
+        // Khi chuột di chuyển vào nút
+        labelChoose.setFont(new Font("Open Sans", Font.BOLD, 18)); // Chữ đậm hơn
+        labelChoose.setBackground(primaryColor);
+        labelChoose.setForeground(Color.WHITE);
+        labelChoose.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(secondaryColor, 2, true), // Viền bo tròn
+                BorderFactory.createEmptyBorder(5, 8, 5, 8) // Giảm padding một chút
+        ));
+        labelChoose.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); // Biến con trỏ thành hình bàn tay
     }
 }

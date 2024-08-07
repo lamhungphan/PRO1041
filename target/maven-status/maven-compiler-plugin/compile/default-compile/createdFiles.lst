@@ -51,7 +51,6 @@ com/poly/view/Main$46.class
 com/poly/view/Main$51.class
 com/poly/view/Main$54.class
 com/poly/utils/HibernateUtils.class
-com/poly/utils/ThreadUtils.class
 com/poly/services/RoleService.class
 com/poly/view/Main$47.class
 com/poly/view/Main$53.class
