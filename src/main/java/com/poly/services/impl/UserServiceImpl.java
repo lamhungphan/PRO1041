@@ -20,56 +20,44 @@ import org.mindrot.jbcrypt.BCrypt;
  * @author Computer
  */
 public class UserServiceImpl implements UserService {
-    
+
     private final UserRepository repo;
     private final RoleService roleService;
     private final AuthorizationService authorizationService;
-    
+
     public UserServiceImpl(UserRepository repo, RoleService roleService, AuthorizationService authorizationService) {
         this.repo = repo;
         this.roleService = roleService;
         this.authorizationService = authorizationService;
     }
-    
+
     @Override
     public User save(User entity, String nameRole) {
         entity.setRole(roleService.findByNameRole(nameRole));
         entity.setPassword(BCrypt.hashpw(entity.getPassword(), BCrypt.gensalt()));
         return repo.create(entity);
     }
-    
+
     @Override
     public User update(User entity) {
-//        String username = entity.getUsername();
-//        User userInDB = findByUsername(username);
-//        
-//        String oldBcryptPassWord = userInDB.getPassword();
-//        String newRawPassword = entity.getPassword();
-//        
-//        if (!BCrypt.checkpw(newRawPassword, oldBcryptPassWord)) {
-//            newRawPassword = BCrypt.hashpw(newRawPassword, BCrypt.gensalt());
-//            entity.setPassword(newRawPassword);
-//        }else if(oldBcryptPassWord.equals(newRawPassword)){
-//            return repo.update(entity);
-//        }
         return repo.update(entity);
     }
-    
+
     @Override
     public User delete(Integer id) {
         return repo.remove(id);
     }
-    
+
     @Override
     public User findById(Integer id) {
         return repo.findById(id);
     }
-    
+
     @Override
     public List<User> findAll() {
         return repo.findAll();
     }
-    
+
     @Override
     public List<User> findByRole(String... role) {
         List<User> listAll = findAll();
@@ -87,7 +75,7 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
-    
+
     @Override
     public User findByUsername(String name) {
         List<User> list = this.findAll();
@@ -100,7 +88,7 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
-    
+
     @Override
     public User findByFullname(String fullname) {
         for (User user : findAll()) {
@@ -110,7 +98,7 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
-    
+
     @Override
     public User findByEmail(String email) {
         List<User> list = this.findAll();
@@ -121,7 +109,7 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
-    
+
     @Override
     public User updatePassword(String email, String newPassword) {
         User userForgotPassword = repo.findByEmail(email);
@@ -133,24 +121,20 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
-    
+
     @Override
     public User doLogin(User userRequest) {
         User userResponse = findByUsername(userRequest.getUsername());
         String admin = "admin";
         String adminPassword = "123";
 
-        // Kiểm tra userResponse trước khi gọi phương thức
-        if (userResponse == null) {
-            return null; // Không tìm thấy người dùng
-        }
-
         if (userRequest.getUsername().equals(admin) && userRequest.getPassword().equals(adminPassword)) {
             return userRequest; // Trả về userRequest nếu là admin
-        }
-
-        // Kiểm tra tài khoản không hoạt động
-        if (userResponse.getIsActived() == false) {
+        }// Kiểm tra userResponse trước khi gọi phương thức
+        else if (userResponse == null) {
+            return null; // Không tìm thấy người dùng
+        } // Kiểm tra tài khoản không hoạt động
+        else if (userResponse.getIsActived() == false) {
             return null; // Tài khoản không hoạt động
         }
 
@@ -161,7 +145,6 @@ public class UserServiceImpl implements UserService {
 
         return null; // Trả về null nếu mật khẩu không đúng
     }
-
 
     //Test
     public static void main(String[] args) {
@@ -174,11 +157,11 @@ public class UserServiceImpl implements UserService {
         repoImpl.update(user_giang);
         User user_Thach = repoImpl.findById(3);
         user_Thach.setPassword(BCrypt.hashpw(user_Thach.getPassword(), BCrypt.gensalt()));
-        
+
         repoImpl.update(user_Thach);
         User user_Lam = repoImpl.findById(4);
         user_Lam.setPassword(BCrypt.hashpw(user_Lam.getPassword(), BCrypt.gensalt()));
         repoImpl.update(user_Lam);
     }
-    
+
 }

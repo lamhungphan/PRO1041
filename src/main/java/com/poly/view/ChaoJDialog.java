@@ -5,8 +5,10 @@
  */
 package com.poly.view;
 
+import com.poly.utils.XImage;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JLabel;
 import javax.swing.Timer;
 
 /**
@@ -14,6 +16,7 @@ import javax.swing.Timer;
  * @author Asus k550j
  */
 public class ChaoJDialog extends javax.swing.JDialog {
+
     /**
      * Creates new form WelcomeJDialog
      */
@@ -32,6 +35,7 @@ public class ChaoJDialog extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
         lblLogo = new javax.swing.JLabel();
         progressBar = new javax.swing.JProgressBar();
 
@@ -40,16 +44,10 @@ public class ChaoJDialog extends javax.swing.JDialog {
         setModal(true);
         setUndecorated(true);
 
-        // Load the image
-        java.awt.Image originalImage = new javax.swing.ImageIcon(getClass().getResource("/com/m2mgroup/image/logo_white.png")).getImage();
-
-        // Resize the image
-        java.awt.Image resizedImage = originalImage.getScaledInstance(514, 300, java.awt.Image.SCALE_SMOOTH);
-
-        // Set the resized image to the label
-        lblLogo.setIcon(new javax.swing.ImageIcon(resizedImage));
         lblLogo.setBackground(new java.awt.Color(255, 255, 255));
         lblLogo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 102, 0), 1, true));
+        lblLogo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblLogo.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         lblLogo.setMaximumSize(new java.awt.Dimension(514, 300));
         lblLogo.setOpaque(true);
         getContentPane().add(lblLogo, java.awt.BorderLayout.CENTER);
@@ -116,14 +114,15 @@ public class ChaoJDialog extends javax.swing.JDialog {
 
     public void init() {
         setLocationRelativeTo(null);
+        lblLogo.setIcon(XImage.read(lblLogo, "logo_white"));
         new Timer(20, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 int value = progressBar.getValue();
-                if(value < 100){
+                if (value < 100) {
                     progressBar.setValue(value + 1);
-                }
-                else{
+                } else {
                     ((Timer) e.getSource()).stop();
                     ChaoJDialog.this.dispose();
                 }
