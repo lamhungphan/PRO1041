@@ -2817,7 +2817,15 @@ public final class Main extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tblListMember.getModel();
         model.setRowCount(0);
         for (User member : members) {
-            model.addRow(new Object[]{member.getId(), member.getFullname()});
+            model.addRow(new Object[]{
+                    member.getId(),
+                    member.getFullname(),
+                    member.getEmail(),
+                    member.getPhone(),
+                    member.getBirthday(),
+                    member.getScore(),
+                    member.getAddress()
+            });
         }
     }
 
@@ -2825,7 +2833,15 @@ public final class Main extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tblListEvent.getModel();
         model.setRowCount(0);
         for (Event event : events) {
-            model.addRow(new Object[]{event.getId(), event.getTitle()});
+            model.addRow(new Object[]{
+                    event.getId(),
+                    event.getUser(),
+                    event.getTitle(),
+                    event.getContent(),
+                    event.getCreatedDate(),
+                    event.getEndedDate(),
+                    event.getLocation()
+            });
         }
     }
 
