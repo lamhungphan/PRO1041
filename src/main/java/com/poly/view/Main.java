@@ -5,8 +5,10 @@ import com.poly.constant.RoleConstant;
 import com.poly.controller.AccountController;
 import com.poly.controller.EventController;
 import com.poly.controller.MemberController;
+import com.poly.controller.NotificationController;
 import com.poly.controller.UserController;
 import com.poly.entity.Event;
+import com.poly.entity.Notification;
 import com.poly.entity.Role;
 import com.poly.entity.User;
 
@@ -64,6 +66,7 @@ public final class Main extends javax.swing.JFrame {
     UserController userController = new UserController();
     EventController eventController = new EventController();
     MemberController memberController = new MemberController();
+    NotificationController notificationController = new NotificationController();
     String buttonDirection;
     List<User> listAllUser = new UserController().getAllUsers();
     UserRepoImpl userRepo = new UserRepoImpl();
@@ -78,7 +81,7 @@ public final class Main extends javax.swing.JFrame {
         initMemberController();
         initUserController();
         initEventController();
-
+        initNotificationController();
     }
 
     private void showCard(String cardName) {
@@ -1457,39 +1460,39 @@ public final class Main extends javax.swing.JFrame {
         tblListNotification.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblListNotification.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Id", "User", "Tiêu đề", "Nội dung", "Ngày tạo", "Ngày kết thúc", "Xác nhận"
+                "Id", "UserId", "EventId", "Tiêu đề", "Nội dung", "Ngày tạo"
             }
         ));
         tblListNotification.setColumnSelectionAllowed(true);
@@ -3233,7 +3236,7 @@ public final class Main extends javax.swing.JFrame {
             MsgBox.alert(this, "Chọn một thành viên để xóa.");
         }
     }
-
+    
     private void fillUserToTable() {
         users = userController.getListAllUser();
         if (users == null) {
@@ -3751,30 +3754,60 @@ public final class Main extends javax.swing.JFrame {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-// Ví dụ bảng màu
-    Color primaryColor = new Color(0, 123, 255); // Xanh dương
-    Color secondaryColor = new Color(255, 193, 7); // Vàng
-    Color backgroundColor = new Color(245, 245, 245); // Xám nhạt
-
-    private void exitedLabel(JLabel labelChoose) {
-        // Khi chuột rời khỏi nút
-        labelChoose.setFont(new Font("Open Sans", Font.PLAIN, 18));
-        labelChoose.setBackground(backgroundColor);
-        labelChoose.setForeground(primaryColor);
-        labelChoose.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15)); // Thêm padding
-        labelChoose.setOpaque(true); // Đảm bảo màu nền hiển thị
+//// Ví dụ bảng màu
+//    Color primaryColor = new Color(0, 123, 255); // Xanh dương
+//    Color secondaryColor = new Color(255, 193, 7); // Vàng
+//    Color backgroundColor = new Color(245, 245, 245); // Xám nhạt
+//
+//    private void exitedLabel(JLabel labelChoose) {
+//        // Khi chuột rời khỏi nút
+//        labelChoose.setFont(new Font("Open Sans", Font.PLAIN, 18));
+//        labelChoose.setBackground(backgroundColor);
+//        labelChoose.setForeground(primaryColor);
+//        labelChoose.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15)); // Thêm padding
+//        labelChoose.setOpaque(true); // Đảm bảo màu nền hiển thị
+//    }
+//
+//    private void interedLabel(JLabel labelChoose) {
+//        // Khi chuột di chuyển vào nút
+//        labelChoose.setFont(new Font("Open Sans", Font.BOLD, 18)); // Chữ đậm hơn
+//        labelChoose.setBackground(primaryColor);
+//        labelChoose.setForeground(Color.WHITE);
+//        labelChoose.setBorder(BorderFactory.createCompoundBorder(
+//                BorderFactory.createLineBorder(secondaryColor, 2, true), // Viền bo tròn
+//                BorderFactory.createEmptyBorder(5, 8, 5, 8) // Giảm padding một chút
+//        ));
+//        labelChoose.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); // Biến con trỏ thành hình bàn tay
+//    }
+    
+// ==================================== Notification =================================================
+    List<Notification> notifications;
+    private void initNotificationController(){
+        fillTableNotification();
     }
+    
+    private void fillTableNotification() {
+        notifications = notificationController.getAllNoti();
+        if (notifications == null) {
+            return;
+        }
 
-    private void interedLabel(JLabel labelChoose) {
-        // Khi chuột di chuyển vào nút
-        labelChoose.setFont(new Font("Open Sans", Font.BOLD, 18)); // Chữ đậm hơn
-        labelChoose.setBackground(primaryColor);
-        labelChoose.setForeground(Color.WHITE);
-        labelChoose.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(secondaryColor, 2, true), // Viền bo tròn
-                BorderFactory.createEmptyBorder(5, 8, 5, 8) // Giảm padding một chút
-        ));
-        labelChoose.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); // Biến con trỏ thành hình bàn tay
+        DefaultTableModel model = (DefaultTableModel) tblListNotification.getModel();
+        model.setRowCount(0);
+        try {
+            for (Notification entity : notifications) {
+                Object[] row = {
+                    entity.getId(),
+                    entity.getUserId(),
+                    entity.getEventId(),
+                    entity.getTitle(),
+                    entity.getContent(),
+                    entity.getCreatedDate()
+                };
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            MsgBox.alert(null, "Lỗi truy vấn dữ liệu!");
+        }
     }
-
 }

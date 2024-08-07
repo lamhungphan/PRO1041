@@ -49,6 +49,7 @@ com/poly/view/Main$49.class
 com/poly/view/Main$39.class
 com/poly/view/Main$46.class
 com/poly/view/Main$51.class
+com/poly/controller/NotificationController.class
 com/poly/view/Main$54.class
 com/poly/utils/HibernateUtils.class
 com/poly/services/RoleService.class
