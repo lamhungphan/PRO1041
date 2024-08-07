@@ -5,6 +5,8 @@ import com.poly.entity.User;
 import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
 import java.util.Date;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -32,7 +34,7 @@ public class RegExInputFields {
 
     public static String getCheckNameMember(JTextField txtFullname) {
         if (!checkNameMember(txtFullname)) {
-            txtFullname.setText(""); 
+            txtFullname.setText("");
             txtFullname.requestFocus();
             return null;
         }
@@ -57,11 +59,38 @@ public class RegExInputFields {
 
     public static String getCheckPhoneMember(JTextField phoneMemberField) {
         if (!checkPhoneMember(phoneMemberField)) {
-            phoneMemberField.setText(""); // Clear the input field for re-entry
+            phoneMemberField.setText("");
             phoneMemberField.requestFocus();
             return null;
         }
         return InputFields.getTextFieldtoString(phoneMemberField);
+    }
+
+    public static boolean checkAttendance(JTextField attendanceMemberField) {
+        String attendanceText = attendanceMemberField.getText().trim();
+        try {
+            Integer.parseInt(attendanceText); // Check if it's a valid integer
+        } catch (NumberFormatException e) {
+            MsgBox.alert(null, "Số lần tham gia phải là một số nguyên.");
+            attendanceMemberField.setBackground(Color.PINK);
+            return false;
+        }
+        if (attendanceText.isEmpty()) {
+            MsgBox.alert(null, "Thông tin tham gia trống.");
+            attendanceMemberField.setBackground(Color.PINK);
+            return false;
+        }
+        attendanceMemberField.setBackground(Color.WHITE);
+        return true;
+    }
+
+    public static Integer getCheckAttendance(JTextField attendanceMemberField) {
+        if (!checkAttendance(attendanceMemberField)) {
+            attendanceMemberField.setText("");
+            attendanceMemberField.requestFocus();
+            return null;
+        }
+        return Integer.parseInt(attendanceMemberField.getText());
     }
 
     public static boolean checkEmail(JTextField emailField) {
@@ -152,7 +181,7 @@ public class RegExInputFields {
         txtUsernameEvent.setBackground(Color.WHITE);
         return true;
     }
-    
+
     public static boolean checkUsernameEvent(JTextField txtUsernameEvent) {
         String Username = txtUsernameEvent.getText();
         User userCreated = new UserController().readUserByUserName(Username);
@@ -171,7 +200,7 @@ public class RegExInputFields {
         txtUsernameEvent.setBackground(Color.WHITE);
         return true;
     }
-    
+
     public static String getCheckUsernameEvent(JTextField txtUsername) {
         while (!checkUsername(txtUsername)) {
             txtUsername.setText("");
@@ -265,6 +294,6 @@ public class RegExInputFields {
         }
         return null;
     }
-    
-    
+
+
 }

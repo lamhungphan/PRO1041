@@ -16,7 +16,6 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "roles")
-@Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -33,4 +32,20 @@ public class Role implements Serializable {
 
     @Column(name = "updatedDate")
     private Date updatedDate;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public Date getUpdatedDate() {
+        return updatedDate;
+    }
 }

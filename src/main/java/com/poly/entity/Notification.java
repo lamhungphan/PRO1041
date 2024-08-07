@@ -1,5 +1,7 @@
 package com.poly.entity;
 
+import com.poly.utils.NotificationContent;
+import com.poly.utils.NotificationTitle;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,34 +17,29 @@ import java.sql.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Notification implements Serializable{
+public class Notification implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "title")
-    private String title;
+    private NotificationTitle title;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "content")
-    private String content;
+    private NotificationContent content;
 
     @Column(name = "createdDate")
     private Date createdDate;
 
-    @Column(name = "updateDate")
-    private Date updatedDate;
-
-    @Column(name = "request")
-    private String request;
-
-    @Column(name = "reply")
-    private String reply;
-
     @Column(name = "isActived")
     private Boolean isActived;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userId", referencedColumnName = "id")
-    private User userId;
+    @Column(name = "userId")
+    private Integer userId;
+
+    @Column(name = "eventId")
+    private Integer eventId;
 }

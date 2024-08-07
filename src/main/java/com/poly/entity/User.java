@@ -16,6 +16,7 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@EntityListeners(EntityListener.class)
 public class User implements Serializable {
 
     @Id
