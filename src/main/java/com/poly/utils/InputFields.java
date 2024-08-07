@@ -1,6 +1,7 @@
 package com.poly.utils;
 
 import com.toedter.calendar.JDateChooser;
+
 import java.awt.Color;
 import java.sql.Date;
 import javax.swing.*;
@@ -17,7 +18,7 @@ public class InputFields {
     }
 
     public static String getTextFieldtoString(JTextField txt) {
-        if(txt.getText().equals("") || txt.getText().equals(" ") || txt.getText().equals("null")) {
+        if (txt.getText().equals("") || txt.getText().equals(" ") || txt.getText().equals("null")) {
             txt.requestFocus();
             return null;
         }
@@ -59,12 +60,8 @@ public class InputFields {
         if (rdo_1.isSelected()) {
             rdo_1.setSelected(true);
             return true;
-        } else if (rdo_2.isSelected()) {
-            rdo_2.setSelected(true);
-            return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     public static String getComboBoxString(JComboBox<String> cbx) {
@@ -92,5 +89,5 @@ public class InputFields {
     public static Date getDateChoosetoDateSQL(JDateChooser dateChooser) {
         return dateChooser != null ? getDateSQL(dateChooser.getDate()) : null;
     }
-    
+
 }
