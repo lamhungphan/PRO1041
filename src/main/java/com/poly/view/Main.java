@@ -3596,7 +3596,7 @@ public final class Main extends javax.swing.JFrame {
     private void updateEvent() {
 
         row = tblListEvent.getSelectedRow();
-        Event model = getEventFrom(events.get(row));
+        Event model = getEventFrom(events.get(row + 1));
         if (model == null) {
             MsgBox.alert(null, "Vui lòng chọn sự kiện trong danh sách");
         }
