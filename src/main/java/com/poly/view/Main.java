@@ -2233,7 +2233,22 @@ public final class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFindEventActionPerformed
 
     private void btnSearchEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchEventActionPerformed
-        // TODO add your handling code here:
+        String nameFinder = RegExInputFields.getCheckEventTitle(txtFindEvent).toLowerCase(); //kiểm tra tên hợp lệ, chuyển về in thường
+        nameFinder = removeAccents(nameFinder); // Bỏ dấu tiếng Việt
+        List<Event> matchedEvents = new ArrayList<>(); // Tạo danh sách để lưu các thành viên
+        for (Event event : events) { //Tạo vòng lập từ list users để tìm theo tên
+            String memberName = removeAccents(event.getTitle()).toLowerCase();
+            if (memberName.contains(nameFinder)) { //lấy tên của mỗi member so sánh với tên từ input
+                matchedEvents.add(event); // Thêm thành viên vào danh sách kết quả
+            }
+        }
+        // Kiểm tra nếu có thành viên
+        if (matchedEvents.isEmpty()) {
+            MsgBox.alert(null, "Không tìm thấy sự kiện này!");
+        } else {
+            // Cập nhật bảng với danh sách thành viên
+            updateTableWithEvents(matchedEvents);
+        }
     }//GEN-LAST:event_btnSearchEventActionPerformed
 
     private void tblListEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListEventMouseClicked
@@ -2780,6 +2795,14 @@ public final class Main extends javax.swing.JFrame {
         model.setRowCount(0);
         for (User member : members) {
             model.addRow(new Object[]{member.getFullname()});
+        }
+    }
+
+    private void updateTableWithEvents(List<Event> events) {
+        DefaultTableModel model = (DefaultTableModel) tblListEvent.getModel();
+        model.setRowCount(0);
+        for (Event event : events) {
+            model.addRow(new Object[]{event.getTitle()});
         }
     }
 
