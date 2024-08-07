@@ -3086,6 +3086,8 @@ public final class Main extends javax.swing.JFrame {
         setFormMember(new User());
         row = -1;
         updateStatusMember();
+
+        initNotificationController();
     }
 
     private void editMember() {
@@ -3463,6 +3465,7 @@ public final class Main extends javax.swing.JFrame {
         setFormUser(new User());
         row = -1;
         updateStatusUser();
+        initNotificationController();
     }
 
     private void editUser() {
@@ -3566,6 +3569,7 @@ public final class Main extends javax.swing.JFrame {
                 };
                 model.addRow(row);
             }
+
         } catch (Exception e) {
             MsgBox.alert(null, "Lỗi truy vấn dữ liệu!");
         }
@@ -3737,6 +3741,7 @@ public final class Main extends javax.swing.JFrame {
         dcEndedDateEvent.setDate(null);
         row = -1;
         updateStatusEvent();
+        initNotificationController();
     }
 
     private void firstEvent() {
@@ -3860,8 +3865,8 @@ public final class Main extends javax.swing.JFrame {
             for (Notification entity : notifications) {
                 Object[] row = {
                         entity.getId(),
-                        entity.getUserId(),
-                        entity.getEventId(),
+                        entity.getUserFullname(),
+                        entity.getEventTitle(),
                         entity.getTitle(),
                         entity.getContent(),
                         entity.getCreatedDate()
