@@ -81,7 +81,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="9" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="lblTabLogout" min="-2" max="-2" attributes="0"/>
                       <Component id="lblTabSystem" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -1180,7 +1180,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblEvent" min="-2" pref="43" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tabEvent" max="32767" attributes="0"/>
+                      <Component id="tabEvent" pref="585" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1257,7 +1257,7 @@
                                   <Component id="btnExportEvent" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnImportEvent" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="35" max="32767" attributes="0"/>
+                              <EmptySpace pref="26" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1408,11 +1408,7 @@
                                                   <Component id="lblSoDT2" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="lblNgaySinh4" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
-                                              <Component id="txtUserIdEvent" min="-2" pref="300" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="lblNgaySinh4" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -1440,7 +1436,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="121" max="32767" attributes="0"/>
+                              <EmptySpace pref="104" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1484,10 +1480,7 @@
                                   </Group>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblNgaySinh4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtUserIdEvent" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="lblNgaySinh4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -1535,11 +1528,6 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Ng&#x1b0;&#x1edd;i T&#x1ed5; Ch&#x1ee9;c:"/>
                       </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="txtUserIdEvent">
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUserIdEventActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblSoDT1">
                       <Properties>
@@ -1803,7 +1791,7 @@
                                   <Component id="btnGGSheetExport" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                                   <Component id="btnGGSheetImport" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="64" max="32767" attributes="0"/>
+                              <EmptySpace pref="50" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
