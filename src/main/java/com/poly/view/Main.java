@@ -2406,6 +2406,28 @@ public final class Main extends javax.swing.JFrame {
 
     private void btnSearchUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchUserActionPerformed
         // TODO add your handling code here:
+        String nameFinder = txtFindUser.getText().toLowerCase();//kiểm tra tên hợp lệ, chuyển về in thường
+        nameFinder = removeAccents(nameFinder); // Bỏ dấu tiếng Việt
+        List<User> matchedUsers = new ArrayList<>(); // Tạo danh sách để lưu các thành viên
+        if (nameFinder.equals("") || nameFinder.isEmpty()) {
+            fillUserToTable();
+            return;
+        }
+        for (User user : users) { //Tạo vòng lập từ list users để tìm theo tên
+            String memberName = removeAccents(user.getFullname()).toLowerCase();
+            if (memberName.contains(nameFinder)) { //lấy tên của mỗi member so sánh với tên từ input
+                matchedUsers.add(user); // Thêm thành viên vào danh sách kết quả
+                editMember();
+            }
+        }
+        // Kiểm tra nếu có thành viên
+        if (matchedUsers.isEmpty()) {
+            MsgBox.alert(null, "Không tìm thấy người dùng này!");
+        } else {
+            // Cập nhật bảng với danh sách thành viên
+            fillUserFindToTable(matchedUsers);
+        }
+
     }//GEN-LAST:event_btnSearchUserActionPerformed
 
     private void tblListUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListUserMouseClicked
@@ -2872,8 +2894,10 @@ public final class Main extends javax.swing.JFrame {
 
     private void deleteMember() {
         int selectedRow = tblListMember.getSelectedRow();
+        
         if (selectedRow >= 0) {
             Integer id = (Integer) tblListMember.getValueAt(selectedRow, 0);
+            
             User deletedUser = memberController.deleteUserById(id);
             if (deletedUser != null) {
                 MsgBox.alert(this, "Xóa thành viên thành công!");
@@ -2883,7 +2907,20 @@ public final class Main extends javax.swing.JFrame {
             } else {
                 MsgBox.alert(this, "Không thể xóa thành viên.");
             }
-        } else {
+        }else if(selectedRow < 0){
+            Integer id = getFormMember(new User()).getId();
+            
+            User deletedUser = memberController.deleteUserById(id);
+            if (deletedUser != null) {
+                MsgBox.alert(this, "Xóa thành viên thành công!");
+                fillMemberToTable();
+                clearFormMember();
+                totalMembers();
+            } else {
+                MsgBox.alert(this, "Không thể xóa thành viên.");
+            }
+        }
+        else {
             MsgBox.alert(this, "Chọn một thành viên để xóa.");
         }
     }
@@ -2994,8 +3031,7 @@ public final class Main extends javax.swing.JFrame {
 
             Integer attendance = InputFields.getTextFieldtoInteger(txtAttendance);
             memberForm.setAttendance(attendance);
-
-            memberForm.setRole(new Role());
+            memberForm.setImage(lblMemberAvatar.getToolTipText());
             newMember = memberForm;
             return memberForm;
         } catch (Exception e) {
@@ -3037,14 +3073,15 @@ public final class Main extends javax.swing.JFrame {
 
         cboRateMember.setSelectedItem(memberForm.getScore());
         if (memberForm.getImage() != null) {
-            lblUserAvatar.setToolTipText(memberForm.getImage());
-            lblUserAvatar.setIcon(XImage.read(lblUserAvatar, memberForm.getImage()));
+            lblMemberAvatar.setToolTipText(memberForm.getImage());
+            lblMemberAvatar.setIcon(XImage.read(lblMemberAvatar, memberForm.getImage()));
         } else {
-            lblUserAvatar.setIcon(null);
+            lblMemberAvatar.setIcon(null);
         }
     }
 
     private void clearFormMember() {
+
         setFormMember(new User());
         row = -1;
         updateStatusMember();
@@ -3234,6 +3271,29 @@ public final class Main extends javax.swing.JFrame {
         tableModelUser.setRowCount(0);
         try {
             for (User user : users) {
+                Object[] row = {
+                    user.getId(),
+                    user.getRole().getRoleName(),
+                    user.getFullname(),
+                    user.getUsername(),
+                    user.getPassword(),
+                    user.getCreatedDate(),
+                    user.getBirthday()
+                };
+                tableModelUser.addRow(row);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            MsgBox.alert(this, "Lỗi truy vấn dữ liệu");
+        }
+    }
+
+    private void fillUserFindToTable(List<User> listUserFinder) {
+
+        DefaultTableModel tableModelUser = (DefaultTableModel) tblListUser.getModel();
+        tableModelUser.setRowCount(0);
+        try {
+            for (User user : listUserFinder) {
                 Object[] row = {
                     user.getId(),
                     user.getRole().getRoleName(),
