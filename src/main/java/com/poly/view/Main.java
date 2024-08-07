@@ -2405,7 +2405,27 @@ public final class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFindUserActionPerformed
 
     private void btnSearchUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchUserActionPerformed
-        // TODO add your handling code here:
+        String nameFinder = txtFindUser.getText().toLowerCase();//kiểm tra tên hợp lệ, chuyển về in thường
+        nameFinder = removeAccents(nameFinder); // Bỏ dấu tiếng Việt
+        List<User> matchedUsers = new ArrayList<>(); // Tạo danh sách để lưu các thành viên
+        if (nameFinder.equals("") || nameFinder.isEmpty()) {
+            fillUserToTable();
+            return;
+        }
+        for (User user : users) { //Tạo vòng lập từ list users để tìm theo tên
+            String userName = removeAccents(user.getFullname()).toLowerCase();
+            if (userName.contains(nameFinder)) { //lấy tên của mỗi member so sánh với tên từ input
+                matchedUsers.add(user); // Thêm thành viên vào danh sách kết quả
+                editUser();
+            }
+        }
+        // Kiểm tra nếu có thành viên
+        if (matchedUsers.isEmpty()) {
+            MsgBox.alert(null, "Không tìm thấy thành viên này!");
+        } else {
+            // Cập nhật bảng với danh sách thành viên
+            updateTableWithUsers(matchedUsers);
+        }
     }//GEN-LAST:event_btnSearchUserActionPerformed
 
     private void tblListUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListUserMouseClicked
@@ -2820,13 +2840,30 @@ public final class Main extends javax.swing.JFrame {
         }
     }
 
+    private void updateTableWithUsers(List<User> members) {
+        DefaultTableModel model = (DefaultTableModel) tblListUser.getModel();
+        model.setRowCount(0);
+        for (User user : users) {
+            model.addRow(new Object[]{
+                user.getId(),
+                user.getRole().getRoleName(),
+                user.getFullname(),
+                user.getEmail(),
+                user.getPhone(),
+                user.getBirthday(),
+                user.getScore(),
+                user.getAddress()
+            });
+        }
+    }
+
     private void updateTableWithEvents(List<Event> events) {
         DefaultTableModel model = (DefaultTableModel) tblListEvent.getModel();
         model.setRowCount(0);
         for (Event event : events) {
             model.addRow(new Object[]{
                 event.getId(),
-                event.getUser(),
+                event.getUser().getFullname(),
                 event.getTitle(),
                 event.getContent(),
                 event.getCreatedDate(),
