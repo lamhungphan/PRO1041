@@ -45,6 +45,7 @@ public class ChaoJDialog extends javax.swing.JDialog {
         setUndecorated(true);
 
         lblLogo.setBackground(new java.awt.Color(255, 255, 255));
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/avatar/logo_white .png"))); // NOI18N
         lblLogo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 102, 0), 1, true));
         lblLogo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lblLogo.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
@@ -114,7 +115,6 @@ public class ChaoJDialog extends javax.swing.JDialog {
 
     public void init() {
         setLocationRelativeTo(null);
-        lblLogo.setIcon(XImage.read(lblLogo, "logo_white"));
         new Timer(20, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

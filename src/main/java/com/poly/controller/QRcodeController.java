@@ -13,7 +13,7 @@ import java.awt.image.BufferedImage;
 // Sử dụng thư viện Swing để tạo ra cái Hình QR code
 public class QRcodeController {
 
-    private void createAndShowGUI() {
+    public void createAndShowGUI() {
         JFrame frame = new JFrame("Tạo QR code");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 500);
@@ -32,14 +32,25 @@ public class QRcodeController {
         generateButton.setFont(new Font("Arial", Font.BOLD, 20));
         generateButton.setBackground(Color.BLUE);
         generateButton.setForeground(Color.WHITE);
-
         JLabel qrCodeLabel = new JLabel("", SwingConstants.CENTER);
         qrCodeLabel.setPreferredSize(new Dimension(300, 300));
         qrCodeLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        
+        JTextField textField1= new JTextField();
+        textField1.setFont(new Font("Arial", Font.PLAIN, 20));
+        textField1.setBackground(Color.WHITE);
+        textField1.setForeground(Color.BLACK);
+//        textField1.setPreferredSize(new Dimension(300,30));
+        textField1.setBorder(BorderFactory.createTitledBorder("Nếu bạn không nhân được đường dẫn đến form hỏi đáp thì vui lòng nhấn vào button tạo QR sau đó quét mã để được dẫn form hỏi đáp"));
 
+        
         generateButton.addActionListener(e -> {
             String text = textField.getText();
-            if (!text.isEmpty()) {
+            String textDefaul = "https://docs.google.com/forms/d/e/1FAIpQLSc9eknnBQZc2gfG-WEZ8HoR1BT2ZMV0cDp5UyfCcf1dNyCqGg/viewform";
+            if (!textDefaul.isEmpty()||!text.isEmpty()) {
+                if(text.isEmpty()){
+                    text=textDefaul;
+                }
                 BufferedImage qrCodeImage = generateQRCodeImage(text, 300, 300);
                 if (qrCodeImage != null) {
                     qrCodeLabel.setIcon(new ImageIcon(qrCodeImage));
@@ -53,7 +64,7 @@ public class QRcodeController {
         panel.add(textField, BorderLayout.NORTH);
         panel.add(generateButton, BorderLayout.CENTER);
         panel.add(qrCodeLabel, BorderLayout.SOUTH);
-
+        panel.add(textField1, BorderLayout.SOUTH);
         frame.add(panel);
         frame.setVisible(true);
     }
