@@ -59,7 +59,7 @@ public class UserController {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(2500);
+                    Thread.sleep(4000);
                     JPanel eventPanel = mainFrame.getPnlEvent();
                     JPanel adminPanel = mainFrame.getPnlAdmin();
                     JPanel notificationPanel = mainFrame.getPnlNotification();
