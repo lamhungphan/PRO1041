@@ -2520,10 +2520,10 @@ public final class Main extends javax.swing.JFrame {
 
     private void lblAttendanceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAttendanceMouseClicked
         SwingUtilities.invokeLater(() -> {
-//            EventChart attendanceChart = new EventChart("");
-//            attendanceChart.setSize(800, 600);
-//            attendanceChart.setLocationRelativeTo(null);
-//            attendanceChart.setVisible(true);
+            EventChart attendanceChart = new EventChart("");
+            attendanceChart.setSize(800, 600);
+            attendanceChart.setLocationRelativeTo(null);
+            attendanceChart.setVisible(true);
         });
     }//GEN-LAST:event_lblAttendanceMouseClicked
 
