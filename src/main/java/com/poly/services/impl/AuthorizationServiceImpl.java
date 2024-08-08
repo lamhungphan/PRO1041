@@ -5,17 +5,22 @@
 package com.poly.services.impl;
 
 import com.poly.constant.RoleConstant;
+import com.poly.entity.Event;
 import com.poly.entity.User;
+import com.poly.injection.EventInjector;
+import com.poly.injection.UserInjector;
 import com.poly.services.AuthorizationService;
+import com.poly.services.EventService;
 import com.poly.services.RoleService;
 import com.poly.services.UserService;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Computer
  */
 public class AuthorizationServiceImpl implements AuthorizationService {
-
     @Override
     public Boolean isAdmin(User user) {
         return user.getRole().getRoleName().equalsIgnoreCase(RoleConstant.CHU_NHIEM);
@@ -35,5 +40,4 @@ public class AuthorizationServiceImpl implements AuthorizationService {
     public Boolean isAccoutant(User user) {
         return user.getRole().getRoleName().equalsIgnoreCase(RoleConstant.THU_QUY);
     }
-
 }

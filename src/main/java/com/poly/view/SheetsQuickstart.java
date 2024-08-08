@@ -1,4 +1,4 @@
-package com.poly.utils;
+package com.poly.view;
 
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
@@ -20,20 +20,18 @@ import java.io.InputStreamReader;
 import java.security.GeneralSecurityException;
 import java.util.Collections;
 import java.util.List;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 public class SheetsQuickstart {
-
     private static final String APPLICATION_NAME = "Google Sheets API Java Quickstart";
     private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
     private static final String TOKENS_DIRECTORY_PATH = "tokens";
+
     /**
-     * Global instance of the scopes required by this quickstart. If modifying
-     * these scopes, delete your previously saved tokens/ folder.
+     * Global instance of the scopes required by this quickstart.
+     * If modifying these scopes, delete your previously saved tokens/ folder.
      */
-    private static final List<String> SCOPES
-            = Collections.singletonList(SheetsScopes.SPREADSHEETS_READONLY);
+    private static final List<String> SCOPES =
+            Collections.singletonList(SheetsScopes.SPREADSHEETS_READONLY);
     private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
 
     /**
@@ -50,8 +48,8 @@ public class SheetsQuickstart {
         if (in == null) {
             throw new FileNotFoundException("Resource not found: " + CREDENTIALS_FILE_PATH);
         }
-        GoogleClientSecrets clientSecrets
-                = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
+        GoogleClientSecrets clientSecrets =
+                GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
 
         // Build flow and trigger user authorization request.
         GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
@@ -60,61 +58,20 @@ public class SheetsQuickstart {
                 .setAccessType("offline")
                 .build();
         LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8888).build();
-        Credential credential = new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
-
-        // In ra đường dẫn đến file token
-        System.out.println("Token path: " + new java.io.File(TOKENS_DIRECTORY_PATH).getAbsolutePath() + "/StoredCredential");
-
-        return credential;
+        return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
     }
-
 
     /**
      * Prints the names and majors of students in a sample spreadsheet:
      * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
-     *
-     * @return
-     * @throws java.io.IOException
-     * @throws java.security.GeneralSecurityException
      */
-    public static List<List<Object>> assignDataToList() throws IOException, GeneralSecurityException {
-        final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-        final String spreadsheetId = "1Zd9Si50cKte_GFIhYH9gKTV7G3R8TfqTIEEaMF0685Y";
-        final String range = "FormResponse!A2:H";
-        Sheets service = new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
-                .setApplicationName(APPLICATION_NAME)
-                .build();
-        ValueRange response = service.spreadsheets().values().get(spreadsheetId, range).execute();
-        List<List<Object>> values = response.getValues();
-        if (values == null || values.isEmpty()) {
-            System.out.println("No data found.");
-            return null;
-        } else {
-            return values;
-        }
-    }
-
-    public static void fillTableEventRegisterResponse(JTable tblListEvent) throws IOException, GeneralSecurityException{
-        List<List<Object>> values = assignDataToList();
-        DefaultTableModel model = (DefaultTableModel) tblListEvent.getModel();
-        model.setRowCount(0);
-        try {
-            for (List<Object> row : values) {
-                model.addRow(row.toArray());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            MsgBox.alert(null, "Lỗi truy vấn dữ liệu!");
-        }
-    }
-
     public static void main(String... args) throws IOException, GeneralSecurityException {
         // Build a new authorized API client service.
         final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-        final String spreadsheetId = "1Zd9Si50cKte_GFIhYH9gKTV7G3R8TfqTIEEaMF0685Y";
-        final String range = "FormResponse!B2:H";
-        Sheets service
-                = new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
+        final String spreadsheetId = "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms";
+        final String range = "Class Data!A2:E";
+        Sheets service =
+                new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
                         .setApplicationName(APPLICATION_NAME)
                         .build();
         ValueRange response = service.spreadsheets().values()
@@ -124,11 +81,10 @@ public class SheetsQuickstart {
         if (values == null || values.isEmpty()) {
             System.out.println("No data found.");
         } else {
-            System.out.println("Họ và tên, Sinh nhật, Khu vực sinh sống, Số điện thoại, Ngành học, Email, Câu hỏi cho diễn giả");
+            System.out.println("Name, Major");
             for (List row : values) {
                 // Print columns A and E, which correspond to indices 0 and 4.
-
-                System.out.printf("%s,c %s, %s, %s,%s,%s, %s\n", row.get(0), row.get(1), row.get(2), row.get(3), row.get(4), row.get(5), row.get(6));
+                System.out.printf("%s, %s\n", row.get(0), row.get(4));
             }
         }
     }
