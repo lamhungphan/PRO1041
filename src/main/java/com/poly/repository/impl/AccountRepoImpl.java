@@ -22,6 +22,7 @@ public class AccountRepoImpl implements AccountRepository {
             em.getTransaction().begin();
             em.merge(entity);
             em.getTransaction().commit();
+            System.out.println(em);
             return entity;
         } catch (Exception e){
             em.getTransaction().rollback();

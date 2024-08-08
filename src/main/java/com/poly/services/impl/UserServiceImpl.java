@@ -147,21 +147,5 @@ public class UserServiceImpl implements UserService {
     }
 
     //Test
-    public static void main(String[] args) {
-        UserRepoImpl repoImpl = new UserRepoImpl();
-        User user_Hung = repoImpl.findById(1);
-        user_Hung.setPassword(BCrypt.hashpw(user_Hung.getPassword(), BCrypt.gensalt()));
-        repoImpl.update(user_Hung);
-        User user_giang = repoImpl.findById(2);
-        user_giang.setPassword(BCrypt.hashpw(user_giang.getPassword(), BCrypt.gensalt()));
-        repoImpl.update(user_giang);
-        User user_Thach = repoImpl.findById(3);
-        user_Thach.setPassword(BCrypt.hashpw(user_Thach.getPassword(), BCrypt.gensalt()));
-
-        repoImpl.update(user_Thach);
-        User user_Lam = repoImpl.findById(4);
-        user_Lam.setPassword(BCrypt.hashpw(user_Lam.getPassword(), BCrypt.gensalt()));
-        repoImpl.update(user_Lam);
-    }
 
 }
