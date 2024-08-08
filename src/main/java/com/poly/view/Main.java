@@ -3912,17 +3912,15 @@ public final class Main extends javax.swing.JFrame {
     // Hàm tìm kiếm trong khoảng ngày
     public List<PersonInfo> searchByDateRange(java.util.Date startDate, java.util.Date endDate) {
         List<PersonInfo> filteredList = new ArrayList<>();
-        List<PersonInfo> dataList = getDataFromTable();
-        for (PersonInfo person : dataList) {
+        List<PersonInfo> listAll = new ArrayList<>(getDataFromTable());
+        for (PersonInfo person : listAll) {
             java.util.Date personDate = person.getDate();
-            if ((personDate.equals(startDate) | personDate.after(startDate))
-                    & (personDate.equals(endDate) | personDate.before(endDate))) {
+            if (personDate.after(startDate) & personDate.before(endDate)) {
                 filteredList.add(person);
             }
         }
         if (filteredList.isEmpty()) {
-            updateTable(dataList);
-            return dataList;
+            return listAll;
         }
 
         return filteredList;
