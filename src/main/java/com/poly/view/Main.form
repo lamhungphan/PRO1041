@@ -636,7 +636,7 @@
                     </Container>
                     <Component class="javax.swing.JButton" name="btnExportExcellMember">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t Excel"/>
+                        <Property name="text" type="java.lang.String" value="Export Excel Th&#xe0;nh Vi&#xea;n"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExportExcellMemberActionPerformed"/>
@@ -644,7 +644,7 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="btnImportExcel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Nh&#x1ead;p Excel"/>
+                        <Property name="text" type="java.lang.String" value=" Import Excel Th&#xe0;nh Vi&#xea;n"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnImportExcelActionPerformed"/>
@@ -1348,7 +1348,7 @@
                     </Container>
                     <Component class="javax.swing.JButton" name="btnExportEvent">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t Event"/>
+                        <Property name="text" type="java.lang.String" value="Export Excel Event"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExportEventActionPerformed"/>
@@ -1356,7 +1356,7 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="btnImportEvent">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Nh&#x1ead;p Excel"/>
+                        <Property name="text" type="java.lang.String" value="Import Excel Event"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnImportEventActionPerformed"/>
