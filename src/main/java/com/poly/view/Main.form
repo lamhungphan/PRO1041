@@ -325,7 +325,7 @@
                           <Component id="lblTotalEventContent" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblEventContent" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="82" max="32767" attributes="0"/>
+                      <EmptySpace pref="96" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -436,7 +436,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblMember" min="-2" pref="43" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tabMember" pref="577" max="32767" attributes="0"/>
+                      <Component id="tabMember" pref="584" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -636,7 +636,7 @@
                     </Container>
                     <Component class="javax.swing.JButton" name="btnExportExcellMember">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t Excel"/>
+                        <Property name="text" type="java.lang.String" value="Export Excel Th&#xe0;nh Vi&#xea;n"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExportExcellMemberActionPerformed"/>
@@ -644,7 +644,7 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="btnImportExcel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Nh&#x1ead;p Excel"/>
+                        <Property name="text" type="java.lang.String" value=" Import Excel Th&#xe0;nh Vi&#xea;n"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnImportExcelActionPerformed"/>
@@ -815,7 +815,7 @@
                                   <Component id="txtEmailMemBer" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                                   <Component id="txtAttendance" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="25" max="32767" attributes="0"/>
+                              <EmptySpace pref="31" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="lblSoDT" min="-2" max="-2" attributes="0"/>
@@ -1180,7 +1180,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblEvent" min="-2" pref="43" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tabEvent" pref="585" max="32767" attributes="0"/>
+                      <Component id="tabEvent" pref="596" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1257,7 +1257,7 @@
                                   <Component id="btnExportEvent" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnImportEvent" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="26" max="32767" attributes="0"/>
+                              <EmptySpace pref="38" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1348,7 +1348,7 @@
                     </Container>
                     <Component class="javax.swing.JButton" name="btnExportEvent">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t Event"/>
+                        <Property name="text" type="java.lang.String" value="Export Excel Event"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExportEventActionPerformed"/>
@@ -1356,7 +1356,7 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="btnImportEvent">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Nh&#x1ead;p Excel"/>
+                        <Property name="text" type="java.lang.String" value="Import Excel Event"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnImportEventActionPerformed"/>
@@ -1791,7 +1791,7 @@
                                   <Component id="btnGGSheetExport" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                                   <Component id="btnGGSheetImport" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="50" max="32767" attributes="0"/>
+                              <EmptySpace pref="67" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1958,7 +1958,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblNotification" min="-2" pref="43" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tabNotification" pref="589" max="32767" attributes="0"/>
+                      <Component id="tabNotification" pref="596" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -2177,7 +2177,7 @@
                                   <Component id="btnRejectNotificationAdmin" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                                   <Component id="btnAcceptNotificationAdmin" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="128" max="32767" attributes="0"/>
+                              <EmptySpace pref="126" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>

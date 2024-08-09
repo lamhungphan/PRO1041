@@ -10,6 +10,12 @@ public class AccountRepoImpl implements AccountRepository {
     private EntityManager em = HibernateUtils.getEntityManage();
 
     @Override
+    protected void finalize() throws Throwable {
+        em.close();
+        super.finalize();
+    }
+    
+    @Override
     public Account getAccount(Integer id) {
         Account entity = em.find(Account.class, id);
         return entity;
@@ -22,10 +28,12 @@ public class AccountRepoImpl implements AccountRepository {
             em.getTransaction().begin();
             em.merge(entity);
             em.getTransaction().commit();
+            System.out.println(em);
             return entity;
         } catch (Exception e){
             em.getTransaction().rollback();
             throw new RuntimeException(e);
         }
     }
+
 }

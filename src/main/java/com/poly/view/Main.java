@@ -10,6 +10,7 @@ import com.poly.controller.QRcodeController;
 import com.poly.controller.UserController;
 import com.poly.entity.Event;
 import com.poly.entity.Notification;
+import com.poly.entity.PersonInfo;
 import com.poly.entity.Role;
 import com.poly.entity.User;
 
@@ -19,6 +20,7 @@ import javax.swing.JFrame;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.text.Normalizer;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
@@ -44,6 +46,8 @@ import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.sql.Date;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.AbstractList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -72,7 +76,7 @@ public final class Main extends javax.swing.JFrame {
     List<User> listAllUser = new UserController().getAllUsers();
     UserRepoImpl userRepo = new UserRepoImpl();
     QRcodeController qRcodeController = new QRcodeController();
-        
+
     public Main() {
 
         setAvatarUserLogined();
@@ -572,14 +576,14 @@ public final class Main extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(tblListMember);
 
-        btnExportExcellMember.setText("Xuất Excel");
+        btnExportExcellMember.setText("Export Excel Thành Viên");
         btnExportExcellMember.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExportExcellMemberActionPerformed(evt);
             }
         });
 
-        btnImportExcel.setText("Nhập Excel");
+        btnImportExcel.setText(" Import Excel Thành Viên");
         btnImportExcel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnImportExcelActionPerformed(evt);
@@ -1051,14 +1055,14 @@ public final class Main extends javax.swing.JFrame {
         });
         jScrollPane5.setViewportView(tblListEvent);
 
-        btnExportEvent.setText("Xuất Event");
+        btnExportEvent.setText("Export Excel Event");
         btnExportEvent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExportEventActionPerformed(evt);
             }
         });
 
-        btnImportEvent.setText("Nhập Excel");
+        btnImportEvent.setText("Import Excel Event");
         btnImportEvent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnImportEventActionPerformed(evt);
@@ -2228,7 +2232,6 @@ public final class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNextMemberActionPerformed
 
     private void btnLastMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastMemberActionPerformed
-
         lastMember();
     }//GEN-LAST:event_btnLastMemberActionPerformed
 
@@ -2562,13 +2565,14 @@ public final class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_lblMemberAvatarMouseClicked
 
     private void btnGGSheetImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGGSheetImportActionPerformed
-            // TODO add your handling code here:
-            qRcodeController.createAndShowGUI();
-                    
+        // TODO add your handling code here:
+        qRcodeController.createAndShowGUI();
+
     }//GEN-LAST:event_btnGGSheetImportActionPerformed
 
     private void ggSheetFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ggSheetFindActionPerformed
-        fillDataResponseRegisterForm();
+//        fillDataResponseRegisterForm();
+        checkFindDateToDate();
     }//GEN-LAST:event_ggSheetFindActionPerformed
 
     private void btnGGSheetExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGGSheetExportActionPerformed
@@ -2838,13 +2842,13 @@ public final class Main extends javax.swing.JFrame {
         model.setRowCount(0);
         for (User member : members) {
             model.addRow(new Object[]{
-                    member.getId(),
-                    member.getFullname(),
-                    member.getEmail(),
-                    member.getPhone(),
-                    member.getBirthday(),
-                    member.getScore(),
-                    member.getAddress()
+                member.getId(),
+                member.getFullname(),
+                member.getEmail(),
+                member.getPhone(),
+                member.getBirthday(),
+                member.getScore(),
+                member.getAddress()
             });
         }
     }
@@ -2854,13 +2858,13 @@ public final class Main extends javax.swing.JFrame {
         model.setRowCount(0);
         for (Event event : events) {
             model.addRow(new Object[]{
-                    event.getId(),
-                    event.getUser(),
-                    event.getTitle(),
-                    event.getContent(),
-                    event.getCreatedDate(),
-                    event.getEndedDate(),
-                    event.getLocation()
+                event.getId(),
+                event.getUser(),
+                event.getTitle(),
+                event.getContent(),
+                event.getCreatedDate(),
+                event.getEndedDate(),
+                event.getLocation()
             });
         }
     }
@@ -2941,13 +2945,13 @@ public final class Main extends javax.swing.JFrame {
         try {
             for (User user : members) {
                 Object[] row = {
-                        user.getId(),
-                        user.getFullname(),
-                        user.getEmail(),
-                        user.getPhone(),
-                        user.getBirthday(),
-                        user.getScore(),
-                        user.getAddress()
+                    user.getId(),
+                    user.getFullname(),
+                    user.getEmail(),
+                    user.getPhone(),
+                    user.getBirthday(),
+                    user.getScore(),
+                    user.getAddress()
                 };
                 tableModelMember.addRow(row);
             }
@@ -3008,7 +3012,7 @@ public final class Main extends javax.swing.JFrame {
 
             // Lấy giới tính
             Boolean gender = InputFields.getSelectedRadiobutton(rdoMaleMember, rdoFemaleMember);
-                memberForm.setSex(gender);
+            memberForm.setSex(gender);
 
             // Lấy và kiểm tra ngày sinh
             Date birthdate = InputFields.getDateChoosetoDateSQL(dcBirthdayMember);
@@ -3264,7 +3268,7 @@ public final class Main extends javax.swing.JFrame {
             } else {
                 MsgBox.alert(this, "Không thể xóa thành viên.");
             }
-        }else if(selectedRow < 0){
+        } else if (selectedRow < 0) {
             Integer id = InputFields.getTextFieldtoInteger(txtIdUser);
             User deletedUser = userController.deleteUser(id);
             if (deletedUser != null) {
@@ -3274,8 +3278,7 @@ public final class Main extends javax.swing.JFrame {
             } else {
                 MsgBox.alert(this, "Không thể xóa thành viên.");
             }
-        }
-        else {
+        } else {
             MsgBox.alert(this, "Chọn một thành viên để xóa.");
         }
     }
@@ -3290,13 +3293,13 @@ public final class Main extends javax.swing.JFrame {
         try {
             for (User user : users) {
                 Object[] row = {
-                        user.getId(),
-                        user.getRole().getRoleName(),
-                        user.getFullname(),
-                        user.getUsername(),
-                        user.getPassword(),
-                        user.getCreatedDate(),
-                        user.getBirthday()
+                    user.getId(),
+                    user.getRole().getRoleName(),
+                    user.getFullname(),
+                    user.getUsername(),
+                    user.getPassword(),
+                    user.getCreatedDate(),
+                    user.getBirthday()
                 };
                 tableModelUser.addRow(row);
             }
@@ -3313,13 +3316,13 @@ public final class Main extends javax.swing.JFrame {
         try {
             for (User user : listUserFinder) {
                 Object[] row = {
-                        user.getId(),
-                        user.getRole().getRoleName(),
-                        user.getFullname(),
-                        user.getUsername(),
-                        user.getPassword(),
-                        user.getCreatedDate(),
-                        user.getBirthday()
+                    user.getId(),
+                    user.getRole().getRoleName(),
+                    user.getFullname(),
+                    user.getUsername(),
+                    user.getPassword(),
+                    user.getCreatedDate(),
+                    user.getBirthday()
                 };
                 tableModelUser.addRow(row);
             }
@@ -3560,13 +3563,13 @@ public final class Main extends javax.swing.JFrame {
         try {
             for (Event entity : events) {
                 Object[] row = {
-                        entity.getId(),
-                        entity.getUser().getFullname(),
-                        entity.getTitle(),
-                        entity.getContent(),
-                        entity.getStartedDate(),
-                        entity.getEndedDate(),
-                        entity.getLocation()
+                    entity.getId(),
+                    entity.getUser().getFullname(),
+                    entity.getTitle(),
+                    entity.getContent(),
+                    entity.getStartedDate(),
+                    entity.getEndedDate(),
+                    entity.getLocation()
                 };
                 model.addRow(row);
             }
@@ -3821,31 +3824,6 @@ public final class Main extends javax.swing.JFrame {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-//// Ví dụ bảng màu
-//    Color primaryColor = new Color(0, 123, 255); // Xanh dương
-//    Color secondaryColor = new Color(255, 193, 7); // Vàng
-//    Color backgroundColor = new Color(245, 245, 245); // Xám nhạt
-//
-//    private void exitedLabel(JLabel labelChoose) {
-//        // Khi chuột rời khỏi nút
-//        labelChoose.setFont(new Font("Open Sans", Font.PLAIN, 18));
-//        labelChoose.setBackground(backgroundColor);
-//        labelChoose.setForeground(primaryColor);
-//        labelChoose.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15)); // Thêm padding
-//        labelChoose.setOpaque(true); // Đảm bảo màu nền hiển thị
-//    }
-//
-//    private void interedLabel(JLabel labelChoose) {
-//        // Khi chuột di chuyển vào nút
-//        labelChoose.setFont(new Font("Open Sans", Font.BOLD, 18)); // Chữ đậm hơn
-//        labelChoose.setBackground(primaryColor);
-//        labelChoose.setForeground(Color.WHITE);
-//        labelChoose.setBorder(BorderFactory.createCompoundBorder(
-//                BorderFactory.createLineBorder(secondaryColor, 2, true), // Viền bo tròn
-//                BorderFactory.createEmptyBorder(5, 8, 5, 8) // Giảm padding một chút
-//        ));
-//        labelChoose.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); // Biến con trỏ thành hình bàn tay
-//    }
 
     // ==================================== Notification =================================================
     List<Notification> notifications;
@@ -3865,12 +3843,12 @@ public final class Main extends javax.swing.JFrame {
         try {
             for (Notification entity : notifications) {
                 Object[] row = {
-                        entity.getId(),
-                        entity.getUserFullname(),
-                        entity.getEventTitle(),
-                        entity.getTitle(),
-                        entity.getContent(),
-                        entity.getCreatedDate()
+                    entity.getId(),
+                    entity.getUserFullname(),
+                    entity.getEventTitle(),
+                    entity.getTitle(),
+                    entity.getContent(),
+                    entity.getCreatedDate()
                 };
                 model.addRow(row);
             }
@@ -3878,4 +3856,94 @@ public final class Main extends javax.swing.JFrame {
             MsgBox.alert(null, "Lỗi truy vấn dữ liệu!");
         }
     }
+
+    private void checkFindDateToDate() {
+        java.util.Date startedDate = ggSheetStartedDate.getDate();
+        System.out.println(startedDate);
+        java.util.Date endedDate = ggSheetEndedDate.getDate();
+        System.out.println(endedDate);
+        List<PersonInfo> listAll = new ArrayList<>(getDataFromTable());
+        if (endedDate.before(startedDate)) {
+            MsgBox.alert(this, "Ngày kết thúc phải lớn hơn hoặc bằng ngày bắt đầu !");
+            updateTable(listAll);
+            return;
+        } else {
+            List<PersonInfo> result = searchByDateRange(startedDate, endedDate);
+            updateTable(result); // Cập nhật bảng với kết quả tìm kiếm
+        }
+    }
+
+    private List<PersonInfo> getDataFromTable() {
+        List<PersonInfo> list = new ArrayList<>();
+        // Định dạng để hiển thị dưới dạng yyyy/MM/dd
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+        DefaultTableModel model = (DefaultTableModel) tblGGSheet.getModel();
+
+        for (int i = 0; i < model.getRowCount(); i++) {
+            String dateValue = (String) model.getValueAt(i, 0);
+            System.out.println(dateValue);
+
+            try {
+                // Chuyển đổi chuỗi ngày thành đối tượng Date
+                java.util.Date dateWithoutTime = null;
+                if (dateValue != null) {
+                    dateWithoutTime = formatter.parse(dateValue);
+                }
+
+                String fullName = (String) model.getValueAt(i, 1);
+                java.util.Date birthDate = formatter.parse((String) model.getValueAt(i, 2));
+                String address = (String) model.getValueAt(i, 3);
+                String phoneNumber = (String) model.getValueAt(i, 4);
+                String major = (String) model.getValueAt(i, 5);
+                String email = (String) model.getValueAt(i, 6);
+                String question = (String) model.getValueAt(i, 7);
+
+                // Tạo đối tượng PersonInfo với ngày lưu dưới dạng Date
+                PersonInfo personInfo = new PersonInfo(dateWithoutTime, fullName, birthDate, address, phoneNumber, major, email, question);
+                list.add(personInfo);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+        }
+        return list;
+    }
+
+    // Hàm tìm kiếm trong khoảng ngày
+    public List<PersonInfo> searchByDateRange(java.util.Date startDate, java.util.Date endDate) {
+        List<PersonInfo> filteredList = new ArrayList<>();
+        List<PersonInfo> listAll = new ArrayList<>(getDataFromTable());
+        for (PersonInfo person : listAll) {
+            java.util.Date personDate = person.getDate();
+            if (personDate.after(startDate) & personDate.before(endDate)) {
+                filteredList.add(person);
+            }
+        }
+        if (filteredList.isEmpty()) {
+            return listAll;
+        }
+
+        return filteredList;
+    }
+
+    private void updateTable(List<PersonInfo> dataList) {
+        DefaultTableModel model = (DefaultTableModel) tblGGSheet.getModel();
+        model.setRowCount(0); // Xóa các hàng hiện tại trong bảng
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        for (PersonInfo person : dataList) {
+            Object[] rowData = new Object[]{
+                dateFormat.format(person.getDate()),
+                person.getFullName(),
+                dateFormat.format(person.getBirthDate()),
+                person.getAddress(),
+                person.getPhoneNumber(),
+                person.getMajor(),
+                person.getEmail(),
+                person.getQuestion()
+            };
+            model.addRow(rowData); // Thêm hàng mới vào bảng
+        }
+    }
+
 }
