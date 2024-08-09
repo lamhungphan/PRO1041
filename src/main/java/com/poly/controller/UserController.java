@@ -39,7 +39,18 @@ public class UserController {
         } else if (loginedUser.getUsername().equals("admin")) {
             MsgBox.alert(null, "Đăng nhập thành công");
             loginFrame.dispose();
-            mainFrame.setVisible(true);
+            Thread delayMain = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Thread.sleep(2300);
+                        mainFrame.setVisible(true);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            delayMain.start();
             return true;
         } else {
             MsgBox.alert(null, "Đăng nhập thành công");
@@ -59,7 +70,7 @@ public class UserController {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(4000);
+                    Thread.sleep(2500);
                     JPanel eventPanel = mainFrame.getPnlEvent();
                     JPanel adminPanel = mainFrame.getPnlAdmin();
                     JPanel notificationPanel = mainFrame.getPnlNotification();
