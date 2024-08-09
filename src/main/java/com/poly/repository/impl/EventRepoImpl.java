@@ -13,6 +13,7 @@ public class EventRepoImpl implements EventRepository {
 
     private EntityManager em = HibernateUtils.getEntityManage();
 
+
     @Override
     protected void finalize() throws Throwable {
         em.close();

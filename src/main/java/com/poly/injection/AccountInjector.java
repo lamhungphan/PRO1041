@@ -32,13 +32,9 @@ public class AccountInjector {
         return instance;
     }
 
-    public AccountRepository getAccountRepository() {
-        return accountRepository;
-    }
-
     public AccountService getAccountService() {
         return accountService;
     }
-    
-    
+
+
 }

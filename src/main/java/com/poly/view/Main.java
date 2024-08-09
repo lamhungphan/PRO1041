@@ -47,6 +47,7 @@ import java.security.GeneralSecurityException;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.AbstractList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -3857,12 +3858,14 @@ public final class Main extends javax.swing.JFrame {
     }
 
     private void checkFindDateToDate() {
-        Date startedDate = InputFields.getDateChoosetoDateSQL(ggSheetStartedDate);
+        java.util.Date startedDate = ggSheetStartedDate.getDate();
         System.out.println(startedDate);
-        Date endedDate = InputFields.getDateChoosetoDateSQL(ggSheetEndedDate);
+        java.util.Date endedDate = ggSheetEndedDate.getDate();
         System.out.println(endedDate);
+        List<PersonInfo> listAll = new ArrayList<>(getDataFromTable());
         if (endedDate.before(startedDate)) {
             MsgBox.alert(this, "Ngày kết thúc phải lớn hơn hoặc bằng ngày bắt đầu !");
+            updateTable(listAll);
             return;
         } else {
             List<PersonInfo> result = searchByDateRange(startedDate, endedDate);
@@ -3880,42 +3883,44 @@ public final class Main extends javax.swing.JFrame {
             String dateValue = (String) model.getValueAt(i, 0);
             System.out.println(dateValue);
 
-            if (dateValue != null && !dateValue.isEmpty()) {
-                try {
-                    // Chuyển đổi chuỗi ngày thành đối tượng Date
-                    java.util.Date dateWithoutTime = formatter.parse(dateValue);
-
-                    String fullName = (String) model.getValueAt(i, 1);
-                    java.util.Date birthDate = formatter.parse((String) model.getValueAt(i, 2));
-                    String address = (String) model.getValueAt(i, 3);
-                    String phoneNumber = (String) model.getValueAt(i, 4);
-                    String major = (String) model.getValueAt(i, 5);
-                    String email = (String) model.getValueAt(i, 6);
-                    String question = (String) model.getValueAt(i, 7);
-
-                    // Tạo đối tượng PersonInfo với ngày lưu dưới dạng Date
-                    PersonInfo personInfo = new PersonInfo(dateWithoutTime, fullName, birthDate, address, phoneNumber, major, email, question);
-                    list.add(personInfo);
-                } catch (ParseException e) {
-                    e.printStackTrace();
+            try {
+                // Chuyển đổi chuỗi ngày thành đối tượng Date
+                java.util.Date dateWithoutTime = null;
+                if (dateValue != null) {
+                    dateWithoutTime = formatter.parse(dateValue);
                 }
+
+                String fullName = (String) model.getValueAt(i, 1);
+                java.util.Date birthDate = formatter.parse((String) model.getValueAt(i, 2));
+                String address = (String) model.getValueAt(i, 3);
+                String phoneNumber = (String) model.getValueAt(i, 4);
+                String major = (String) model.getValueAt(i, 5);
+                String email = (String) model.getValueAt(i, 6);
+                String question = (String) model.getValueAt(i, 7);
+
+                // Tạo đối tượng PersonInfo với ngày lưu dưới dạng Date
+                PersonInfo personInfo = new PersonInfo(dateWithoutTime, fullName, birthDate, address, phoneNumber, major, email, question);
+                list.add(personInfo);
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
+
         }
         return list;
     }
 
-
-
-
-
     // Hàm tìm kiếm trong khoảng ngày
-    public List<PersonInfo> searchByDateRange(Date startDate, Date endDate) {
+    public List<PersonInfo> searchByDateRange(java.util.Date startDate, java.util.Date endDate) {
         List<PersonInfo> filteredList = new ArrayList<>();
-        List<PersonInfo> dataList = getDataFromTable();
-        for (PersonInfo person : dataList) {
-            if (!person.getDate().before(startDate) && !person.getDate().after(endDate)) {
+        List<PersonInfo> listAll = new ArrayList<>(getDataFromTable());
+        for (PersonInfo person : listAll) {
+            java.util.Date personDate = person.getDate();
+            if (personDate.after(startDate) & personDate.before(endDate)) {
                 filteredList.add(person);
             }
+        }
+        if (filteredList.isEmpty()) {
+            return listAll;
         }
 
         return filteredList;
