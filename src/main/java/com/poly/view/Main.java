@@ -2568,7 +2568,14 @@ public final class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGGSheetImportActionPerformed
 
     private void ggSheetFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ggSheetFindActionPerformed
-        fillDataResponseRegisterForm();
+        try {
+            //        fillDataResponseRegisterForm();
+            SheetsQuickstart.fillTableEventRegisterResponse(tblGGSheet);
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (GeneralSecurityException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_ggSheetFindActionPerformed
 
     private void btnGGSheetExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGGSheetExportActionPerformed
@@ -3804,7 +3811,8 @@ public final class Main extends javax.swing.JFrame {
     }
 
     private void fillDataResponseRegisterForm() {
-        eventController.getAllResponseRegisterForm();
+         eventController.getAllResponseRegisterForm();
+        
     }
 
     private void exportFileGGSheetResponseRegisterForm() {
