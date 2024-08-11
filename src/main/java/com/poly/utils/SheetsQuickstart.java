@@ -82,6 +82,7 @@ public class SheetsQuickstart {
         List<List<Object>> values = response.getValues();
         if (values == null || values.isEmpty()) {
             System.out.println("No data found.");
+
             return null;
         } else {
             return values;
